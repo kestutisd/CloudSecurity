@@ -1,0 +1,291 @@
+--- 
+title: "FMISD13207 Cloud Security Technologies"
+author: "Kęstutis Daugėla"
+date: "`r Sys.Date()`"
+output:
+  html_document:
+    df_print: paged
+  pdf_document: default
+bibliography: references.bib
+biblio-style: apalike
+link-citations: yes
+site: bookdown::bookdown_site
+citation_package: natbib
+---
+
+# Introduction {-}
+
+Information Security Fundamentals (information security problematics, classification and evolution of threats, identification, authentication, access control, security
+principals, strategies, models, taxonomies and antologies); Cryptography (simetric and public key cryptography, DES, AES, RSA. stream ciphers, cryptographic
+protocols, authentication, electronic signature, management of electronic identity); Network Security (routing, firewalls, VPN, web security, network perimeter
+protection, host-level protection, authentication technologies); Attacking Information Technology Systems (attack types, real-life case studies, intrusion detection,
+formal analysis techniques); Information Security Technologies (antivirus, IDS, host and perimeter protection systems, Honeypots); Implementing Effective
+Information Security Programs (legal, regulatory and privacy issues, security standarts, security best practices, security policy).
+
+
+The underlying concept of cloud computing was introduced way back in 1960s by John McCarthy in his book, “The challenge of the Computer Utility”. His opinion was that “computation may someday be organized as a public utility.” The rest became history and the majority of the software used now is running in the cloud seamlessly [@CloudHistoryOverview].
+
+![The history of the cloud - image source https://itchronicles.com/](img/evolution_of_cloud.png)
+
+Cloud can solve a lot of problems nowadays - starting with reduced cost, enhanced security, and flexible approach [@CloudReview] up to sustainability [@CloudSustainability] and accessibility around the world. Continuous Integration and Deployment (CI/CD) is easier than even treating now only the applications, but the whole infrastructure as code. This leads to enhanced productivity and cost optimization [@CloudAutomation]. 
+
+Is there anything revolutionary in the cloud offerings today? Definitely, no - people used these capabilities for ages. The only difference is the scale and popularity these days.
+
+Cloud services usually are grouped into three categories:
+
+* SaaS (Software as a service) is a software distribution model in which a cloud provider hosts applications and makes them available to end-users over the internet
+* PaaS (Platform as a service) is a complete development and deployment environment in the cloud, with resources that enable you to deliver everything from simple cloud-based apps to sophisticated, cloud-enabled enterprise applications
+* IaaS (Infrastructure as a service) is a type of cloud computing service that offers essential compute, storage, and networking resources on-demand, on a pay-as-you-go basis
+
+![IaaS vs PaaS vs SaaS - image source https://www.bigcommerce.com/blog/saas-vs-paas-vs-iaas/](img/saas-vs-paas-vs-iaas-breakdown.jpg)
+
+However,  despite  the  gain  achieved  from  cloud computing, organizations are slow in fully accepting it due to security issues and  challenges associated with it [@Cloud-computing]. However, almost every cloud-ready company uses the public cloud (97%) to some extent leaving hybrid cloud setup the dominant one (78%). Companies rarely use public or private cloud alone (19% vs 2% respectively). According to Forbes, there are now 77 % of organizations, having one or some parts of their systems in the cloud. 
+
+Cloud service providers follow a shared security responsibility model, which means that your security team retains some security duties as you migrate applications, data, containers, and workloads to the cloud, while the provider takes part, but not all, of the responsibility. Clearly defining your duties from those of your providers is critical for minimizing the risk of introducing vulnerabilities into your public, hybrid, or multi-cloud systems, as shown in the graph below.
+
+![Shared responsibility in the cloud - image source www.microsoft.com](img/perceptible-shifts-in-responsibility-graphic.png)
+
+
+![World's Biggest Data Breaches & Hacks - image source https://www.informationisbeautiful.net/visualizations/worlds-biggest-data-breaches-hacks/](img/data-breaches.png)
+
+# Type of attacks
+
+https://link.springer.com/article/10.1007/s13369-019-04319-2
+
+Denial-of-service (DoS) This type of attack is an effort to make a machine or network resource inaccessible to its intended users. It is caused by any event that weakens or eliminates a network’s capacity to perform its expected function. Owing to low memory capabilities and limited computation resources, most computing devices in the IoT environment are vulnerable to asset enervation assaults [20]. One of the reasons for a DoS attack is that various industries use similar technologies and potential attackers take advantage of this [21, 22].
+
+Malware In this attack, the attacker deploys malicious software programs to gain unauthorized access to computer systems by exploiting its security vulnerabilities. The incentive behind malware is an extraordinary financial or political reward that accelerates an attacker’s motivation to compromise as many network devices they can to accomplish their malicious aims [23, 24].
+
+Phishing This is an unlawful activity which uses social engineering and technology to collect sensitive information from an Internet user. Phishing techniques utilize various methods of communication, such as email, instant messages, pop-up messages or Web pages [25, 26].
+
+SQL injection attack In this attack, an input string is injected through the application to change or manipulate the SQL statement to the attacker’s advantage. This attack harms the database in several ways, including unauthorized access and manipulation of the database, and disclosure of sensitive data. This attack is risky as it can cause data loss or misuse of data by groups who are not authorized, and consequently, functionality and confidentiality are destroyed. Further, system-level commands are also executed under this category of attack, resulting in authorized users being unable to access the required information [27, 28].
+
+Session hijacking and Man-in-the-Middle attacks Man-in-the-middle (MITM, also abbreviated in the literature as MIM, MitM, MiM or MITMA) is an attack where an unauthorized third party secretly gains control of the communication channel between multiple endpoints. The MITM attacker can interrupt, manipulate or even replace the target victims’ communication traffic. Further, victims are not aware of the intruder, thus believing that the communication channel is safe and protected [29, 30].
+
+Cross-site scripting (XSS) In this type of attack, a malicious attacker tries to run a JavaScript code in the client’s browser in order to steal the client’s sensitive data. It is a commonly used vulnerability found in recent Web sites [31, 32].
+
+Malware . A malware is a type of cyber attack where malicious software is installed on the victim’s systems through executable files usually without the user’s knowledge. Malware includes malicious software, including spyware, ransomware, viruses, and worms. After installation, a malware can keep track of the user’s activity or can trigger codes resulting into access to sensitive information, login details, credit cards or intellectual properties by the hacker.
+Phishing. Phishing refers to spoofing or deceptive communications activities performed by the attackers that appear to originate from a credible source such as emails, messages, legitimate websites that are disguised. Through phishing, attackers try to fetch sensitive information, user details, credit card numbers or make fraudulent attempts.
+Man-in-the-middle attack. These attacks happen with relaying or altering the communication channels. This can be communication between organisations and cloud server or over unsecured networks.
+DoS/DDoS. A DoS/DDoS attack aims at flooding the target website with overwhelming traffic to exhaust resources and bandwidth of the system. These are not to bring down a website but to breach a security perimeter and smoke out the online systems. This can reduce a user base or may bring down the entire network.
+SQL Injection. This is injecting a nefarious code or statements into SQL queries or a database server to extract information from the database or to take a data dump of the complete database.
+Zero-day exploit. Zero-day is a software security flaw which is known to the software developers. Attackers try to exploit a vulnerability before a patch or solution is implemented to capture the system with known weaknesses.
+Cross Site Scripting. XSS attacks occur when a web app sends malicious code in the form of a side script to another user thus bypassing access controls of the site to same as the origin.
+Business Email compromise. This is an attack to spoof business emails and gain illegal access to company accounts and ids to defraud the company or its employees.
+
+
+![The Vulnerabilities that a Business can Experience - image source https://blog.ecosystm360.com/cyber-attacks-threats-risks/](img/Types-of-cyber-attacks.jpg)
+
+# Data Breach - Case Study
+
+## Twitch
+
+An error: It appears that the problem was a misconfiguration as this statement says something was in error. The attackers did not get in due to a zero-day or supply chain attack. Something existed in a non-compliant or expected state.
+In a Twitch server: This would indicate the issue was with a Twitch server, not an S3 bucket. Only news reporters who don’t understand what an S3 bucket is call it a server. I presume whoever wrote this for Twitch understands that as well, so it does not seem to be a cloud data storage misconfiguration. It sounds like a server was running something on a port exposed to the Internet. If you are not familiar with ports and protocols and why this all matters I explain it in my book in a non-technical manner. However, the exposed data could have existed in an S3 bucket, as it did in the Capital One breach.
+
+Configuration: Yes, someone caused a server to enter a non-compliant or unwanted state. It doesn’t say who implemented the configuration. Was the misconfiguration a result of an employee change or did a hacker get to someone’s credentials via a phishing email? Was social engineering involved or was it a disgruntled insider? We don’t know. All we know is that somehow, a server entered an unwanted state that led to data exposure.
+
+
+Leaked administrative credentials that gave access to absolutely everything.
+Leaked credentials to a source control system since a lot of the data seems to be code.
+This could possibly be an SSRF attack similar to the Capital One breach if the information exposed existed in S3 buckets and a server misconfiguration exposed them.
+The misconfiguration could be something like too much permission and access granted to a server or a server got exposed to the Internet that should have been in a private network.
+
+In part, because it involved an Amazon company, hosted on Amazon’s cloud service, AWS. So many people host their data on AWS and might be thinking, “If Amazon can’t keep data secure on AWS, who can?” 
+
+https://medium.com/cloud-security/thoughts-on-the-twitch-breach-a2840470387b
+
+## Phizer
+
+The exposed data was found on a misconfigured Google Cloud storage bucket. The data included hundreds of conversations between Pfizer’s automated customer support software and people using its prescription pharmaceutical drugs.
+
+https://pf-media.co.uk/news/pfizer-suffers-huge-data-breach-on-unsecured-cloud-storage/#:~:text=The%20exposed%20data%20was%20found,cancer%20treatments%20Ibrance%20and%20Aromasin.
+
+## Citybee
+
+
+
+# Public Cloud
+
+## Public Cloud Security
+
+Cloud security is a critical matter. Most companies worry that highly sensitive data and intellectual property may be exposed through accidental leaks or due to increasingly sophisticated cyber attacks. Gartner predicts that through 2025, 99% of cloud security failures will be the customer's fault.
+
+Moreover, having a solid cloud security stance helps organizations achieve other benefits, such as:
+
+* Lower costs
+* Reduced ongoing operational and administrative expenses
+* Scalability
+* Increased reliability and availability
+* DevOps way of working
+
+
+Despite bringing many benefits, the cloud computing paradigm imposes serious concerns in terms of security and privacy, which are considered hurdles in the adoption of the cloud at a very large scale [@securingcloudsurvey]. Security issues are depended on the cloud provider, service user, instance [@datasecurity], and the delivery model, PaaS, IaaS, and SaaS [@securitymode]. Data stored in the public cloud would face both outside attacks and inside attacks [@securityprivacy].  Data loss and leakage were the biggest security concern, with 44% of organizations seeing data loss as one of their top three focus areas. Two-thirds of organizations leave back doors open to attackers leading to an accidental exposure through misconfiguration. Security gaps in misconfigurations were exploited in 66% of attacks [@sophos]. 
+
+![How criminals are getting in, source - sophos.com](img/sophos_threats.PNG)
+
+
+Zero Trust security model enables securing cloud-native applications by encrypting all network communication, authenticating, and authorizing every request. The traditional trust management mechanisms represent a static trust relationship that falls deficit while meeting up the dynamic requirement of cloud services. [@zerotrust]. In order to achieve a true zero-trust security model in the cloud, a combination of network and identity permission policies should be in place.
+
+![The Zero Trust eXtended (ZTX) Ecosystem, Forrester Research, Inc., source - juniper.net](img/zerotrusteco.PNG)
+
+To adequately address the modern dynamic threat environment requires[@NSA]:
+
+* Coordinated and aggressive system monitoring, system management, and defensive operations capabilities.
+* Assuming all requests for critical resources and all network traffic may be malicious.
+* Assuming all devices and infrastructure may be compromised.
+* Accepting that all access approvals to critical resources incur a risk
+
+Some security recommendations for network security can be summarized as follows [@securingcloudsurvey]:
+
+* Secure communication techniques should be adopted: HTTPS for web applications, transmission channel must be encrypted by TLS
+* Additional monitoring should be done (manual, automatic, ML based)
+* Other public security services such as web application firewalls (WAF), virtual firewalls, virtual bastion machines, virtual host protection, and virtual database audit systems could be used
+
+
+## Infrastructure as Code 
+
+There was a significant shift in development, deployment, and software application management during the past decade. The new approach is called Development Operations (DevOps) where Infrastructure as Code (IaC) plays a core role. While manual configurations in the Cloud context was a norm, nowadays it is fully automated using blueprints that are easily interpretable by machines. Moreover, IaC approach allows a faster and homogeneous configuration for the whole infrastructure. Usually, it is utilized by a specific declarative language (TerraForm, CloudFormation, Puppet) that allows users to describe the desired state of the infrastructure. This significantly reduces the time, complexity and helps to provision the infrastructure from the security, management, and costs perspectives. 
+
+
+The whole idea behind IaC is simple - developers can write declarative statements that define the infrastructure necessary to run the code as opposed to writing a ticket/creating a task for administrators. Reproducibility and transparency come as a side effects.
+
+![Infrastructure as Code Survey, source - thenewstack.io](img/iac.png)
+
+Terraform is one of the most popular ways to implement this pipeline, especially in a Cloud context. It is an open-source tool that lets you provision Google Cloud resources with declarative configuration files-resources such as virtual machines, containers, storage, and networking. It lets users manage Terraform configuration files in source control to maintain an ideal provisioning state for testing, production, and other environments. [@iac]
+
+# Project Scope
+
+## Platform for anatical applications
+
+## Kubernetes and Docker
+
+While virtualized applications are highly preferred as opposed to IaaS approach (virtual machines), it makes sense to dig deeper in kubernetes and docker setup, regardless of the chosen managed service.
+
+![Cloud Strategy - image source Flexera](img/conteiners.jpg)
+
+Kubernetes was founded by Ville Aikas, Joe Beda, Brendan Burns, and Craig McLuckie in collaboration with Google engineers Brian Grant and Tim Hockin in mid-2014. Google's Borg system heavily influenced kubernetes design [@Borg] [@BorgKubernetes]. While the Borg project was implemented entirely in C++, Kubernetes was rewritten in Go language. The main goal of kubernetes was to build on the capabilities of containers and provide significant gains in programmer productivity while easing the management of the system. 
+
+![Container evolution - kubernetes.io](img/container_evolution.png)
+
+Kubernetes is the most popular container orchestration platform that enables users to create and run multiple containers in cloud environments. Kubernetes offers resource management to isolate the resource usage of containers on a host server because performance isolation is an important factor in terms of service quality.
+
+![The components of a Kubernetes cluster - kubernetes.io](img/components-of-kubernetes.png)
+
+
+
+
+![Terraform example, source - cloud.google.com](img/iac_example.PNG)
+
+## Shiny Server on insecure machines
+
+Computer networks are prone to attacks and it has a wide range of attacks associated with them. Cloud is not an exception and even holds more risk. It can be prone to Denial-of-service, Eavesdropping, Host Attacks, Password Guessing, Protocol-based, and Social Engineering attacks [@attacks].
+
+As an experiment, the firewall was opened to the whole world and network activity was monitored for one week. While the activity in the Compute Instance (Shiny Server hosted on a Virtual Server) was marginal, the exposed Shiny Server instance on Google Kubernetes Cluster was scanned extensively. This could be due to the rules on how Google generates IP addresses for corresponding instances. Moreover, GKE was exposed on port 80 which is a standard HTTP port, while the standard port of shiny server (3838) was used for Compute Instance, which is not that common configuration.
+
+![Incoming Requests](img/incoming_requests.png)
+
+While the majority of the requests came from the USA, applications from China and Russia also scanned our exposed application considerably. These scans also are not centralized but are rather done by individuals or companies which specialize in data mining and web crawling. Some requests are also received from Lithuania, CGates Internet Service Provider. 
+
+![Incoming Requets from different cities](img/all_cities.png)
+
+Some of the IPs were crossed check with a publicly available IP database. These IP addresses, especially from China and Russia, were already reported a number of times and are indicated as abusive. 
+
+![Blacklisted IPs - source https://www.abuseipdb.com/](img/abuse_ip.PNG)
+
+The analysis proves that an incorrectly configured firewall poses one of the most significant security risks. Misconfigured applications could serve as a back door and is a low handing fruit for hackers - e.g. it is easy to run a port scan for a specific IP range and use a collection of scripts/exploits to check whether there are any holes in the application. If any sensitive data where General Data Protection Regulation is not applied (i.e. USA, China, Russia).
+
+
+# Security considerations
+
+## Certificates and TLS
+
+Transport Layer Security (TLS) encrypts data sent over the Internet to ensure that eavesdroppers and hackers are unable to see what you transmit which is particularly useful for private and sensitive information such as passwords, credit card numbers, and personal correspondence. This page explains what TLS is, how it works, and why you should deploy it.
+
+TLS evolved from Secure Socket Layers (SSL) which was originally developed by Netscape Communications Corporation in 1994 to secure web sessions. SSL 1.0 was never publicly released, whilst SSL 2.0 was quickly replaced by SSL 3.0 on which TLS is based.
+
+Data has historically been transmitted unencrypted over the Internet, and where encryption was used, it was typically employed in a piecemeal fashion for sensitive information such as passwords or payment details. Without TLS, sensitive information such as logins, credit card details and personal details can easily be gleaned by others, but also browsing habits, e-mail correspondence, online chats and conferencing calls can be monitored. By enabling client and server applications to support TLS, it ensures that data transmitted between them is encrypted with secure algorithms and not viewable by third parties.
+
+TLS is the most widely-used cryptographic protocol on the Internet. It comprises the TLS Handshake Protocol, responsible for authentication and key establishment, and the TLS Record Protocol, which takes care of subsequent use of those keys to protect bulk data. In this paper, we present the most complete analysis to date of the TLS Handshake protocol and its application to data encryption (in the Record Protocol). We show how to extract a key-encapsulation mechanism (KEM) from the TLS Handshake Protocol, and how the security of the entire TLS protocol follows from security properties of this KEM when composed with a secure authenticated encryption scheme in the Record Protocol.
+
+
+https://freecontent.manning.com/how-does-tls-work/
+
+![TLS - https://www.a10networks.com/glossary/key-differences-between-tls-1-2-and-tls-1-3/](img/tls.png)
+Handshake:
+
+* Negotiation. TLS is highly configurable. Both a client and a server can be configured to negotiate a range of SSL and TLS versions, as well as a menu of acceptable cryptographic algorithms. The negotiation phase of the handshake aims at finding common ground between the client’s and the server’s configurations, in order to securely connect the two peers.
+* Key exchange. The whole point of the handshake is to perform a key exchange between the two participants. What key exchange algorithm to use? This is one of the things decided as part of the negotiation process.
+* Authentication. It is trivial for a MITM attacker to impersonate any side of a key exchange. For this reason, key exchanges must be authenticated. (Your browser must have a way to make sure that it is talking to google.com and not your Internet service provider, for example.)
+* Session Resumption. As browsers often connect to the same websites again and again, key exchanges can be costly and slow down a user’s experience. For this reason, mechanisms to fast-track secure sessions without redoing a key exchange are integrated into TLS.
+
+
+RSA and the Diffie-Hellman Key Exchange are the two most popular encryption algorithms that solve the same problem in different ways. In a nutshell, Diffie Hellman approach generates a public and private key on both sides of the transaction, but only shares the public key. Unlike Diffie-Hellman, the RSA algorithm can be used for signing digital signatures as well as symmetric key exchange, but it does require the exchange of a public key beforehand.
+
+https://www.researchgate.net/figure/TLS-key-transport-with-RSA_fig1_234811497
+
+## Auth
+
+OAuth 2.0: If you’ve ever signed up to a new application and agreed to let it automatically source new contacts via Facebook or your phone contacts, then you’ve likely used OAuth 2.0. This standard provides secure delegated access. That means an application can take actions or access resources from a server on behalf of the user, without them having to share their credentials. It does this by allowing the identity provider (IdP) to issue tokens to third-party applications with the user’s approval.
+
+OpenID Connect: If you’ve used your Google to sign in to applications like YouTube, or Facebook to log into an online shopping cart, then you’re familiar with this authentication option. OpenID Connect is an open standard that organizations use to authenticate users. IdPs use this so that users can sign in to the IdP, and then access other websites and apps without having to log in or share their sign-in information. 
+
+SAML: You’ve more likely experienced SAML authentication in action in the work environment. For example, it enables you to log into your corporate intranet or IdP and then access numerous additional services, such as Salesforce, Box, or Workday, without having to re-enter your credentials. SAML is an XML-based standard for exchanging authentication and authorization data between IdPs and service providers to verify the user’s identity and permissions, then grant or deny their access to services.
+
+### Authentication
+
+### Authorization
+
+### SAML
+
+## Network
+
+
+
+# Implementation
+
+## Conteinarization
+
+```
+gcloud auth login --project shiny-cloud-345816
+PROJECTID=$(gcloud config get-value project)
+docker build . -t gcr.io/$PROJECTID/signin
+docker push gcr.io/$PROJECTID/signin
+```
+
+
+### Cloud Run
+
+
+### GKE
+
+
+## Shiny App security features
+
+### Shiny server authentication
+
+### Shiny authorization
+
+
+## Cloud Security
+
+### Firewalls
+
+### DNS
+
+### Certificates
+
+### Identity aware proxy
+
+### Audit
+
+
+```
+gcloud beta dns --project=shiny-cloud-345816 managed-zones create shinycloud-online --description="" --dns-name="shinycloud.online." --visibility="public" --dnssec-state="off" --log-dns-queries
+```
+
+
+
+
+# References {-}
+

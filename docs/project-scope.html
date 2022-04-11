@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 4 Project Scope | FMISD13207 Cloud Security Technologies</title>
+  <meta name="description" content="Chapter 4 Project Scope | FMISD13207 Cloud Security Technologies" />
+  <meta name="generator" content="bookdown 0.25 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 4 Project Scope | FMISD13207 Cloud Security Technologies" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 4 Project Scope | FMISD13207 Cloud Security Technologies" />
+  
+  
+  
+
+<meta name="author" content="Kęstutis Daugėla" />
+
+
+<meta name="date" content="2022-04-11" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="public-cloud.html"/>
+<link rel="next" href="security-considerations.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Information Security Technologies</a></li>
+
+<li class="divider"></li>
+<li><a href="index.html#introduction">Introduction<span></span></a></li>
+<li class="chapter" data-level="1" data-path="type-of-attacks.html"><a href="type-of-attacks.html"><i class="fa fa-check"></i><b>1</b> Type of attacks<span></span></a></li>
+<li class="chapter" data-level="2" data-path="data-breach---case-study.html"><a href="data-breach---case-study.html"><i class="fa fa-check"></i><b>2</b> Data Breach - Case Study<span></span></a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="data-breach---case-study.html"><a href="data-breach---case-study.html#twitch"><i class="fa fa-check"></i><b>2.1</b> Twitch<span></span></a></li>
+<li class="chapter" data-level="2.2" data-path="data-breach---case-study.html"><a href="data-breach---case-study.html#phizer"><i class="fa fa-check"></i><b>2.2</b> Phizer<span></span></a></li>
+<li class="chapter" data-level="2.3" data-path="data-breach---case-study.html"><a href="data-breach---case-study.html#citybee"><i class="fa fa-check"></i><b>2.3</b> Citybee<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="public-cloud.html"><a href="public-cloud.html"><i class="fa fa-check"></i><b>3</b> Public Cloud<span></span></a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="public-cloud.html"><a href="public-cloud.html#public-cloud-security"><i class="fa fa-check"></i><b>3.1</b> Public Cloud Security<span></span></a></li>
+<li class="chapter" data-level="3.2" data-path="public-cloud.html"><a href="public-cloud.html#infrastructure-as-code"><i class="fa fa-check"></i><b>3.2</b> Infrastructure as Code<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="project-scope.html"><a href="project-scope.html"><i class="fa fa-check"></i><b>4</b> Project Scope<span></span></a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="project-scope.html"><a href="project-scope.html#platform-for-anatical-applications"><i class="fa fa-check"></i><b>4.1</b> Platform for anatical applications<span></span></a></li>
+<li class="chapter" data-level="4.2" data-path="project-scope.html"><a href="project-scope.html#kubernetes-and-docker"><i class="fa fa-check"></i><b>4.2</b> Kubernetes and Docker<span></span></a></li>
+<li class="chapter" data-level="4.3" data-path="project-scope.html"><a href="project-scope.html#shiny-server-on-insecure-machines"><i class="fa fa-check"></i><b>4.3</b> Shiny Server on insecure machines<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="security-considerations.html"><a href="security-considerations.html"><i class="fa fa-check"></i><b>5</b> Security considerations<span></span></a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="security-considerations.html"><a href="security-considerations.html#certificates-and-tls"><i class="fa fa-check"></i><b>5.1</b> Certificates and TLS<span></span></a></li>
+<li class="chapter" data-level="5.2" data-path="security-considerations.html"><a href="security-considerations.html#auth"><i class="fa fa-check"></i><b>5.2</b> Auth<span></span></a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="security-considerations.html"><a href="security-considerations.html#authentication"><i class="fa fa-check"></i><b>5.2.1</b> Authentication<span></span></a></li>
+<li class="chapter" data-level="5.2.2" data-path="security-considerations.html"><a href="security-considerations.html#authorization"><i class="fa fa-check"></i><b>5.2.2</b> Authorization<span></span></a></li>
+<li class="chapter" data-level="5.2.3" data-path="security-considerations.html"><a href="security-considerations.html#saml"><i class="fa fa-check"></i><b>5.2.3</b> SAML<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="security-considerations.html"><a href="security-considerations.html#network"><i class="fa fa-check"></i><b>5.3</b> Network<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="implementation.html"><a href="implementation.html"><i class="fa fa-check"></i><b>6</b> Implementation<span></span></a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="implementation.html"><a href="implementation.html#conteinarization"><i class="fa fa-check"></i><b>6.1</b> Conteinarization<span></span></a>
+<ul>
+<li class="chapter" data-level="6.1.1" data-path="implementation.html"><a href="implementation.html#cloud-run"><i class="fa fa-check"></i><b>6.1.1</b> Cloud Run<span></span></a></li>
+<li class="chapter" data-level="6.1.2" data-path="implementation.html"><a href="implementation.html#gke"><i class="fa fa-check"></i><b>6.1.2</b> GKE<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="implementation.html"><a href="implementation.html#shiny-app-security-features"><i class="fa fa-check"></i><b>6.2</b> Shiny App security features<span></span></a>
+<ul>
+<li class="chapter" data-level="6.2.1" data-path="implementation.html"><a href="implementation.html#shiny-server-authentication"><i class="fa fa-check"></i><b>6.2.1</b> Shiny server authentication<span></span></a></li>
+<li class="chapter" data-level="6.2.2" data-path="implementation.html"><a href="implementation.html#shiny-authorization"><i class="fa fa-check"></i><b>6.2.2</b> Shiny authorization<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="implementation.html"><a href="implementation.html#cloud-security"><i class="fa fa-check"></i><b>6.3</b> Cloud Security<span></span></a>
+<ul>
+<li class="chapter" data-level="6.3.1" data-path="implementation.html"><a href="implementation.html#firewalls"><i class="fa fa-check"></i><b>6.3.1</b> Firewalls<span></span></a></li>
+<li class="chapter" data-level="6.3.2" data-path="implementation.html"><a href="implementation.html#dns"><i class="fa fa-check"></i><b>6.3.2</b> DNS<span></span></a></li>
+<li class="chapter" data-level="6.3.3" data-path="implementation.html"><a href="implementation.html#certificates"><i class="fa fa-check"></i><b>6.3.3</b> Certificates<span></span></a></li>
+<li class="chapter" data-level="6.3.4" data-path="implementation.html"><a href="implementation.html#identity-aware-proxy"><i class="fa fa-check"></i><b>6.3.4</b> Identity aware proxy<span></span></a></li>
+<li class="chapter" data-level="6.3.5" data-path="implementation.html"><a href="implementation.html#audit"><i class="fa fa-check"></i><b>6.3.5</b> Audit<span></span></a></li>
+</ul></li>
+</ul></li>
+<li><a href="references.html#references">References<span></span></a></li>
+<li class="divider"></li>
+<li>Vilnius Tech 2022</li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">FMISD13207 Cloud Security Technologies</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="project-scope" class="section level1 hasAnchor" number="4">
+<h1><span class="header-section-number">Chapter 4</span> Project Scope<a href="project-scope.html#project-scope" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="platform-for-anatical-applications" class="section level2 hasAnchor" number="4.1">
+<h2><span class="header-section-number">4.1</span> Platform for anatical applications<a href="project-scope.html#platform-for-anatical-applications" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+</div>
+<div id="kubernetes-and-docker" class="section level2 hasAnchor" number="4.2">
+<h2><span class="header-section-number">4.2</span> Kubernetes and Docker<a href="project-scope.html#kubernetes-and-docker" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>While virtualized applications are highly preferred as opposed to IaaS approach (virtual machines), it makes sense to dig deeper in kubernetes and docker setup, regardless of the chosen managed service.</p>
+<div class="figure">
+<img src="img/conteiners.jpg" alt="" />
+<p class="caption">Cloud Strategy - image source Flexera</p>
+</div>
+<p>Kubernetes was founded by Ville Aikas, Joe Beda, Brendan Burns, and Craig McLuckie in collaboration with Google engineers Brian Grant and Tim Hockin in mid-2014. Google’s Borg system heavily influenced kubernetes design <span class="citation">(<a href="#ref-Borg" role="doc-biblioref">Verma et al. 2015</a>)</span> <span class="citation">(<a href="#ref-BorgKubernetes" role="doc-biblioref">Burns et al. 2016</a>)</span>. While the Borg project was implemented entirely in C++, Kubernetes was rewritten in Go language. The main goal of kubernetes was to build on the capabilities of containers and provide significant gains in programmer productivity while easing the management of the system.</p>
+<div class="figure">
+<img src="img/container_evolution.png" alt="" />
+<p class="caption">Container evolution - kubernetes.io</p>
+</div>
+<p>Kubernetes is the most popular container orchestration platform that enables users to create and run multiple containers in cloud environments. Kubernetes offers resource management to isolate the resource usage of containers on a host server because performance isolation is an important factor in terms of service quality.</p>
+<div class="figure">
+<img src="img/components-of-kubernetes.png" alt="" />
+<p class="caption">The components of a Kubernetes cluster - kubernetes.io</p>
+</div>
+<div class="figure">
+<img src="img/iac_example.PNG" alt="" />
+<p class="caption">Terraform example, source - cloud.google.com</p>
+</div>
+</div>
+<div id="shiny-server-on-insecure-machines" class="section level2 hasAnchor" number="4.3">
+<h2><span class="header-section-number">4.3</span> Shiny Server on insecure machines<a href="project-scope.html#shiny-server-on-insecure-machines" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Computer networks are prone to attacks and it has a wide range of attacks associated with them. Cloud is not an exception and even holds more risk. It can be prone to Denial-of-service, Eavesdropping, Host Attacks, Password Guessing, Protocol-based, and Social Engineering attacks <span class="citation">(<a href="#ref-attacks" role="doc-biblioref">Chopra 2016</a>)</span>.</p>
+<p>As an experiment, the firewall was opened to the whole world and network activity was monitored for one week. While the activity in the Compute Instance (Shiny Server hosted on a Virtual Server) was marginal, the exposed Shiny Server instance on Google Kubernetes Cluster was scanned extensively. This could be due to the rules on how Google generates IP addresses for corresponding instances. Moreover, GKE was exposed on port 80 which is a standard HTTP port, while the standard port of shiny server (3838) was used for Compute Instance, which is not that common configuration.</p>
+<div class="figure">
+<img src="img/incoming_requests.png" alt="" />
+<p class="caption">Incoming Requests</p>
+</div>
+<p>While the majority of the requests came from the USA, applications from China and Russia also scanned our exposed application considerably. These scans also are not centralized but are rather done by individuals or companies which specialize in data mining and web crawling. Some requests are also received from Lithuania, CGates Internet Service Provider.</p>
+<div class="figure">
+<img src="img/all_cities.png" alt="" />
+<p class="caption">Incoming Requets from different cities</p>
+</div>
+<p>Some of the IPs were crossed check with a publicly available IP database. These IP addresses, especially from China and Russia, were already reported a number of times and are indicated as abusive.</p>
+<div class="figure">
+<img src="img/abuse_ip.PNG" alt="" />
+<p class="caption">Blacklisted IPs - source <a href="https://www.abuseipdb.com/" class="uri">https://www.abuseipdb.com/</a></p>
+</div>
+<p>The analysis proves that an incorrectly configured firewall poses one of the most significant security risks. Misconfigured applications could serve as a back door and is a low handing fruit for hackers - e.g. it is easy to run a port scan for a specific IP range and use a collection of scripts/exploits to check whether there are any holes in the application. If any sensitive data where General Data Protection Regulation is not applied (i.e. USA, China, Russia).</p>
+</div>
+</div>
+<h3>References<a href="references.html#references" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-BorgKubernetes" class="csl-entry">
+Burns, Brendan, Brian Grant, David Oppenheimer, Eric Brewer, and John Wilkes. 2016. <span>“Borg, Omega, and Kubernetes.”</span> <em>ACM Queue</em> 14: 70–93. <a href="http://queue.acm.org/detail.cfm?id=2898444">http://queue.acm.org/detail.cfm?id=2898444</a>.
+</div>
+<div id="ref-attacks" class="csl-entry">
+Chopra, Aakanksha. 2016. <span>“Security Issues of Firewall.”</span> <em>International Journal of P2p Network Trends and Technology</em> 22 (January): 4–9. <a href="https://doi.org/10.14445/22492615/IJPTT-V22P402">https://doi.org/10.14445/22492615/IJPTT-V22P402</a>.
+</div>
+<div id="ref-Borg" class="csl-entry">
+Verma, Abhishek, Luis Pedrosa, Madhukar R. Korupolu, David Oppenheimer, Eric Tune, and John Wilkes. 2015. <span>“Large-Scale Cluster Management at <span>Google</span> with <span>Borg</span>.”</span> In <em>Proceedings of the European Conference on Computer Systems (EuroSys)</em>. Bordeaux, France.
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="public-cloud.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="security-considerations.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["CloudTechnologies.pdf"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

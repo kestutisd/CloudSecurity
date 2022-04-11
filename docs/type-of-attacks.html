@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 1 Type of attacks | FMISD13207 Cloud Security Technologies</title>
+  <meta name="description" content="Chapter 1 Type of attacks | FMISD13207 Cloud Security Technologies" />
+  <meta name="generator" content="bookdown 0.25 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 1 Type of attacks | FMISD13207 Cloud Security Technologies" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 1 Type of attacks | FMISD13207 Cloud Security Technologies" />
+  
+  
+  
+
+<meta name="author" content="Kęstutis Daugėla" />
+
+
+<meta name="date" content="2022-04-11" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="index.html"/>
+<link rel="next" href="data-breach---case-study.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Information Security Technologies</a></li>
+
+<li class="divider"></li>
+<li><a href="index.html#introduction">Introduction<span></span></a></li>
+<li class="chapter" data-level="1" data-path="type-of-attacks.html"><a href="type-of-attacks.html"><i class="fa fa-check"></i><b>1</b> Type of attacks<span></span></a></li>
+<li class="chapter" data-level="2" data-path="data-breach---case-study.html"><a href="data-breach---case-study.html"><i class="fa fa-check"></i><b>2</b> Data Breach - Case Study<span></span></a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="data-breach---case-study.html"><a href="data-breach---case-study.html#twitch"><i class="fa fa-check"></i><b>2.1</b> Twitch<span></span></a></li>
+<li class="chapter" data-level="2.2" data-path="data-breach---case-study.html"><a href="data-breach---case-study.html#phizer"><i class="fa fa-check"></i><b>2.2</b> Phizer<span></span></a></li>
+<li class="chapter" data-level="2.3" data-path="data-breach---case-study.html"><a href="data-breach---case-study.html#citybee"><i class="fa fa-check"></i><b>2.3</b> Citybee<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="public-cloud.html"><a href="public-cloud.html"><i class="fa fa-check"></i><b>3</b> Public Cloud<span></span></a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="public-cloud.html"><a href="public-cloud.html#public-cloud-security"><i class="fa fa-check"></i><b>3.1</b> Public Cloud Security<span></span></a></li>
+<li class="chapter" data-level="3.2" data-path="public-cloud.html"><a href="public-cloud.html#infrastructure-as-code"><i class="fa fa-check"></i><b>3.2</b> Infrastructure as Code<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="project-scope.html"><a href="project-scope.html"><i class="fa fa-check"></i><b>4</b> Project Scope<span></span></a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="project-scope.html"><a href="project-scope.html#platform-for-anatical-applications"><i class="fa fa-check"></i><b>4.1</b> Platform for anatical applications<span></span></a></li>
+<li class="chapter" data-level="4.2" data-path="project-scope.html"><a href="project-scope.html#kubernetes-and-docker"><i class="fa fa-check"></i><b>4.2</b> Kubernetes and Docker<span></span></a></li>
+<li class="chapter" data-level="4.3" data-path="project-scope.html"><a href="project-scope.html#shiny-server-on-insecure-machines"><i class="fa fa-check"></i><b>4.3</b> Shiny Server on insecure machines<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="security-considerations.html"><a href="security-considerations.html"><i class="fa fa-check"></i><b>5</b> Security considerations<span></span></a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="security-considerations.html"><a href="security-considerations.html#certificates-and-tls"><i class="fa fa-check"></i><b>5.1</b> Certificates and TLS<span></span></a></li>
+<li class="chapter" data-level="5.2" data-path="security-considerations.html"><a href="security-considerations.html#auth"><i class="fa fa-check"></i><b>5.2</b> Auth<span></span></a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="security-considerations.html"><a href="security-considerations.html#authentication"><i class="fa fa-check"></i><b>5.2.1</b> Authentication<span></span></a></li>
+<li class="chapter" data-level="5.2.2" data-path="security-considerations.html"><a href="security-considerations.html#authorization"><i class="fa fa-check"></i><b>5.2.2</b> Authorization<span></span></a></li>
+<li class="chapter" data-level="5.2.3" data-path="security-considerations.html"><a href="security-considerations.html#saml"><i class="fa fa-check"></i><b>5.2.3</b> SAML<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="security-considerations.html"><a href="security-considerations.html#network"><i class="fa fa-check"></i><b>5.3</b> Network<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="implementation.html"><a href="implementation.html"><i class="fa fa-check"></i><b>6</b> Implementation<span></span></a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="implementation.html"><a href="implementation.html#conteinarization"><i class="fa fa-check"></i><b>6.1</b> Conteinarization<span></span></a>
+<ul>
+<li class="chapter" data-level="6.1.1" data-path="implementation.html"><a href="implementation.html#cloud-run"><i class="fa fa-check"></i><b>6.1.1</b> Cloud Run<span></span></a></li>
+<li class="chapter" data-level="6.1.2" data-path="implementation.html"><a href="implementation.html#gke"><i class="fa fa-check"></i><b>6.1.2</b> GKE<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="implementation.html"><a href="implementation.html#shiny-app-security-features"><i class="fa fa-check"></i><b>6.2</b> Shiny App security features<span></span></a>
+<ul>
+<li class="chapter" data-level="6.2.1" data-path="implementation.html"><a href="implementation.html#shiny-server-authentication"><i class="fa fa-check"></i><b>6.2.1</b> Shiny server authentication<span></span></a></li>
+<li class="chapter" data-level="6.2.2" data-path="implementation.html"><a href="implementation.html#shiny-authorization"><i class="fa fa-check"></i><b>6.2.2</b> Shiny authorization<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="implementation.html"><a href="implementation.html#cloud-security"><i class="fa fa-check"></i><b>6.3</b> Cloud Security<span></span></a>
+<ul>
+<li class="chapter" data-level="6.3.1" data-path="implementation.html"><a href="implementation.html#firewalls"><i class="fa fa-check"></i><b>6.3.1</b> Firewalls<span></span></a></li>
+<li class="chapter" data-level="6.3.2" data-path="implementation.html"><a href="implementation.html#dns"><i class="fa fa-check"></i><b>6.3.2</b> DNS<span></span></a></li>
+<li class="chapter" data-level="6.3.3" data-path="implementation.html"><a href="implementation.html#certificates"><i class="fa fa-check"></i><b>6.3.3</b> Certificates<span></span></a></li>
+<li class="chapter" data-level="6.3.4" data-path="implementation.html"><a href="implementation.html#identity-aware-proxy"><i class="fa fa-check"></i><b>6.3.4</b> Identity aware proxy<span></span></a></li>
+<li class="chapter" data-level="6.3.5" data-path="implementation.html"><a href="implementation.html#audit"><i class="fa fa-check"></i><b>6.3.5</b> Audit<span></span></a></li>
+</ul></li>
+</ul></li>
+<li><a href="references.html#references">References<span></span></a></li>
+<li class="divider"></li>
+<li>Vilnius Tech 2022</li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">FMISD13207 Cloud Security Technologies</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="type-of-attacks" class="section level1 hasAnchor" number="1">
+<h1><span class="header-section-number">Chapter 1</span> Type of attacks<a href="type-of-attacks.html#type-of-attacks" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p><a href="https://link.springer.com/article/10.1007/s13369-019-04319-2" class="uri">https://link.springer.com/article/10.1007/s13369-019-04319-2</a></p>
+<p>Denial-of-service (DoS) This type of attack is an effort to make a machine or network resource inaccessible to its intended users. It is caused by any event that weakens or eliminates a network’s capacity to perform its expected function. Owing to low memory capabilities and limited computation resources, most computing devices in the IoT environment are vulnerable to asset enervation assaults [20]. One of the reasons for a DoS attack is that various industries use similar technologies and potential attackers take advantage of this [21, 22].</p>
+<p>Malware In this attack, the attacker deploys malicious software programs to gain unauthorized access to computer systems by exploiting its security vulnerabilities. The incentive behind malware is an extraordinary financial or political reward that accelerates an attacker’s motivation to compromise as many network devices they can to accomplish their malicious aims [23, 24].</p>
+<p>Phishing This is an unlawful activity which uses social engineering and technology to collect sensitive information from an Internet user. Phishing techniques utilize various methods of communication, such as email, instant messages, pop-up messages or Web pages [25, 26].</p>
+<p>SQL injection attack In this attack, an input string is injected through the application to change or manipulate the SQL statement to the attacker’s advantage. This attack harms the database in several ways, including unauthorized access and manipulation of the database, and disclosure of sensitive data. This attack is risky as it can cause data loss or misuse of data by groups who are not authorized, and consequently, functionality and confidentiality are destroyed. Further, system-level commands are also executed under this category of attack, resulting in authorized users being unable to access the required information [27, 28].</p>
+<p>Session hijacking and Man-in-the-Middle attacks Man-in-the-middle (MITM, also abbreviated in the literature as MIM, MitM, MiM or MITMA) is an attack where an unauthorized third party secretly gains control of the communication channel between multiple endpoints. The MITM attacker can interrupt, manipulate or even replace the target victims’ communication traffic. Further, victims are not aware of the intruder, thus believing that the communication channel is safe and protected [29, 30].</p>
+<p>Cross-site scripting (XSS) In this type of attack, a malicious attacker tries to run a JavaScript code in the client’s browser in order to steal the client’s sensitive data. It is a commonly used vulnerability found in recent Web sites [31, 32].</p>
+<p>Malware . A malware is a type of cyber attack where malicious software is installed on the victim’s systems through executable files usually without the user’s knowledge. Malware includes malicious software, including spyware, ransomware, viruses, and worms. After installation, a malware can keep track of the user’s activity or can trigger codes resulting into access to sensitive information, login details, credit cards or intellectual properties by the hacker.
+Phishing. Phishing refers to spoofing or deceptive communications activities performed by the attackers that appear to originate from a credible source such as emails, messages, legitimate websites that are disguised. Through phishing, attackers try to fetch sensitive information, user details, credit card numbers or make fraudulent attempts.
+Man-in-the-middle attack. These attacks happen with relaying or altering the communication channels. This can be communication between organisations and cloud server or over unsecured networks.
+DoS/DDoS. A DoS/DDoS attack aims at flooding the target website with overwhelming traffic to exhaust resources and bandwidth of the system. These are not to bring down a website but to breach a security perimeter and smoke out the online systems. This can reduce a user base or may bring down the entire network.
+SQL Injection. This is injecting a nefarious code or statements into SQL queries or a database server to extract information from the database or to take a data dump of the complete database.
+Zero-day exploit. Zero-day is a software security flaw which is known to the software developers. Attackers try to exploit a vulnerability before a patch or solution is implemented to capture the system with known weaknesses.
+Cross Site Scripting. XSS attacks occur when a web app sends malicious code in the form of a side script to another user thus bypassing access controls of the site to same as the origin.
+Business Email compromise. This is an attack to spoof business emails and gain illegal access to company accounts and ids to defraud the company or its employees.</p>
+<div class="figure">
+<img src="img/Types-of-cyber-attacks.jpg" alt="" />
+<p class="caption">The Vulnerabilities that a Business can Experience - image source <a href="https://blog.ecosystm360.com/cyber-attacks-threats-risks/" class="uri">https://blog.ecosystm360.com/cyber-attacks-threats-risks/</a></p>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="data-breach---case-study.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["CloudTechnologies.pdf"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

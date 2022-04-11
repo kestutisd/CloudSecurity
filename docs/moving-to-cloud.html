@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 1 Moving to Cloud | FMISD13207 Cloud Security Technologies</title>
+  <meta name="description" content="Chapter 1 Moving to Cloud | FMISD13207 Cloud Security Technologies" />
+  <meta name="generator" content="bookdown 0.25 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 1 Moving to Cloud | FMISD13207 Cloud Security Technologies" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 1 Moving to Cloud | FMISD13207 Cloud Security Technologies" />
+  
+  
+  
+
+<meta name="author" content="Kęstutis Daugėla" />
+
+
+<meta name="date" content="2022-04-10" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="index.html"/>
+<link rel="next" href="public-cloud-setup.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Information Security Technologies</a></li>
+
+<li class="divider"></li>
+<li><a href="index.html#introduction">Introduction<span></span></a></li>
+<li class="chapter" data-level="1" data-path="moving-to-cloud.html"><a href="moving-to-cloud.html"><i class="fa fa-check"></i><b>1</b> Moving to Cloud<span></span></a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="moving-to-cloud.html"><a href="moving-to-cloud.html#kubernetes-in-a-nutshell"><i class="fa fa-check"></i><b>1.1</b> Kubernetes in a nutshell<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="public-cloud-setup.html"><a href="public-cloud-setup.html"><i class="fa fa-check"></i><b>2</b> Public Cloud Setup<span></span></a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="public-cloud-setup.html"><a href="public-cloud-setup.html#security"><i class="fa fa-check"></i><b>2.1</b> Security<span></span></a></li>
+<li class="chapter" data-level="2.2" data-path="public-cloud-setup.html"><a href="public-cloud-setup.html#infrastructure-as-code"><i class="fa fa-check"></i><b>2.2</b> Infrastructure as Code<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="use-cases.html"><a href="use-cases.html"><i class="fa fa-check"></i><b>3</b> Use Cases<span></span></a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="use-cases.html"><a href="use-cases.html#shiny-auth"><i class="fa fa-check"></i><b>3.1</b> Shiny auth<span></span></a></li>
+<li class="chapter" data-level="3.2" data-path="use-cases.html"><a href="use-cases.html#cloud-native-application"><i class="fa fa-check"></i><b>3.2</b> Cloud-native application<span></span></a></li>
+<li class="chapter" data-level="3.3" data-path="use-cases.html"><a href="use-cases.html#security-experiment"><i class="fa fa-check"></i><b>3.3</b> Security Experiment<span></span></a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="use-cases.html"><a href="use-cases.html#docker"><i class="fa fa-check"></i><b>3.3.1</b> Docker<span></span></a></li>
+</ul></li>
+</ul></li>
+<li><a href="references.html#references">References<span></span></a></li>
+<li class="divider"></li>
+<li>Vilnius Tech 2022</li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">FMISD13207 Cloud Security Technologies</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="moving-to-cloud" class="section level1 hasAnchor" number="1">
+<h1><span class="header-section-number">Chapter 1</span> Moving to Cloud<a href="moving-to-cloud.html#moving-to-cloud" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>It makes sense to compare the actual numbers between the cloud strategy presented in 2019 with the actual survey made in 2021. Almost every cloud-ready company uses the public cloud (97%) to some extent leaving hybrid cloud setup the dominant one (78%). Companies rarely use public or private cloud alone (19% vs 2% respectively).</p>
+<div class="figure">
+<img src="img/types-of-clouds-used.png" alt="" />
+<p class="caption">Cloud Strategy - image source Flexera</p>
+</div>
+<p>When it comes to functionality, cloud providers could cover all of the customers needs either via managed services (e.g. BigQuery, Amazon Redshift, S3, Cloud Pub/Sub) or compute services (e.g. Virtual Machines, Compute engine). While Amazon has the biggest number of internal services and market share, Azure and GCP are chasing the leader rapidly.</p>
+<div class="figure">
+<img src="img/comparison.jpg" alt="" />
+<p class="caption">Cloud Services comparison - image source N-IX.com (2020)</p>
+</div>
+<p>According to Forbes, there are now 77 % of organizations, having one or some parts of their systems in the cloud. The budget is usually allocated through multiple services. E.g. in 2018 on average, the distribution of the budget accordingly: 48% went to SaaS, 30% to IaaS, and 21% to PaaS.</p>
+<div id="kubernetes-in-a-nutshell" class="section level2 hasAnchor" number="1.1">
+<h2><span class="header-section-number">1.1</span> Kubernetes in a nutshell<a href="moving-to-cloud.html#kubernetes-in-a-nutshell" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>While virtualized applications are highly preferred as opposed to IaaS approach (virtual machines), it makes sense to dig deeper in kubernetes and docker setup, regardless of the chosen managed service.</p>
+<div class="figure">
+<img src="img/conteiners.jpg" alt="" />
+<p class="caption">Cloud Strategy - image source Flexera</p>
+</div>
+<p>Kubernetes was founded by Ville Aikas, Joe Beda, Brendan Burns, and Craig McLuckie in collaboration with Google engineers Brian Grant and Tim Hockin in mid-2014. Google’s Borg system heavily influenced kubernetes design <span class="citation">(<a href="#ref-Borg" role="doc-biblioref">Verma et al. 2015</a>)</span> <span class="citation">(<a href="#ref-BorgKubernetes" role="doc-biblioref">Burns et al. 2016</a>)</span>. While the Borg project was implemented entirely in C++, Kubernetes was rewritten in Go language. The main goal of kubernetes was to build on the capabilities of containers and provide significant gains in programmer productivity while easing the management of the system.</p>
+<div class="figure">
+<img src="img/container_evolution.png" alt="" />
+<p class="caption">Container evolution - kubernetes.io</p>
+</div>
+<p>Kubernetes is the most popular container orchestration platform that enables users to create and run multiple containers in cloud environments. Kubernetes offers resource management to isolate the resource usage of containers on a host server because performance isolation is an important factor in terms of service quality.</p>
+<div class="figure">
+<img src="img/components-of-kubernetes.png" alt="" />
+<p class="caption">The components of a Kubernetes cluster - kubernetes.io</p>
+</div>
+</div>
+</div>
+<h3>References<a href="references.html#references" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-BorgKubernetes" class="csl-entry">
+Burns, Brendan, Brian Grant, David Oppenheimer, Eric Brewer, and John Wilkes. 2016. <span>“Borg, Omega, and Kubernetes.”</span> <em>ACM Queue</em> 14: 70–93. <a href="http://queue.acm.org/detail.cfm?id=2898444">http://queue.acm.org/detail.cfm?id=2898444</a>.
+</div>
+<div id="ref-Borg" class="csl-entry">
+Verma, Abhishek, Luis Pedrosa, Madhukar R. Korupolu, David Oppenheimer, Eric Tune, and John Wilkes. 2015. <span>“Large-Scale Cluster Management at <span>Google</span> with <span>Borg</span>.”</span> In <em>Proceedings of the European Conference on Computer Systems (EuroSys)</em>. Bordeaux, France.
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="public-cloud-setup.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["CloudTechnologies.pdf"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

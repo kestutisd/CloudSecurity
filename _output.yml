@@ -1,0 +1,15 @@
+bookdown::gitbook:
+  css: style.css
+  output:
+    pdf_document
+  config:
+    download: ["pdf"]
+    toc:
+      before: |
+        <li><a href="./">Information Security Technologies</a></li>
+      after: |
+        <li>Vilnius Tech 2022</li>
+bookdown::pdf_book:
+  latex_engine: xelatex
+  citation_package: natbib
+  keep_tex: no

@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 3 Public Cloud Setup | FMISD13207 Cloud Security Technologies</title>
+  <meta name="description" content="Chapter 3 Public Cloud Setup | FMISD13207 Cloud Security Technologies" />
+  <meta name="generator" content="bookdown 0.25 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 3 Public Cloud Setup | FMISD13207 Cloud Security Technologies" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 3 Public Cloud Setup | FMISD13207 Cloud Security Technologies" />
+  
+  
+  
+
+<meta name="author" content="Kęstutis Daugėla" />
+
+
+<meta name="date" content="2022-04-10" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="data-breach-case-study.html"/>
+<link rel="next" href="security-considerations.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Information Security Technologies</a></li>
+
+<li class="divider"></li>
+<li><a href="index.html#introduction">Introduction<span></span></a></li>
+<li class="chapter" data-level="1" data-path="type-of-attacks.html"><a href="type-of-attacks.html"><i class="fa fa-check"></i><b>1</b> Type of attacks<span></span></a></li>
+<li class="chapter" data-level="2" data-path="data-breach-case-study.html"><a href="data-breach-case-study.html"><i class="fa fa-check"></i><b>2</b> Data Breach Case Study<span></span></a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="data-breach-case-study.html"><a href="data-breach-case-study.html#twitch"><i class="fa fa-check"></i><b>2.1</b> Twitch<span></span></a></li>
+<li class="chapter" data-level="2.2" data-path="data-breach-case-study.html"><a href="data-breach-case-study.html#phizer"><i class="fa fa-check"></i><b>2.2</b> Phizer<span></span></a></li>
+<li class="chapter" data-level="2.3" data-path="data-breach-case-study.html"><a href="data-breach-case-study.html#citybee"><i class="fa fa-check"></i><b>2.3</b> Citybee<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="public-cloud-setup.html"><a href="public-cloud-setup.html"><i class="fa fa-check"></i><b>3</b> Public Cloud Setup<span></span></a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="public-cloud-setup.html"><a href="public-cloud-setup.html#zoom-in-on-cloud-security"><i class="fa fa-check"></i><b>3.1</b> Zoom in on Cloud Security<span></span></a></li>
+<li class="chapter" data-level="3.2" data-path="public-cloud-setup.html"><a href="public-cloud-setup.html#infrastructure-as-code"><i class="fa fa-check"></i><b>3.2</b> Infrastructure as Code<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="security-considerations.html"><a href="security-considerations.html"><i class="fa fa-check"></i><b>4</b> Security considerations<span></span></a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="security-considerations.html"><a href="security-considerations.html#cryptography"><i class="fa fa-check"></i><b>4.1</b> Cryptography<span></span></a></li>
+<li class="chapter" data-level="4.2" data-path="security-considerations.html"><a href="security-considerations.html#network"><i class="fa fa-check"></i><b>4.2</b> Network<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="use-cases.html"><a href="use-cases.html"><i class="fa fa-check"></i><b>5</b> Use Cases<span></span></a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="use-cases.html"><a href="use-cases.html#kubernetes-in-a-nutshell"><i class="fa fa-check"></i><b>5.1</b> Kubernetes in a nutshell<span></span></a></li>
+<li class="chapter" data-level="5.2" data-path="use-cases.html"><a href="use-cases.html#shiny-auth"><i class="fa fa-check"></i><b>5.2</b> Shiny auth<span></span></a></li>
+<li class="chapter" data-level="5.3" data-path="use-cases.html"><a href="use-cases.html#cloud-native-application"><i class="fa fa-check"></i><b>5.3</b> Cloud-native application<span></span></a></li>
+<li class="chapter" data-level="5.4" data-path="use-cases.html"><a href="use-cases.html#security-experiment"><i class="fa fa-check"></i><b>5.4</b> Security Experiment<span></span></a>
+<ul>
+<li class="chapter" data-level="5.4.1" data-path="use-cases.html"><a href="use-cases.html#docker"><i class="fa fa-check"></i><b>5.4.1</b> Docker<span></span></a></li>
+</ul></li>
+</ul></li>
+<li><a href="references.html#references">References<span></span></a></li>
+<li class="divider"></li>
+<li>Vilnius Tech 2022</li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">FMISD13207 Cloud Security Technologies</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="public-cloud-setup" class="section level1 hasAnchor" number="3">
+<h1><span class="header-section-number">Chapter 3</span> Public Cloud Setup<a href="public-cloud-setup.html#public-cloud-setup" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="zoom-in-on-cloud-security" class="section level2 hasAnchor" number="3.1">
+<h2><span class="header-section-number">3.1</span> Zoom in on Cloud Security<a href="public-cloud-setup.html#zoom-in-on-cloud-security" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Cloud security is a critical matter. Most companies worry that highly sensitive data and intellectual property may be exposed through accidental leaks or due to increasingly sophisticated cyber attacks. Gartner predicts that through 2025, 99% of cloud security failures will be the customer’s fault.</p>
+<p>Moreover, having a solid cloud security stance helps organizations achieve other benefits, such as:</p>
+<ul>
+<li>Lower costs</li>
+<li>Reduced ongoing operational and administrative expenses</li>
+<li>Scalability</li>
+<li>Increased reliability and availability</li>
+<li>DevOps way of working</li>
+</ul>
+<p>Despite bringing many benefits, the cloud computing paradigm imposes serious concerns in terms of security and privacy, which are considered hurdles in the adoption of the cloud at a very large scale <span class="citation">(<a href="#ref-securingcloudsurvey" role="doc-biblioref">Alghofaili et al. 2021</a>)</span>. Security issues are depended on the cloud provider, service user, instance <span class="citation">(<a href="#ref-datasecurity" role="doc-biblioref">Y. Sun et al. 2014</a>)</span>, and the delivery model, PaaS, IaaS, and SaaS <span class="citation">(<a href="#ref-securitymode" role="doc-biblioref">X. Sun 2018</a>)</span>. Data stored in the public cloud would face both outside attacks and inside attacks <span class="citation">(<a href="#ref-securityprivacy" role="doc-biblioref">Shi 2018</a>)</span>. Data loss and leakage were the biggest security concern, with 44% of organizations seeing data loss as one of their top three focus areas. Two-thirds of organizations leave back doors open to attackers leading to an accidental exposure through misconfiguration. Security gaps in misconfigurations were exploited in 66% of attacks <span class="citation">(<a href="#ref-sophos" role="doc-biblioref">Sophos 2020</a>)</span>.</p>
+<div class="figure">
+<img src="img/sophos_threats.PNG" alt="" />
+<p class="caption">How criminals are getting in, source - sophos.com</p>
+</div>
+<p>Zero Trust security model enables securing cloud-native applications by encrypting all network communication, authenticating, and authorizing every request. The traditional trust management mechanisms represent a static trust relationship that falls deficit while meeting up the dynamic requirement of cloud services. <span class="citation">(<a href="#ref-zerotrust" role="doc-biblioref">Mehraj and Banday 2020</a>)</span>. In order to achieve a true zero-trust security model in the cloud, a combination of network and identity permission policies should be in place.</p>
+<div class="figure">
+<img src="img/zerotrusteco.PNG" alt="" />
+<p class="caption">The Zero Trust eXtended (ZTX) Ecosystem, Forrester Research, Inc., source - juniper.net</p>
+</div>
+<p>To adequately address the modern dynamic threat environment requires<span class="citation">(<a href="#ref-NSA" role="doc-biblioref">Agency 2021</a>)</span>:</p>
+<ul>
+<li>Coordinated and aggressive system monitoring, system management, and defensive operations capabilities.</li>
+<li>Assuming all requests for critical resources and all network traffic may be malicious.</li>
+<li>Assuming all devices and infrastructure may be compromised.</li>
+<li>Accepting that all access approvals to critical resources incur a risk</li>
+</ul>
+<p>Some security recommendations for network security can be summarized as follows <span class="citation">(<a href="#ref-securingcloudsurvey" role="doc-biblioref">Alghofaili et al. 2021</a>)</span>:</p>
+<ul>
+<li>Secure communication techniques should be adopted: HTTPS for web applications, transmission channel must be encrypted by TLS</li>
+<li>Additional monitoring should be done (manual, automatic, ML based)</li>
+<li>Other public security services such as web application firewalls (WAF), virtual firewalls, virtual bastion machines, virtual host protection, and virtual database audit systems could be used</li>
+</ul>
+</div>
+<div id="infrastructure-as-code" class="section level2 hasAnchor" number="3.2">
+<h2><span class="header-section-number">3.2</span> Infrastructure as Code<a href="public-cloud-setup.html#infrastructure-as-code" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>There was a significant shift in development, deployment, and software application management during the past decade. The new approach is called Development Operations (DevOps) where Infrastructure as Code (IaC) plays a core role. While manual configurations in the Cloud context was a norm, nowadays it is fully automated using blueprints that are easily interpretable by machines. Moreover, IaC approach allows a faster and homogeneous configuration for the whole infrastructure. Usually, it is utilized by a specific declarative language (TerraForm, CloudFormation, Puppet) that allows users to describe the desired state of the infrastructure. This significantly reduces the time, complexity and helps to provision the infrastructure from the security, management, and costs perspectives.</p>
+<p>The whole idea behind IaC is simple - developers can write declarative statements that define the infrastructure necessary to run the code as opposed to writing a ticket/creating a task for administrators. Reproducibility and transparency come as a side effects.</p>
+<div class="figure">
+<img src="img/iac.png" alt="" />
+<p class="caption">Infrastructure as Code Survey, source - thenewstack.io</p>
+</div>
+<p>Terraform is one of the most popular ways to implement this pipeline, especially in a Cloud context. It is an open-source tool that lets you provision Google Cloud resources with declarative configuration files-resources such as virtual machines, containers, storage, and networking. It lets users manage Terraform configuration files in source control to maintain an ideal provisioning state for testing, production, and other environments. <span class="citation">(<a href="#ref-iac" role="doc-biblioref">Almuairfi and Alenezi 2020</a>)</span></p>
+<div class="figure">
+<img src="img/iac_example.PNG" alt="" />
+<p class="caption">Terraform example, source - cloud.google.com</p>
+</div>
+</div>
+</div>
+<h3>References<a href="references.html#references" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-NSA" class="csl-entry">
+Agency, National Security. 2021. <span>“Embracing a Zero Trust Security Model,”</span> February. <a href="https://media.defense.gov/2021/Feb/25/2002588479/-1/-1/0/CSI_EMBRACING_ZT_SECURITY_MODEL_UOO115131-21.PDF">https://media.defense.gov/2021/Feb/25/2002588479/-1/-1/0/CSI_EMBRACING_ZT_SECURITY_MODEL_UOO115131-21.PDF</a>.
+</div>
+<div id="ref-securingcloudsurvey" class="csl-entry">
+Alghofaili, Yara, Albatul Albattah, Noura Alrajeh, Murad A. Rassam, and Bander Ali Saleh Al-rimy. 2021. <span>“Secure Cloud Infrastructure: A Survey on Issues, Current Solutions, and Open Challenges.”</span> <em>Applied Sciences</em> 11 (19). <a href="https://doi.org/10.3390/app11199005">https://doi.org/10.3390/app11199005</a>.
+</div>
+<div id="ref-iac" class="csl-entry">
+Almuairfi, Sadiq, and Mamdouh Alenezi. 2020. <span>“Security Controls in Infrastructure as Code.”</span> <em>Computer Fraud and Security</em> 2020 (October): 13–19. <a href="https://doi.org/10.1016/S1361-3723(20)30109-3">https://doi.org/10.1016/S1361-3723(20)30109-3</a>.
+</div>
+<div id="ref-zerotrust" class="csl-entry">
+Mehraj, Saima, and M. Tariq Banday. 2020. <span>“Establishing a Zero Trust Strategy in Cloud Computing Environment.”</span> In, 1–6. <a href="https://doi.org/10.1109/ICCCI48352.2020.9104214">https://doi.org/10.1109/ICCCI48352.2020.9104214</a>.
+</div>
+<div id="ref-securityprivacy" class="csl-entry">
+Shi, Yue. 2018. <span>“Data Security and Privacy Protection in Public Cloud.”</span> In <em>2018 IEEE International Conference on Big Data (Big Data)</em>, 4812–19. <a href="https://doi.org/10.1109/BigData.2018.8622531">https://doi.org/10.1109/BigData.2018.8622531</a>.
+</div>
+<div id="ref-sophos" class="csl-entry">
+Sophos. 2020. <span>“THE STATE OF CLOUD SECURITY 2020,”</span> July. <a href="https://secure2.sophos.com/en-us/medialibrary/Gated-Assets/white-papers/sophos-the-state-of-cloud-security-2020-wp.pdf">https://secure2.sophos.com/en-us/medialibrary/Gated-Assets/white-papers/sophos-the-state-of-cloud-security-2020-wp.pdf</a>.
+</div>
+<div id="ref-securitymode" class="csl-entry">
+Sun, Xiaotong. 2018. <span>“Critical Security Issues in Cloud Computing: A Survey.”</span> In <em>2018 IEEE 4th International Conference on Big Data Security on Cloud (BigDataSecurity), IEEE International Conference on High Performance and Smart Computing, (HPSC) and IEEE International Conference on Intelligent Data and Security (IDS)</em>, 216–21. <a href="https://doi.org/10.1109/BDS/HPSC/IDS18.2018.00053">https://doi.org/10.1109/BDS/HPSC/IDS18.2018.00053</a>.
+</div>
+<div id="ref-datasecurity" class="csl-entry">
+Sun, Yunchuan, Junsheng Zhang, Yongping Xiong, and Guangyu Zhu. 2014. <span>“Data Security and Privacy in Cloud Computing.”</span> <em>International Journal of Distributed Sensor Networks</em> 10 (7): 190903. <a href="https://doi.org/10.1155/2014/190903">https://doi.org/10.1155/2014/190903</a>.
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="data-breach-case-study.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="security-considerations.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["CloudTechnologies.pdf"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>
