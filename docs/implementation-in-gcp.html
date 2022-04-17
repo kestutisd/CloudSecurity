@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>FMISD13207 Cloud Security Technologies</title>
-  <meta name="description" content="FMISD13207 Cloud Security Technologies" />
+  <title>Chapter 6 Implementation in GCP | FMISD13207 Cloud Security Technologies</title>
+  <meta name="description" content="Chapter 6 Implementation in GCP | FMISD13207 Cloud Security Technologies" />
   <meta name="generator" content="bookdown 0.25 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="FMISD13207 Cloud Security Technologies" />
+  <meta property="og:title" content="Chapter 6 Implementation in GCP | FMISD13207 Cloud Security Technologies" />
   <meta property="og:type" content="book" />
   
   
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="FMISD13207 Cloud Security Technologies" />
+  <meta name="twitter:title" content="Chapter 6 Implementation in GCP | FMISD13207 Cloud Security Technologies" />
   
   
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-
-<link rel="next" href="type-of-attacks.html"/>
+<link rel="prev" href="security-considerations.html"/>
+<link rel="next" href="references.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -166,63 +166,48 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="header">
-<h1 class="title">FMISD13207 Cloud Security Technologies</h1>
-<p class="author"><em>Kęstutis Daugėla</em></p>
-<p class="date"><em>2022-04-17</em></p>
+<div id="implementation-in-gcp" class="section level1 hasAnchor" number="6">
+<h1><span class="header-section-number">Chapter 6</span> Implementation in GCP<a href="implementation-in-gcp.html#implementation-in-gcp" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="conteinarization" class="section level2 hasAnchor" number="6.1">
+<h2><span class="header-section-number">6.1</span> Conteinarization<a href="implementation-in-gcp.html#conteinarization" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<pre><code>gcloud auth login --project shiny-cloud-345816
+PROJECTID=$(gcloud config get-value project)
+docker build . -t gcr.io/$PROJECTID/signin
+docker push gcr.io/$PROJECTID/signin</code></pre>
+<div id="cloud-run" class="section level3 hasAnchor" number="6.1.1">
+<h3><span class="header-section-number">6.1.1</span> Cloud Run<a href="implementation-in-gcp.html#cloud-run" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 </div>
-<div id="introduction" class="section level1 unnumbered hasAnchor">
-<h1>Introduction<a href="index.html#introduction" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p>Information Security Fundamentals (information security problematics, classification and evolution of threats, identification, authentication, access control, security
-principals, strategies, models, taxonomies and antologies); Cryptography (simetric and public key cryptography, DES, AES, RSA. stream ciphers, cryptographic
-protocols, authentication, electronic signature, management of electronic identity); Network Security (routing, firewalls, VPN, web security, network perimeter
-protection, host-level protection, authentication technologies); Attacking Information Technology Systems (attack types, real-life case studies, intrusion detection,
-formal analysis techniques); Information Security Technologies (antivirus, IDS, host and perimeter protection systems, Honeypots); Implementing Effective
-Information Security Programs (legal, regulatory and privacy issues, security standarts, security best practices, security policy).</p>
-<p>The underlying concept of cloud computing was introduced way back in 1960s by John McCarthy in his book, “The challenge of the Computer Utility”. His opinion was that “computation may someday be organized as a public utility.” The rest became history and the majority of the software used now is running in the cloud seamlessly <span class="citation">(<a href="#ref-CloudHistoryOverview" role="doc-biblioref">Surbiryala and Rong 2019</a>)</span>.</p>
-<div class="figure">
-<img src="img/evolution_of_cloud.png" alt="" />
-<p class="caption">The history of the cloud - image source <a href="https://itchronicles.com/" class="uri">https://itchronicles.com/</a></p>
-</div>
-<p>Cloud can solve a lot of problems nowadays - starting with reduced cost, enhanced security, and flexible approach <span class="citation">(<a href="#ref-CloudReview" role="doc-biblioref">Srivastava and Khan 2018</a>)</span> up to sustainability <span class="citation">(<a href="#ref-CloudSustainability" role="doc-biblioref">Parthasarathy and Kumar 2012</a>)</span> and accessibility around the world. Continuous Integration and Deployment (CI/CD) is easier than even treating now only the applications, but the whole infrastructure as code. This leads to enhanced productivity and cost optimization <span class="citation">(<a href="#ref-CloudAutomation" role="doc-biblioref">Garg and Garg 2019</a>)</span>.</p>
-<p>Is there anything revolutionary in the cloud offerings today? Definitely, no - people used these capabilities for ages. The only difference is the scale and popularity these days.</p>
-<p>Cloud services usually are grouped into three categories:</p>
-<ul>
-<li>SaaS (Software as a service) is a software distribution model in which a cloud provider hosts applications and makes them available to end-users over the internet</li>
-<li>PaaS (Platform as a service) is a complete development and deployment environment in the cloud, with resources that enable you to deliver everything from simple cloud-based apps to sophisticated, cloud-enabled enterprise applications</li>
-<li>IaaS (Infrastructure as a service) is a type of cloud computing service that offers essential compute, storage, and networking resources on-demand, on a pay-as-you-go basis</li>
-</ul>
-<div class="figure">
-<img src="img/saas-vs-paas-vs-iaas-breakdown.jpg" alt="" />
-<p class="caption">IaaS vs PaaS vs SaaS - image source <a href="https://www.bigcommerce.com/blog/saas-vs-paas-vs-iaas/" class="uri">https://www.bigcommerce.com/blog/saas-vs-paas-vs-iaas/</a></p>
-</div>
-<p>However, despite the gain achieved from cloud computing, organizations are slow in fully accepting it due to security issues and challenges associated with it <span class="citation">(<a href="#ref-Cloud-computing" role="doc-biblioref">Bairagi and Bang 2015</a>)</span>. However, almost every cloud-ready company uses the public cloud (97%) to some extent leaving hybrid cloud setup the dominant one (78%). Companies rarely use public or private cloud alone (19% vs 2% respectively). According to Forbes, there are now 77 % of organizations, having one or some parts of their systems in the cloud.</p>
-<p>Cloud service providers follow a shared security responsibility model, which means that your security team retains some security duties as you migrate applications, data, containers, and workloads to the cloud, while the provider takes part, but not all, of the responsibility. Clearly defining your duties from those of your providers is critical for minimizing the risk of introducing vulnerabilities into your public, hybrid, or multi-cloud systems, as shown in the graph below.</p>
-<div class="figure">
-<img src="img/perceptible-shifts-in-responsibility-graphic.png" alt="" />
-<p class="caption">Shared responsibility in the cloud - image source www.microsoft.com</p>
-</div>
-<div class="figure">
-<img src="img/data-breaches.png" alt="" />
-<p class="caption">World’s Biggest Data Breaches &amp; Hacks - image source <a href="https://www.informationisbeautiful.net/visualizations/worlds-biggest-data-breaches-hacks/" class="uri">https://www.informationisbeautiful.net/visualizations/worlds-biggest-data-breaches-hacks/</a></p>
+<div id="gke" class="section level3 hasAnchor" number="6.1.2">
+<h3><span class="header-section-number">6.1.2</span> GKE<a href="implementation-in-gcp.html#gke" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 </div>
 </div>
-<h3>References<a href="references.html#references" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div id="refs" class="references csl-bib-body hanging-indent">
-<div id="ref-Cloud-computing" class="csl-entry">
-Bairagi, Swati, and Annkur Bang. 2015. <em>Cloud Computing: History, Architecture, Security Issues</em>.
+<div id="shiny-app-security-features" class="section level2 hasAnchor" number="6.2">
+<h2><span class="header-section-number">6.2</span> Shiny App security features<a href="implementation-in-gcp.html#shiny-app-security-features" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="shiny-server-authentication" class="section level3 hasAnchor" number="6.2.1">
+<h3><span class="header-section-number">6.2.1</span> Shiny server authentication<a href="implementation-in-gcp.html#shiny-server-authentication" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 </div>
-<div id="ref-CloudAutomation" class="csl-entry">
-Garg, Somya, and Satvik Garg. 2019. <span>“Automated Cloud Infrastructure, Continuous Integration and Continuous Delivery Using Docker with Robust Container Security.”</span> In. <a href="https://doi.org/10.1109/MIPR.2019.00094">https://doi.org/10.1109/MIPR.2019.00094</a>.
+<div id="shiny-authorization" class="section level3 hasAnchor" number="6.2.2">
+<h3><span class="header-section-number">6.2.2</span> Shiny authorization<a href="implementation-in-gcp.html#shiny-authorization" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 </div>
-<div id="ref-CloudSustainability" class="csl-entry">
-Parthasarathy, Vidhyalakshmi, and Vikas Kumar. 2012. <span>“Cloud Computing for Business Sustainability.”</span> <em>Asia Pacific Journal of Management Research and Innovations</em> 8 (December): 461–74. <a href="https://doi.org/10.1177/2319510X13481905">https://doi.org/10.1177/2319510X13481905</a>.
 </div>
-<div id="ref-CloudReview" class="csl-entry">
-Srivastava, Priyanshu, and Rizwan Khan. 2018. <span>“A Review Paper on Cloud Computing.”</span> <em>International Journal of Advanced Research in Computer Science and Software Engineering</em> 8 (June): 17. <a href="https://doi.org/10.23956/ijarcsse.v8i6.711">https://doi.org/10.23956/ijarcsse.v8i6.711</a>.
+<div id="cloud-security" class="section level2 hasAnchor" number="6.3">
+<h2><span class="header-section-number">6.3</span> Cloud Security<a href="implementation-in-gcp.html#cloud-security" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="firewalls" class="section level3 hasAnchor" number="6.3.1">
+<h3><span class="header-section-number">6.3.1</span> Firewalls<a href="implementation-in-gcp.html#firewalls" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 </div>
-<div id="ref-CloudHistoryOverview" class="csl-entry">
-Surbiryala, Jayachander, and Chunming Rong. 2019. <span>“Cloud Computing: History and Overview.”</span> In <em>2019 IEEE Cloud Summit</em>, 1–7. <a href="https://doi.org/10.1109/CloudSummit47114.2019.00007">https://doi.org/10.1109/CloudSummit47114.2019.00007</a>.
+<div id="dns" class="section level3 hasAnchor" number="6.3.2">
+<h3><span class="header-section-number">6.3.2</span> DNS<a href="implementation-in-gcp.html#dns" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+</div>
+<div id="certificates" class="section level3 hasAnchor" number="6.3.3">
+<h3><span class="header-section-number">6.3.3</span> Certificates<a href="implementation-in-gcp.html#certificates" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+</div>
+<div id="identity-aware-proxy" class="section level3 hasAnchor" number="6.3.4">
+<h3><span class="header-section-number">6.3.4</span> Identity aware proxy<a href="implementation-in-gcp.html#identity-aware-proxy" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+</div>
+<div id="audit" class="section level3 hasAnchor" number="6.3.5">
+<h3><span class="header-section-number">6.3.5</span> Audit<a href="implementation-in-gcp.html#audit" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<pre><code>gcloud beta dns --project=shiny-cloud-345816 managed-zones create shinycloud-online --description=&quot;&quot; --dns-name=&quot;shinycloud.online.&quot; --visibility=&quot;public&quot; --dnssec-state=&quot;off&quot; --log-dns-queries</code></pre>
+</div>
 </div>
 </div>
             </section>
@@ -230,8 +215,8 @@ Surbiryala, Jayachander, and Chunming Rong. 2019. <span>“Cloud Computing: Hist
           </div>
         </div>
       </div>
-
-<a href="type-of-attacks.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="security-considerations.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="references.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
