@@ -168,8 +168,37 @@ div.csl-indent {
             <section class="normal" id="section-">
 <div id="implementation-in-gcp" class="section level1 hasAnchor" number="6">
 <h1><span class="header-section-number">Chapter 6</span> Implementation in GCP<a href="implementation-in-gcp.html#implementation-in-gcp" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>TBA</p>
+<p><a href="https://shinycloud.online/" class="uri">https://shinycloud.online/</a></p>
+<p><a href="https://login.shinycloud.online/" class="uri">https://login.shinycloud.online/</a></p>
 <div id="conteinarization" class="section level2 hasAnchor" number="6.1">
 <h2><span class="header-section-number">6.1</span> Conteinarization<a href="implementation-in-gcp.html#conteinarization" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<pre><code>FROM rocker/shiny
+
+# install R package dependencies
+RUN apt-get update &amp;&amp; apt-get install -y \
+libcurl4-openssl-dev libssl-dev \
+## clean up
+&amp;&amp; apt-get clean \
+&amp;&amp; rm -rf /var/lib/apt/lists/ \
+&amp;&amp; rm -rf /tmp/downloaded_packages/ /tmp/*.rds
+
+## Install packages from CRAN
+
+RUN install2.r --error \
+    -r &#39;http://cran.rstudio.com&#39; \
+    googleAuthR
+
+COPY shiny-customized.config /etc/shiny-server/shiny-server.conf
+COPY client.json /srv/shiny-server/client.json
+COPY app.R /srv/shiny-server/app.R
+RUN chmod -R 775 /srv/shiny-server/
+
+EXPOSE 8080
+
+USER shiny
+
+CMD [&quot;/usr/bin/shiny-server&quot;]</code></pre>
 <pre><code>gcloud auth login --project {project id}
 PROJECTID=$(gcloud config get-value project)
 docker build . -t gcr.io/$PROJECTID/signin
@@ -197,6 +226,7 @@ docker push gcr.io/$PROJECTID/signin</code></pre>
 </div>
 <div id="dns" class="section level3 hasAnchor" number="6.3.2">
 <h3><span class="header-section-number">6.3.2</span> DNS<a href="implementation-in-gcp.html#dns" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<pre><code>gcloud beta dns --project=$PROJECTID managed-zones create shinycloud-online --description=&quot;&quot; --dns-name=&quot;shinycloud.online.&quot; --visibility=&quot;public&quot; --dnssec-state=&quot;off&quot; --log-dns-queries</code></pre>
 </div>
 <div id="certificates" class="section level3 hasAnchor" number="6.3.3">
 <h3><span class="header-section-number">6.3.3</span> Certificates<a href="implementation-in-gcp.html#certificates" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -206,7 +236,6 @@ docker push gcr.io/$PROJECTID/signin</code></pre>
 </div>
 <div id="audit" class="section level3 hasAnchor" number="6.3.5">
 <h3><span class="header-section-number">6.3.5</span> Audit<a href="implementation-in-gcp.html#audit" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<pre><code>gcloud beta dns --project=shiny-cloud-345816 managed-zones create shinycloud-online --description=&quot;&quot; --dns-name=&quot;shinycloud.online.&quot; --visibility=&quot;public&quot; --dnssec-state=&quot;off&quot; --log-dns-queries</code></pre>
 </div>
 </div>
 </div>

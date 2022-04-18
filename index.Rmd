@@ -253,7 +253,43 @@ SAML: You’ve more likely experienced SAML authentication in action in the work
 
 # Implementation in GCP
 
+TBA
+
+https://shinycloud.online/
+
+https://login.shinycloud.online/
+
 ## Conteinarization
+
+```
+FROM rocker/shiny
+
+# install R package dependencies
+RUN apt-get update && apt-get install -y \
+libcurl4-openssl-dev libssl-dev \
+## clean up
+&& apt-get clean \
+&& rm -rf /var/lib/apt/lists/ \
+&& rm -rf /tmp/downloaded_packages/ /tmp/*.rds
+
+## Install packages from CRAN
+
+RUN install2.r --error \
+    -r 'http://cran.rstudio.com' \
+    googleAuthR
+
+COPY shiny-customized.config /etc/shiny-server/shiny-server.conf
+COPY client.json /srv/shiny-server/client.json
+COPY app.R /srv/shiny-server/app.R
+RUN chmod -R 775 /srv/shiny-server/
+
+EXPOSE 8080
+
+USER shiny
+
+CMD ["/usr/bin/shiny-server"]
+```
+
 
 ```
 gcloud auth login --project {project id}
@@ -282,16 +318,18 @@ docker push gcr.io/$PROJECTID/signin
 
 ### DNS
 
+
+```
+gcloud beta dns --project=$PROJECTID managed-zones create shinycloud-online --description="" --dns-name="shinycloud.online." --visibility="public" --dnssec-state="off" --log-dns-queries
+```
+
+
 ### Certificates
 
 ### Identity aware proxy
 
 ### Audit
 
-
-```
-gcloud beta dns --project=shiny-cloud-345816 managed-zones create shinycloud-online --description="" --dns-name="shinycloud.online." --visibility="public" --dnssec-state="off" --log-dns-queries
-```
 
 
 
