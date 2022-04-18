@@ -153,19 +153,32 @@ The whole idea behind IaC is simple - developers can write declarative statement
 
 Terraform is one of the most popular ways to implement this pipeline, especially in a Cloud context. It is an open-source tool that lets you provision Google Cloud resources with declarative configuration files-resources such as virtual machines, containers, storage, and networking. It lets users manage Terraform configuration files in source control to maintain an ideal provisioning state for testing, production, and other environments. [@iac]
 
+![Terraform example, source - cloud.google.com](img/iac_example.PNG)
+
 # Project Scope
 
 ## Platform for anatical applications
 
+Shiny Server is a powerful open source back end application. It creates a web server optimized for hosting Shiny applications. Shiny Server enables you to host your apps in a controlled environment, such as within your corporation, ensuring that your Shiny app (and any data it requires) never leaves your control.
+
+The majority of Shiny apps are deployed within an organization's firewall, and because you can generally trust that your colleagues will not attempt to hack your app64, you don't need to worry about security. If, on the other hand, your app contains data that only a subset of your colleagues should have access to, or if you wish to make your app publicly accessible, you will need to invest some effort in security. When it comes to app security, there are two critical components to safeguard: your data and your compute resources.
+
+![Shiny Server vs Shiny Server Pro](img/shinyserver.png)
+
+While Shiny Server has [some security features](https://docs.rstudio.com/shiny-server/#authentication-security), the open source version is pretty basic: it does not have authentication, TLS/SSL (traffic is not encrypted), there's no defense to a denial of service attack and there is no way to distribute work for multiple R instances. However, some companies, e.g. [Appsilon](https://appsilon.com/) are specializing in enterprise Shiny dashboards using the open source version. We will attempt to establish a similar secure infrastructure in this project and to expose shiny applications to the world wide web as well.
+
+
 ## Kubernetes and Docker
 
-While virtualized applications are highly preferred as opposed to IaaS approach (virtual machines), it makes sense to dig deeper in kubernetes and docker setup, regardless of the chosen managed service.
+The Open Source Shiny Server is a stand-alone application that runs on a single thread. While it is feasible to run many instances of shiny servers and divide work via load balancing, this is inefficient and far more expensive than using containerized applications. While it is possible to create the shiny-server container from scratch, there are a lot of pre-build [docker images](https://hub.docker.com/r/rocker/shiny) available including all the dependencies. Moreover, virtualized applications are highly preferred in general as opposed to IaaS approach (virtual machines), it makes sense to dig deeper in kubernetes and docker setup, regardless of the chosen service provider. 
 
-![Cloud Strategy - image source Flexera](img/conteiners.jpg)
+![Container evolution - kubernetes.io](img/container_evolution.png)
+
 
 Kubernetes was founded by Ville Aikas, Joe Beda, Brendan Burns, and Craig McLuckie in collaboration with Google engineers Brian Grant and Tim Hockin in mid-2014. Google's Borg system heavily influenced kubernetes design [@Borg] [@BorgKubernetes]. While the Borg project was implemented entirely in C++, Kubernetes was rewritten in Go language. The main goal of kubernetes was to build on the capabilities of containers and provide significant gains in programmer productivity while easing the management of the system. 
 
-![Container evolution - kubernetes.io](img/container_evolution.png)
+![Cloud Strategy - image source Flexera](img/containertools.png)
+
 
 Kubernetes is the most popular container orchestration platform that enables users to create and run multiple containers in cloud environments. Kubernetes offers resource management to isolate the resource usage of containers on a host server because performance isolation is an important factor in terms of service quality.
 
@@ -174,9 +187,7 @@ Kubernetes is the most popular container orchestration platform that enables use
 
 
 
-![Terraform example, source - cloud.google.com](img/iac_example.PNG)
-
-## Shiny Server on insecure machines
+## Shiny Server without security
 
 Computer networks are prone to attacks and it has a wide range of attacks associated with them. Cloud is not an exception and even holds more risk. It can be prone to Denial-of-service, Eavesdropping, Host Attacks, Password Guessing, Protocol-based, and Social Engineering attacks [@attacks].
 
@@ -245,7 +256,7 @@ SAML: You’ve more likely experienced SAML authentication in action in the work
 ## Conteinarization
 
 ```
-gcloud auth login --project shiny-cloud-345816
+gcloud auth login --project {project id}
 PROJECTID=$(gcloud config get-value project)
 docker build . -t gcr.io/$PROJECTID/signin
 docker push gcr.io/$PROJECTID/signin
