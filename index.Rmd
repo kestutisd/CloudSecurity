@@ -248,7 +248,7 @@ At a high level, TLS is split into two phases:
 
 TLS 1.2 and earlier versions perform the key exchange once both parties agree on the key exchange algorithm to use. This means they first agree on a method to utilize before exchanging public keys.
 
-To eliminate the first round of negotiation (one client message and one server message) in TLS 1.3, the client transmits a public key speculatively in the very first message (the Client Hello). If the client is unable to correctly forecast the server's key exchange mechanism, the client must send a new Client Hello with the right public key. TLS 1.3 contains numerous such enhancements that are critical for the web. Indeed, many people on the planet have insecure or poor connections, making it critical to restrict non-application communication to a bare minimum. Additionally, unlike prior versions of TLS, all key exchanges in TLS 1.3 are ephemeral. This means that for each new session, both the client and server generate new key pairs and then delete them immediately after the key exchange is complete. 
+To eliminate the first round of negotiation (one client message and one server message) in TLS 1.3, the client transmits a public key speculatively in the very first message (the Client Hello). If the client is unable to correctly forecast the server's key exchange mechanism, the client must send a new Client Hello with the right public key. TLS 1.3 contains numerous such enhancements that are critical for the web. Indeed, many people on the planet have insecure or poor connections, making it critical to restrict non-application communication to a bare minimum. Additionally, unlike prior versions of TLS, all key exchanges in TLS 1.3 are ephemeral. This means that for each new session, both the client and server generate new key pairs and then delete them immediately after the key exchange is complete [@wong].
 
 https://freecontent.manning.com/how-does-tls-work/
 
@@ -262,26 +262,32 @@ Handshake:
 
 In TLS 1.3, to avoid that first negotiating round trip (one client message and one server message), the client speculatively sends a public key in the very first message (the Client Hello). If the client fails to predict the server’s choice of key exchange algorithm then the client will have to send a new Client Hello containing the correct public key. For example:
 
-The client sends a TLS 1.3 Client Hello announcing that it can do either an X25519 or an X448 key exchange. It also sends an X25519 public key.
-The server does not support X25519, but does support X448. It sends a Hello Retry Request to the client announcing that it only supports X448.
-The client sends the same Client Hello but with an X448 public key instead.
-The handshake goes on.
+The client sends a TLS 1.3 Client Hello announcing that it can do either an X25519 or an X448 key exchange. It also sends an X25519 public key. The server does not support X25519, but does support X448. It sends a Hello Retry Request to the client announcing that it only supports X448. The client sends the same Client Hello but with an X448 public key instead. The handshake goes on.
 
 
-RSA and the Diffie-Hellman Key Exchange are the two most popular encryption algorithms that solve the same problem in different ways. In a nutshell, Diffie Hellman approach generates a public and private key on both sides of the transaction, but only shares the public key. Unlike Diffie-Hellman, the RSA algorithm can be used for signing digital signatures as well as symmetric key exchange, but it does require the exchange of a public key beforehand.
+
+RSA and the Diffie-Hellman Key Exchange are the two most popular encryption algorithms that solve the same problem in different ways. In a nutshell, Diffie Hellman approach generates a public and private key on both sides of the transaction, but only shares the public key. Unlike Diffie-Hellman, the RSA algorithm can be used for signing digital signatures as well as symmetric key exchange, but it does require the exchange of a public key beforehand. RSA is predicated on the presumption that factoring huge integers is difficult (integer factorization). On the assumption that no effective solution for integer factorization exists, it is believed that complete decryption of an RSA ciphertext is infeasible.
+A user of RSA generates and then publishes their public key as the product of two huge prime integers and an auxiliary value. The primary factors must remain unknown. While everyone can use the public key to encrypt a message, only someone who is familiar with the prime factors may possibly decode it.
+RSA is an acronym for Ron Rivest, Adi Shamir, and Leonard Adleman—the three men that described the method publicly for the first time in 1977. Elliptic curve cryptography (ECC) is based on elliptic curves' algebraic structure over finite fields. The discrete logarithm of a random elliptic curve element in relation to a publicly known base point is thought to be impracticable. Neal Koblitz and Victor S. Miller independently proposed the use of elliptic curves in cryptography in 1985; ECC methods became widely used in 2004. The advantage of ECC over RSA is that the key can be smaller, which results in increased performance and security. The downside is that not all services and applications are compatible with SSL Certificates based on ECC.
+
+![Asymmetric (Public Key) Cryptography use case as encryption - source https://www.twilio.com/blog/what-is-public-key-cryptography](img/rsa.png)
+
+https://habr.com/en/company/qrator/blog/474810/
+
+QUIC
+
+https://medium.com/codavel-blog/quic-vs-tcp-tls-and-why-quic-is-not-the-next-big-thing-d4ef59143efd
 
 After this, a CA can provide a signature over the website’s public key. As the CA’s signature is usually valid for a period of years, we say that it is over a long-term signing public key (as opposed to an ephemeral public key). More specifically, CAs do not actually sign public keys, but instead they sign certificates. A certificate contains the long-term public key, along with some additional important metadata like the name of your domain if you are a web page.
 
 To prove to your browser that the server it is talking to is indeed google.com, the server sends a certificate chain as part of the TLS handshake which comprises of:
 
-Its own (leaf) certificate containing among others the name google.com, google’s long-term signing public key, as well as a signature from a CA.
-A chain of intermediate CA certificates, from the one that signed google’s certificate to the root CA that signed the last intermediate CA.
+Its own (leaf) certificate containing among others the name google.com, google’s long-term signing public key, as well as a signature from a CA. A chain of intermediate CA certificates, from the one that signed google’s certificate to the root CA that signed the last intermediate CA.
 
 Once a handshake has taken place, and symmetric keys have been derived, both the client and the server can send each other encrypted application data. But this is not all, TLS ensures that such messages cannot be replayed nor reordered.
 
 To do this, the nonce used by the authenticated encryption algorithm starts at a fixed value and is incremented for each new message. If a message is replayed, or reordered, the nonce will be different from what is expected and decryption will fail. When this happens the connection is kille
 
-https://www.researchgate.net/figure/TLS-key-transport-with-RSA_fig1_234811497
 
 ## Auth
 
