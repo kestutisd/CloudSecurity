@@ -185,8 +185,6 @@ Kubernetes is the most popular container orchestration platform that enables use
 ![The components of a Kubernetes cluster - kubernetes.io](img/components-of-kubernetes.png)
 
 
-
-
 ## Shiny Server without security
 
 Computer networks are prone to attacks and it has a wide range of attacks associated with them. Cloud is not an exception and even holds more risk. It can be prone to Denial-of-service, Eavesdropping, Host Attacks, Password Guessing, Protocol-based, and Social Engineering attacks [@attacks].
