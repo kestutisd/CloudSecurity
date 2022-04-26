@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 1 Moving to Cloud | FMISD13207 Cloud Security Technologies</title>
-  <meta name="description" content="Chapter 1 Moving to Cloud | FMISD13207 Cloud Security Technologies" />
+  <title>Chapter 1 Moving to Cloud | FMISD19004 Cloud Computing Technologies</title>
+  <meta name="description" content="Chapter 1 Moving to Cloud | FMISD19004 Cloud Computing Technologies" />
   <meta name="generator" content="bookdown 0.25 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 1 Moving to Cloud | FMISD13207 Cloud Security Technologies" />
+  <meta property="og:title" content="Chapter 1 Moving to Cloud | FMISD19004 Cloud Computing Technologies" />
   <meta property="og:type" content="book" />
   
   
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 1 Moving to Cloud | FMISD13207 Cloud Security Technologies" />
+  <meta name="twitter:title" content="Chapter 1 Moving to Cloud | FMISD19004 Cloud Computing Technologies" />
   
   
   
@@ -23,7 +23,7 @@
 <meta name="author" content="Kęstutis Daugėla" />
 
 
-<meta name="date" content="2022-04-10" />
+<meta name="date" content="2022-04-26" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -54,6 +54,70 @@
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 
 
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
 
 <style type="text/css">
 /* Used with Pandoc 2.11+ new --citeproc when CSL is used */
@@ -97,7 +161,9 @@ div.csl-indent {
 <li><a href="index.html#introduction">Introduction<span></span></a></li>
 <li class="chapter" data-level="1" data-path="moving-to-cloud.html"><a href="moving-to-cloud.html"><i class="fa fa-check"></i><b>1</b> Moving to Cloud<span></span></a>
 <ul>
-<li class="chapter" data-level="1.1" data-path="moving-to-cloud.html"><a href="moving-to-cloud.html#kubernetes-in-a-nutshell"><i class="fa fa-check"></i><b>1.1</b> Kubernetes in a nutshell<span></span></a></li>
+<li class="chapter" data-level="1.1" data-path="moving-to-cloud.html"><a href="moving-to-cloud.html#managing-sla-slo-requirements"><i class="fa fa-check"></i><b>1.1</b> Managing SLA (SLO) requirements<span></span></a></li>
+<li class="chapter" data-level="1.2" data-path="moving-to-cloud.html"><a href="moving-to-cloud.html#migration-approaches"><i class="fa fa-check"></i><b>1.2</b> Migration Approaches<span></span></a></li>
+<li class="chapter" data-level="1.3" data-path="moving-to-cloud.html"><a href="moving-to-cloud.html#kubernetes-in-a-nutshell"><i class="fa fa-check"></i><b>1.3</b> Kubernetes in a nutshell<span></span></a></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="public-cloud-setup.html"><a href="public-cloud-setup.html"><i class="fa fa-check"></i><b>2</b> Public Cloud Setup<span></span></a>
 <ul>
@@ -106,12 +172,11 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="3" data-path="use-cases.html"><a href="use-cases.html"><i class="fa fa-check"></i><b>3</b> Use Cases<span></span></a>
 <ul>
-<li class="chapter" data-level="3.1" data-path="use-cases.html"><a href="use-cases.html#shiny-auth"><i class="fa fa-check"></i><b>3.1</b> Shiny auth<span></span></a></li>
-<li class="chapter" data-level="3.2" data-path="use-cases.html"><a href="use-cases.html#cloud-native-application"><i class="fa fa-check"></i><b>3.2</b> Cloud-native application<span></span></a></li>
-<li class="chapter" data-level="3.3" data-path="use-cases.html"><a href="use-cases.html#security-experiment"><i class="fa fa-check"></i><b>3.3</b> Security Experiment<span></span></a>
-<ul>
-<li class="chapter" data-level="3.3.1" data-path="use-cases.html"><a href="use-cases.html#docker"><i class="fa fa-check"></i><b>3.3.1</b> Docker<span></span></a></li>
-</ul></li>
+<li class="chapter" data-level="3.1" data-path="use-cases.html"><a href="use-cases.html#shiny-server-on-cloud-run"><i class="fa fa-check"></i><b>3.1</b> Shiny Server on Cloud Run<span></span></a></li>
+<li class="chapter" data-level="3.2" data-path="use-cases.html"><a href="use-cases.html#shiny-server-on-gke"><i class="fa fa-check"></i><b>3.2</b> Shiny Server on GKE<span></span></a></li>
+<li class="chapter" data-level="3.3" data-path="use-cases.html"><a href="use-cases.html#shiny-server-on-gce"><i class="fa fa-check"></i><b>3.3</b> Shiny Server on GCE<span></span></a></li>
+<li class="chapter" data-level="3.4" data-path="use-cases.html"><a href="use-cases.html#limitations"><i class="fa fa-check"></i><b>3.4</b> Limitations<span></span></a></li>
+<li class="chapter" data-level="3.5" data-path="use-cases.html"><a href="use-cases.html#security-experiment"><i class="fa fa-check"></i><b>3.5</b> Security Experiment<span></span></a></li>
 </ul></li>
 <li><a href="references.html#references">References<span></span></a></li>
 <li class="divider"></li>
@@ -126,7 +191,7 @@ div.csl-indent {
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">FMISD13207 Cloud Security Technologies</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">FMISD19004 Cloud Computing Technologies</a>
           </h1>
         </div>
 
@@ -136,6 +201,19 @@ div.csl-indent {
             <section class="normal" id="section-">
 <div id="moving-to-cloud" class="section level1 hasAnchor" number="1">
 <h1><span class="header-section-number">Chapter 1</span> Moving to Cloud<a href="moving-to-cloud.html#moving-to-cloud" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="managing-sla-slo-requirements" class="section level2 hasAnchor" number="1.1">
+<h2><span class="header-section-number">1.1</span> Managing SLA (SLO) requirements<a href="moving-to-cloud.html#managing-sla-slo-requirements" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>One of the biggest challenges for potential cloud customers is to evaluate SLA’s of cloud vendors <span class="citation">(<a href="#ref-CloudSLA" role="doc-biblioref">Odun-Ayo, Ajayi, and Omoregbe 2017</a>)</span> <span class="citation">(<a href="#ref-CloudSLAComprehensive" role="doc-biblioref">Aljoumah et al. 2015</a>)</span>. There are four major cloud setups in general:</p>
+<ol style="list-style-type: decimal">
+<li><strong>Public cloud</strong>. In this setup, users can access the resource pool that is managed by a cloud provider. Since this is a public cloud environment, it can pose important security concerns and extra measures need to be taken in order to prevent security issues.</li>
+<li><strong>Private cloud</strong>. The vendor provides the services which prevent public assess (e.g. dedicated servers)</li>
+<li><strong>Community cloud</strong> The cloud services are provided to a specified group where all members are entitled to equal access to the shared services.</li>
+<li><strong>Hybrid cloud</strong> The cloud services are provided as multiple cloud combustion (public cloud, private cloud, and community cloud)</li>
+</ol>
+<div class="figure">
+<img src="img/cloudstrategy.png" alt="" />
+<p class="caption">Cloud Strategy - image source Flexera</p>
+</div>
 <p>It makes sense to compare the actual numbers between the cloud strategy presented in 2019 with the actual survey made in 2021. Almost every cloud-ready company uses the public cloud (97%) to some extent leaving hybrid cloud setup the dominant one (78%). Companies rarely use public or private cloud alone (19% vs 2% respectively).</p>
 <div class="figure">
 <img src="img/types-of-clouds-used.png" alt="" />
@@ -146,9 +224,29 @@ div.csl-indent {
 <img src="img/comparison.jpg" alt="" />
 <p class="caption">Cloud Services comparison - image source N-IX.com (2020)</p>
 </div>
+<p>Another important factor in choosing a cloud provider is the price. In this area, GCP provides the lowest price for general purpose machines, while compute optimized machines are a little bit cheaper in AWS. Azure provides the best price for memory optimized machines. However, these costs could be optimized significantly by having an agreement with the cloud provider or implementing resource optimizations afterward.</p>
+<div class="figure">
+<img src="img/pricing.PNG" alt="" />
+<p class="caption">Pricing comparison - image source cast.ai</p>
+</div>
+<p>Taking the functional requirements aside, security requirements represent a major issue that has to be met in order of easing some of these obstacles <span class="citation">(<a href="#ref-CloudRole" role="doc-biblioref">Alam 2020</a>)</span>. Gartner predicts that through 2025, 99% of cloud security failures will be the customer’s fault.</p>
+<p>Having all these things in mind, it is really hard to draw a conclusion which Cloud provider to choose. At the end of the day, it depends on the specific business requirements, regulations, and personal preference. For instance, if the architecture is heavily based on containers and microservices, GCP could be the best choice since it has the most complete container-based model. The biggest selling point of AWS is that AWS has the greatest Global reach while Azure has more experience in hybrid cloud offerings and Windows-based organization support.</p>
+<div class="figure">
+<img src="img/varonis_comparison.png" alt="" />
+<p class="caption">Conclusion - image source www.varonis.com</p>
+</div>
+</div>
+<div id="migration-approaches" class="section level2 hasAnchor" number="1.2">
+<h2><span class="header-section-number">1.2</span> Migration Approaches<a href="moving-to-cloud.html#migration-approaches" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The complexity of migrating existing applications varies, depending on the architecture and existing licensing arrangements. A virtualized, service-oriented architecture can be put on the low-complexity end of the spectrum, and a monolithic mainframe at the high-complexity end of the spectrum <span class="citation">(<a href="#ref-awsmigration" role="doc-biblioref">Orban 2016</a>)</span>. Cloud computing advocates that resources should be controlled on demand, and can be flexibly and elastically expanded and contracted according to the change of demand <span class="citation">(<a href="#ref-CloudMigration" role="doc-biblioref">Wang, Yan, and Wang 2020</a>)</span>. Therefore it is preferred that applications moving into the cloud must run in a virtualized way, while virtual machines could work as a direct entry for other applications which cannot run directly in the cloud environment <span class="citation">(<a href="#ref-CloudMigrationReview" role="doc-biblioref">Iqbal and Colomo-Palacios 2019</a>)</span>. Automation is an important aspect of migration - while aiming for full automation could seem an overwhelming task, this will significantly reduce the time spent in the future and the challenge of managing these applications <span class="citation">(<a href="#ref-cloudautomationreview" role="doc-biblioref">Jayachandran, Pawar, and Venkataraman 2017</a>)</span>.</p>
+<div class="figure">
+<img src="img/migration_strat.png" alt="" />
+<p class="caption">Cloud migration strategy - image source aws.amazon.com</p>
+</div>
 <p>According to Forbes, there are now 77 % of organizations, having one or some parts of their systems in the cloud. The budget is usually allocated through multiple services. E.g. in 2018 on average, the distribution of the budget accordingly: 48% went to SaaS, 30% to IaaS, and 21% to PaaS.</p>
-<div id="kubernetes-in-a-nutshell" class="section level2 hasAnchor" number="1.1">
-<h2><span class="header-section-number">1.1</span> Kubernetes in a nutshell<a href="moving-to-cloud.html#kubernetes-in-a-nutshell" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+</div>
+<div id="kubernetes-in-a-nutshell" class="section level2 hasAnchor" number="1.3">
+<h2><span class="header-section-number">1.3</span> Kubernetes in a nutshell<a href="moving-to-cloud.html#kubernetes-in-a-nutshell" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>While virtualized applications are highly preferred as opposed to IaaS approach (virtual machines), it makes sense to dig deeper in kubernetes and docker setup, regardless of the chosen managed service.</p>
 <div class="figure">
 <img src="img/conteiners.jpg" alt="" />
@@ -168,11 +266,32 @@ div.csl-indent {
 </div>
 <h3>References<a href="references.html#references" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-CloudRole" class="csl-entry">
+Alam, Tanweer. 2020. <span>“Cloud Computing and Its Role in the Information Technology.”</span> <em>SSRN Electronic Journal</em>, January. <a href="https://doi.org/10.2139/ssrn.3639063">https://doi.org/10.2139/ssrn.3639063</a>.
+</div>
+<div id="ref-CloudSLAComprehensive" class="csl-entry">
+Aljoumah, Eman, Fajer Al-Mousawi, Imtiaz Ahmad, Maha Al-Shammri, and Zahraa Al-Jady. 2015. <span>“SLA in Cloud Computing Architectures: A Comprehensive Study.”</span> <em>International Journal of Grid and Distributed Computing</em> 8: 7–32.
+</div>
 <div id="ref-BorgKubernetes" class="csl-entry">
 Burns, Brendan, Brian Grant, David Oppenheimer, Eric Brewer, and John Wilkes. 2016. <span>“Borg, Omega, and Kubernetes.”</span> <em>ACM Queue</em> 14: 70–93. <a href="http://queue.acm.org/detail.cfm?id=2898444">http://queue.acm.org/detail.cfm?id=2898444</a>.
 </div>
+<div id="ref-CloudMigrationReview" class="csl-entry">
+Iqbal, Arif, and Ricardo Colomo-Palacios. 2019. <span>“Key Opportunities and Challenges of Data Migration in Cloud: Results from a Multivocal Literature Review.”</span> <em>Procedia Computer Science</em> 164: 48–55. https://doi.org/<a href="https://doi.org/10.1016/j.procs.2019.12.153">https://doi.org/10.1016/j.procs.2019.12.153</a>.
+</div>
+<div id="ref-cloudautomationreview" class="csl-entry">
+Jayachandran, Prassanna, Anjali Pawar, and Neelanarayanan Venkataraman. 2017. <span>“A Review of Existing Cloud Automation Tools.”</span> <em>Asian Journal of Pharmaceutical and Clinical Research</em> 10 (July): 471. <a href="https://doi.org/10.22159/ajpcr.2017.v10s1.20519">https://doi.org/10.22159/ajpcr.2017.v10s1.20519</a>.
+</div>
+<div id="ref-CloudSLA" class="csl-entry">
+Odun-Ayo, Isaac, Olasupo Ajayi, and Nicholas Omoregbe. 2017. <span>“Cloud Service Level Agreements – Issues and Development.”</span> In <em>2017 International Conference on Next Generation Computing and Information Systems (ICNGCIS)</em>, 1–6. <a href="https://doi.org/10.1109/ICNGCIS.2017.18">https://doi.org/10.1109/ICNGCIS.2017.18</a>.
+</div>
+<div id="ref-awsmigration" class="csl-entry">
+Orban, Stephen. 2016. <span>“6 Strategies for Migrating Applications to the Clouds,”</span> November. <a href="https://aws.amazon.com/blogs/enterprise-strategy/6-strategies-for-migrating-applications-to-the-cloud/">https://aws.amazon.com/blogs/enterprise-strategy/6-strategies-for-migrating-applications-to-the-cloud/</a>.
+</div>
 <div id="ref-Borg" class="csl-entry">
 Verma, Abhishek, Luis Pedrosa, Madhukar R. Korupolu, David Oppenheimer, Eric Tune, and John Wilkes. 2015. <span>“Large-Scale Cluster Management at <span>Google</span> with <span>Borg</span>.”</span> In <em>Proceedings of the European Conference on Computer Systems (EuroSys)</em>. Bordeaux, France.
+</div>
+<div id="ref-CloudMigration" class="csl-entry">
+Wang, Zhixiao, Wenyao Yan, and Wendong Wang. 2020. <span>“Revisiting Cloud Migration: Strategies and Methods.”</span> <em>Journal of Physics: Conference Series</em> 1575 (June): 012232. <a href="https://doi.org/10.1088/1742-6596/1575/1/012232">https://doi.org/10.1088/1742-6596/1575/1/012232</a>.
 </div>
 </div>
             </section>

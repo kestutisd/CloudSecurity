@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 6 Use Cases | FMISD13207 Cloud Security Technologies</title>
-  <meta name="description" content="Chapter 6 Use Cases | FMISD13207 Cloud Security Technologies" />
+  <title>Chapter 3 Use Cases | FMISD19004 Cloud Computing Technologies</title>
+  <meta name="description" content="Chapter 3 Use Cases | FMISD19004 Cloud Computing Technologies" />
   <meta name="generator" content="bookdown 0.25 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 6 Use Cases | FMISD13207 Cloud Security Technologies" />
+  <meta property="og:title" content="Chapter 3 Use Cases | FMISD19004 Cloud Computing Technologies" />
   <meta property="og:type" content="book" />
   
   
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 6 Use Cases | FMISD13207 Cloud Security Technologies" />
+  <meta name="twitter:title" content="Chapter 3 Use Cases | FMISD19004 Cloud Computing Technologies" />
   
   
   
@@ -23,14 +23,14 @@
 <meta name="author" content="Kęstutis Daugėla" />
 
 
-<meta name="date" content="2022-04-11" />
+<meta name="date" content="2022-04-26" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="security-considerations.html"/>
+<link rel="prev" href="public-cloud-setup.html"/>
 <link rel="next" href="references.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
@@ -54,6 +54,70 @@
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 
 
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
 
 <style type="text/css">
 /* Used with Pandoc 2.11+ new --citeproc when CSL is used */
@@ -95,42 +159,24 @@ div.csl-indent {
 
 <li class="divider"></li>
 <li><a href="index.html#introduction">Introduction<span></span></a></li>
-<li class="chapter" data-level="1" data-path="type-of-attacks.html"><a href="type-of-attacks.html"><i class="fa fa-check"></i><b>1</b> Type of attacks<span></span></a></li>
-<li class="chapter" data-level="2" data-path="data-breach---case-study.html"><a href="data-breach---case-study.html"><i class="fa fa-check"></i><b>2</b> Data Breach - Case Study<span></span></a>
+<li class="chapter" data-level="1" data-path="moving-to-cloud.html"><a href="moving-to-cloud.html"><i class="fa fa-check"></i><b>1</b> Moving to Cloud<span></span></a>
 <ul>
-<li class="chapter" data-level="2.1" data-path="data-breach---case-study.html"><a href="data-breach---case-study.html#twitch"><i class="fa fa-check"></i><b>2.1</b> Twitch<span></span></a></li>
-<li class="chapter" data-level="2.2" data-path="data-breach---case-study.html"><a href="data-breach---case-study.html#phizer"><i class="fa fa-check"></i><b>2.2</b> Phizer<span></span></a></li>
-<li class="chapter" data-level="2.3" data-path="data-breach---case-study.html"><a href="data-breach---case-study.html#citybee"><i class="fa fa-check"></i><b>2.3</b> Citybee<span></span></a></li>
+<li class="chapter" data-level="1.1" data-path="moving-to-cloud.html"><a href="moving-to-cloud.html#managing-sla-slo-requirements"><i class="fa fa-check"></i><b>1.1</b> Managing SLA (SLO) requirements<span></span></a></li>
+<li class="chapter" data-level="1.2" data-path="moving-to-cloud.html"><a href="moving-to-cloud.html#migration-approaches"><i class="fa fa-check"></i><b>1.2</b> Migration Approaches<span></span></a></li>
+<li class="chapter" data-level="1.3" data-path="moving-to-cloud.html"><a href="moving-to-cloud.html#kubernetes-in-a-nutshell"><i class="fa fa-check"></i><b>1.3</b> Kubernetes in a nutshell<span></span></a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="public-cloud.html"><a href="public-cloud.html"><i class="fa fa-check"></i><b>3</b> Public Cloud<span></span></a>
+<li class="chapter" data-level="2" data-path="public-cloud-setup.html"><a href="public-cloud-setup.html"><i class="fa fa-check"></i><b>2</b> Public Cloud Setup<span></span></a>
 <ul>
-<li class="chapter" data-level="3.1" data-path="public-cloud.html"><a href="public-cloud.html#public-cloud-security"><i class="fa fa-check"></i><b>3.1</b> Public Cloud Security<span></span></a></li>
-<li class="chapter" data-level="3.2" data-path="public-cloud.html"><a href="public-cloud.html#infrastructure-as-code"><i class="fa fa-check"></i><b>3.2</b> Infrastructure as Code<span></span></a></li>
+<li class="chapter" data-level="2.1" data-path="public-cloud-setup.html"><a href="public-cloud-setup.html#security"><i class="fa fa-check"></i><b>2.1</b> Security<span></span></a></li>
+<li class="chapter" data-level="2.2" data-path="public-cloud-setup.html"><a href="public-cloud-setup.html#infrastructure-as-code"><i class="fa fa-check"></i><b>2.2</b> Infrastructure as Code<span></span></a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="project-scope.html"><a href="project-scope.html"><i class="fa fa-check"></i><b>4</b> Project Scope<span></span></a>
+<li class="chapter" data-level="3" data-path="use-cases.html"><a href="use-cases.html"><i class="fa fa-check"></i><b>3</b> Use Cases<span></span></a>
 <ul>
-<li class="chapter" data-level="4.1" data-path="project-scope.html"><a href="project-scope.html#platform-for-anatical-applications"><i class="fa fa-check"></i><b>4.1</b> Platform for anatical applications<span></span></a></li>
-<li class="chapter" data-level="4.2" data-path="project-scope.html"><a href="project-scope.html#kubernetes-and-docker"><i class="fa fa-check"></i><b>4.2</b> Kubernetes and Docker<span></span></a></li>
-</ul></li>
-<li class="chapter" data-level="5" data-path="security-considerations.html"><a href="security-considerations.html"><i class="fa fa-check"></i><b>5</b> Security considerations<span></span></a>
-<ul>
-<li class="chapter" data-level="5.1" data-path="security-considerations.html"><a href="security-considerations.html#certificates-and-tls"><i class="fa fa-check"></i><b>5.1</b> Certificates and TLS<span></span></a></li>
-<li class="chapter" data-level="5.2" data-path="security-considerations.html"><a href="security-considerations.html#auth"><i class="fa fa-check"></i><b>5.2</b> Auth<span></span></a>
-<ul>
-<li class="chapter" data-level="5.2.1" data-path="security-considerations.html"><a href="security-considerations.html#authentication"><i class="fa fa-check"></i><b>5.2.1</b> Authentication<span></span></a></li>
-<li class="chapter" data-level="5.2.2" data-path="security-considerations.html"><a href="security-considerations.html#authorization"><i class="fa fa-check"></i><b>5.2.2</b> Authorization<span></span></a></li>
-<li class="chapter" data-level="5.2.3" data-path="security-considerations.html"><a href="security-considerations.html#saml"><i class="fa fa-check"></i><b>5.2.3</b> SAML<span></span></a></li>
-</ul></li>
-<li class="chapter" data-level="5.3" data-path="security-considerations.html"><a href="security-considerations.html#network"><i class="fa fa-check"></i><b>5.3</b> Network<span></span></a></li>
-</ul></li>
-<li class="chapter" data-level="6" data-path="use-cases.html"><a href="use-cases.html"><i class="fa fa-check"></i><b>6</b> Use Cases<span></span></a>
-<ul>
-<li class="chapter" data-level="6.1" data-path="use-cases.html"><a href="use-cases.html#security-experiment"><i class="fa fa-check"></i><b>6.1</b> Security Experiment<span></span></a></li>
-<li class="chapter" data-level="6.2" data-path="use-cases.html"><a href="use-cases.html#shiny-auth"><i class="fa fa-check"></i><b>6.2</b> Shiny auth<span></span></a></li>
-<li class="chapter" data-level="6.3" data-path="use-cases.html"><a href="use-cases.html#cloud-native-application"><i class="fa fa-check"></i><b>6.3</b> Cloud-native application<span></span></a>
-<ul>
-<li class="chapter" data-level="6.3.1" data-path="use-cases.html"><a href="use-cases.html#docker"><i class="fa fa-check"></i><b>6.3.1</b> Docker<span></span></a></li>
-</ul></li>
+<li class="chapter" data-level="3.1" data-path="use-cases.html"><a href="use-cases.html#shiny-server-on-cloud-run"><i class="fa fa-check"></i><b>3.1</b> Shiny Server on Cloud Run<span></span></a></li>
+<li class="chapter" data-level="3.2" data-path="use-cases.html"><a href="use-cases.html#shiny-server-on-gke"><i class="fa fa-check"></i><b>3.2</b> Shiny Server on GKE<span></span></a></li>
+<li class="chapter" data-level="3.3" data-path="use-cases.html"><a href="use-cases.html#shiny-server-on-gce"><i class="fa fa-check"></i><b>3.3</b> Shiny Server on GCE<span></span></a></li>
+<li class="chapter" data-level="3.4" data-path="use-cases.html"><a href="use-cases.html#limitations"><i class="fa fa-check"></i><b>3.4</b> Limitations<span></span></a></li>
+<li class="chapter" data-level="3.5" data-path="use-cases.html"><a href="use-cases.html#security-experiment"><i class="fa fa-check"></i><b>3.5</b> Security Experiment<span></span></a></li>
 </ul></li>
 <li><a href="references.html#references">References<span></span></a></li>
 <li class="divider"></li>
@@ -145,7 +191,7 @@ div.csl-indent {
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">FMISD13207 Cloud Security Technologies</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">FMISD19004 Cloud Computing Technologies</a>
           </h1>
         </div>
 
@@ -153,10 +199,325 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="use-cases" class="section level1 hasAnchor" number="6">
-<h1><span class="header-section-number">Chapter 6</span> Use Cases<a href="use-cases.html#use-cases" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<div id="security-experiment" class="section level2 hasAnchor" number="6.1">
-<h2><span class="header-section-number">6.1</span> Security Experiment<a href="use-cases.html#security-experiment" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="use-cases" class="section level1 hasAnchor" number="3">
+<h1><span class="header-section-number">Chapter 3</span> Use Cases<a href="use-cases.html#use-cases" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="shiny-server-on-cloud-run" class="section level2 hasAnchor" number="3.1">
+<h2><span class="header-section-number">3.1</span> Shiny Server on Cloud Run<a href="use-cases.html#shiny-server-on-cloud-run" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>R is a programming language and free software environment for statistical computing and graphics. It is widely used among statisticians and data miners for developing statistical software and data analysis. R is usually used internally, mostly for interactive analysis and statistical modeling, but recently there are more and more applications in terms of WEB applications and APIs. While R is not the most popular language, it has no luxury of possessing of the box serving platform in most of the cloud providers. However, it can be nicely integrated with docker having all the dependencies in place and encapsulated application in a single container. This practice greatly speeds up the workflow of software development and deployment. In this proof of concept we will suggest the best approach of migrating R applications, shiny apps, and APIs having a cloud provider selected (GCP).</p>
+<div class="figure">
+<img src="img/R.png" alt="" />
+<p class="caption">R applications - image source ds4ps.org</p>
+</div>
+<p>Google Kubernetes Engine (GKE) is a great choice for a container orchestration platform and offers advanced scalability and configuration flexibility. GKE gives complete control over every aspect of container orchestration, from networking to storage, to how you set up observability in addition to supporting stateful application use cases. A fully managed Cloud Run is the additional service based on GKE for those applications which do not need a comprehensive level of cluster configuration and monitoring. Additionally, the serverless approach provides more fine-grained billing and can significantly reduce the cost (e.g. in case the application is not in use). With a manually created GKE cluster, the nodes and environment are always on which means that you are billed for them regardless of utilization. With Cloud Run, the service is merely available and the billing is done only for the actual consumption.</p>
+<div class="figure">
+<img src="img/Cloud-Run.jpeg" alt="" />
+<p class="caption">Cloud Run - cloud.google.com</p>
+</div>
+<p>There are even more reasons to choose Cloud Run instead of the Kubernetes cluster. Typically R users are not software engineers, so we should not only aim for simplicity in the development flow, but convenient application management as well (e.g. Google Cloud Run application automatically scales up depending on the traffic). Cloud Run is also integrated with Stackdriver Monitoring, Logging, and Error Reporting services. Moreover, Cloud Run is constructed on the Knative open‐source project, thus enabling the portability of the workflows.</p>
+<p>Let’s take the Shiny app example. First, we need to build an app and containerize it. Since Google Cloud Run was introduced only in 2019, there were only a few attempts to leverage this technology against Shiny R applications <span class="citation">(<a href="#ref-shinydocker" role="doc-biblioref">Xu 2020</a>)</span> <span class="citation">(<a href="#ref-shinydockerrun" role="doc-biblioref">Christensen 2021</a>)</span>. Once the application is finished, Dokerfile is needed with all the dependencies included:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="use-cases.html#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">FROM</span> rocker/shiny-verse:latest</span>
+<span id="cb1-2"><a href="use-cases.html#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">RUN</span> apt-get update <span class="kw">&amp;&amp;</span> <span class="ex">apt-get</span> install <span class="at">-y</span> <span class="dt">\</span></span>
+<span id="cb1-3"><a href="use-cases.html#cb1-3" aria-hidden="true" tabindex="-1"></a>sudo <span class="dt">\</span></span>
+<span id="cb1-4"><a href="use-cases.html#cb1-4" aria-hidden="true" tabindex="-1"></a>pandoc <span class="dt">\</span></span>
+<span id="cb1-5"><a href="use-cases.html#cb1-5" aria-hidden="true" tabindex="-1"></a>pandoc-citeproc <span class="dt">\</span></span>
+<span id="cb1-6"><a href="use-cases.html#cb1-6" aria-hidden="true" tabindex="-1"></a>libcurl4-gnutls-dev <span class="dt">\</span></span>
+<span id="cb1-7"><a href="use-cases.html#cb1-7" aria-hidden="true" tabindex="-1"></a>libcairo2-dev <span class="dt">\</span></span>
+<span id="cb1-8"><a href="use-cases.html#cb1-8" aria-hidden="true" tabindex="-1"></a>libxt-dev <span class="dt">\</span></span>
+<span id="cb1-9"><a href="use-cases.html#cb1-9" aria-hidden="true" tabindex="-1"></a>libssl-dev <span class="dt">\</span></span>
+<span id="cb1-10"><a href="use-cases.html#cb1-10" aria-hidden="true" tabindex="-1"></a>libssh2-1-dev</span>
+<span id="cb1-11"><a href="use-cases.html#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="ex">RUN</span> R <span class="at">-e</span> <span class="st">&quot;install.packages(&#39;shinydashboard&#39;, repos=&#39;http://cran.rstudio.com/&#39;)&quot;</span></span>
+<span id="cb1-12"><a href="use-cases.html#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="ex">COPY</span> shiny-server.conf  /etc/shiny-server/shiny-server.conf</span>
+<span id="cb1-13"><a href="use-cases.html#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="ex">COPY</span> /app /srv/shiny-server/</span>
+<span id="cb1-14"><a href="use-cases.html#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="ex">RUN</span> rm /srv/shiny-server/index.html</span>
+<span id="cb1-15"><a href="use-cases.html#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="ex">EXPOSE</span> 80</span>
+<span id="cb1-16"><a href="use-cases.html#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="ex">COPY</span> shiny-server.sh /usr/bin/shiny-server.sh</span>
+<span id="cb1-17"><a href="use-cases.html#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="ex">RUN</span> [<span class="st">&quot;chmod&quot;</span>, <span class="st">&quot;+x&quot;</span>, <span class="st">&quot;/usr/bin/shiny-server.sh&quot;</span>]</span>
+<span id="cb1-18"><a href="use-cases.html#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="ex">CMD</span> [<span class="st">&quot;/usr/bin/shiny-server.sh&quot;</span>]</span></code></pre></div>
+<p>Once the docker image is built, all we need to do is to push that image to Google Container Registry.</p>
+<div class="figure">
+<img src="img/cloudrun.jpg" alt="" />
+<p class="caption">Cloud Run Process - image source <a href="https://medium.com/google-cloud" class="uri">https://medium.com/google-cloud</a></p>
+</div>
+<p>From there, we can deploy the docker image manually or use other tools such as Terraform to create infrastructure as code. Since deployment on Google Cloud Run is quite simple, Terraform script is not complex. Terraform script source - <a href="https://github.com/paeselhz/shiny_gcr_tf">github</a>.</p>
+<pre class="terraform"><code>provider &quot;google&quot;{
+  project     = &quot;vgtu-cloud&quot;
+  region      = &quot;europe-west1&quot;
+}
+
+resource &quot;google_project_service&quot; &quot;run&quot; {
+  service = &quot;run.googleapis.com&quot;
+}
+
+resource &quot;google_cloud_run_service&quot; &quot;shiny-gcr-tf&quot; {
+  name = &quot;shiny-gcr-tf&quot;
+  location = &quot;europe-west1&quot;
+  template {
+    spec {
+      containers {
+        image = &quot;gcr.io/vgtu-cloud/mydashboard@sha256:3b1d046e01694a681664b350c62fa0b55e69bdd8e4f068642dee8804222b8d00&quot;
+        resources {
+          limits = {
+            cpu = &quot;1000m&quot;
+            memory = &quot;1024Mi&quot;
+          }
+        }
+        ports {
+          container_port = 80
+        }
+      }
+      
+      container_concurrency = 80
+      timeout_seconds = 300
+    }
+    metadata {
+      annotations = {
+        &quot;autoscaling.knative.dev/minScale&quot; = 0
+        &quot;autoscaling.knative.dev/maxScale&quot; = 1
+      }
+    }
+  }
+  
+  traffic {
+    percent = 100
+    latest_revision = true
+  }
+  
+  depends_on = [google_project_service.run]
+}
+
+resource &quot;google_cloud_run_service_iam_member&quot; &quot;allUsers&quot; {
+  service  = google_cloud_run_service.shiny-gcr-tf.name
+  location = google_cloud_run_service.shiny-gcr-tf.location
+  role     = &quot;roles/run.invoker&quot;
+  member   = &quot;allUsers&quot;
+}</code></pre>
+<p>Terraform script is initiated by the command line, but could be later reused in any CI/CD pipeline.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="use-cases.html#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">terraform</span> init</span>
+<span id="cb3-2"><a href="use-cases.html#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="ex">terraform</span> plan</span>
+<span id="cb3-3"><a href="use-cases.html#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="ex">terraform</span> apply </span></code></pre></div>
+<p>It is easy to monitor and track deployments in Google Cloud Console interface. Metrics are tracked separately as well.</p>
+<div class="figure">
+<img src="img/cloudrundeployments.PNG" alt="" />
+<p class="caption">Cloud Run Deployments</p>
+</div>
+<div class="figure">
+<img src="img/cloudrunmetrics.PNG" alt="" />
+<p class="caption">Cloud Run Metrics</p>
+</div>
+<p>It is important to note that Cloud Run is the cheapest and the most convenient option for Shiny R Application deployment. Minimum instances could be set to 0 to make this application offline when it is not in use. Moreover, SSL certificates are applied automatically and are handled by GCP. The application could be reached publicly using this URL: <a href="https://shiny-gcr-tf-b4sly2joja-ew.a.run.app/">https://shiny-gcr-tf-b4sly2joja-ew.a.run.app/</a></p>
+<div class="figure">
+<img src="img/shiny-gcr.gif" alt="" />
+<p class="caption">Cloud Run Metrics</p>
+</div>
+</div>
+<div id="shiny-server-on-gke" class="section level2 hasAnchor" number="3.2">
+<h2><span class="header-section-number">3.2</span> Shiny Server on GKE<a href="use-cases.html#shiny-server-on-gke" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Google Kubernetes Engine is a straightforward way of setting up a Kubernetes Cluster. These clusters are fully managed by Google Site Reliability Engineers and Google ensures that your cluster is available and up-to-date. It also supports the common Docker container format and runs on Container-Optimized OS.</p>
+<p>Once the Cluster is created, the deployment is similar to Cloud Run. It can be done via Google Cloud Console, GCP SDK, or integrated into any CI/CD pipeline using Jenkins, GitActions, or similar tools.</p>
+<div class="figure">
+<img src="img/gke-autoscalling.PNG" alt="" />
+<p class="caption">Shiny on GKE</p>
+</div>
+<p>This is an example of the same application deployed on GKE.</p>
+<div class="figure">
+<img src="img/shiny-gke.gif" alt="" />
+<p class="caption">Shiny app in action</p>
+</div>
+<div class="figure">
+<img src="img/gke-lb.jpg" alt="" />
+<p class="caption">GCP Load Balancer</p>
+</div>
+<p>In order to expose the Shiny Application to the internal or external network, it is needed to forward the traffic from the GKE cluster. This could be achieved via the GCP Load balancer. Since Shiny Server is a stateful application, session affinity is also needed in case there are more than one active pods which are also referred to as sticky sessions.</p>
+</div>
+<div id="shiny-server-on-gce" class="section level2 hasAnchor" number="3.3">
+<h2><span class="header-section-number">3.3</span> Shiny Server on GCE<a href="use-cases.html#shiny-server-on-gce" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Google Compute Instance was selected as the third example and perfectly encapsulates Infrastructure as a Service use case. There we need to prepare everything from scratch - use a fresh VM image of the OS we want to use, install all the dependencies and applications we want to use. Later this virtual machine could serve as a centralized place to serve multiple Shiny R Applications.</p>
+<p>The main.tf consists of region selection, virtual machine configuration (resources, OS, installed packages), and network (firewall) configuration:</p>
+<pre class="terraform"><code>provider &quot;google&quot; {
+project     = &quot;vgtu-cloud&quot;
+region      = &quot;europe-west1&quot;
+}
+
+// Terraform plugin for creating random ids
+resource &quot;random_id&quot; &quot;instance_id&quot; {
+byte_length = 8
+}
+
+// Google compute instance, Ubuntu Server - Europe region
+resource &quot;google_compute_instance&quot; &quot;default&quot; {
+name         = &quot;shiny-vm-${random_id.instance_id.hex}&quot;
+machine_type = &quot;f1-micro&quot;
+zone         = &quot;europe-west1-b&quot;
+
+boot_disk {
+  initialize_params {
+    image = &quot;ubuntu-2004-lts&quot;
+  }
+}
+
+// Install R, Shiny Server open source and all the dependencies
+metadata_startup_script = &quot;sudo apt-get update; sudo apt-get install -yq build-essential; sudo apt-get install -yq r-base-dev; sudo apt-get install -yq r-base; sudo apt-get install -yq r-base-dev ; sudo apt-get install -yq libxml2-dev; sudo apt-get install -yq libssl-dev; sudo apt-get install -yq libcurl4-openssl-dev; sudo apt-get install -yq r-base; sudo apt-get install -yq  gdebi-core ; sudo apt-get install -yq r-cran-rcpp; sudo apt-get install -yq g++; sudo wget https://download3.rstudio.org/ubuntu-14.04/x86_64/shiny-server-1.5.17.973-amd64.deb ; sudo gdebi -n shiny-server-1.5.17.973-amd64.deb;&quot;
+
+network_interface {
+  network = &quot;default&quot;
+  
+  access_config {
+    // Include this section to give the VM an external ip address
+  }
+}
+}
+// Firewall exeptions
+resource &quot;google_compute_firewall&quot; &quot;default&quot; {
+name    = &quot;shiny-app-firewall&quot;
+network = &quot;default&quot;
+source_ranges = [&quot;0.0.0.0/0&quot;]
+allow {
+  protocol = &quot;tcp&quot;
+  ports    = [&quot;3838&quot;]
+}
+}</code></pre>
+<p>After the initiation, terraform generates a plan for the infrastructure. Once this plan is revised, it can be applied and resources will be created.</p>
+<pre><code>Terraform used the selected providers to generate the following execution
+plan. Resource actions are indicated with the following symbols:
+  + create
+
+Terraform will perform the following actions:
+  
+  # google_compute_firewall.default will be created
+  + resource &quot;google_compute_firewall&quot; &quot;default&quot; {
+    + creation_timestamp = (known after apply)
+    + destination_ranges = (known after apply)
+    + direction          = (known after apply)
+    + enable_logging     = (known after apply)
+    + id                 = (known after apply)
+    + name               = &quot;shiny-app-firewall&quot;
+    + network            = &quot;default&quot;
+    + priority           = 1000
+    + project            = (known after apply)
+    + self_link          = (known after apply)
+    + source_ranges      = [
+      + &quot;0.0.0.0/0&quot;,
+    ]
+    
+    + allow {
+      + ports    = [
+        + &quot;3838&quot;,
+      ]
+      + protocol = &quot;tcp&quot;
+    }
+  }
+
+# google_compute_instance.default will be created
++ resource &quot;google_compute_instance&quot; &quot;default&quot; {
+  + can_ip_forward          = false
+  + cpu_platform            = (known after apply)
+  + current_status          = (known after apply)
+  + deletion_protection     = false
+  + guest_accelerator       = (known after apply)
+  + id                      = (known after apply)
+  + instance_id             = (known after apply)
+  + label_fingerprint       = (known after apply)
+  + machine_type            = &quot;f1-micro&quot;
+  + metadata_fingerprint    = (known after apply)
+  + metadata_startup_script = &quot;sudo apt-get update; sudo apt-get install -yq build-essential python-pip rsync; pip install flask; sudo apt-get install -yq r-base-dev; sudo apt-get install -yq r-base; sudo apt-get install -yq libxml2-dev; sudo apt-get install -yq libssl-dev; sudo apt-get install -yq libcurl4-openssl-dev; sudo apt-get install -yq r-base ;sudo apt-get install -yq r-base-dev ; sudo apt-get install -yq  gdebi-core ; sudo apt-get install -yq r-cran-rcpp; sudo apt-get install -yq g++; sudo wget https://download3.rstudio.org/ubuntu-14.04/x86_64/shiny-server-1.5.17.973-amd64.deb ; sudo gdebi -n shiny-server-1.5.17.973-amd64.deb;&quot;
+  + min_cpu_platform        = (known after apply)
+  + name                    = (known after apply)
+  + project                 = (known after apply)
+  + self_link               = (known after apply)
+  + tags_fingerprint        = (known after apply)
+  + zone                    = &quot;europe-west1-b&quot;
+  
+  + boot_disk {
+    + auto_delete                = true
+    + device_name                = (known after apply)
+    + disk_encryption_key_sha256 = (known after apply)
+    + kms_key_self_link          = (known after apply)
+    + mode                       = &quot;READ_WRITE&quot;
+    + source                     = (known after apply)
+    
+    + initialize_params {
+      + image  = &quot;ubuntu-2004-lts&quot;
+      + labels = (known after apply)
+      + size   = (known after apply)
+      + type   = (known after apply)
+    }
+  }
+  
+  + confidential_instance_config {
+    + enable_confidential_compute = (known after apply)
+  }
+  
+  + network_interface {
+    + ipv6_access_type   = (known after apply)
+    + name               = (known after apply)
+    + network            = &quot;default&quot;
+    + network_ip         = (known after apply)
+    + stack_type         = (known after apply)
+    + subnetwork         = (known after apply)
+    + subnetwork_project = (known after apply)
+    
+    + access_config {
+      + nat_ip       = (known after apply)
+      + network_tier = (known after apply)
+    }
+  }
+  
+  + reservation_affinity {
+    + type = (known after apply)
+    
+    + specific_reservation {
+      + key    = (known after apply)
+      + values = (known after apply)
+    }
+  }
+  
+  + scheduling {
+    + automatic_restart   = (known after apply)
+    + min_node_cpus       = (known after apply)
+    + on_host_maintenance = (known after apply)
+    + preemptible         = (known after apply)
+    
+    + node_affinities {
+      + key      = (known after apply)
+      + operator = (known after apply)
+      + values   = (known after apply)
+    }
+  }
+}
+
+# random_id.instance_id will be created
++ resource &quot;random_id&quot; &quot;instance_id&quot; {
+  + b64_std     = (known after apply)
+  + b64_url     = (known after apply)
+  + byte_length = 8
+  + dec         = (known after apply)
+  + hex         = (known after apply)
+  + id          = (known after apply)
+}
+
+Plan: 3 to add, 0 to change, 0 to destroy.</code></pre>
+<p>After the terraform apply, a virtual machine is created in Google Compute Instance having all the libraries installed and network configuration applied.</p>
+<div class="figure">
+<img src="img/ce-shiny-server-instance.png" alt="" />
+<p class="caption">CE instance</p>
+</div>
+<p>The shiny-server is reachable for everyone. More granular firewall rules could be applied to not expose it to the whole internet. Additional authentication and HTTPS protocol could be applied if needed (since Shiny Server Open Source version does not support HTTPS by default, this could be handled via other tools, such as Apache Server, Nginx, or Google Load Balancer service).</p>
+<div class="figure">
+<img src="img/ce-shiny-server.gif" alt="" />
+<p class="caption">Shiny Server is Alive</p>
+</div>
+</div>
+<div id="limitations" class="section level2 hasAnchor" number="3.4">
+<h2><span class="header-section-number">3.4</span> Limitations<a href="use-cases.html#limitations" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ul>
+<li>VM image templates with preinstalled software can be used for faster deployments/replication</li>
+<li>Integration with git-flow and Github actions - branches, depending on the environments, terraform state saved in GCS buckets</li>
+<li>More granularity in terraform scripts - modules for infrastructure, network, variables, outputs, etc.</li>
+<li>VPC peering could be used as an alternative to public IPs - it allows internal IP address connectivity across two Virtual Private Cloud (VPC) networks regardless of whether they belong to the same project or the same organization. Service owners do not need to have their services exposed to the public Internet and deal with its associated risks.</li>
+</ul>
+</div>
+<div id="security-experiment" class="section level2 hasAnchor" number="3.5">
+<h2><span class="header-section-number">3.5</span> Security Experiment<a href="use-cases.html#security-experiment" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Computer networks are prone to attacks and it has a wide range of attacks associated with them. Cloud is not an exception and even holds more risk. It can be prone to Denial-of-service, Eavesdropping, Host Attacks, Password Guessing, Protocol-based, and Social Engineering attacks <span class="citation">(<a href="#ref-attacks" role="doc-biblioref">Chopra 2016</a>)</span>.</p>
 <p>As an experiment, the firewall was opened to the whole world and network activity was monitored for one week. While the activity in the Compute Instance (Shiny Server hosted on a Virtual Server) was marginal, the exposed Shiny Server instance on Google Kubernetes Cluster was scanned extensively. This could be due to the rules on how Google generates IP addresses for corresponding instances. Moreover, GKE was exposed on port 80 which is a standard HTTP port, while the standard port of shiny server (3838) was used for Compute Instance, which is not that common configuration.</p>
 <div class="figure">
@@ -175,26 +536,17 @@ div.csl-indent {
 </div>
 <p>The analysis proves that an incorrectly configured firewall poses one of the most significant security risks. Misconfigured applications could serve as a back door and is a low handing fruit for hackers - e.g. it is easy to run a port scan for a specific IP range and use a collection of scripts/exploits to check whether there are any holes in the application. If any sensitive data where General Data Protection Regulation is not applied (i.e. USA, China, Russia).</p>
 </div>
-<div id="shiny-auth" class="section level2 hasAnchor" number="6.2">
-<h2><span class="header-section-number">6.2</span> Shiny auth<a href="use-cases.html#shiny-auth" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-</div>
-<div id="cloud-native-application" class="section level2 hasAnchor" number="6.3">
-<h2><span class="header-section-number">6.3</span> Cloud-native application<a href="use-cases.html#cloud-native-application" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div id="docker" class="section level3 hasAnchor" number="6.3.1">
-<h3><span class="header-section-number">6.3.1</span> Docker<a href="use-cases.html#docker" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<pre><code>gcloud auth login --project shiny-cloud-345816
-PROJECTID=$(gcloud config get-value project)
-docker build . -t gcr.io/$PROJECTID/signin
-docker push gcr.io/$PROJECTID/signin</code></pre>
-<p>DNS</p>
-<pre><code>gcloud beta dns --project=shiny-cloud-345816 managed-zones create shinycloud-online --description=&quot;&quot; --dns-name=&quot;shinycloud.online.&quot; --visibility=&quot;public&quot; --dnssec-state=&quot;off&quot; --log-dns-queries</code></pre>
-</div>
-</div>
 </div>
 <h3>References<a href="references.html#references" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div id="refs" class="references csl-bib-body hanging-indent">
 <div id="ref-attacks" class="csl-entry">
 Chopra, Aakanksha. 2016. <span>“Security Issues of Firewall.”</span> <em>International Journal of P2p Network Trends and Technology</em> 22 (January): 4–9. <a href="https://doi.org/10.14445/22492615/IJPTT-V22P402">https://doi.org/10.14445/22492615/IJPTT-V22P402</a>.
+</div>
+<div id="ref-shinydockerrun" class="csl-entry">
+Christensen, Peer. 2021. <span>“Dockerizing and Deploying a Shiny Dashboard on Google Cloud,”</span> April. <a href="https://towardsdatascience.com/dockerizing-and-deploying-a-shiny-dashboard-on-google-cloud-a990ceb3c33a">https://towardsdatascience.com/dockerizing-and-deploying-a-shiny-dashboard-on-google-cloud-a990ceb3c33a</a>.
+</div>
+<div id="ref-shinydocker" class="csl-entry">
+Xu, Mingchu. 2020. <span>“An Open-Source Solution to Deploy Enterprise-Level r Shiny Applications,”</span> July. <a href="https://towardsdatascience.com/an-open-source-solution-to-deploy-enterprise-level-r-shiny-applications-2e19d950ff35">https://towardsdatascience.com/an-open-source-solution-to-deploy-enterprise-level-r-shiny-applications-2e19d950ff35</a>.
 </div>
 </div>
             </section>
@@ -202,7 +554,7 @@ Chopra, Aakanksha. 2016. <span>“Security Issues of Firewall.”</span> <em>Int
           </div>
         </div>
       </div>
-<a href="security-considerations.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="public-cloud-setup.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 <a href="references.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>

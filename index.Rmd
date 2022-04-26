@@ -1,22 +1,29 @@
 --- 
-  title: "FMISD19004 Cloud Computing Technologies"
+title: "FMISD13207 Cloud Security Technologies"
 author: "Kęstutis Daugėla"
 date: "`r Sys.Date()`"
 output:
   pdf_document: default
-html_document:
-  df_print: paged
+  html_document:
+    df_print: paged
 bibliography: references.bib
 biblio-style: apalike
 link-citations: yes
 site: bookdown::bookdown_site
 citation_package: natbib
 ---
-  
-  # Introduction {-}
-  
-  
-  The underlying concept of cloud computing was introduced way back in 1960s by John McCarthy in his book, “The challenge of the Computer Utility”. His opinion was that “computation may someday be organized as a public utility.” The rest became history and the majority of the software used now is running in the cloud seamlessly [@CloudHistoryOverview].
+
+# Introduction {-}
+
+Information Security Fundamentals (information security problematics, classification and evolution of threats, identification, authentication, access control, security
+principals, strategies, models, taxonomies and antologies); Cryptography (simetric and public key cryptography, DES, AES, RSA. stream ciphers, cryptographic
+protocols, authentication, electronic signature, management of electronic identity); Network Security (routing, firewalls, VPN, web security, network perimeter
+protection, host-level protection, authentication technologies); Attacking Information Technology Systems (attack types, real-life case studies, intrusion detection,
+formal analysis techniques); Information Security Technologies (antivirus, IDS, host and perimeter protection systems, Honeypots); Implementing Effective
+Information Security Programs (legal, regulatory and privacy issues, security standarts, security best practices, security policy).
+
+
+The underlying concept of cloud computing was introduced way back in 1960s by John McCarthy in his book, “The challenge of the Computer Utility”. His opinion was that “computation may someday be organized as a public utility.” The rest became history and the majority of the software used now is running in the cloud seamlessly [@CloudHistoryOverview].
 
 ![The history of the cloud - image source https://itchronicles.com/](img/evolution_of_cloud.png)
 
@@ -25,84 +32,101 @@ Cloud can solve a lot of problems nowadays - starting with reduced cost, enhance
 Is there anything revolutionary in the cloud offerings today? Definitely, no - people used these capabilities for ages. The only difference is the scale and popularity these days.
 
 Cloud services usually are grouped into three categories:
-  
-  * SaaS (Software as a service) is a software distribution model in which a cloud provider hosts applications and makes them available to end-users over the internet
+
+* SaaS (Software as a service) is a software distribution model in which a cloud provider hosts applications and makes them available to end-users over the internet
 * PaaS (Platform as a service) is a complete development and deployment environment in the cloud, with resources that enable you to deliver everything from simple cloud-based apps to sophisticated, cloud-enabled enterprise applications
 * IaaS (Infrastructure as a service) is a type of cloud computing service that offers essential compute, storage, and networking resources on-demand, on a pay-as-you-go basis
 
 ![IaaS vs PaaS vs SaaS - image source https://www.bigcommerce.com/blog/saas-vs-paas-vs-iaas/](img/saas-vs-paas-vs-iaas-breakdown.jpg)
 
-However,  despite  the  gain  achieved  from  cloud computing, organizations are slow in fully accepting it due to security issues and  challenges associated with it [@Cloud-computing].
+However,  despite  the  gain  achieved  from  cloud computing, organizations are slow in fully accepting it due to security issues and  challenges associated with it [@Cloud-computing]. However, almost every cloud-ready company uses the public cloud (97%) to some extent leaving hybrid cloud setup the dominant one (78%). Companies rarely use public or private cloud alone (19% vs 2% respectively). According to Forbes, there are now 77 % of organizations, having one or some parts of their systems in the cloud. 
+
+Cloud service providers follow a shared security responsibility model, which means that your security team retains some security duties as you migrate applications, data, containers, and workloads to the cloud, while the provider takes part, but not all, of the responsibility. Clearly defining your duties from those of your providers is critical for minimizing the risk of introducing vulnerabilities into your public, hybrid, or multi-cloud systems, as shown in the graph below.
+
+![Shared responsibility in the cloud - image source www.microsoft.com](img/perceptible-shifts-in-responsibility-graphic.png)
+Research
+challenges and directions have been categories into 6
+groups namely Security, Autonomic Resource
+Management (ARM), Cloud Adoption, Cloud
+development and benchmarking big data technologies and
+cloud computing and social clouds. Security is the most
+common challenge of cloud computing. This paper is the
+outcome of literature review of over 190 resources
+including books, journal and conference papers, research
+project reports and deliverables, European Commission
+roadmaps and calls for proposals, online weblogs, white
+papers, business reviews, company websites, profiles and
+offered services by cloud providers. [@cloudsecsurvey]
 
 
-In terms of the leading cloud service providers, the same three names usually appear - Amazon (AWS), Microsoft (Azure), and Google (GCP). These are also one of the 5 largest companies in the world by market capitalization. While AWS has strength in the engineering supply chain, large financial commitments and innovation, Google demonstrates significant revenue growth, innovation velocity and shows promising results in surveys. Moreover, since Google developed Kubernetes internally, GCP has the most fully-featured Kubernetes service of any provider in this market. Microsoft, on the other hand, already had a good reputation and trust as a software company [@Gartner].
+One of our main findings is that hacking breaches are
+the most important in terms of leaked data and in terms of financial impact. We found that the most targeted type of
+organisation are medical organisations and BSOs since they possess the most sensitive personal data. Moreover, we
+observed that in the recent years the frequency hacking breaches on the two sectors has intensified, with an inter-arrival
+time of 4 and 7.5 days respectively. These findings implies taking serious actions to secure personal data especially
+for MED and BSO organization [@databreaches]
 
-![Magic Quadrant for Cloud Infrastructure and Platform Services](img/gartner.png)
+![World's Biggest Data Breaches & Hacks - image source https://www.informationisbeautiful.net/visualizations/worlds-biggest-data-breaches-hacks/](img/data-breaches.png)
 
+# Type of attacks
 
-# Moving to Cloud
+The literature has examined a variety of security flaws[@threats]. To aid readers in comprehending some of the most prevalent cyber security weaknesses, the following are detailed:
 
-## Managing SLA (SLO) requirements
+![The Vulnerabilities that a Business can Experience - image source https://blog.ecosystm360.com/cyber-attacks-threats-risks/](img/Types-of-cyber-attacks.jpg)
 
-One of the biggest challenges for potential cloud customers is to evaluate SLA’s of cloud vendors [@CloudSLA] [@CloudSLAComprehensive]. There are four major cloud setups in general:
-  
-  
-  1) **Public cloud**. In this setup, users can access the resource pool that is managed by a cloud provider. Since this is a public cloud environment, it can pose important security concerns and extra measures need to be taken in order to prevent security issues.
-2) **Private cloud**. The vendor provides the services which prevent public assess (e.g. dedicated servers)
-3) **Community cloud** The cloud services are provided to a specified group where all members are entitled to equal access to the shared services.
-4) **Hybrid cloud** The cloud services are provided as multiple cloud combustion (public cloud, private cloud, and community cloud)
+* **Malware**. For the previous decade, malware attacks have been the most serious cyber security danger to many enterprises [@malware]. Malware The attacker uses malicious software to gain unauthorized access to computer systems by exploiting their security flaws. Malware is motivated by an extreme financial or political gain, which increases an attacker's drive to compromise as many network devices as possible in order to accomplish their harmful goals. Viruses, worms, trojans, backdoors and adware are but a few examples that fall under the umbrella of malware [@malware2].
 
-![Cloud Strategy - image source Flexera](img/cloudstrategy.png)
+* **DDoS**. Cyber security is comprised on three essential components: confidentiality, integrity, and availability. Denial of Service (DoS) attacks and their version, Distributed Denial of Service (DDoS), are conceivable threats that deplete system resources, rendering them inaccessible to authorized users, hence breaching one of the security components—availability. DoS attacks on networks are widespread and have the potential to be catastrophic. Numerous types of DoS attacks have been identified thus far, and the most of them are extremely efficient at disrupting network connectivity. Both IPv4 and IPv6 are quite vulnerable to these attacks [@ddos]. The frequency and scale of attacks have escalated in recent years, from a few megabytes to hundreds of gigabytes. It is difficult to identify these attacks efficiently due to changes in attack patterns or new forms of attacks [@ddos2]. 
 
-It makes sense to compare the actual numbers between the  cloud strategy presented in 2019 with the actual survey made in 2021. Almost every cloud-ready company uses the public cloud (97%) to some extent leaving hybrid cloud setup the dominant one (78%). Companies rarely use public or private cloud alone (19% vs 2% respectively).
+* **Phishing** is a very effective approach of cybercrime that criminals use to fool consumers and steal critical data. Since the first phishing assault was disclosed in 1990, the attack vector has grown into a more sophisticated attack vector. At the moment, phishing is regarded to be one of the most prevalent forms of fraud on the Internet. Phishing attacks can result in significant losses for their victims, including sensitive data, identity theft, businesses, and state secrets. [@phishing]
 
-![Cloud Strategy - image source Flexera](img/types-of-clouds-used.png)
+* **SQL Injection Attack (SQLIA)** is one of the most terrifying risks to web applications. Input validation flaws were the cause of a SQL injection attack on the web. SQLIA is a harmful behavior that exploits invalid SQL statements in order to exploit data-driven applications. This vulnerability allows an attacker to exploit manipulated input to gain access to the application's back-end databases through the application's interaction with them. As a result, the attacker can acquire access to the database without obtaining genuine clearance by introducing, changing, or removing key information [@sqlia].
 
-When it comes to functionality, cloud providers could cover all of the customers needs either via managed services (e.g. BigQuery, Amazon Redshift, S3, Cloud Pub/Sub) or compute services (e.g. Virtual Machines, Compute engine). While Amazon has the biggest number of internal services and market share, Azure and GCP are chasing the leader rapidly. 
+* **Man-in-the-middle**. An attack in which an outsider or third party infiltrates the space between two online users while both users are unaware. In this instance, the malware primarily monitors and has the capacity to modify the information classified exclusively to these two people. Generally, it is referred to as a protocol to refer to an unauthorized user within the system who has the ability to view and modify the system's data without leaving a trail for the system's existing users [@mitm].
 
-![Cloud Services comparison - image source N-IX.com (2020)](img/comparison.jpg)
-
-Another important factor in choosing a cloud provider is the price. In this area, GCP provides the lowest price for general purpose machines, while compute optimized machines are a little bit cheaper in AWS. Azure provides the best price for memory optimized machines. However, these costs could be optimized significantly by having an agreement with the cloud provider or implementing resource optimizations afterward. 
-
-![Pricing comparison - image source cast.ai](img/pricing.PNG)
-
-Taking the functional requirements aside, security requirements represent a major issue that has to be met in order of easing some of these obstacles [@CloudRole]. Gartner predicts that through 2025, 99% of cloud security failures will be the customer's fault.
-
-Having all these things in mind, it is really hard to draw a conclusion which Cloud provider to choose. At the end of the day, it depends on the specific business requirements, regulations, and personal preference. For instance, if the architecture is heavily based on containers and microservices, GCP could be the best choice since it has the most complete container-based model. The biggest selling point of AWS is that AWS has the greatest Global reach while Azure has more experience in hybrid cloud offerings and Windows-based organization support.
+* **Cross-site scripting** is a serious issue in Web Applications. With more connected devices that use a variety of Web Applications for various tasks, the potential of XSS assaults grows. By exploiting XSS vulnerabilities in Web applications, hackers can steal victims' session details or other sensitive information[@xss].
 
 
-![Conclusion - image source www.varonis.com](img/varonis_comparison.png)
+* **Zero-day exploit** continue to be a significant security concern to enterprises. When a vendor becomes aware of a zero-day vulnerability, releasing a fix in a timely manner becomes a priority due to the possibility of zero-day exploits. However, we continue to lack knowledge on the factors that influence the time it takes for such vulnerabilities to be patched. It was discovered that while IT companies are quick to release timely updates for zero-day vulnerabilities that affect multiple vendors, products, and versions, vulnerabilities that require privileges and compromise confidentiality are less likely to be patched on time. [@zeroday]. 
+
+* **BEC (Business Email Compromise)** is a sophisticated email fraud scheme that targets firms who deal with international suppliers and frequently transfer payments via wire transfers. BEC attacks are designed to eliminate security protections by capitalizing on flaws in human behavior and decision-making [@BEC]. 
+
+# Data Breach - Case Study
+
+## Twitch
+
+Twitch is a global community that comes together each day to create multiplayer entertainment: unique, live, unpredictable experiences created by the shared interactions of millions. Acquired by Amazon in 2014.
+
+![UpGuard Security Rating - image source https://www.upguard.com/](img/twitchsec.png)
+
+Twitch recently suffered a data breach that, according to security analysts, may have revealed extensive information about the platform's computer code, security vulnerabilities, and payments to content providers. According to the source, the file contained the history of Twitch's source code; proprietary software development kits; an unreleased competitor to Steam, an online games store; programs used by Twitch to test its own security vulnerabilities; and a list of the amount of money earned by each of the site's streamers since 2019 [NY Times - A ‘potentially disastrous’ data breach hits Twitch, the livestreaming site](https://www.nytimes.com/2021/10/06/technology/twitch-data-breach.html)
+
+As another security proffessional indicates in [medium.com - Thoughts on the Twitch Breach](https://medium.com/cloud-security/thoughts-on-the-twitch-breach-a2840470387b): the attackers did not gain access through a zero-day vulnerability or a supply chain assault. Something existed in a state that was not compliant with or anticipated of it.
+
+It appears that the problem was a misconfiguration as this statement says something was in error. The attackers did not get in due to a zero-day or supply chain attack. Something existed in a non-compliant or expected state. It sounds as though a server was running something on an Internet-facing port. However, the exposed data could have existed in an S3 bucket and all we know is that a server entered an undesirable state, which resulted in data disclosure. The misconfiguration could be as simple as a server being allowed excessive permissions and access, or as complex as a server being exposed to the Internet when it should have been in a private network.
 
 
-## Migration Approaches
+Many people host their data on AWS and might be thinking, "If Amazon can’t keep data secure on AWS, who can?". 
 
-The complexity of migrating existing applications varies, depending on the architecture and existing licensing arrangements. A virtualized, service-oriented architecture can be put on the low-complexity end of the spectrum, and a monolithic mainframe at the high-complexity end of the spectrum [@awsmigration]. Cloud  computing  advocates  that  resources  should  be  controlled  on  demand,  and  can  be flexibly and  elastically expanded  and contracted  according to  the change of demand [@CloudMigration]. Therefore it is preferred that applications moving into the cloud must run in a virtualized way, while virtual machines could work as a direct entry for other applications which cannot run directly in the cloud environment [@CloudMigrationReview]. Automation is an important aspect of migration - while aiming for full automation could seem an overwhelming task, this will significantly reduce the time spent in the future and the challenge of managing these applications [@cloudautomationreview].
-
-![Cloud migration strategy - image source aws.amazon.com](img/migration_strat.png)
+Assess that you have zero-trust networking and permissions that provide persons and applications only the access they require. In an enterprise of that size, source control systems, if that is what was impacted in this case, should never be exposed directly to the entire Internet. Small enterprises may do so temporarily to stay afloat, but the majority of source control solutions allow you to restrict access to specific IP ranges.
 
 
-According to Forbes, there are now 77 % of organizations, having one or some parts of their systems in the cloud. The budget is usually allocated through multiple services. E.g. in 2018 on average, the distribution of the budget accordingly: 48% went to SaaS, 30% to IaaS, and 21% to PaaS. 
+## Phizer
 
+Pfizer Inc., the world's largest pharmaceutical company, has experienced a massive data breach, with patient information discovered exposed on unprotected cloud storage.
 
+The exposed data was discovered in a Google Cloud storage bucket that had been misconfigured. Hundreds of discussions between Pfizer's automated customer service software and consumers who used the company's prescription pharmaceuticals, including Lyrica, Chantix, Viagra, and cancer medicines Ibrance and Aromasin, were included in the data. Along with sensitive medical information, the transcripts included full names, home addresses, and email addresses, which hackers could use to conduct highly effective phishing attempts against victims: [Pfizer suffers huge data breach on unsecured cloud storage](https://pf-media.co.uk/news/pfizer-suffers-huge-data-breach-on-unsecured-cloud-storage/). It is evident that data storage in the public cloud has become the standard, and businesses of all sizes now face complicated identity and data management challenges. Capital One demonstrated, and Pfizer has confirmed, that even with the largest teams, funds, and skill sets, the public cloud is highly difficult. When corporate organizations move at the speed of the cloud and innovate at a breakneck pace, errors and data exposure are inevitable if the necessary technologies are not in place.
 
-## Kubernetes in a nutshell
+## Citybee
 
-While virtualized applications are highly preferred as opposed to IaaS approach (virtual machines), it makes sense to dig deeper in kubernetes and docker setup, regardless of the chosen managed service.
+Lithuanian police were investigating after 110,000 people's personal information was exposed to an internet hacker website. CityBee, a car-sharing service, revealed that the breach compromised the records and information of thousands of its clients. [euronews.com - Thousands of CityBee users have their personal data leaked online](https://www.euronews.com/2021/02/17/thousands-of-citybee-users-have-their-personal-data-leaked-online). As the attacker stated, "CityBee was using a service provided by Microsoft called Azure Blob, which is used as storage of some sorts. Now Microsoft allows you to secure those blobs with authentication, which Citybee for some reason chose not to." He was able to search CityBee in a  DNS record called CNAME which linked to their azure blob and other things like their website. Even a [step-by-step instruction](https://kernal.eu/posts/citybee-leak/) was provided by the hacker. Essentially, it was a BACPAC file named CitybeeProduction, which contained the metadata and data from the database. Citybee also used a very weak SHA-1 encryption algorithm for passwords without any salt added.
 
-![Cloud Strategy - image source Flexera](img/conteiners.jpg)
+![Citybee production database leak - image source https://cybernews.com/](img/citybee-full-database-post.png)
+On November 29, 2021, the Lithuanian data protection authority (VDAI) imposed a fine of EUR 110 000 on UAB Prime Leasing, which manages the short-term car rental platform “CityBee” (Company). VDAI found that it had failed to ensure the security of the processing of personal data.
 
-Kubernetes was founded by Ville Aikas, Joe Beda, Brendan Burns, and Craig McLuckie in collaboration with Google engineers Brian Grant and Tim Hockin in mid-2014. Google's Borg system heavily influenced kubernetes design [@Borg] [@BorgKubernetes]. While the Borg project was implemented entirely in C++, Kubernetes was rewritten in Go language. The main goal of kubernetes was to build on the capabilities of containers and provide significant gains in programmer productivity while easing the management of the system. 
+# Public Cloud
 
-![Container evolution - kubernetes.io](img/container_evolution.png)
-
-Kubernetes is the most popular container orchestration platform that enables users to create and run multiple containers in cloud environments. Kubernetes offers resource management to isolate the resource usage of containers on a host server because performance isolation is an important factor in terms of service quality.
-
-![The components of a Kubernetes cluster - kubernetes.io](img/components-of-kubernetes.png)
-
-
-# Public Cloud Setup
-
-## Security
+## Public Cloud Security
 
 Cloud security is a critical matter. Most companies worry that highly sensitive data and intellectual property may be exposed through accidental leaks or due to increasingly sophisticated cyber attacks. Gartner predicts that through 2025, 99% of cloud security failures will be the customer's fault.
 
@@ -149,339 +173,45 @@ The whole idea behind IaC is simple - developers can write declarative statement
 
 Terraform is one of the most popular ways to implement this pipeline, especially in a Cloud context. It is an open-source tool that lets you provision Google Cloud resources with declarative configuration files-resources such as virtual machines, containers, storage, and networking. It lets users manage Terraform configuration files in source control to maintain an ideal provisioning state for testing, production, and other environments. [@iac]
 
-
 ![Terraform example, source - cloud.google.com](img/iac_example.PNG)
 
+# Project Scope
 
-# Use Cases
+## Platform for anatical applications
 
-## Shiny Server on Cloud Run
+Shiny Server is a powerful open source back end application. It creates a web server optimized for hosting Shiny applications. Shiny Server enables you to host your apps in a controlled environment, such as within your corporation, ensuring that your Shiny app (and any data it requires) never leaves your control.
 
-R is a programming language and free software environment for statistical computing and graphics. It is widely used among statisticians and data miners for developing statistical software and data analysis. R is usually used internally, mostly for interactive analysis and statistical modeling, but recently there are more and more applications in terms of WEB applications and APIs. While R is not the most popular language, it has no luxury of possessing of the box serving platform in most of the cloud providers. However, it can be nicely integrated with docker having all the dependencies in place and encapsulated application in a single container. This practice greatly speeds up the workflow of software development and deployment. In this proof of concept we will suggest the best approach of migrating R applications, shiny apps, and APIs having a cloud provider selected (GCP).
+The majority of Shiny apps are deployed within an organization's firewall, and because you can generally trust that your colleagues will not attempt to hack your app64, you don't need to worry about security. If, on the other hand, your app contains data that only a subset of your colleagues should have access to, or if you wish to make your app publicly accessible, you will need to invest some effort in security. When it comes to app security, there are two critical components to safeguard: your data and your compute resources.
 
-![R applications - image source ds4ps.org](img/R.png)
+![Shiny Server vs Shiny Server Pro](img/shinyserver.png)
 
-Google Kubernetes Engine (GKE) is a great choice for a container orchestration platform and offers advanced scalability and configuration flexibility. GKE gives complete control over every aspect of container orchestration, from networking to storage, to how you set up observability in addition to supporting stateful application use cases. A fully managed Cloud Run is the additional service based on GKE for those applications which do not need a comprehensive level of cluster configuration and monitoring. Additionally, the serverless approach provides more fine-grained billing and can significantly reduce the cost (e.g. in case the application is not in use). With a manually created GKE cluster, the nodes and environment are always on which means that you are billed for them regardless of utilization. With Cloud Run, the service is merely available and the billing is done only for the actual consumption. 
-
-![Cloud Run - cloud.google.com](img/Cloud-Run.jpeg)
-
+While Shiny Server has [some security features](https://docs.rstudio.com/shiny-server/#authentication-security), the open source version is pretty basic: it does not have authentication, TLS/SSL (traffic is not encrypted), there's no defense to a denial of service attack and there is no way to distribute work for multiple R instances. However, some companies, e.g. [Appsilon](https://appsilon.com/) are specializing in enterprise Shiny dashboards using the open source version. We will attempt to establish a similar secure infrastructure in this project and to expose shiny applications to the world wide web as well.
 
 
-There are even more reasons to choose Cloud Run instead of the Kubernetes cluster. Typically R users are not software engineers, so we should not only aim for simplicity in the development flow, but convenient application management as well (e.g. Google Cloud Run application automatically scales up depending on the traffic). Cloud Run is also integrated with Stackdriver Monitoring, Logging, and Error Reporting services. Moreover, Cloud Run is constructed on the Knative open‐source project, thus enabling the portability of the workflows.
+## Kubernetes and Docker
 
-Let's take the Shiny app example. First, we need to build an app and containerize it. Since Google Cloud Run was introduced only in 2019, there were only a few attempts to leverage this technology against Shiny R applications [@shinydocker] [@shinydockerrun]. Once the application is finished, Dokerfile is needed with all the dependencies included:
-  
-  ```bash
-FROM rocker/shiny-verse:latest
-RUN apt-get update && apt-get install -y \
-sudo \
-pandoc \
-pandoc-citeproc \
-libcurl4-gnutls-dev \
-libcairo2-dev \
-libxt-dev \
-libssl-dev \
-libssh2-1-dev
-RUN R -e "install.packages('shinydashboard', repos='http://cran.rstudio.com/')"
-COPY shiny-server.conf  /etc/shiny-server/shiny-server.conf
-COPY /app /srv/shiny-server/
-  RUN rm /srv/shiny-server/index.html
-EXPOSE 80
-COPY shiny-server.sh /usr/bin/shiny-server.sh
-RUN ["chmod", "+x", "/usr/bin/shiny-server.sh"]
-CMD ["/usr/bin/shiny-server.sh"]
-```
+The Open Source Shiny Server is a stand-alone application that runs on a single thread. While it is feasible to run many instances of shiny servers and divide work via load balancing, this is inefficient and far more expensive than using containerized applications. While it is possible to create the shiny-server container from scratch, there are a lot of pre-build [docker images](https://hub.docker.com/r/rocker/shiny) available including all the dependencies. Moreover, virtualized applications are highly preferred in general as opposed to IaaS approach (virtual machines), it makes sense to dig deeper in kubernetes and docker setup, regardless of the chosen service provider. 
 
-Once the docker image is built, all we need to do is to push that image to Google Container Registry.
+![Container evolution - kubernetes.io](img/container_evolution.png)
 
-![Cloud Run Process - image source https://medium.com/google-cloud](img/cloudrun.jpg)
+Kubernetes was founded by Ville Aikas, Joe Beda, Brendan Burns, and Craig McLuckie in collaboration with Google engineers Brian Grant and Tim Hockin in mid-2014. Google's Borg system heavily influenced kubernetes design [@Borg] [@BorgKubernetes]. While the Borg project was implemented entirely in C++, Kubernetes was rewritten in Go language. The main goal of kubernetes was to build on the capabilities of containers and provide significant gains in programmer productivity while easing the management of the system. 
 
-From there, we can deploy the docker image manually or use other tools such as Terraform to create infrastructure as code. Since deployment on Google Cloud Run is quite simple, Terraform script is not complex. Terraform script source - [github](https://github.com/paeselhz/shiny_gcr_tf).
+![Cloud Strategy - image source Flexera](img/containertools.png)
 
 
-```terraform
-provider "google"{
-  project     = "vgtu-cloud"
-  region      = "europe-west1"
-}
+Kubernetes is the most popular container orchestration platform that enables users to create and run multiple containers in cloud environments. Kubernetes offers resource management to isolate the resource usage of containers on a host server because performance isolation is an important factor in terms of service quality.
 
-resource "google_project_service" "run" {
-  service = "run.googleapis.com"
-}
-
-resource "google_cloud_run_service" "shiny-gcr-tf" {
-  name = "shiny-gcr-tf"
-  location = "europe-west1"
-  template {
-    spec {
-      containers {
-        image = "gcr.io/vgtu-cloud/mydashboard@sha256:3b1d046e01694a681664b350c62fa0b55e69bdd8e4f068642dee8804222b8d00"
-        resources {
-          limits = {
-            cpu = "1000m"
-            memory = "1024Mi"
-          }
-        }
-        ports {
-          container_port = 80
-        }
-      }
-      
-      container_concurrency = 80
-      timeout_seconds = 300
-    }
-    metadata {
-      annotations = {
-        "autoscaling.knative.dev/minScale" = 0
-        "autoscaling.knative.dev/maxScale" = 1
-      }
-    }
-  }
-  
-  traffic {
-    percent = 100
-    latest_revision = true
-  }
-  
-  depends_on = [google_project_service.run]
-}
-
-resource "google_cloud_run_service_iam_member" "allUsers" {
-  service  = google_cloud_run_service.shiny-gcr-tf.name
-  location = google_cloud_run_service.shiny-gcr-tf.location
-  role     = "roles/run.invoker"
-  member   = "allUsers"
-}
-```
-
-Terraform script is initiated by the command line, but could be later reused in any CI/CD pipeline. 
-
-```bash
-terraform init
-terraform plan
-terraform apply 
-```
-
-It is easy to monitor and track deployments in Google Cloud Console interface. Metrics are tracked separately as well. 
-
-![Cloud Run Deployments](img/cloudrundeployments.PNG)
-
-![Cloud Run Metrics](img/cloudrunmetrics.PNG)
-
-It is important to note that Cloud Run is the cheapest and the most convenient option for Shiny R Application deployment. Minimum instances could be set to 0 to make this application offline when it is not in use. Moreover, SSL certificates are applied automatically and are handled by GCP. The application could be reached publicly using this URL: [https://shiny-gcr-tf-b4sly2joja-ew.a.run.app/](https://shiny-gcr-tf-b4sly2joja-ew.a.run.app/)
-
-![Cloud Run Metrics](img/shiny-gcr.gif)
+![The components of a Kubernetes cluster - kubernetes.io](img/components-of-kubernetes.png)
+Environments running Kubernetes consist of the following key components:
 
 
-## Shiny Server on GKE
-
-Google Kubernetes Engine is a straightforward way of setting up a Kubernetes Cluster. These clusters are fully managed by Google Site Reliability Engineers and Google ensures that your cluster is available and up-to-date. It also supports the common Docker container format and runs on Container-Optimized OS.
-
-Once the Cluster is created, the deployment is similar to Cloud Run. It can be done via Google Cloud Console, GCP SDK, or integrated into any CI/CD pipeline using Jenkins, GitActions, or similar tools. 
-
-![Shiny on GKE](img/gke-autoscalling.PNG)
-
-This is an example of the same application deployed on GKE.
-
-![Shiny app in action](img/shiny-gke.gif)
-
-![GCP Load Balancer](img/gke-lb.jpg)
+* Kubernetes control plane—manages Kubernetes clusters and the workloads running on them. Include components like the API Server, Scheduler, and Controller Manager.
+* Kubernetes data plane—machines that can run containerized workloads. Each node is managed by the kubelet, an agent that receives commands from the control plane. 
+* Pods—pods are the smallest unit provided by Kubernetes to manage containerized workloads.  A pod typically includes several containers, which together form a functional unit or microservice.
+* Persistent storage—local storage on Kubernetes nodes is ephemeral, and is deleted when a pod shuts down. This can make it difficult to run stateful applications. Kubernetes provides the Persistent Volumes (PV) mechanism, allowing containerized applications to store data beyond the lifetime of a pod or node.
 
 
-In order to expose the Shiny Application to the internal or external network, it is needed to forward the traffic from the GKE cluster. This could be achieved via the GCP Load balancer. Since Shiny Server is a stateful application, session affinity is also needed in case there are more than one active pods which are also referred to as sticky sessions. 
-
-## Shiny Server on GCE
-
-Google Compute Instance was selected as the third example and perfectly encapsulates Infrastructure as a Service use case. There we need to prepare everything from scratch - use a fresh VM image of the OS we want to use, install all the dependencies and applications we want to use. Later this virtual machine could serve as a centralized place to serve multiple Shiny R Applications. 
-
-The main.tf consists of region selection, virtual machine configuration (resources, OS, installed packages), and network (firewall) configuration:
-  
-  ```terraform
-provider "google" {
-  project     = "vgtu-cloud"
-  region      = "europe-west1"
-}
-
-// Terraform plugin for creating random ids
-resource "random_id" "instance_id" {
-  byte_length = 8
-}
-
-// Google compute instance, Ubuntu Server - Europe region
-resource "google_compute_instance" "default" {
-  name         = "shiny-vm-${random_id.instance_id.hex}"
-  machine_type = "f1-micro"
-  zone         = "europe-west1-b"
-  
-  boot_disk {
-    initialize_params {
-      image = "ubuntu-2004-lts"
-    }
-  }
-  
-  // Install R, Shiny Server open source and all the dependencies
-  metadata_startup_script = "sudo apt-get update; sudo apt-get install -yq build-essential; sudo apt-get install -yq r-base-dev; sudo apt-get install -yq r-base; sudo apt-get install -yq r-base-dev ; sudo apt-get install -yq libxml2-dev; sudo apt-get install -yq libssl-dev; sudo apt-get install -yq libcurl4-openssl-dev; sudo apt-get install -yq r-base; sudo apt-get install -yq  gdebi-core ; sudo apt-get install -yq r-cran-rcpp; sudo apt-get install -yq g++; sudo wget https://download3.rstudio.org/ubuntu-14.04/x86_64/shiny-server-1.5.17.973-amd64.deb ; sudo gdebi -n shiny-server-1.5.17.973-amd64.deb;"
-  
-  network_interface {
-    network = "default"
-    
-    access_config {
-      // Include this section to give the VM an external ip address
-    }
-  }
-}
-// Firewall exeptions
-resource "google_compute_firewall" "default" {
-  name    = "shiny-app-firewall"
-  network = "default"
-  source_ranges = ["0.0.0.0/0"]
-  allow {
-    protocol = "tcp"
-    ports    = ["3838"]
-  }
-}
-```
-
-After the initiation, terraform generates a plan for the infrastructure. Once this plan is revised, it can be applied and resources will be created. 
-
-```
-Terraform used the selected providers to generate the following execution
-plan. Resource actions are indicated with the following symbols:
-  + create
-
-Terraform will perform the following actions:
-  
-  # google_compute_firewall.default will be created
-  + resource "google_compute_firewall" "default" {
-    + creation_timestamp = (known after apply)
-    + destination_ranges = (known after apply)
-    + direction          = (known after apply)
-    + enable_logging     = (known after apply)
-    + id                 = (known after apply)
-    + name               = "shiny-app-firewall"
-    + network            = "default"
-    + priority           = 1000
-    + project            = (known after apply)
-    + self_link          = (known after apply)
-    + source_ranges      = [
-      + "0.0.0.0/0",
-    ]
-    
-    + allow {
-      + ports    = [
-        + "3838",
-      ]
-      + protocol = "tcp"
-    }
-  }
-
-# google_compute_instance.default will be created
-+ resource "google_compute_instance" "default" {
-  + can_ip_forward          = false
-  + cpu_platform            = (known after apply)
-  + current_status          = (known after apply)
-  + deletion_protection     = false
-  + guest_accelerator       = (known after apply)
-  + id                      = (known after apply)
-  + instance_id             = (known after apply)
-  + label_fingerprint       = (known after apply)
-  + machine_type            = "f1-micro"
-  + metadata_fingerprint    = (known after apply)
-  + metadata_startup_script = "sudo apt-get update; sudo apt-get install -yq build-essential python-pip rsync; pip install flask; sudo apt-get install -yq r-base-dev; sudo apt-get install -yq r-base; sudo apt-get install -yq libxml2-dev; sudo apt-get install -yq libssl-dev; sudo apt-get install -yq libcurl4-openssl-dev; sudo apt-get install -yq r-base ;sudo apt-get install -yq r-base-dev ; sudo apt-get install -yq  gdebi-core ; sudo apt-get install -yq r-cran-rcpp; sudo apt-get install -yq g++; sudo wget https://download3.rstudio.org/ubuntu-14.04/x86_64/shiny-server-1.5.17.973-amd64.deb ; sudo gdebi -n shiny-server-1.5.17.973-amd64.deb;"
-  + min_cpu_platform        = (known after apply)
-  + name                    = (known after apply)
-  + project                 = (known after apply)
-  + self_link               = (known after apply)
-  + tags_fingerprint        = (known after apply)
-  + zone                    = "europe-west1-b"
-  
-  + boot_disk {
-    + auto_delete                = true
-    + device_name                = (known after apply)
-    + disk_encryption_key_sha256 = (known after apply)
-    + kms_key_self_link          = (known after apply)
-    + mode                       = "READ_WRITE"
-    + source                     = (known after apply)
-    
-    + initialize_params {
-      + image  = "ubuntu-2004-lts"
-      + labels = (known after apply)
-      + size   = (known after apply)
-      + type   = (known after apply)
-    }
-  }
-  
-  + confidential_instance_config {
-    + enable_confidential_compute = (known after apply)
-  }
-  
-  + network_interface {
-    + ipv6_access_type   = (known after apply)
-    + name               = (known after apply)
-    + network            = "default"
-    + network_ip         = (known after apply)
-    + stack_type         = (known after apply)
-    + subnetwork         = (known after apply)
-    + subnetwork_project = (known after apply)
-    
-    + access_config {
-      + nat_ip       = (known after apply)
-      + network_tier = (known after apply)
-    }
-  }
-  
-  + reservation_affinity {
-    + type = (known after apply)
-    
-    + specific_reservation {
-      + key    = (known after apply)
-      + values = (known after apply)
-    }
-  }
-  
-  + scheduling {
-    + automatic_restart   = (known after apply)
-    + min_node_cpus       = (known after apply)
-    + on_host_maintenance = (known after apply)
-    + preemptible         = (known after apply)
-    
-    + node_affinities {
-      + key      = (known after apply)
-      + operator = (known after apply)
-      + values   = (known after apply)
-    }
-  }
-}
-
-# random_id.instance_id will be created
-+ resource "random_id" "instance_id" {
-  + b64_std     = (known after apply)
-  + b64_url     = (known after apply)
-  + byte_length = 8
-  + dec         = (known after apply)
-  + hex         = (known after apply)
-  + id          = (known after apply)
-}
-
-Plan: 3 to add, 0 to change, 0 to destroy.
-```
-
-After the terraform apply, a virtual machine is created in Google Compute Instance having all the libraries installed and network configuration applied.
-
-![CE instance](img/ce-shiny-server-instance.png)
-
-The shiny-server is reachable for everyone. More granular firewall rules could be applied to not expose it to the whole internet. Additional authentication and HTTPS protocol could be applied if needed (since Shiny Server Open Source version does not support HTTPS by default, this could be handled via other tools, such as Apache Server, Nginx, or Google Load Balancer service). 
-
-![Shiny Server is Alive](img/ce-shiny-server.gif)
-
-## Limitations
-
-* VM image templates with preinstalled software can be used for faster deployments/replication
-* Integration with git-flow and Github actions - branches, depending on the environments, terraform state saved in GCS buckets
-* More granularity in terraform scripts - modules for infrastructure, network, variables, outputs, etc.
-* VPC peering could be used as an alternative to public IPs - it allows internal IP address connectivity across two Virtual Private Cloud (VPC) networks regardless of whether they belong to the same project or the same organization. Service owners do not need to have their services exposed to the public Internet and deal with its associated risks.
-
-## Security Experiment
+## Shiny Server without security
 
 Computer networks are prone to attacks and it has a wide range of attacks associated with them. Cloud is not an exception and even holds more risk. It can be prone to Denial-of-service, Eavesdropping, Host Attacks, Password Guessing, Protocol-based, and Social Engineering attacks [@attacks].
 
@@ -499,4 +229,168 @@ Some of the IPs were crossed check with a publicly available IP database. These 
 
 The analysis proves that an incorrectly configured firewall poses one of the most significant security risks. Misconfigured applications could serve as a back door and is a low handing fruit for hackers - e.g. it is easy to run a port scan for a specific IP range and use a collection of scripts/exploits to check whether there are any holes in the application. If any sensitive data where General Data Protection Regulation is not applied (i.e. USA, China, Russia).
 
+
+# Security considerations
+
+## Certificates and TLS
+
+TLS (Transport Layer Security) encrypts data transmitted over the Internet, ensuring that snoopers and hackers cannot view what you transmit. This is especially important for private and sensitive information such as passwords, credit card numbers, and personal communications. TLS originated from Secure Socket Layers (SSL), which was originally created to secure web sessions in 1994 by Netscape Communications Corporation. SSL 1.0 was never released publicly, while SSL 2.0 was rapidly superseded by SSL 3.0, the foundation for TLS. Historically, data was transferred unencrypted over the Internet, and encryption was often applied piecemeal to critical information such as passwords or payment information. Without TLS, not only may sensitive information such as usernames, passwords, and personal information be easily gathered, but also surfing habits, e-mail conversations, online chats, and conference calls can be observed. By enabling TLS support in client and server apps, it ensures that data exchanged between them is encrypted using secure algorithms and is inaccessible to third parties.
+
+TLS is the most frequently used encryption protocol in the internet. It is composed of two protocols: the TLS Handshake Protocol, which is responsible for authentication and key establishment, and the TLS Record Protocol, which is responsible for the subsequent usage of those keys to secure bulk data.
+
+At a high level, TLS is split into two phases:
+
+* A handshake phase where a secure communication is negotiated and created between two participants.
+* A post-handshake phase where communications are encrypted between the two participants.
+
+
+![A handshake and post-handshake communitcation](img/handshake.png)
+
+TLS 1.2 and earlier versions perform the key exchange once both parties agree on the key exchange algorithm to use. This means they first agree on a method to utilize before exchanging public keys.
+
+To eliminate the first round of negotiation (one client message and one server message) in TLS 1.3, the client transmits a public key speculatively in the very first message (the Client Hello). If the client is unable to correctly forecast the server's key exchange mechanism, the client must send a new Client Hello with the right public key. TLS 1.3 contains numerous such enhancements that are critical for the web. Indeed, many people on the planet have insecure or poor connections, making it critical to restrict non-application communication to a bare minimum. Additionally, unlike prior versions of TLS, all key exchanges in TLS 1.3 are ephemeral. This means that for each new session, both the client and server generate new key pairs and then delete them immediately after the key exchange is complete. 
+
+https://freecontent.manning.com/how-does-tls-work/
+
+![TLS - https://www.a10networks.com/glossary/key-differences-between-tls-1-2-and-tls-1-3/](img/tls.png)
+Handshake:
+
+* Negotiation. TLS is highly configurable. Both a client and a server can be configured to negotiate a range of SSL and TLS versions, as well as a menu of acceptable cryptographic algorithms. The negotiation phase of the handshake aims at finding common ground between the client’s and the server’s configurations, in order to securely connect the two peers.
+* Key exchange. The whole point of the handshake is to perform a key exchange between the two participants. What key exchange algorithm to use? This is one of the things decided as part of the negotiation process.
+* Authentication. It is trivial for a MITM attacker to impersonate any side of a key exchange. For this reason, key exchanges must be authenticated. (Your browser must have a way to make sure that it is talking to google.com and not your Internet service provider, for example.)
+* Session Resumption. As browsers often connect to the same websites again and again, key exchanges can be costly and slow down a user’s experience. For this reason, mechanisms to fast-track secure sessions without redoing a key exchange are integrated into TLS.
+
+In TLS 1.3, to avoid that first negotiating round trip (one client message and one server message), the client speculatively sends a public key in the very first message (the Client Hello). If the client fails to predict the server’s choice of key exchange algorithm then the client will have to send a new Client Hello containing the correct public key. For example:
+
+The client sends a TLS 1.3 Client Hello announcing that it can do either an X25519 or an X448 key exchange. It also sends an X25519 public key.
+The server does not support X25519, but does support X448. It sends a Hello Retry Request to the client announcing that it only supports X448.
+The client sends the same Client Hello but with an X448 public key instead.
+The handshake goes on.
+
+
+RSA and the Diffie-Hellman Key Exchange are the two most popular encryption algorithms that solve the same problem in different ways. In a nutshell, Diffie Hellman approach generates a public and private key on both sides of the transaction, but only shares the public key. Unlike Diffie-Hellman, the RSA algorithm can be used for signing digital signatures as well as symmetric key exchange, but it does require the exchange of a public key beforehand.
+
+After this, a CA can provide a signature over the website’s public key. As the CA’s signature is usually valid for a period of years, we say that it is over a long-term signing public key (as opposed to an ephemeral public key). More specifically, CAs do not actually sign public keys, but instead they sign certificates. A certificate contains the long-term public key, along with some additional important metadata like the name of your domain if you are a web page.
+
+To prove to your browser that the server it is talking to is indeed google.com, the server sends a certificate chain as part of the TLS handshake which comprises of:
+
+Its own (leaf) certificate containing among others the name google.com, google’s long-term signing public key, as well as a signature from a CA.
+A chain of intermediate CA certificates, from the one that signed google’s certificate to the root CA that signed the last intermediate CA.
+
+Once a handshake has taken place, and symmetric keys have been derived, both the client and the server can send each other encrypted application data. But this is not all, TLS ensures that such messages cannot be replayed nor reordered.
+
+To do this, the nonce used by the authenticated encryption algorithm starts at a fixed value and is incremented for each new message. If a message is replayed, or reordered, the nonce will be different from what is expected and decryption will fail. When this happens the connection is kille
+
+https://www.researchgate.net/figure/TLS-key-transport-with-RSA_fig1_234811497
+
+## Auth
+
+Authentication and trust mechanisms are needed by the user and
+provider alike. In this scenario, SSO could be a good starting point. The spam
+e-mail problem can be also mitigated in the cloud (e.g. the spam could be
+verified and filtered in the VS associated with the hypervisor). Some useful
+techniques to mitigate spam in clouds could include the Sender Policy
+Framework (SPF) (Wong and Schlitt 2006) to authenticate the source of each
+e-mail, and the Apache SpamAssassin Project (SPAMAssassin 2014) to
+classify, rank and filter any unwanted e-mail
+
+OAuth 2.0: If you’ve ever signed up to a new application and agreed to let it automatically source new contacts via Facebook or your phone contacts, then you’ve likely used OAuth 2.0. This standard provides secure delegated access. That means an application can take actions or access resources from a server on behalf of the user, without them having to share their credentials. It does this by allowing the identity provider (IdP) to issue tokens to third-party applications with the user’s approval.
+
+OpenID Connect: If you’ve used your Google to sign in to applications like YouTube, or Facebook to log into an online shopping cart, then you’re familiar with this authentication option. OpenID Connect is an open standard that organizations use to authenticate users. IdPs use this so that users can sign in to the IdP, and then access other websites and apps without having to log in or share their sign-in information. 
+
+SAML: You’ve more likely experienced SAML authentication in action in the work environment. For example, it enables you to log into your corporate intranet or IdP and then access numerous additional services, such as Salesforce, Box, or Workday, without having to re-enter your credentials. SAML is an XML-based standard for exchanging authentication and authorization data between IdPs and service providers to verify the user’s identity and permissions, then grant or deny their access to services.
+
+### Authentication
+
+### Authorization
+
+### SAML
+
+## Network
+
+
+# Implementation in GCP
+
+TBA
+
+https://shinycloud.online/
+
+https://login.shinycloud.online/
+
+## Conteinarization
+
+```
+FROM rocker/shiny
+
+# install R package dependencies
+RUN apt-get update && apt-get install -y \
+libcurl4-openssl-dev libssl-dev \
+## clean up
+&& apt-get clean \
+&& rm -rf /var/lib/apt/lists/ \
+&& rm -rf /tmp/downloaded_packages/ /tmp/*.rds
+
+## Install packages from CRAN
+
+RUN install2.r --error \
+    -r 'http://cran.rstudio.com' \
+    googleAuthR
+
+COPY shiny-customized.config /etc/shiny-server/shiny-server.conf
+COPY client.json /srv/shiny-server/client.json
+COPY app.R /srv/shiny-server/app.R
+RUN chmod -R 775 /srv/shiny-server/
+
+EXPOSE 8080
+
+USER shiny
+
+CMD ["/usr/bin/shiny-server"]
+```
+
+
+```
+gcloud auth login --project {project id}
+PROJECTID=$(gcloud config get-value project)
+docker build . -t gcr.io/$PROJECTID/signin
+docker push gcr.io/$PROJECTID/signin
+```
+
+
+### Cloud Run
+
+
+### GKE
+
+
+## Shiny App security features
+
+### Shiny server authentication
+
+### Shiny authorization
+
+
+## Cloud Security
+
+### Firewalls
+
+### DNS
+
+
+```
+gcloud beta dns --project=$PROJECTID managed-zones create shinycloud-online --description="" --dns-name="shinycloud.online." --visibility="public" --dnssec-state="off" --log-dns-queries
+```
+
+
+### Certificates
+
+### Identity aware proxy
+
+### Audit
+
+
+
+
+
 # References {-}
+

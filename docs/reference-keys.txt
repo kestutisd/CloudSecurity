@@ -47,3 +47,8 @@ identity-aware-proxy
 audit
 implementation-in-gcp
 shiny-server-without-security
+migration-approaches
+shiny-server-on-cloud-run
+shiny-server-on-gke
+shiny-server-on-gce
+limitations
