@@ -187,6 +187,8 @@ The majority of Shiny apps are deployed within an organization's firewall, and b
 
 While Shiny Server has [some security features](https://docs.rstudio.com/shiny-server/#authentication-security), the open source version is pretty basic: it does not have authentication, TLS/SSL (traffic is not encrypted), there's no defense to a denial of service attack and there is no way to distribute work for multiple R instances. However, some companies, e.g. [Appsilon](https://appsilon.com/) are specializing in enterprise Shiny dashboards using the open source version. We will attempt to establish a similar secure infrastructure in this project and to expose shiny applications to the world wide web as well.
 
+![Shiny Analytics Hub - Architecture](img/arch.drawio.png)
+
 
 ## Kubernetes and Docker
 
@@ -236,7 +238,9 @@ The analysis proves that an incorrectly configured firewall poses one of the mos
 
 TLS (Transport Layer Security) encrypts data transmitted over the Internet, ensuring that snoopers and hackers cannot view what you transmit. This is especially important for private and sensitive information such as passwords, credit card numbers, and personal communications. TLS originated from Secure Socket Layers (SSL), which was originally created to secure web sessions in 1994 by Netscape Communications Corporation. SSL 1.0 was never released publicly, while SSL 2.0 was rapidly superseded by SSL 3.0, the foundation for TLS. Historically, data was transferred unencrypted over the Internet, and encryption was often applied piecemeal to critical information such as passwords or payment information. Without TLS, not only may sensitive information such as usernames, passwords, and personal information be easily gathered, but also surfing habits, e-mail conversations, online chats, and conference calls can be observed. By enabling TLS support in client and server apps, it ensures that data exchanged between them is encrypted using secure algorithms and is inaccessible to third parties.
 
-TLS is the most frequently used encryption protocol in the internet. It is composed of two protocols: the TLS Handshake Protocol, which is responsible for authentication and key establishment, and the TLS Record Protocol, which is responsible for the subsequent usage of those keys to secure bulk data.
+TLS is the most frequently used encryption protocol in the internet. It is composed of two protocols: the TLS Handshake Protocol, which is responsible for authentication and key establishment, and the TLS Record Protocol, which is responsible for the subsequent usage of those keys to secure bulk data. SSL/TLS protects the confidentiality and integrity of data-in-transit by utilizing both asymmetric and symmetric encryption. Asymmetric encryption is used to establish a secure connection between a client and a server, and symmetric encryption is used to exchange data within the secured connection.
+
+![Asymmetric (Public Key) Cryptography use case as encryption - source https://www.twilio.com/blog/what-is-public-key-cryptography](img/rsa.png)
 
 At a high level, TLS is split into two phases:
 
@@ -262,43 +266,32 @@ Handshake:
 
 In TLS 1.3, to avoid that first negotiating round trip (one client message and one server message), the client speculatively sends a public key in the very first message (the Client Hello). If the client fails to predict the server’s choice of key exchange algorithm then the client will have to send a new Client Hello containing the correct public key. For example:
 
-The client sends a TLS 1.3 Client Hello announcing that it can do either an X25519 or an X448 key exchange. It also sends an X25519 public key. The server does not support X25519, but does support X448. It sends a Hello Retry Request to the client announcing that it only supports X448. The client sends the same Client Hello but with an X448 public key instead. The handshake goes on.
+
+```
+The client sends a TLS 1.3 Client Hello announcing that it can do either an X25519 or an X448 key exchange. 
+It also sends an X25519 public key. 
+The server does not support X25519, but does support X448. 
+It sends a Hello Retry Request to the client announcing that it only supports X448. 
+The client sends the same Client Hello but with an X448 public key instead. The handshake goes on.
+```
+
+RSA and the Diffie-Hellman Key Exchange are the two most widely used encryption algorithms, each of which solves the same problem in a somewhat different way. In a nutshell, the Diffie Hellman technique generates a public and private key for each party to the transaction but shares only the public key. Unlike Diffie-Hellman, the RSA algorithm can be used for both digital signatures and symmetric key exchange, although it does need the prior exchange of a public key. RSA is based on the assumption that factoring really large integers is difficult (integer factorization). On the assumption that there is no efficient solution for integer factorization, it is thought that decrypting an RSA ciphertext completely is infeasible.
+A user of RSA generates and then publishes their public key, which is composed of two enormous prime integers and an auxiliary value. The primary variables must remain unidentified. While anyone can use the public key to encrypt a message, only someone familiar with the prime factors is likely to be able to decrypt it.
+RSA stands for Ron Rivest, Adi Shamir, and Leonard Adleman—the three men who initially publicly defined the approach in 1977. Elliptic curve cryptography (ECC) is based on the algebraic structure of elliptic curves in finite fields. It is believed that computing the discrete logarithm of a random elliptic curve element in regard to a publicly known base point is impossible. In 1985, Neal Koblitz and Victor S. Miller independently pioneered the use of elliptic curves in encryption; ECC techniques gained widespread adoption in 2004. ECC has the advantage over RSA in that the key can be smaller, which improves performance and security. The disadvantage is that not all services and applications are compatible with ECC-based SSL Certificates.
+
+Following that, a CA can provide a signature for the website using the website's public key. Given that the CA's signature is typically valid for years, we refer to it as a long-term signing public key (as opposed to an ephemeral public key). More precisely, CAs do not sign public keys directly, but rather sign certificates. A certificate contains the long-term public key, as well as some additional critical metadata, such as the domain name of your web page if you are one. To reassure your browser that the server it is communicating with is truly google.com, the server provides a certificate chain as part of the TLS handshake. This certificate chain consists of the following:
+
+Its own (leaf) certificate, which includes the domain name google.com, Google's long-term signing public key, and a signature from a certificate authority. A chain of intermediate certificate authority (CA) certificates, beginning with the one that signed Google's certificate and ending with the root CA that signed the final intermediate CA.
+
+After establishing a handshake and generating symmetric keys, both the client and server can transfer encrypted application data to one another. Not only that, TLS prevents such communications from being replayed or reordered.
+
+## Single Sign On
+
+Authentication and trust mechanisms are needed by the user and provider alike. In this scenario, SSO could be a good starting point. The spam e-mail problem can be also mitigated in the cloud. While often used interchangeably, authentication and authorization represent fundamentally different functions. In simple terms, authentication is the process of verifying who a user is, while authorization is the process of verifying what they have access to.
+
+![Authentication vs. Authorization - source www.okta.com](img/Authentication_vs_Authorization.png)
 
 
-
-RSA and the Diffie-Hellman Key Exchange are the two most popular encryption algorithms that solve the same problem in different ways. In a nutshell, Diffie Hellman approach generates a public and private key on both sides of the transaction, but only shares the public key. Unlike Diffie-Hellman, the RSA algorithm can be used for signing digital signatures as well as symmetric key exchange, but it does require the exchange of a public key beforehand. RSA is predicated on the presumption that factoring huge integers is difficult (integer factorization). On the assumption that no effective solution for integer factorization exists, it is believed that complete decryption of an RSA ciphertext is infeasible.
-A user of RSA generates and then publishes their public key as the product of two huge prime integers and an auxiliary value. The primary factors must remain unknown. While everyone can use the public key to encrypt a message, only someone who is familiar with the prime factors may possibly decode it.
-RSA is an acronym for Ron Rivest, Adi Shamir, and Leonard Adleman—the three men that described the method publicly for the first time in 1977. Elliptic curve cryptography (ECC) is based on elliptic curves' algebraic structure over finite fields. The discrete logarithm of a random elliptic curve element in relation to a publicly known base point is thought to be impracticable. Neal Koblitz and Victor S. Miller independently proposed the use of elliptic curves in cryptography in 1985; ECC methods became widely used in 2004. The advantage of ECC over RSA is that the key can be smaller, which results in increased performance and security. The downside is that not all services and applications are compatible with SSL Certificates based on ECC.
-
-![Asymmetric (Public Key) Cryptography use case as encryption - source https://www.twilio.com/blog/what-is-public-key-cryptography](img/rsa.png)
-
-https://habr.com/en/company/qrator/blog/474810/
-
-QUIC
-
-https://medium.com/codavel-blog/quic-vs-tcp-tls-and-why-quic-is-not-the-next-big-thing-d4ef59143efd
-
-After this, a CA can provide a signature over the website’s public key. As the CA’s signature is usually valid for a period of years, we say that it is over a long-term signing public key (as opposed to an ephemeral public key). More specifically, CAs do not actually sign public keys, but instead they sign certificates. A certificate contains the long-term public key, along with some additional important metadata like the name of your domain if you are a web page.
-
-To prove to your browser that the server it is talking to is indeed google.com, the server sends a certificate chain as part of the TLS handshake which comprises of:
-
-Its own (leaf) certificate containing among others the name google.com, google’s long-term signing public key, as well as a signature from a CA. A chain of intermediate CA certificates, from the one that signed google’s certificate to the root CA that signed the last intermediate CA.
-
-Once a handshake has taken place, and symmetric keys have been derived, both the client and the server can send each other encrypted application data. But this is not all, TLS ensures that such messages cannot be replayed nor reordered.
-
-To do this, the nonce used by the authenticated encryption algorithm starts at a fixed value and is incremented for each new message. If a message is replayed, or reordered, the nonce will be different from what is expected and decryption will fail. When this happens the connection is kille
-
-
-## Auth
-
-Authentication and trust mechanisms are needed by the user and
-provider alike. In this scenario, SSO could be a good starting point. The spam
-e-mail problem can be also mitigated in the cloud (e.g. the spam could be
-verified and filtered in the VS associated with the hypervisor). Some useful
-techniques to mitigate spam in clouds could include the Sender Policy
-Framework (SPF) (Wong and Schlitt 2006) to authenticate the source of each
-e-mail, and the Apache SpamAssassin Project (SPAMAssassin 2014) to
-classify, rank and filter any unwanted e-mail
 
 OAuth 2.0: If you’ve ever signed up to a new application and agreed to let it automatically source new contacts via Facebook or your phone contacts, then you’ve likely used OAuth 2.0. This standard provides secure delegated access. That means an application can take actions or access resources from a server on behalf of the user, without them having to share their credentials. It does this by allowing the identity provider (IdP) to issue tokens to third-party applications with the user’s approval.
 
@@ -306,9 +299,7 @@ OpenID Connect: If you’ve used your Google to sign in to applications like You
 
 SAML: You’ve more likely experienced SAML authentication in action in the work environment. For example, it enables you to log into your corporate intranet or IdP and then access numerous additional services, such as Salesforce, Box, or Workday, without having to re-enter your credentials. SAML is an XML-based standard for exchanging authentication and authorization data between IdPs and service providers to verify the user’s identity and permissions, then grant or deny their access to services.
 
-### Authentication
-
-### Authorization
+### OAuth2
 
 ### SAML
 
