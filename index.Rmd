@@ -299,14 +299,97 @@ OpenID Connect: If you’ve used your Google to sign in to applications like You
 
 SAML: You’ve more likely experienced SAML authentication in action in the work environment. For example, it enables you to log into your corporate intranet or IdP and then access numerous additional services, such as Salesforce, Box, or Workday, without having to re-enter your credentials. SAML is an XML-based standard for exchanging authentication and authorization data between IdPs and service providers to verify the user’s identity and permissions, then grant or deny their access to services.
 
+### SAML
+
+The SSO (Single Sign-on) and CAS (Central Authentication Service) should be also activated to make a user to access various software services through a single active user account. [@cloudseclayers]
+
+SAML V1.0 became an OASIS standard in November 2002. SAML V1.1 followed in September 2003 and has seen significant success, gaining momentum in financial services, higher education, government, and other industry segments
+
+ with Redirect/POST Bind-ings and to the protocol which is distributed and used by Google’s partner companies to get full control over the au-thorization and authentication of hosted user accounts thatcan access web-based applications like Gmail or Google Cal-endar [@SAML] 
+
+ the work presented  by Thomas  Grofi [6]presents  a security  analysis of  the SAML  Single Sign-on Browser/Artifact profile. SAML is an important standardized example of this new protocol class and will be widely used in business-to-business scenarios to reduce user-management costs. [@SSOSAML]
+ 
+Mainly used for Enterprise and Government applications, SAML 2.0 is a mature technology dating from 2005 and supports a wide range of identity functionality. SAML uses XML for its identity data format and simple HTTP or SOAP for data transport mechanisms. The service requesting and receiving data from the IdP is known as the Relying Party (RP). The user identity data, encapsulated in an XML document called the SAML Assertion, is in the form of attributes, e.g., email address, name, phone, etc.
+
+
+Even though SSO reduces the number of logins that are needed over heterogeneous environments, the risk that might be associated with the security of SSO might be detrimental if, for example, a Man-in-the Middle (MITM) attacker manages to gain control of the SSO credentials. The problem that this paper addresses is the lack of a proactive technique of hardening cloud-based SAML while combining SSO with a Multi-Factor Authentication (MFA)  [@SAMLSEC]
+
+
+SAML can provide a mechanism for federated identity.
+
+which is specifically designed for SSO.
+
+Service Provider (Resource Server) – this is the web-server you are trying to access information on.
+
+Client – this is how the user is interacting with the Resource Server, like a web app being served through a web browser.
+
+Identity Provider (Authorization Server) – this is the server that owns the user identities and credentials. It’s who the user actually authenticates with.
+
+SAML has one feature that OAuth2 lacks: the SAML token contains the user identity information (because of signing). With OAuth2, you don’t get that out of the box, and instead, the Resource Server needs to make an additional round trip to validate the token with the Authorization Server.
+
+On the other hand, with OAuth2 you can invalidate an access token on the Authorization Server, and disable it from further access to the Resource Server.
+
+Both approaches have nice features and both will work for SSO. We have proved out both concepts in multiple languages and various kinds of applications. At the end of the day OAuth2 seems to be a better fit for our needs (since there isn’t an existing SAML infrastructure in place to utilize).
+
+OAuth2 provides a simpler and more standardized solution which covers all of our current needs and avoids the use of workarounds for interoperability with native applications.
+
+![SAML 2.0 Flow - source www.mutuallyhuman.com](img/saml.PNG)
+
 ### OAuth2
 
-### SAML
+Unlike SAML, OAuth 2.0 (henceforth OAuth2), is a specification whose ink has barely dried (circa late 2012). It has the benefit of being recent and takes into consideration how the world has changed in the past eight years.
+
+Mobile devices and native applications are prevalent today in ways that SAML could not anticipate in 2005.
+
+![OAuth 2.0 Flow - source www.mutuallyhuman.com](img/oauth.PNG)
+
+The OAuth 2.0 protocol is one of the most widely deployed authorization/single sign-on (SSO) protocols and also serves as the foundation for the new SSO standard OpenID Connect. Despite the popularity
+of OAuth, so far analysis efforts were mostly targeted at finding bugs in specific implementations and
+were based on formal models which abstract from many web features or did not provide a formal treatment at all.
+
+With the fixes applied, we were able to prove strong authorization, authentication, and session integrity
+properties for OAuth 2.0. Our security analysis assumes that OAuth security recommendations and certain best practices are followed. We show that otherwise the security of OAuth cannot be guaranteed. [@oauthsec]
+
+OAuth 2.0 is a widely used authorization protocol for cloud based web services and is used by many big firms such as Google, Facebook, Microsoft for granting limited access to the data. OAuth 2.0 has a flexible design and can be implemented and configured in a number of ways according to the use case. However, each of these implementation decisions and configuration choices come with their respective security implications 
+
+We also propose incorporating 2FA (Two Factor Authentication) as a feature for authentication of third-party client apps in addition to the existing mechanism of basic authentication through client secret. [@oautharch]
 
 ## Network
 
+Appropriate configuration of security policies of cloud infrastructure is critical to providing secure services. 
 
-# Implementation in GCP
+Intruders can exploit the vulnerabilities of equipment of this layer, such as switches, routers, IDSs, and network-based IPSs, and execute attacks such as DoS, reply, and tampering Attacks. After successful access to this equipment, they can also exploit the vulnerabilities of the host layer and operate their malicious activities in this layer. 
+
+The other vulnerabilities of misconfiguration can be summarized as follows:
+
+Activating unused ports of equipment
+
+Opening ports and unnecessary services such as HTTP on equipment
+
+No upgrade of firmware of equipment
+
+No periodic use of security patches
+
+No configuration of passwords in various work modes of equipment
+
+Using unsecure remote protocols such as Telnet
+
+No use of tunnel protocols, such as IP security, to encrypt users' accounts and intranet traffic
+
+
+All configurations should be recorded, maintained, and monitored under scheduled programs to prevent any error or misconfiguration.
+
+In public cloud, which provides services such as IaaS, the provider should activate the SNMP in the equipment of this layer, including firewalls, switches, and IDPS, to log all security events, such as critical, errors, warnings, and alerts, and send the logfiles to a centralized logging server using SNMP
+
+Logging the events such as successful/unsuccessful access of the users to the equipment, configurations, and malicious traffics, and storing the logfiles on a separate server with limited access over a long period of time.
+
+This issue should be addressed and implemented between the cloud users and cloud service providers for appropriate monitoring of security events and logging the events at the network level as a part of the service agreement.
+
+[@cloudseclayers]
+
+https://link-springer-com.libproxy.viko.lt/article/10.1007/s11831-022-09708-9?error=cookies_not_supported&code=a403495c-aabc-46f1-a2dd-08ded98eba0c
+
+# [TBA] Implementation in GCP
 
 TBA
 
