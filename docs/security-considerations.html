@@ -23,7 +23,7 @@
 <meta name="author" content="Kęstutis Daugėla" />
 
 
-<meta name="date" content="2022-05-03" />
+<meta name="date" content="2022-05-04" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -185,28 +185,31 @@ div.csl-indent {
 <p class="caption">A handshake and post-handshake communitcation</p>
 </div>
 <p>TLS 1.2 and earlier versions perform the key exchange once both parties agree on the key exchange algorithm to use. This means they first agree on a method to utilize before exchanging public keys.</p>
-<p>To eliminate the first round of negotiation (one client message and one server message) in TLS 1.3, the client transmits a public key speculatively in the very first message (the Client Hello). If the client is unable to correctly forecast the server’s key exchange mechanism, the client must send a new Client Hello with the right public key. TLS 1.3 contains numerous such enhancements that are critical for the web. Indeed, many people on the planet have insecure or poor connections, making it critical to restrict non-application communication to a bare minimum. Additionally, unlike prior versions of TLS, all key exchanges in TLS 1.3 are ephemeral. This means that for each new session, both the client and server generate new key pairs and then delete them immediately after the key exchange is complete <span class="citation">(<a href="#ref-wong" role="doc-biblioref">Wong 2021</a>)</span>.</p>
-<p><a href="https://freecontent.manning.com/how-does-tls-work/" class="uri">https://freecontent.manning.com/how-does-tls-work/</a></p>
-<p><img src="img/tls.PNG" alt="TLS - https://www.a10networks.com/glossary/key-differences-between-tls-1-2-and-tls-1-3/" />
-Handshake:</p>
+<div class="figure">
+<img src="img/encryption.jpg" alt="" />
+<p class="caption">Asymmetric and symmetric within TLS - source <a href="https://blog.bytebytego.com/" class="uri">https://blog.bytebytego.com/</a></p>
+</div>
+<p>To eliminate the first round of negotiation (one client message and one server message) in TLS 1.3, the client transmits a public key speculatively in the very first message (the Client Hello). If the client is unable to correctly forecast the server’s key exchange mechanism, the client must send a new Client Hello with the right public key. TLS 1.3 contains numerous such enhancements that are critical for the web. Indeed, many people have insecure or poor connections, making it critical to restrict non-application communication to a bare minimum. Additionally, unlike prior versions of TLS, all key exchanges in TLS 1.3 are ephemeral. This means that for each new session, both the client and server generate new key pairs and then delete them immediately after the key exchange is complete <span class="citation">(<a href="#ref-wong" role="doc-biblioref">Wong 2021</a>)</span>.</p>
+<div class="figure">
+<img src="img/tls.PNG" alt="" />
+<p class="caption">TLS performance comparison - <a href="https://www.a10networks.com" class="uri">https://www.a10networks.com</a></p>
+</div>
+<p>The handshake itself contains of these following steps:</p>
 <ul>
 <li>Negotiation. TLS is highly configurable. Both a client and a server can be configured to negotiate a range of SSL and TLS versions, as well as a menu of acceptable cryptographic algorithms. The negotiation phase of the handshake aims at finding common ground between the client’s and the server’s configurations, in order to securely connect the two peers.</li>
 <li>Key exchange. The whole point of the handshake is to perform a key exchange between the two participants. What key exchange algorithm to use? This is one of the things decided as part of the negotiation process.</li>
 <li>Authentication. It is trivial for a MITM attacker to impersonate any side of a key exchange. For this reason, key exchanges must be authenticated. (Your browser must have a way to make sure that it is talking to google.com and not your Internet service provider, for example.)</li>
 <li>Session Resumption. As browsers often connect to the same websites again and again, key exchanges can be costly and slow down a user’s experience. For this reason, mechanisms to fast-track secure sessions without redoing a key exchange are integrated into TLS.</li>
 </ul>
-<p>In TLS 1.3, to avoid that first negotiating round trip (one client message and one server message), the client speculatively sends a public key in the very first message (the Client Hello). If the client fails to predict the server’s choice of key exchange algorithm then the client will have to send a new Client Hello containing the correct public key. For example:</p>
-<pre><code>The client sends a TLS 1.3 Client Hello announcing that it can do either an X25519 or an X448 key exchange. 
-It also sends an X25519 public key. 
-The server does not support X25519, but does support X448. 
-It sends a Hello Retry Request to the client announcing that it only supports X448. 
-The client sends the same Client Hello but with an X448 public key instead. The handshake goes on.</code></pre>
-<p>RSA and the Diffie-Hellman Key Exchange are the two most widely used encryption algorithms, each of which solves the same problem in a somewhat different way. In a nutshell, the Diffie Hellman technique generates a public and private key for each party to the transaction but shares only the public key. Unlike Diffie-Hellman, the RSA algorithm can be used for both digital signatures and symmetric key exchange, although it does need the prior exchange of a public key. RSA is based on the assumption that factoring really large integers is difficult (integer factorization). On the assumption that there is no efficient solution for integer factorization, it is thought that decrypting an RSA ciphertext completely is infeasible.
-A user of RSA generates and then publishes their public key, which is composed of two enormous prime integers and an auxiliary value. The primary variables must remain unidentified. While anyone can use the public key to encrypt a message, only someone familiar with the prime factors is likely to be able to decrypt it.
-RSA stands for Ron Rivest, Adi Shamir, and Leonard Adleman—the three men who initially publicly defined the approach in 1977. Elliptic curve cryptography (ECC) is based on the algebraic structure of elliptic curves in finite fields. It is believed that computing the discrete logarithm of a random elliptic curve element in regard to a publicly known base point is impossible. In 1985, Neal Koblitz and Victor S. Miller independently pioneered the use of elliptic curves in encryption; ECC techniques gained widespread adoption in 2004. ECC has the advantage over RSA in that the key can be smaller, which improves performance and security. The disadvantage is that not all services and applications are compatible with ECC-based SSL Certificates.</p>
-<p>Following that, a CA can provide a signature for the website using the website’s public key. Given that the CA’s signature is typically valid for years, we refer to it as a long-term signing public key (as opposed to an ephemeral public key). More precisely, CAs do not sign public keys directly, but rather sign certificates. A certificate contains the long-term public key, as well as some additional critical metadata, such as the domain name of your web page if you are one. To reassure your browser that the server it is communicating with is truly google.com, the server provides a certificate chain as part of the TLS handshake. This certificate chain consists of the following:</p>
-<p>Its own (leaf) certificate, which includes the domain name google.com, Google’s long-term signing public key, and a signature from a certificate authority. A chain of intermediate certificate authority (CA) certificates, beginning with the one that signed Google’s certificate and ending with the root CA that signed the final intermediate CA.</p>
-<p>After establishing a handshake and generating symmetric keys, both the client and server can transfer encrypted application data to one another. Not only that, TLS prevents such communications from being replayed or reordered.</p>
+<p>An example of TLS 1.3 a negotiation could be:</p>
+<pre><code>* The client sends a TLS 1.3 Client Hello announcing that it can do either an 
+* X25519 or an X448 key exchange together with a X25519 public key.
+* The server does not support X25519, but does support X448. 
+* It sends a Hello Retry Request to the client announcing that it only supports X448. 
+* The client sends the same Client Hello but with an X448 public key instead. 
+* The handshake goes on.</code></pre>
+<p>RSA and the Diffie-Hellman Key Exchange are the two most widely used encryption algorithms, each of which solves the same problem in a somewhat different way. In a nutshell, the Diffie Hellman technique generates a public and private key for each party to the transaction but shares only the public key. Unlike Diffie-Hellman, the RSA algorithm can be used for both digital signatures and symmetric key exchange, although it does need the prior exchange of a public key. RSA stands for Ron Rivest, Adi Shamir, and Leonard Adleman—the three men who initially publicly defined the approach in 1977. RSA is based on the assumption that factoring really large integers is difficult (integer factorization). On the assumption that there is no efficient solution for integer factorization, it is thought that decrypting an RSA ciphertext completely is infeasible. A user of RSA generates and then publishes their public key, which is composed of two enormous prime integers and an auxiliary value. The primary variables must remain unidentified. While anyone can use the public key to encrypt a message, only someone familiar with the prime factors is likely to be able to decrypt it.</p>
+<p>The browser, on the other hand, verify that the handshake is happening between the client and specific website using the Public Key Infrastructure. Firstly, browsers must trust a set of root public keys - Certificate Authorities (CAs). Typically, browsers will either utilize a hardcoded list of trusted public keys or will request them from the operating system. Websites wishing to utilize HTTPS must be able to receive certification from one of these CAs (a signature of their signing public key). In order to do this, a website owner must prove to a CA that they own a specific domain. CAs do not directly sign public keys but rather sign certificates. A certificate contains both the long-term public key and some crucial metadata, such as the domain name of your web page, if you have one. To ensure that the server connecting with a browser is genuine, the server includes a certificate chain in the TLS handshake. This certificate chain is sent in a Certificate TLS message by the server, and by the client as well if the client has been asked to authenticate. The server sends this certificate chain in a Certificate TLS message, as does the client if the client is prompted to authenticate. Following the establishment of a handshake and the generation of symmetric keys, both the client and server can exchange encrypted application data. Additionally, TLS prevents reordering of such communications.</p>
 </div>
 <div id="single-sign-on" class="section level2 hasAnchor" number="5.2">
 <h2><span class="header-section-number">5.2</span> Single Sign On<a href="security-considerations.html#single-sign-on" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -220,7 +223,13 @@ RSA stands for Ron Rivest, Adi Shamir, and Leonard Adleman—the three men who i
 <p>SAML: You’ve more likely experienced SAML authentication in action in the work environment. For example, it enables you to log into your corporate intranet or IdP and then access numerous additional services, such as Salesforce, Box, or Workday, without having to re-enter your credentials. SAML is an XML-based standard for exchanging authentication and authorization data between IdPs and service providers to verify the user’s identity and permissions, then grant or deny their access to services.</p>
 <div id="saml" class="section level3 hasAnchor" number="5.2.1">
 <h3><span class="header-section-number">5.2.1</span> SAML<a href="security-considerations.html#saml" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p><span class="citation">(<a href="#ref-SAML" role="doc-biblioref">Armando et al. 2008</a>)</span></p>
+<p>The SSO (Single Sign-on) and CAS (Central Authentication Service) should be also activated to make a user to access various software services through a single active user account. <span class="citation">(<a href="#ref-cloudseclayers" role="doc-biblioref">Jangjou and Sohrabi 2022</a>)</span></p>
+<p>SAML V1.0 became an OASIS standard in November 2002. SAML V1.1 followed in September 2003 and has seen significant success, gaining momentum in financial services, higher education, government, and other industry segments</p>
+<p>with Redirect/POST Bind-ings and to the protocol which is distributed and used by Google’s partner companies to get full control over the au-thorization and authentication of hosted user accounts thatcan access web-based applications like Gmail or Google Cal-endar <span class="citation">(<a href="#ref-SAML" role="doc-biblioref">Armando et al. 2008</a>)</span></p>
+<p>the work presented by Thomas Grofi [6]presents a security analysis of the SAML Single Sign-on Browser/Artifact profile. SAML is an important standardized example of this new protocol class and will be widely used in business-to-business scenarios to reduce user-management costs. <span class="citation">(<a href="#ref-SSOSAML" role="doc-biblioref">Nongbri, Hadem, and Chettri 2018</a>)</span></p>
+<p>Mainly used for Enterprise and Government applications, SAML 2.0 is a mature technology dating from 2005 and supports a wide range of identity functionality. SAML uses XML for its identity data format and simple HTTP or SOAP for data transport mechanisms. The service requesting and receiving data from the IdP is known as the Relying Party (RP). The user identity data, encapsulated in an XML document called the SAML Assertion, is in the form of attributes, e.g., email address, name, phone, etc.</p>
+<p>Even though SSO reduces the number of logins that are needed over heterogeneous environments, the risk that might be associated with the security of SSO might be detrimental if, for example, a Man-in-the Middle (MITM) attacker manages to gain control of the SSO credentials. The problem that this paper addresses is the lack of a proactive technique of hardening cloud-based SAML while combining SSO with a Multi-Factor Authentication (MFA) <span class="citation">(<a href="#ref-SAMLSEC" role="doc-biblioref">Karie et al. 2020</a>)</span></p>
+<p>SAML can provide a mechanism for federated identity.</p>
 <p>which is specifically designed for SSO.</p>
 <p>Service Provider (Resource Server) – this is the web-server you are trying to access information on.</p>
 <p>Client – this is how the user is interacting with the Resource Server, like a web app being served through a web browser.</p>
@@ -242,16 +251,54 @@ RSA stands for Ron Rivest, Adi Shamir, and Leonard Adleman—the three men who i
 <img src="img/oauth.PNG" alt="" />
 <p class="caption">OAuth 2.0 Flow - source www.mutuallyhuman.com</p>
 </div>
+<p>The OAuth 2.0 protocol is one of the most widely deployed authorization/single sign-on (SSO) protocols and also serves as the foundation for the new SSO standard OpenID Connect. Despite the popularity
+of OAuth, so far analysis efforts were mostly targeted at finding bugs in specific implementations and
+were based on formal models which abstract from many web features or did not provide a formal treatment at all.</p>
+<p>With the fixes applied, we were able to prove strong authorization, authentication, and session integrity
+properties for OAuth 2.0. Our security analysis assumes that OAuth security recommendations and certain best practices are followed. We show that otherwise the security of OAuth cannot be guaranteed. <span class="citation">(<a href="#ref-oauthsec" role="doc-biblioref">Fett, Küsters, and Schmitz 2016</a>)</span></p>
+<p>OAuth 2.0 is a widely used authorization protocol for cloud based web services and is used by many big firms such as Google, Facebook, Microsoft for granting limited access to the data. OAuth 2.0 has a flexible design and can be implemented and configured in a number of ways according to the use case. However, each of these implementation decisions and configuration choices come with their respective security implications</p>
+<p>We also propose incorporating 2FA (Two Factor Authentication) as a feature for authentication of third-party client apps in addition to the existing mechanism of basic authentication through client secret. <span class="citation">(<a href="#ref-oautharch" role="doc-biblioref">Singh and Chaudhary 2022</a>)</span></p>
 </div>
 </div>
 <div id="network" class="section level2 hasAnchor" number="5.3">
 <h2><span class="header-section-number">5.3</span> Network<a href="security-considerations.html#network" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Appropriate configuration of security policies of cloud infrastructure is critical to providing secure services.</p>
+<p>Intruders can exploit the vulnerabilities of equipment of this layer, such as switches, routers, IDSs, and network-based IPSs, and execute attacks such as DoS, reply, and tampering Attacks. After successful access to this equipment, they can also exploit the vulnerabilities of the host layer and operate their malicious activities in this layer.</p>
+<p>The other vulnerabilities of misconfiguration can be summarized as follows:</p>
+<p>Activating unused ports of equipment</p>
+<p>Opening ports and unnecessary services such as HTTP on equipment</p>
+<p>No upgrade of firmware of equipment</p>
+<p>No periodic use of security patches</p>
+<p>No configuration of passwords in various work modes of equipment</p>
+<p>Using unsecure remote protocols such as Telnet</p>
+<p>No use of tunnel protocols, such as IP security, to encrypt users’ accounts and intranet traffic</p>
+<p>All configurations should be recorded, maintained, and monitored under scheduled programs to prevent any error or misconfiguration.</p>
+<p>In public cloud, which provides services such as IaaS, the provider should activate the SNMP in the equipment of this layer, including firewalls, switches, and IDPS, to log all security events, such as critical, errors, warnings, and alerts, and send the logfiles to a centralized logging server using SNMP</p>
+<p>Logging the events such as successful/unsuccessful access of the users to the equipment, configurations, and malicious traffics, and storing the logfiles on a separate server with limited access over a long period of time.</p>
+<p>This issue should be addressed and implemented between the cloud users and cloud service providers for appropriate monitoring of security events and logging the events at the network level as a part of the service agreement.</p>
+<p><span class="citation">(<a href="#ref-cloudseclayers" role="doc-biblioref">Jangjou and Sohrabi 2022</a>)</span></p>
+<p><a href="https://link-springer-com.libproxy.viko.lt/article/10.1007/s11831-022-09708-9?error=cookies_not_supported&amp;code=a403495c-aabc-46f1-a2dd-08ded98eba0c" class="uri">https://link-springer-com.libproxy.viko.lt/article/10.1007/s11831-022-09708-9?error=cookies_not_supported&amp;code=a403495c-aabc-46f1-a2dd-08ded98eba0c</a></p>
 </div>
 </div>
 <h3>References<a href="references.html#references" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div id="refs" class="references csl-bib-body hanging-indent">
 <div id="ref-SAML" class="csl-entry">
 Armando, Alessandro, Roberto Carbone, Luca Compagna, Jorge Cuellar, and Llanos Tobarra. 2008. <span>“Formal Analysis of SAML 2.0 Web Browser Single Sign-on.”</span> In, 1–10. <a href="https://doi.org/10.1145/1456396.1456397">https://doi.org/10.1145/1456396.1456397</a>.
+</div>
+<div id="ref-oauthsec" class="csl-entry">
+Fett, Daniel, Ralf Küsters, and Guido Schmitz. 2016. <span>“A Comprehensive Formal Security Analysis of OAuth 2.0.”</span> <em>CoRR</em> abs/1601.01229. <a href="http://arxiv.org/abs/1601.01229">http://arxiv.org/abs/1601.01229</a>.
+</div>
+<div id="ref-cloudseclayers" class="csl-entry">
+Jangjou, Mehrdad, and Mohammad Sohrabi. 2022. <span>“A Comprehensive Survey on Security Challenges in Different Network Layers in Cloud Computing.”</span> <em>Archives of Computational Methods in Engineering</em>, January. <a href="https://doi.org/10.1007/s11831-022-09708-9">https://doi.org/10.1007/s11831-022-09708-9</a>.
+</div>
+<div id="ref-SAMLSEC" class="csl-entry">
+Karie, Nickson M., Victor R. Kebande, Richard A. Ikuesan, Mehdi Sookhak, and H. S. Venter. 2020. <span>“Hardening SAML by Integrating SSO and Multi-Factor Authentication (MFA) in the Cloud.”</span> In <em>Proceedings of the 3rd International Conference on Networking, Information Systems &amp; Security</em>. Niss2020. New York, NY, USA: Association for Computing Machinery. <a href="https://doi.org/10.1145/3386723.3387875">https://doi.org/10.1145/3386723.3387875</a>.
+</div>
+<div id="ref-SSOSAML" class="csl-entry">
+Nongbri, Iadalin, Pynbianglut Hadem, and Sarat Chettri. 2018. <span>“A Survey on Single Sign-on”</span> 6 (April). <a href="https://doi.org/10.5281/zenodo.5763157">https://doi.org/10.5281/zenodo.5763157</a>.
+</div>
+<div id="ref-oautharch" class="csl-entry">
+Singh, Jaimandeep, and Naveen Kumar Chaudhary. 2022. <span>“OAuth 2.0 : Architectural Design Augmentation for Mitigation of Common Security Vulnerabilities.”</span> <em>Journal of Information Security and Applications</em> 65: 103091. https://doi.org/<a href="https://doi.org/10.1016/j.jisa.2021.103091">https://doi.org/10.1016/j.jisa.2021.103091</a>.
 </div>
 <div id="ref-wong" class="csl-entry">
 Wong, David. 2021. <em>Real-World Cryptography</em>. Manning. <a href="https://www.manning.com/books/real-world-cryptography">https://www.manning.com/books/real-world-cryptography</a>.

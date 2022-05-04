@@ -23,7 +23,7 @@
 <meta name="author" content="Kęstutis Daugėla" />
 
 
-<meta name="date" content="2022-05-03" />
+<meta name="date" content="2022-05-04" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -168,7 +168,7 @@ div.csl-indent {
 <div id="header">
 <h1 class="title">FMISD13207 Cloud Security Technologies</h1>
 <p class="author"><em>Kęstutis Daugėla</em></p>
-<p class="date"><em>2022-05-03</em></p>
+<p class="date"><em>2022-05-04</em></p>
 </div>
 <div id="introduction" class="section level1 unnumbered hasAnchor">
 <h1>Introduction<a href="index.html#introduction" class="anchor-section" aria-label="Anchor link to header"></a></h1>
@@ -198,28 +198,94 @@ Information Security Programs (legal, regulatory and privacy issues, security st
 <p>However, despite the gain achieved from cloud computing, organizations are slow in fully accepting it due to security issues and challenges associated with it <span class="citation">(<a href="#ref-Cloud-computing" role="doc-biblioref">Bairagi and Bang 2015</a>)</span>. However, almost every cloud-ready company uses the public cloud (97%) to some extent leaving hybrid cloud setup the dominant one (78%). Companies rarely use public or private cloud alone (19% vs 2% respectively). According to Forbes, there are now 77 % of organizations, having one or some parts of their systems in the cloud.</p>
 <p>Cloud service providers follow a shared security responsibility model, which means that your security team retains some security duties as you migrate applications, data, containers, and workloads to the cloud, while the provider takes part, but not all, of the responsibility. Clearly defining your duties from those of your providers is critical for minimizing the risk of introducing vulnerabilities into your public, hybrid, or multi-cloud systems, as shown in the graph below.</p>
 <p><img src="img/perceptible-shifts-in-responsibility-graphic.png" alt="Shared responsibility in the cloud - image source www.microsoft.com" />
-Research
-challenges and directions have been categories into 6
-groups namely Security, Autonomic Resource
-Management (ARM), Cloud Adoption, Cloud
-development and benchmarking big data technologies and
-cloud computing and social clouds. Security is the most
-common challenge of cloud computing. This paper is the
-outcome of literature review of over 190 resources
-including books, journal and conference papers, research
-project reports and deliverables, European Commission
-roadmaps and calls for proposals, online weblogs, white
-papers, business reviews, company websites, profiles and
-offered services by cloud providers. <span class="citation">(<a href="#ref-cloudsecsurvey" role="doc-biblioref">Keshavarzi, Haghighat, and Bohlouli 2020</a>)</span></p>
-<p>One of our main findings is that hacking breaches are
-the most important in terms of leaked data and in terms of financial impact. We found that the most targeted type of
-organisation are medical organisations and BSOs since they possess the most sensitive personal data. Moreover, we
-observed that in the recent years the frequency hacking breaches on the two sectors has intensified, with an inter-arrival
-time of 4 and 7.5 days respectively. These findings implies taking serious actions to secure personal data especially
-for MED and BSO organization <span class="citation">(<a href="#ref-databreaches" role="doc-biblioref">Hammouchi et al. 2019</a>)</span></p>
+Research challenges and directions have been categories into 6 groups namely Security, Autonomic Resource Management (ARM), Cloud Adoption, Cloud development and benchmarking big data technologies and cloud computing and social clouds. Security is the most common challenge of cloud computing. This paper is the
+outcome of literature review of over 190 resources including books, journal and conference papers, research project reports and deliverables, European Commission roadmaps and calls for proposals, online weblogs, white papers, business reviews, company websites, profiles and offered services by cloud providers. <span class="citation">(<a href="#ref-cloudsecsurvey" role="doc-biblioref">Keshavarzi, Haghighat, and Bohlouli 2020</a>)</span></p>
+<p>One of the main findings of other study was that the most targeted type of organisation are medical organisations and Business Services Organisations since they possess the most sensitive personal data. Moreover, it was observed that in the recent years the frequency hacking breaches on the two sectors has intensified, with an inter-arrival time of 4 and 7.5 days respectively. These findings implies taking serious actions to secure personal data especially for MED and BSO organization <span class="citation">(<a href="#ref-databreaches" role="doc-biblioref">Hammouchi et al. 2019</a>)</span>. Another public data breach dataset of the biggest hacks confirms these findings.</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Sector</th>
+<th align="right">Attacks</th>
+<th align="right">Number of records lost</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">web</td>
+<td align="right">108</td>
+<td align="right">7009835665</td>
+</tr>
+<tr class="even">
+<td align="left">government</td>
+<td align="right">44</td>
+<td align="right">922822573</td>
+</tr>
+<tr class="odd">
+<td align="left">health</td>
+<td align="right">43</td>
+<td align="right">174669929</td>
+</tr>
+<tr class="even">
+<td align="left">finance</td>
+<td align="right">39</td>
+<td align="right">1162050100</td>
+</tr>
+<tr class="odd">
+<td align="left">retail</td>
+<td align="right">35</td>
+<td align="right">882555730</td>
+</tr>
+<tr class="even">
+<td align="left">tech</td>
+<td align="right">23</td>
+<td align="right">1590382232</td>
+</tr>
+<tr class="odd">
+<td align="left">telecoms</td>
+<td align="right">22</td>
+<td align="right">837584000</td>
+</tr>
+<tr class="even">
+<td align="left">app</td>
+<td align="right">21</td>
+<td align="right">553259000</td>
+</tr>
+<tr class="odd">
+<td align="left">transport</td>
+<td align="right">16</td>
+<td align="right">181626000</td>
+</tr>
+<tr class="even">
+<td align="left">gaming</td>
+<td align="right">15</td>
+<td align="right">224490755</td>
+</tr>
+<tr class="odd">
+<td align="left">academic</td>
+<td align="right">11</td>
+<td align="right">5953000</td>
+</tr>
+<tr class="even">
+<td align="left">misc</td>
+<td align="right">10</td>
+<td align="right">90780000</td>
+</tr>
+<tr class="odd">
+<td align="left">military</td>
+<td align="right">5</td>
+<td align="right">82227432</td>
+</tr>
+</tbody>
+</table>
+<p>Even such tech companies as Facebook, Twitter, Amazon, Twitch were hacked successfully making a considerable damage on their reputation and their clients.</p>
 <div class="figure">
 <img src="img/data-breaches.png" alt="" />
 <p class="caption">World’s Biggest Data Breaches &amp; Hacks - image source <a href="https://www.informationisbeautiful.net/visualizations/worlds-biggest-data-breaches-hacks/" class="uri">https://www.informationisbeautiful.net/visualizations/worlds-biggest-data-breaches-hacks/</a></p>
+</div>
+<p>The method’s classification is not very precise and very overlapping; for example, what is termed a “oops!” could be classified as bad security or vice versa. On the other hand, hacking methods are not described, and hence we shall explore attack types in greater detail in the second chapter.</p>
+<div class="figure">
+<img src="img/ggplot.png" alt="" />
+<p class="caption">Hacks sorted by method</p>
 </div>
 </div>
 <h3>References<a href="references.html#references" class="anchor-section" aria-label="Anchor link to header"></a></h3>

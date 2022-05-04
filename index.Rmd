@@ -3,9 +3,9 @@ title: "FMISD13207 Cloud Security Technologies"
 author: "Kęstutis Daugėla"
 date: "`r Sys.Date()`"
 output:
-  pdf_document: default
   html_document:
     df_print: paged
+  pdf_document: default
 bibliography: references.bib
 biblio-style: apalike
 link-citations: yes
@@ -44,33 +44,40 @@ However,  despite  the  gain  achieved  from  cloud computing, organizations are
 Cloud service providers follow a shared security responsibility model, which means that your security team retains some security duties as you migrate applications, data, containers, and workloads to the cloud, while the provider takes part, but not all, of the responsibility. Clearly defining your duties from those of your providers is critical for minimizing the risk of introducing vulnerabilities into your public, hybrid, or multi-cloud systems, as shown in the graph below.
 
 ![Shared responsibility in the cloud - image source www.microsoft.com](img/perceptible-shifts-in-responsibility-graphic.png)
-Research
-challenges and directions have been categories into 6
-groups namely Security, Autonomic Resource
-Management (ARM), Cloud Adoption, Cloud
-development and benchmarking big data technologies and
-cloud computing and social clouds. Security is the most
-common challenge of cloud computing. This paper is the
-outcome of literature review of over 190 resources
-including books, journal and conference papers, research
-project reports and deliverables, European Commission
-roadmaps and calls for proposals, online weblogs, white
-papers, business reviews, company websites, profiles and
-offered services by cloud providers. [@cloudsecsurvey]
+Research challenges and directions have been categories into 6 groups namely Security, Autonomic Resource Management (ARM), Cloud Adoption, Cloud development and benchmarking big data technologies and cloud computing and social clouds. Security is the most common challenge of cloud computing. This paper is the
+outcome of literature review of over 190 resources including books, journal and conference papers, research project reports and deliverables, European Commission roadmaps and calls for proposals, online weblogs, white papers, business reviews, company websites, profiles and offered services by cloud providers. [@cloudsecsurvey]
 
 
-One of our main findings is that hacking breaches are
-the most important in terms of leaked data and in terms of financial impact. We found that the most targeted type of
-organisation are medical organisations and BSOs since they possess the most sensitive personal data. Moreover, we
-observed that in the recent years the frequency hacking breaches on the two sectors has intensified, with an inter-arrival
-time of 4 and 7.5 days respectively. These findings implies taking serious actions to secure personal data especially
-for MED and BSO organization [@databreaches]
+One of the main findings of other study was that the most targeted type of organisation are medical organisations and Business Services Organisations since they possess the most sensitive personal data. Moreover, it was observed that in the recent years the frequency hacking breaches on the two sectors has intensified, with an inter-arrival time of 4 and 7.5 days respectively. These findings implies taking serious actions to secure personal data especially for MED and BSO organization [@databreaches]. Another public data breach dataset of the biggest hacks confirms these findings. 
+
+
+|Sector     |   Attacks|     Number of records lost|
+|:----------|---:|----------:|
+|web        | 108| 7009835665|
+|government |  44|  922822573|
+|health     |  43|  174669929|
+|finance    |  39| 1162050100|
+|retail     |  35|  882555730|
+|tech       |  23| 1590382232|
+|telecoms   |  22|  837584000|
+|app        |  21|  553259000|
+|transport  |  16|  181626000|
+|gaming     |  15|  224490755|
+|academic   |  11|    5953000|
+|misc       |  10|   90780000|
+|military   |   5|   82227432|
+
+Even such tech companies as Facebook, Twitter, Amazon, Twitch were hacked successfully making a considerable damage on their reputation and their clients.
 
 ![World's Biggest Data Breaches & Hacks - image source https://www.informationisbeautiful.net/visualizations/worlds-biggest-data-breaches-hacks/](img/data-breaches.png)
 
+The method's classification is not very precise and very overlapping; for example, what is termed a "oops!" could be classified as bad security or vice versa. On the other hand, hacking methods are not described, and hence we shall explore attack types in greater detail in the second chapter.
+
+![Hacks sorted by method](img/ggplot.png)
+
 # Type of attacks
 
-The literature has examined a variety of security flaws[@threats]. To aid readers in comprehending some of the most prevalent cyber security weaknesses, the following are detailed:
+The literature has examined a variety of security flaws[@threats]. To aid in comprehending some of the most prevalent cyber security weaknesses, the following are detailed:
 
 ![The Vulnerabilities that a Business can Experience - image source https://blog.ecosystm360.com/cyber-attacks-threats-risks/](img/Types-of-cyber-attacks.jpg)
 
@@ -252,38 +259,34 @@ At a high level, TLS is split into two phases:
 
 TLS 1.2 and earlier versions perform the key exchange once both parties agree on the key exchange algorithm to use. This means they first agree on a method to utilize before exchanging public keys.
 
-To eliminate the first round of negotiation (one client message and one server message) in TLS 1.3, the client transmits a public key speculatively in the very first message (the Client Hello). If the client is unable to correctly forecast the server's key exchange mechanism, the client must send a new Client Hello with the right public key. TLS 1.3 contains numerous such enhancements that are critical for the web. Indeed, many people on the planet have insecure or poor connections, making it critical to restrict non-application communication to a bare minimum. Additionally, unlike prior versions of TLS, all key exchanges in TLS 1.3 are ephemeral. This means that for each new session, both the client and server generate new key pairs and then delete them immediately after the key exchange is complete [@wong].
 
-https://freecontent.manning.com/how-does-tls-work/
+![Asymmetric and symmetric within TLS - source https://blog.bytebytego.com/](img/encryption.jpg)
 
-![TLS - https://www.a10networks.com/glossary/key-differences-between-tls-1-2-and-tls-1-3/](img/tls.png)
-Handshake:
+To eliminate the first round of negotiation (one client message and one server message) in TLS 1.3, the client transmits a public key speculatively in the very first message (the Client Hello). If the client is unable to correctly forecast the server's key exchange mechanism, the client must send a new Client Hello with the right public key. TLS 1.3 contains numerous such enhancements that are critical for the web. Indeed, many people have insecure or poor connections, making it critical to restrict non-application communication to a bare minimum. Additionally, unlike prior versions of TLS, all key exchanges in TLS 1.3 are ephemeral. This means that for each new session, both the client and server generate new key pairs and then delete them immediately after the key exchange is complete [@wong].
+
+![TLS performance comparison - https://www.a10networks.com](img/tls.png)
+
+The handshake itself contains of these following steps:
 
 * Negotiation. TLS is highly configurable. Both a client and a server can be configured to negotiate a range of SSL and TLS versions, as well as a menu of acceptable cryptographic algorithms. The negotiation phase of the handshake aims at finding common ground between the client’s and the server’s configurations, in order to securely connect the two peers.
 * Key exchange. The whole point of the handshake is to perform a key exchange between the two participants. What key exchange algorithm to use? This is one of the things decided as part of the negotiation process.
 * Authentication. It is trivial for a MITM attacker to impersonate any side of a key exchange. For this reason, key exchanges must be authenticated. (Your browser must have a way to make sure that it is talking to google.com and not your Internet service provider, for example.)
 * Session Resumption. As browsers often connect to the same websites again and again, key exchanges can be costly and slow down a user’s experience. For this reason, mechanisms to fast-track secure sessions without redoing a key exchange are integrated into TLS.
 
-In TLS 1.3, to avoid that first negotiating round trip (one client message and one server message), the client speculatively sends a public key in the very first message (the Client Hello). If the client fails to predict the server’s choice of key exchange algorithm then the client will have to send a new Client Hello containing the correct public key. For example:
-
+ An example of TLS 1.3 a negotiation could be:
 
 ```
-The client sends a TLS 1.3 Client Hello announcing that it can do either an X25519 or an X448 key exchange. 
-It also sends an X25519 public key. 
-The server does not support X25519, but does support X448. 
-It sends a Hello Retry Request to the client announcing that it only supports X448. 
-The client sends the same Client Hello but with an X448 public key instead. The handshake goes on.
+* The client sends a TLS 1.3 Client Hello announcing that it can do either an 
+* X25519 or an X448 key exchange together with a X25519 public key.
+* The server does not support X25519, but does support X448. 
+* It sends a Hello Retry Request to the client announcing that it only supports X448. 
+* The client sends the same Client Hello but with an X448 public key instead. 
+* The handshake goes on.
 ```
 
-RSA and the Diffie-Hellman Key Exchange are the two most widely used encryption algorithms, each of which solves the same problem in a somewhat different way. In a nutshell, the Diffie Hellman technique generates a public and private key for each party to the transaction but shares only the public key. Unlike Diffie-Hellman, the RSA algorithm can be used for both digital signatures and symmetric key exchange, although it does need the prior exchange of a public key. RSA is based on the assumption that factoring really large integers is difficult (integer factorization). On the assumption that there is no efficient solution for integer factorization, it is thought that decrypting an RSA ciphertext completely is infeasible.
-A user of RSA generates and then publishes their public key, which is composed of two enormous prime integers and an auxiliary value. The primary variables must remain unidentified. While anyone can use the public key to encrypt a message, only someone familiar with the prime factors is likely to be able to decrypt it.
-RSA stands for Ron Rivest, Adi Shamir, and Leonard Adleman—the three men who initially publicly defined the approach in 1977. Elliptic curve cryptography (ECC) is based on the algebraic structure of elliptic curves in finite fields. It is believed that computing the discrete logarithm of a random elliptic curve element in regard to a publicly known base point is impossible. In 1985, Neal Koblitz and Victor S. Miller independently pioneered the use of elliptic curves in encryption; ECC techniques gained widespread adoption in 2004. ECC has the advantage over RSA in that the key can be smaller, which improves performance and security. The disadvantage is that not all services and applications are compatible with ECC-based SSL Certificates.
+RSA and the Diffie-Hellman Key Exchange are the two most widely used encryption algorithms, each of which solves the same problem in a somewhat different way. In a nutshell, the Diffie Hellman technique generates a public and private key for each party to the transaction but shares only the public key. Unlike Diffie-Hellman, the RSA algorithm can be used for both digital signatures and symmetric key exchange, although it does need the prior exchange of a public key. RSA stands for Ron Rivest, Adi Shamir, and Leonard Adleman—the three men who initially publicly defined the approach in 1977. RSA is based on the assumption that factoring really large integers is difficult (integer factorization). On the assumption that there is no efficient solution for integer factorization, it is thought that decrypting an RSA ciphertext completely is infeasible. A user of RSA generates and then publishes their public key, which is composed of two enormous prime integers and an auxiliary value. The primary variables must remain unidentified. While anyone can use the public key to encrypt a message, only someone familiar with the prime factors is likely to be able to decrypt it.
 
-Following that, a CA can provide a signature for the website using the website's public key. Given that the CA's signature is typically valid for years, we refer to it as a long-term signing public key (as opposed to an ephemeral public key). More precisely, CAs do not sign public keys directly, but rather sign certificates. A certificate contains the long-term public key, as well as some additional critical metadata, such as the domain name of your web page if you are one. To reassure your browser that the server it is communicating with is truly google.com, the server provides a certificate chain as part of the TLS handshake. This certificate chain consists of the following:
-
-Its own (leaf) certificate, which includes the domain name google.com, Google's long-term signing public key, and a signature from a certificate authority. A chain of intermediate certificate authority (CA) certificates, beginning with the one that signed Google's certificate and ending with the root CA that signed the final intermediate CA.
-
-After establishing a handshake and generating symmetric keys, both the client and server can transfer encrypted application data to one another. Not only that, TLS prevents such communications from being replayed or reordered.
+The browser, on the other hand, verify that the handshake is happening between the client and specific website using the Public Key Infrastructure. Firstly, browsers must trust a set of root public keys - Certificate Authorities (CAs). Typically, browsers will either utilize a hardcoded list of trusted public keys or will request them from the operating system. Websites wishing to utilize HTTPS must be able to receive certification from one of these CAs (a signature of their signing public key). In order to do this, a website owner must prove to a CA that they own a specific domain. CAs do not directly sign public keys but rather sign certificates. A certificate contains both the long-term public key and some crucial metadata, such as the domain name of your web page, if you have one. To ensure that the server connecting with a browser is genuine, the server includes a certificate chain in the TLS handshake. This certificate chain is sent in a Certificate TLS message by the server, and by the client as well if the client has been asked to authenticate. The server sends this certificate chain in a Certificate TLS message, as does the client if the client is prompted to authenticate. Following the establishment of a handshake and the generation of symmetric keys, both the client and server can exchange encrypted application data. Additionally, TLS prevents reordering of such communications.
 
 ## Single Sign On
 
