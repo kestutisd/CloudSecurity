@@ -55,3 +55,7 @@ limitations
 oauth2
 single-sign-on
 tba-implementation-in-gcp
+introduction-to-cloud
+introduction-to-cloud-security
+data-encryption
+cloud-security-overview

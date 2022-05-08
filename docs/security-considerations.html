@@ -23,7 +23,7 @@
 <meta name="author" content="Kęstutis Daugėla" />
 
 
-<meta name="date" content="2022-05-04" />
+<meta name="date" content="2022-05-08" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -94,7 +94,11 @@ div.csl-indent {
 <li><a href="./">Information Security Technologies</a></li>
 
 <li class="divider"></li>
-<li><a href="index.html#introduction">Introduction<span></span></a></li>
+<li><a href="index.html#introduction">Introduction<span></span></a>
+<ul>
+<li class="chapter" data-level="0.1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>0.1</b> Introduction to Cloud<span></span></a></li>
+<li class="chapter" data-level="0.2" data-path="index.html"><a href="index.html#introduction-to-cloud-security"><i class="fa fa-check"></i><b>0.2</b> Introduction to Cloud Security<span></span></a></li>
+</ul></li>
 <li class="chapter" data-level="1" data-path="type-of-attacks.html"><a href="type-of-attacks.html"><i class="fa fa-check"></i><b>1</b> Type of attacks<span></span></a></li>
 <li class="chapter" data-level="2" data-path="data-breach---case-study.html"><a href="data-breach---case-study.html"><i class="fa fa-check"></i><b>2</b> Data Breach - Case Study<span></span></a>
 <ul>
@@ -104,7 +108,7 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="3" data-path="public-cloud.html"><a href="public-cloud.html"><i class="fa fa-check"></i><b>3</b> Public Cloud<span></span></a>
 <ul>
-<li class="chapter" data-level="3.1" data-path="public-cloud.html"><a href="public-cloud.html#public-cloud-security"><i class="fa fa-check"></i><b>3.1</b> Public Cloud Security<span></span></a></li>
+<li class="chapter" data-level="3.1" data-path="public-cloud.html"><a href="public-cloud.html#cloud-security-overview"><i class="fa fa-check"></i><b>3.1</b> Cloud Security Overview<span></span></a></li>
 <li class="chapter" data-level="3.2" data-path="public-cloud.html"><a href="public-cloud.html#infrastructure-as-code"><i class="fa fa-check"></i><b>3.2</b> Infrastructure as Code<span></span></a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="project-scope.html"><a href="project-scope.html"><i class="fa fa-check"></i><b>4</b> Project Scope<span></span></a>
@@ -115,7 +119,7 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="5" data-path="security-considerations.html"><a href="security-considerations.html"><i class="fa fa-check"></i><b>5</b> Security considerations<span></span></a>
 <ul>
-<li class="chapter" data-level="5.1" data-path="security-considerations.html"><a href="security-considerations.html#certificates-and-tls"><i class="fa fa-check"></i><b>5.1</b> Certificates and TLS<span></span></a></li>
+<li class="chapter" data-level="5.1" data-path="security-considerations.html"><a href="security-considerations.html#data-encryption"><i class="fa fa-check"></i><b>5.1</b> Data Encryption<span></span></a></li>
 <li class="chapter" data-level="5.2" data-path="security-considerations.html"><a href="security-considerations.html#single-sign-on"><i class="fa fa-check"></i><b>5.2</b> Single Sign On<span></span></a>
 <ul>
 <li class="chapter" data-level="5.2.1" data-path="security-considerations.html"><a href="security-considerations.html#saml"><i class="fa fa-check"></i><b>5.2.1</b> SAML<span></span></a></li>
@@ -167,8 +171,8 @@ div.csl-indent {
             <section class="normal" id="section-">
 <div id="security-considerations" class="section level1 hasAnchor" number="5">
 <h1><span class="header-section-number">Chapter 5</span> Security considerations<a href="security-considerations.html#security-considerations" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<div id="certificates-and-tls" class="section level2 hasAnchor" number="5.1">
-<h2><span class="header-section-number">5.1</span> Certificates and TLS<a href="security-considerations.html#certificates-and-tls" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="data-encryption" class="section level2 hasAnchor" number="5.1">
+<h2><span class="header-section-number">5.1</span> Data Encryption<a href="security-considerations.html#data-encryption" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>TLS (Transport Layer Security) encrypts data transmitted over the Internet, ensuring that snoopers and hackers cannot view what you transmit. This is especially important for private and sensitive information such as passwords, credit card numbers, and personal communications. TLS originated from Secure Socket Layers (SSL), which was originally created to secure web sessions in 1994 by Netscape Communications Corporation. SSL 1.0 was never released publicly, while SSL 2.0 was rapidly superseded by SSL 3.0, the foundation for TLS. Historically, data was transferred unencrypted over the Internet, and encryption was often applied piecemeal to critical information such as passwords or payment information. Without TLS, not only may sensitive information such as usernames, passwords, and personal information be easily gathered, but also surfing habits, e-mail conversations, online chats, and conference calls can be observed. By enabling TLS support in client and server apps, it ensures that data exchanged between them is encrypted using secure algorithms and is inaccessible to third parties.</p>
 <p>TLS is the most frequently used encryption protocol in the internet. It is composed of two protocols: the TLS Handshake Protocol, which is responsible for authentication and key establishment, and the TLS Record Protocol, which is responsible for the subsequent usage of those keys to secure bulk data. SSL/TLS protects the confidentiality and integrity of data-in-transit by utilizing both asymmetric and symmetric encryption. Asymmetric encryption is used to establish a secure connection between a client and a server, and symmetric encryption is used to exchange data within the secured connection.</p>
 <div class="figure">
@@ -213,71 +217,51 @@ div.csl-indent {
 </div>
 <div id="single-sign-on" class="section level2 hasAnchor" number="5.2">
 <h2><span class="header-section-number">5.2</span> Single Sign On<a href="security-considerations.html#single-sign-on" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Authentication and trust mechanisms are needed by the user and provider alike. In this scenario, SSO could be a good starting point. The spam e-mail problem can be also mitigated in the cloud. While often used interchangeably, authentication and authorization represent fundamentally different functions. In simple terms, authentication is the process of verifying who a user is, while authorization is the process of verifying what they have access to.</p>
-<div class="figure">
-<img src="img/Authentication_vs_Authorization.png" alt="" />
-<p class="caption">Authentication vs. Authorization - source www.okta.com</p>
-</div>
-<p>OAuth 2.0: If you’ve ever signed up to a new application and agreed to let it automatically source new contacts via Facebook or your phone contacts, then you’ve likely used OAuth 2.0. This standard provides secure delegated access. That means an application can take actions or access resources from a server on behalf of the user, without them having to share their credentials. It does this by allowing the identity provider (IdP) to issue tokens to third-party applications with the user’s approval.</p>
-<p>OpenID Connect: If you’ve used your Google to sign in to applications like YouTube, or Facebook to log into an online shopping cart, then you’re familiar with this authentication option. OpenID Connect is an open standard that organizations use to authenticate users. IdPs use this so that users can sign in to the IdP, and then access other websites and apps without having to log in or share their sign-in information.</p>
-<p>SAML: You’ve more likely experienced SAML authentication in action in the work environment. For example, it enables you to log into your corporate intranet or IdP and then access numerous additional services, such as Salesforce, Box, or Workday, without having to re-enter your credentials. SAML is an XML-based standard for exchanging authentication and authorization data between IdPs and service providers to verify the user’s identity and permissions, then grant or deny their access to services.</p>
+<p>Authentication and trust mechanisms are needed by the user and provider alike. In this scenario, SSO could be a good starting point. The spam e-mail problem can be also mitigated in the cloud. Despite their frequent interchangeability, authentication and permission serve fundamentally distinct purposes. Authentication is the process of validating a user’s identity, whereas authorization is the process of checking the user’s access rights. As a general recommendation, the SSO (Single Sign-on) and CAS (Central Authentication Service) should be also activated to make a user to access various software services through a single active user account. <span class="citation">(<a href="#ref-cloudseclayers" role="doc-biblioref">Jangjou and Sohrabi 2022</a>)</span></p>
+<p><img src="img/Authentication_vs_Authorization.png" alt="Authentication vs. Authorization - source www.okta.com" />
+SAML and OAUTH2 are two of the most popular Single Sign-On implementation methods.</p>
 <div id="saml" class="section level3 hasAnchor" number="5.2.1">
 <h3><span class="header-section-number">5.2.1</span> SAML<a href="security-considerations.html#saml" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>The SSO (Single Sign-on) and CAS (Central Authentication Service) should be also activated to make a user to access various software services through a single active user account. <span class="citation">(<a href="#ref-cloudseclayers" role="doc-biblioref">Jangjou and Sohrabi 2022</a>)</span></p>
-<p>SAML V1.0 became an OASIS standard in November 2002. SAML V1.1 followed in September 2003 and has seen significant success, gaining momentum in financial services, higher education, government, and other industry segments</p>
-<p>with Redirect/POST Bind-ings and to the protocol which is distributed and used by Google’s partner companies to get full control over the au-thorization and authentication of hosted user accounts thatcan access web-based applications like Gmail or Google Cal-endar <span class="citation">(<a href="#ref-SAML" role="doc-biblioref">Armando et al. 2008</a>)</span></p>
-<p>the work presented by Thomas Grofi [6]presents a security analysis of the SAML Single Sign-on Browser/Artifact profile. SAML is an important standardized example of this new protocol class and will be widely used in business-to-business scenarios to reduce user-management costs. <span class="citation">(<a href="#ref-SSOSAML" role="doc-biblioref">Nongbri, Hadem, and Chettri 2018</a>)</span></p>
-<p>Mainly used for Enterprise and Government applications, SAML 2.0 is a mature technology dating from 2005 and supports a wide range of identity functionality. SAML uses XML for its identity data format and simple HTTP or SOAP for data transport mechanisms. The service requesting and receiving data from the IdP is known as the Relying Party (RP). The user identity data, encapsulated in an XML document called the SAML Assertion, is in the form of attributes, e.g., email address, name, phone, etc.</p>
-<p>Even though SSO reduces the number of logins that are needed over heterogeneous environments, the risk that might be associated with the security of SSO might be detrimental if, for example, a Man-in-the Middle (MITM) attacker manages to gain control of the SSO credentials. The problem that this paper addresses is the lack of a proactive technique of hardening cloud-based SAML while combining SSO with a Multi-Factor Authentication (MFA) <span class="citation">(<a href="#ref-SAMLSEC" role="doc-biblioref">Karie et al. 2020</a>)</span></p>
-<p>SAML can provide a mechanism for federated identity.</p>
-<p>which is specifically designed for SSO.</p>
-<p>Service Provider (Resource Server) – this is the web-server you are trying to access information on.</p>
-<p>Client – this is how the user is interacting with the Resource Server, like a web app being served through a web browser.</p>
-<p>Identity Provider (Authorization Server) – this is the server that owns the user identities and credentials. It’s who the user actually authenticates with.</p>
-<p>SAML has one feature that OAuth2 lacks: the SAML token contains the user identity information (because of signing). With OAuth2, you don’t get that out of the box, and instead, the Resource Server needs to make an additional round trip to validate the token with the Authorization Server.</p>
-<p>On the other hand, with OAuth2 you can invalidate an access token on the Authorization Server, and disable it from further access to the Resource Server.</p>
-<p>Both approaches have nice features and both will work for SSO. We have proved out both concepts in multiple languages and various kinds of applications. At the end of the day OAuth2 seems to be a better fit for our needs (since there isn’t an existing SAML infrastructure in place to utilize).</p>
-<p>OAuth2 provides a simpler and more standardized solution which covers all of our current needs and avoids the use of workarounds for interoperability with native applications.</p>
+<p>SAML is an abbreviation for Security Assertion Markup Language (SAML). Its principal function in terms of online security is to permit access to different web applications with a single set of login credentials. It operates by exchanging authentication data between two parties, often an identity provider (idP) and a web application. Web applications utilize SAML to send authentication data between two parties - the identity provider (IdP) and the service provider - in an XML-based format (SP). SAML was developed by the technology sector to ease the authentication procedure for users requiring access to various, independent web apps across domains. Single sign-on (SSO) was possible before SAML, but it relied on cookies that were only valid within the same domain. It accomplishes this by centralizing user authentication through an identity provider. Then, Web apps can utilize SAML via the identity provider to provide their users access. This SAML authentication method eliminates the need for users to memorize numerous login credentials. It also benefits service providers because it enhances the security of their own platform, especially by eliminating the need to retain (often insecure and weak) passwords and eliminating forgotten password difficulties. SAML V1.0 became an OASIS standard in November 2002. SAML V1.1 followed in September 2003 and has seen significant success, gaining momentum in financial services, higher education, government, and other industry segments. SAML is an important standardized example of this new protocol class and will be widely used in business-to-business scenarios to reduce user-management costs. <span class="citation">(<a href="#ref-SSOSAML" role="doc-biblioref">Nongbri, Hadem, and Chettri 2018</a>)</span>.</p>
 <div class="figure">
 <img src="img/saml.PNG" alt="" />
 <p class="caption">SAML 2.0 Flow - source www.mutuallyhuman.com</p>
 </div>
+<p>Even though SSO reduces the number of logins that are needed over heterogeneous environments, the risk that might be associated with the security of SSO might be detrimental if, for example, a Man-in-the Middle (MITM) attacker manages to gain control of the SSO credentials. The problem that a paper addresses is the lack of a proactive technique of hardening cloud-based SAML while combining SSO with a Multi-Factor Authentication (MFA) <span class="citation">(<a href="#ref-SAMLSEC" role="doc-biblioref">Karie et al. 2020</a>)</span>.</p>
+<p>with Redirect/POST Bindings and to the protocol which is distributed and used by Google’s partner companies to get full control over the authorization and authentication of hosted user accounts that can access web-based applications like Gmail or Google Calendar <span class="citation">(<a href="#ref-SAML" role="doc-biblioref">Armando et al. 2008</a>)</span></p>
+<p>SAML, however, provides a feature that OAuth2 does not: the SAML token contains user identification information (because of signing). With OAuth2, this is not provided by default; instead, the Resource Server must make an additional round trip to the Authorization Server to validate the token.</p>
 </div>
 <div id="oauth2" class="section level3 hasAnchor" number="5.2.2">
 <h3><span class="header-section-number">5.2.2</span> OAuth2<a href="security-considerations.html#oauth2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Unlike SAML, OAuth 2.0 (henceforth OAuth2), is a specification whose ink has barely dried (circa late 2012). It has the benefit of being recent and takes into consideration how the world has changed in the past eight years.</p>
-<p>Mobile devices and native applications are prevalent today in ways that SAML could not anticipate in 2005.</p>
+<p>OAuth 2.0 (henceforth OAuth2) is a much more recent specification than SAML (circa late 2012). It has the advantage of being recent and takes into account the changes in the world during the past eight years. OAuth2 offers a simpler and more standardized solution that satisfies all of our existing requirements and eliminates the need for interoperability workarounds with native applications.</p>
 <div class="figure">
 <img src="img/oauth.PNG" alt="" />
 <p class="caption">OAuth 2.0 Flow - source www.mutuallyhuman.com</p>
 </div>
-<p>The OAuth 2.0 protocol is one of the most widely deployed authorization/single sign-on (SSO) protocols and also serves as the foundation for the new SSO standard OpenID Connect. Despite the popularity
-of OAuth, so far analysis efforts were mostly targeted at finding bugs in specific implementations and
-were based on formal models which abstract from many web features or did not provide a formal treatment at all.</p>
-<p>With the fixes applied, we were able to prove strong authorization, authentication, and session integrity
-properties for OAuth 2.0. Our security analysis assumes that OAuth security recommendations and certain best practices are followed. We show that otherwise the security of OAuth cannot be guaranteed. <span class="citation">(<a href="#ref-oauthsec" role="doc-biblioref">Fett, Küsters, and Schmitz 2016</a>)</span></p>
-<p>OAuth 2.0 is a widely used authorization protocol for cloud based web services and is used by many big firms such as Google, Facebook, Microsoft for granting limited access to the data. OAuth 2.0 has a flexible design and can be implemented and configured in a number of ways according to the use case. However, each of these implementation decisions and configuration choices come with their respective security implications</p>
-<p>We also propose incorporating 2FA (Two Factor Authentication) as a feature for authentication of third-party client apps in addition to the existing mechanism of basic authentication through client secret. <span class="citation">(<a href="#ref-oautharch" role="doc-biblioref">Singh and Chaudhary 2022</a>)</span></p>
+<p>OAuth 2.0 is one of the most extensively used authorization/single sign-on (SSO) protocols and serves as the foundation for the new SSO standard OpenID Connect. OAuth 2.0 is also popular for cloud-based online services and is used by many large companies, like Google, Facebook, and Microsoft, to allow restricted access to data. OAuth 2.0 has a flexible architecture and may be implemented and customized in a variety of ways based on the use case.</p>
+<p>Nevertheless, each of these implementation decisions and configuration options has its own security implications. Despite OAuth’s popularity, analysis attempts to date have focused primarily on discovering faults in individual implementations and have relied on formal models that abstract from numerous web aspects or have not provided a formal approach.</p>
+<p>four major attack types are still feasible if the security recommendations and certain best practices are followed, e.g. 307 redirect attack, IdP mix-up attack, state leak attack, and naive RP session integrity attack <span class="citation">(<a href="#ref-oauthsec" role="doc-biblioref">Fett, Küsters, and Schmitz 2016</a>)</span>. In addition to the current approach of basic authentication via client secret, it is recommended to add 2FA (Two Factor Authentication) as a feature for third-party client app authentication. <span class="citation">(<a href="#ref-oautharch" role="doc-biblioref">Singh and Chaudhary 2022</a>)</span></p>
 </div>
 </div>
 <div id="network" class="section level2 hasAnchor" number="5.3">
 <h2><span class="header-section-number">5.3</span> Network<a href="security-considerations.html#network" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Appropriate configuration of security policies of cloud infrastructure is critical to providing secure services.</p>
-<p>Intruders can exploit the vulnerabilities of equipment of this layer, such as switches, routers, IDSs, and network-based IPSs, and execute attacks such as DoS, reply, and tampering Attacks. After successful access to this equipment, they can also exploit the vulnerabilities of the host layer and operate their malicious activities in this layer.</p>
-<p>The other vulnerabilities of misconfiguration can be summarized as follows:</p>
-<p>Activating unused ports of equipment</p>
-<p>Opening ports and unnecessary services such as HTTP on equipment</p>
-<p>No upgrade of firmware of equipment</p>
-<p>No periodic use of security patches</p>
-<p>No configuration of passwords in various work modes of equipment</p>
-<p>Using unsecure remote protocols such as Telnet</p>
-<p>No use of tunnel protocols, such as IP security, to encrypt users’ accounts and intranet traffic</p>
-<p>All configurations should be recorded, maintained, and monitored under scheduled programs to prevent any error or misconfiguration.</p>
-<p>In public cloud, which provides services such as IaaS, the provider should activate the SNMP in the equipment of this layer, including firewalls, switches, and IDPS, to log all security events, such as critical, errors, warnings, and alerts, and send the logfiles to a centralized logging server using SNMP</p>
-<p>Logging the events such as successful/unsuccessful access of the users to the equipment, configurations, and malicious traffics, and storing the logfiles on a separate server with limited access over a long period of time.</p>
-<p>This issue should be addressed and implemented between the cloud users and cloud service providers for appropriate monitoring of security events and logging the events at the network level as a part of the service agreement.</p>
-<p><span class="citation">(<a href="#ref-cloudseclayers" role="doc-biblioref">Jangjou and Sohrabi 2022</a>)</span></p>
-<p><a href="https://link-springer-com.libproxy.viko.lt/article/10.1007/s11831-022-09708-9?error=cookies_not_supported&amp;code=a403495c-aabc-46f1-a2dd-08ded98eba0c" class="uri">https://link-springer-com.libproxy.viko.lt/article/10.1007/s11831-022-09708-9?error=cookies_not_supported&amp;code=a403495c-aabc-46f1-a2dd-08ded98eba0c</a></p>
+<p>Providing secure services requires the setup of cloud infrastructure security policies appropriately. After gaining access to this equipment, they are able to attack the host layer’s weaknesses and conduct malicious operations in this layer. Other misconfiguration vulnerabilities can be characterized as follows <span class="citation">(<a href="#ref-cloudseclayers" role="doc-biblioref">Jangjou and Sohrabi 2022</a>)</span>:</p>
+<ul>
+<li>Activating unused ports of equipment</li>
+<li>Opening ports and unnecessary services such as HTTP on equipment</li>
+<li>No upgrade of firmware of equipment</li>
+<li>No periodic use of security patches</li>
+<li>No configuration of passwords in various work modes of equipment</li>
+<li>Using unsecure remote protocols such as Telnet</li>
+<li>No use of tunnel protocols, such as IP security, to encrypt users’ accounts and intranet traffic</li>
+</ul>
+<p>All configurations should be recorded, maintained, and monitored under scheduled programs to prevent any error or misconfiguration which is fairly easy to achieve using the cloud services and infrastructure as code approach.</p>
+<p>Logging the events such as successful/unsuccessful access of the users to the equipment, configurations, and malicious traffics, and storing the logfiles on a separate server with limited access over a long period of time. Logging events such as successful/failed user access to equipment, configurations, and malicious traffic, and storing logfiles on a separate server with restricted access for an extended period of time <span class="citation">(<a href="#ref-cloudseclayers" role="doc-biblioref">Jangjou and Sohrabi 2022</a>)</span>.</p>
+<p>When it comes to networking, logical isolation makes a VPC environment inherently more secure. However, public cloud security isn’t automatic, even with VPC – it must be intentionally deployed. Cloud security is always a shared responsibility between a cloud provider and its clients.</p>
+<div class="figure">
+<img src="img/virtual-private-cloud.png" alt="" />
+<p class="caption">Virtual Private Cloud</p>
+</div>
 </div>
 </div>
 <h3>References<a href="references.html#references" class="anchor-section" aria-label="Anchor link to header"></a></h3>

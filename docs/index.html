@@ -23,7 +23,7 @@
 <meta name="author" content="Kęstutis Daugėla" />
 
 
-<meta name="date" content="2022-05-04" />
+<meta name="date" content="2022-05-08" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -94,7 +94,11 @@ div.csl-indent {
 <li><a href="./">Information Security Technologies</a></li>
 
 <li class="divider"></li>
-<li><a href="index.html#introduction">Introduction<span></span></a></li>
+<li><a href="index.html#introduction">Introduction<span></span></a>
+<ul>
+<li class="chapter" data-level="0.1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>0.1</b> Introduction to Cloud<span></span></a></li>
+<li class="chapter" data-level="0.2" data-path="index.html"><a href="index.html#introduction-to-cloud-security"><i class="fa fa-check"></i><b>0.2</b> Introduction to Cloud Security<span></span></a></li>
+</ul></li>
 <li class="chapter" data-level="1" data-path="type-of-attacks.html"><a href="type-of-attacks.html"><i class="fa fa-check"></i><b>1</b> Type of attacks<span></span></a></li>
 <li class="chapter" data-level="2" data-path="data-breach---case-study.html"><a href="data-breach---case-study.html"><i class="fa fa-check"></i><b>2</b> Data Breach - Case Study<span></span></a>
 <ul>
@@ -104,7 +108,7 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="3" data-path="public-cloud.html"><a href="public-cloud.html"><i class="fa fa-check"></i><b>3</b> Public Cloud<span></span></a>
 <ul>
-<li class="chapter" data-level="3.1" data-path="public-cloud.html"><a href="public-cloud.html#public-cloud-security"><i class="fa fa-check"></i><b>3.1</b> Public Cloud Security<span></span></a></li>
+<li class="chapter" data-level="3.1" data-path="public-cloud.html"><a href="public-cloud.html#cloud-security-overview"><i class="fa fa-check"></i><b>3.1</b> Cloud Security Overview<span></span></a></li>
 <li class="chapter" data-level="3.2" data-path="public-cloud.html"><a href="public-cloud.html#infrastructure-as-code"><i class="fa fa-check"></i><b>3.2</b> Infrastructure as Code<span></span></a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="project-scope.html"><a href="project-scope.html"><i class="fa fa-check"></i><b>4</b> Project Scope<span></span></a>
@@ -115,7 +119,7 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="5" data-path="security-considerations.html"><a href="security-considerations.html"><i class="fa fa-check"></i><b>5</b> Security considerations<span></span></a>
 <ul>
-<li class="chapter" data-level="5.1" data-path="security-considerations.html"><a href="security-considerations.html#certificates-and-tls"><i class="fa fa-check"></i><b>5.1</b> Certificates and TLS<span></span></a></li>
+<li class="chapter" data-level="5.1" data-path="security-considerations.html"><a href="security-considerations.html#data-encryption"><i class="fa fa-check"></i><b>5.1</b> Data Encryption<span></span></a></li>
 <li class="chapter" data-level="5.2" data-path="security-considerations.html"><a href="security-considerations.html#single-sign-on"><i class="fa fa-check"></i><b>5.2</b> Single Sign On<span></span></a>
 <ul>
 <li class="chapter" data-level="5.2.1" data-path="security-considerations.html"><a href="security-considerations.html#saml"><i class="fa fa-check"></i><b>5.2.1</b> SAML<span></span></a></li>
@@ -168,16 +172,14 @@ div.csl-indent {
 <div id="header">
 <h1 class="title">FMISD13207 Cloud Security Technologies</h1>
 <p class="author"><em>Kęstutis Daugėla</em></p>
-<p class="date"><em>2022-05-04</em></p>
+<p class="date"><em>2022-05-08</em></p>
 </div>
 <div id="introduction" class="section level1 unnumbered hasAnchor">
 <h1>Introduction<a href="index.html#introduction" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p>Information Security Fundamentals (information security problematics, classification and evolution of threats, identification, authentication, access control, security
-principals, strategies, models, taxonomies and antologies); Cryptography (simetric and public key cryptography, DES, AES, RSA. stream ciphers, cryptographic
-protocols, authentication, electronic signature, management of electronic identity); Network Security (routing, firewalls, VPN, web security, network perimeter
-protection, host-level protection, authentication technologies); Attacking Information Technology Systems (attack types, real-life case studies, intrusion detection,
-formal analysis techniques); Information Security Technologies (antivirus, IDS, host and perimeter protection systems, Honeypots); Implementing Effective
-Information Security Programs (legal, regulatory and privacy issues, security standarts, security best practices, security policy).</p>
+<p><em>Topics from FMISD13207 Cloud Security Technologies module:</em></p>
+<p><strong>Information Security Fundamentals (information security problematics, classification and evolution of threats, identification, authentication, access control, security principals, strategies, models</strong>, taxonomies and antologies); <strong>Cryptography (simetric and public key cryptography</strong>, DES, AES, <strong>RSA</strong>. stream ciphers, <strong>cryptographic protocols, authentication, electronic signature, management of electronic identity</strong>); <strong>Network Security (routing, firewalls</strong>, VPN, <strong>web security</strong>, <strong>network perimeter protection, host-level protection</strong>, <strong>authentication technologies</strong>); <strong>Attacking Information Technology Systems (attack types, real-life case studies</strong>, intrusion detection, formal analysis techniques); <strong>Information Security Technologies</strong> (antivirus, IDS, <strong>host and perimeter protection systems</strong>, Honeypots); <strong>Implementing Effective Information Security Programs</strong> (legal, regulatory and privacy issues, <strong>security standards, security best practices, security policy</strong>).</p>
+<div id="introduction-to-cloud" class="section level2 hasAnchor" number="0.1">
+<h2><span class="header-section-number">0.1</span> Introduction to Cloud<a href="index.html#introduction-to-cloud" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>The underlying concept of cloud computing was introduced way back in 1960s by John McCarthy in his book, “The challenge of the Computer Utility”. His opinion was that “computation may someday be organized as a public utility.” The rest became history and the majority of the software used now is running in the cloud seamlessly <span class="citation">(<a href="#ref-CloudHistoryOverview" role="doc-biblioref">Surbiryala and Rong 2019</a>)</span>.</p>
 <div class="figure">
 <img src="img/evolution_of_cloud.png" alt="" />
@@ -196,10 +198,15 @@ Information Security Programs (legal, regulatory and privacy issues, security st
 <p class="caption">IaaS vs PaaS vs SaaS - image source <a href="https://www.bigcommerce.com/blog/saas-vs-paas-vs-iaas/" class="uri">https://www.bigcommerce.com/blog/saas-vs-paas-vs-iaas/</a></p>
 </div>
 <p>However, despite the gain achieved from cloud computing, organizations are slow in fully accepting it due to security issues and challenges associated with it <span class="citation">(<a href="#ref-Cloud-computing" role="doc-biblioref">Bairagi and Bang 2015</a>)</span>. However, almost every cloud-ready company uses the public cloud (97%) to some extent leaving hybrid cloud setup the dominant one (78%). Companies rarely use public or private cloud alone (19% vs 2% respectively). According to Forbes, there are now 77 % of organizations, having one or some parts of their systems in the cloud.</p>
+</div>
+<div id="introduction-to-cloud-security" class="section level2 hasAnchor" number="0.2">
+<h2><span class="header-section-number">0.2</span> Introduction to Cloud Security<a href="index.html#introduction-to-cloud-security" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Cloud service providers follow a shared security responsibility model, which means that your security team retains some security duties as you migrate applications, data, containers, and workloads to the cloud, while the provider takes part, but not all, of the responsibility. Clearly defining your duties from those of your providers is critical for minimizing the risk of introducing vulnerabilities into your public, hybrid, or multi-cloud systems, as shown in the graph below.</p>
-<p><img src="img/perceptible-shifts-in-responsibility-graphic.png" alt="Shared responsibility in the cloud - image source www.microsoft.com" />
-Research challenges and directions have been categories into 6 groups namely Security, Autonomic Resource Management (ARM), Cloud Adoption, Cloud development and benchmarking big data technologies and cloud computing and social clouds. Security is the most common challenge of cloud computing. This paper is the
-outcome of literature review of over 190 resources including books, journal and conference papers, research project reports and deliverables, European Commission roadmaps and calls for proposals, online weblogs, white papers, business reviews, company websites, profiles and offered services by cloud providers. <span class="citation">(<a href="#ref-cloudsecsurvey" role="doc-biblioref">Keshavarzi, Haghighat, and Bohlouli 2020</a>)</span></p>
+<div class="figure">
+<img src="img/perceptible-shifts-in-responsibility-graphic.png" alt="" />
+<p class="caption">Shared responsibility in the cloud - image source www.microsoft.com</p>
+</div>
+<p>Cloud challenges and directions have been categorized into 6 groups: Security, Autonomic Resource Management (ARM), Cloud Adoption, Cloud development and benchmarking big data technologies and cloud computing and social clouds. Security is the most common challenge of cloud computing as the paper indicates (which is the outcome of literature review of over 190 resources including books, journal and conference papers, research project reports and deliverables, European Commission roadmaps and calls for proposals, online weblogs, white papers, business reviews, company websites, profiles and offered services by cloud providers). <span class="citation">(<a href="#ref-cloudsecsurvey" role="doc-biblioref">Keshavarzi, Haghighat, and Bohlouli 2020</a>)</span></p>
 <p>One of the main findings of other study was that the most targeted type of organisation are medical organisations and Business Services Organisations since they possess the most sensitive personal data. Moreover, it was observed that in the recent years the frequency hacking breaches on the two sectors has intensified, with an inter-arrival time of 4 and 7.5 days respectively. These findings implies taking serious actions to secure personal data especially for MED and BSO organization <span class="citation">(<a href="#ref-databreaches" role="doc-biblioref">Hammouchi et al. 2019</a>)</span>. Another public data breach dataset of the biggest hacks confirms these findings.</p>
 <table>
 <thead>
@@ -286,6 +293,7 @@ outcome of literature review of over 190 resources including books, journal and 
 <div class="figure">
 <img src="img/ggplot.png" alt="" />
 <p class="caption">Hacks sorted by method</p>
+</div>
 </div>
 </div>
 <h3>References<a href="references.html#references" class="anchor-section" aria-label="Anchor link to header"></a></h3>
