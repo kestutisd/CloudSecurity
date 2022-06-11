@@ -174,6 +174,7 @@ div.csl-indent {
 <h1><span class="header-section-number">Chapter 4</span> Project Implementation GCP<a href="project-implementation-gcp.html#project-implementation-gcp" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <div id="shiny-application" class="section level2 hasAnchor" number="4.1">
 <h2><span class="header-section-number">4.1</span> Shiny Application<a href="project-implementation-gcp.html#shiny-application" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Several shiny R applications were created for this project. The authentication part could be either shifted for the identity aware proxy or implemented in the application, as in example below.</p>
 <pre><code>library(shiny)
 library(googleAuthR)
 gar_set_client(activate=&quot;web&quot;, web_json = &quot;client.json&quot;, scopes = &quot;https://www.googleapis.com/auth/webmasters&quot;)
@@ -198,54 +199,48 @@ server &lt;- function(input, output, session) {
   output$g_image = renderUI({ img(src=sign_ins()$image) })  
 }
 shinyApp(ui = ui, server = server)</code></pre>
+<p>While Shiny application could be hosted with the default config on any VM, websockets needs to be disabled for running shiny Google Cloud Run.</p>
 <pre><code>disable_protocols websocket xdr-streaming xhr-streaming iframe-eventsource iframe-htmlfile xdr-polling iframe-xhr-polling;
 run_as shiny;
 server {
   listen 8080;
   location / {
     site_dir /srv/shiny-server;
-    
     log_dir /var/log/shiny-server;
-    
     directory_index off;
   }
 }</code></pre>
 </div>
 <div id="conteinarization" class="section level2 hasAnchor" number="4.2">
 <h2><span class="header-section-number">4.2</span> Conteinarization<a href="project-implementation-gcp.html#conteinarization" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>In order to dockerize shiny application, we will be using a docker image from rocker repository. Since the image is packaged with all the dependencies, we only need to add dependend packages (“googleAuthR”) and move required files to the container (shiny server configuration, client secret and the application itself).</p>
 <pre><code>FROM rocker/shiny
-
-# install R package dependencies
 RUN apt-get update &amp;&amp; apt-get install -y \
 libcurl4-openssl-dev libssl-dev \
-## clean up
 &amp;&amp; apt-get clean \
 &amp;&amp; rm -rf /var/lib/apt/lists/ \
 &amp;&amp; rm -rf /tmp/downloaded_packages/ /tmp/*.rds
-
-## Install packages from CRAN
-
 RUN install2.r --error \
     -r &#39;http://cran.rstudio.com&#39; \
     googleAuthR
-
 COPY shiny-customized.config /etc/shiny-server/shiny-server.conf
 COPY client.json /srv/shiny-server/client.json
 COPY app.R /srv/shiny-server/app.R
 RUN chmod -R 775 /srv/shiny-server/
-
 EXPOSE 8080
-
 USER shiny
-
 CMD [&quot;/usr/bin/shiny-server&quot;]</code></pre>
+<p>In order to build a docker container and push the image to the Google Container registry, these commands are utilized. It is possible to automate the pipeline and build container from source (e.g. project github repository), but this feature was outside the scope of the project.</p>
 <pre><code>gcloud auth login --project {project id}
 PROJECTID=$(gcloud config get-value project)
 docker build . -t gcr.io/$PROJECTID/signin
 docker push gcr.io/$PROJECTID/signin</code></pre>
+<p>For debugging purposes, application can be launched locally:</p>
+<pre><code>docker run --rm -p 8080:8080 gcr.io/$PROJECTID/simpleauth:latest</code></pre>
 <div id="terraform" class="section level3 hasAnchor" number="4.2.1">
 <h3><span class="header-section-number">4.2.1</span> Terraform<a href="project-implementation-gcp.html#terraform" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>main.tf</p>
+<p>Since we are following Infrastructure as Code pattern, the whole required infrastructure could be defined in a terraform file. We need to select project, region, service and add application deployment config. In case of Cloud Run deployment, terraform file can be defined like this:</p>
+<p>cloudrun-shiny.tf</p>
 <pre><code>provider &quot;google&quot;{
  project     = &quot;shiny-cloud-project&quot;
  region      = &quot;europe-west1&quot;
@@ -272,7 +267,6 @@ resource &quot;google_cloud_run_service&quot; &quot;shiny-simple-signin&quot; {
           container_port = 8080
         }
       }
-
       container_concurrency = 80
       timeout_seconds = 300
     }
@@ -283,12 +277,10 @@ resource &quot;google_cloud_run_service&quot; &quot;shiny-simple-signin&quot; {
       }
     }
   }
-
   traffic {
     percent = 100
     latest_revision = true
   }
-
   depends_on = [google_project_service.run]
 }
 
@@ -299,13 +291,21 @@ resource &quot;google_cloud_run_service_iam_member&quot; &quot;allUsers&quot; {
   member   = &quot;allUsers&quot;
 }
 </code></pre>
-<p>outputs.tf</p>
+<p>It is convenient to print shiny app URL after the deployment, thus output value is added in outputs.tf:</p>
 <pre><code>output &quot;url&quot; {
   value = google_cloud_run_service.shiny-simple-signin.status[0].url
 }</code></pre>
+<p>Terraform is initiated using the init command, plan command will generate the plan and apply command will push the changes of the infrastructure. After that terraform will hold state regarding your infrastructure and configuration management. Terraform uses this state to map real-world resources to the configuration, keep track of metadata, and optimize efficiency for huge infrastructures. While it is preferred to store the state centrally (e.g. GCS bucket), this was also outside of the project scope.</p>
+<pre><code>terraform init
+terraform plan
+terraform apply</code></pre>
 </div>
 <div id="cloud-run" class="section level3 hasAnchor" number="4.2.2">
 <h3><span class="header-section-number">4.2.2</span> Cloud Run<a href="project-implementation-gcp.html#cloud-run" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="figure">
+<img src="img/p-cloudruninternal.PNG" alt="" />
+<p class="caption">Cloud Run</p>
+</div>
 <div class="figure">
 <img src="img/p-cloud-run.PNG" alt="" />
 <p class="caption">Cloud Run</p>
@@ -376,7 +376,7 @@ resource &quot;google_cloud_run_service_iam_member&quot; &quot;allUsers&quot; {
 <p class="caption">Shiny Analytics Hub - Architecture</p>
 </div>
 <ul>
-<li><a href="https://shinycloud.online/" class="uri">https://shinycloud.online/</a> - main public app (only googe Sign In)</li>
+<li><a href="https://shinycloud.online/" class="uri">https://shinycloud.online/</a> - main public app (only google Sign In)</li>
 <li><a href="https://login.shinycloud.online/" class="uri">https://login.shinycloud.online/</a> - private app (Google OAuth + identity aware proxy)</li>
 <li><a href="https://gke.shinycloud.online/" class="uri">https://gke.shinycloud.online/</a> - scalable app (identity aware proxy only)</li>
 <li><a href="https://_____.shinycloud.online/" class="uri">https://_____.shinycloud.online/</a> - any new app, depending on the security and scalability requirements</li>

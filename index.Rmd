@@ -3,9 +3,9 @@ title: "FMISD13207 Cloud Security Technologies"
 author: "Kęstutis Daugėla"
 date: "`r Sys.Date()`"
 output:
+  pdf_document: default
   html_document:
     df_print: paged
-  pdf_document: default
 bibliography: references.bib
 biblio-style: apalike
 link-citations: yes
@@ -206,9 +206,11 @@ Since cloud customers have shifted the security risks associated with their clou
 
 This article discusses how security responsibilities varies between three main service models (SAAS, PAAS, IAAS) and how responsibility shifts between the vendor and the customer. While in SaaS case the user does not have control of cloud infrastructure, the whole network must meet network security and availability demands in order to prevent unauthorized users and DooS attacks. In PAAS case, user have more control on the application level, but still lacks some networking and storage configuration capabilities. IaaS puts the user in control of OS, network, storage and other cloud resources. In terms of the deployment models, public cloud poses the most risk while being the cheapest option in terms of the infrastructure costs and flexibility.
 
+Network security layers were decoupled into five sections: perimeter, network, host, application, data. The perimeter layer connects user to the cloud environment, therefore it is prone to external threats. Solutions for that are Web Application Firewall and implemented Intrusion Detection System. Network layer, however, are mostly facing misconfiguration issues (e.g. opened ports, security patches not implemented, insecure protocols) and these security holes can enable users to reach the host level. It is important to isolate servers and storage logically in order to secure the network layer. Proper logging is also essential for detecting malicious behavior. Host level is susceptible to existing vulnerabilities, depending on the software hosted by the VM. Also it mandatory to ensure proper authentication mechanisms to a VM (e.g. LDAP, AD, SSO). The same part is applicable for the application level: bypassing the authentication or brute forcing the way are one of the most common attacks. On the last data layer, it is important to solve both - the communication and the storage security challenges. The full list of security challenges of different layers of the computer network are provided in the table below together with the probablities and the impact.
 
 
-![Classifcation of security challenges of diferent layers of computer network [@cloudseclayers]](img/a-security-challenges.PNG)
+
+![Classifcation of security challenges of different layers of computer network [@cloudseclayers]](img/a-security-challenges.PNG)
 
 
 ## Anomaly detection for Cloud Applications
@@ -356,18 +358,7 @@ four major attack types are still feasible if the security recommendations and c
 
 ### Network
 
-Providing secure services requires the setup of cloud infrastructure security policies appropriately. After gaining access to this equipment, they are able to attack the host layer's weaknesses and conduct malicious operations in this layer. Other misconfiguration vulnerabilities can be characterized as follows [@cloudseclayers]:
-
-* Activating unused ports of equipment
-* Opening ports and unnecessary services such as HTTP on equipment
-* No upgrade of firmware of equipment
-* No periodic use of security patches
-* No configuration of passwords in various work modes of equipment
-* Using unsecure remote protocols such as Telnet
-* No use of tunnel protocols, such as IP security, to encrypt users' accounts and intranet traffic
-
-
-All configurations should be recorded, maintained, and monitored under scheduled programs to prevent any error or misconfiguration which is fairly easy to achieve using the cloud services and infrastructure as code approach.  
+Providing secure services requires the setup of cloud infrastructure security policies appropriately. After gaining access to this equipment, they are able to attack the host layer's weaknesses and conduct malicious operations in this layer. All configurations should be recorded, maintained, and monitored under scheduled programs to prevent any error or misconfiguration which is fairly easy to achieve using the cloud services and infrastructure as code approach.  
 
 Logging the events such as successful/unsuccessful access of the users to the equipment, configurations, and malicious traffics, and storing the logfiles on a separate server with limited access over a long period of time. Logging events such as successful/failed user access to equipment, configurations, and malicious traffic, and storing logfiles on a separate server with restricted access for an extended period of time [@cloudseclayers].
 
@@ -381,6 +372,7 @@ When it comes to networking, logical isolation makes a VPC environment inherentl
 
 ## Shiny Application
 
+Several shiny R applications were created for this project. The authentication part could be either shifted for the identity aware proxy or implemented in the application, as in example below.
 
 ```
 library(shiny)
@@ -409,6 +401,8 @@ server <- function(input, output, session) {
 shinyApp(ui = ui, server = server)
 ```
 
+While Shiny application could be hosted with the default config on any VM, websockets needs to be disabled for running shiny Google Cloud Run. 
+
 ```
 disable_protocols websocket xdr-streaming xhr-streaming iframe-eventsource iframe-htmlfile xdr-polling iframe-xhr-polling;
 run_as shiny;
@@ -416,9 +410,7 @@ server {
   listen 8080;
   location / {
     site_dir /srv/shiny-server;
-    
     log_dir /var/log/shiny-server;
-    
     directory_index off;
   }
 }
@@ -426,35 +418,28 @@ server {
 
 ## Conteinarization
 
+In order to dockerize shiny application, we will be using a docker image from rocker repository. Since the image is packaged with all the dependencies, we only need to add dependend packages ("googleAuthR") and move required files to the container (shiny server configuration, client secret and the application itself).
+
 ```
 FROM rocker/shiny
-
-# install R package dependencies
 RUN apt-get update && apt-get install -y \
 libcurl4-openssl-dev libssl-dev \
-## clean up
 && apt-get clean \
 && rm -rf /var/lib/apt/lists/ \
 && rm -rf /tmp/downloaded_packages/ /tmp/*.rds
-
-## Install packages from CRAN
-
 RUN install2.r --error \
     -r 'http://cran.rstudio.com' \
     googleAuthR
-
 COPY shiny-customized.config /etc/shiny-server/shiny-server.conf
 COPY client.json /srv/shiny-server/client.json
 COPY app.R /srv/shiny-server/app.R
 RUN chmod -R 775 /srv/shiny-server/
-
 EXPOSE 8080
-
 USER shiny
-
 CMD ["/usr/bin/shiny-server"]
 ```
 
+In order to build a docker container and push the image to the Google Container registry, these commands are utilized. It is possible to automate the pipeline and build container from source (e.g. project github repository), but this feature was outside the scope of the project.
 
 ```
 gcloud auth login --project {project id}
@@ -463,9 +448,18 @@ docker build . -t gcr.io/$PROJECTID/signin
 docker push gcr.io/$PROJECTID/signin
 ```
 
+For debugging purposes, application can be launched locally:
+
+```
+docker run --rm -p 8080:8080 gcr.io/$PROJECTID/simpleauth:latest
+```
+
+
 ### Terraform
 
-main.tf
+Since we are following Infrastructure as Code pattern, the whole required infrastructure could be defined in a terraform file. We need to select project, region, service and add application deployment config. In case of Cloud Run deployment, terraform file can be defined like this:
+
+cloudrun-shiny.tf
 
 ```
 provider "google"{
@@ -494,7 +488,6 @@ resource "google_cloud_run_service" "shiny-simple-signin" {
           container_port = 8080
         }
       }
-
       container_concurrency = 80
       timeout_seconds = 300
     }
@@ -505,12 +498,10 @@ resource "google_cloud_run_service" "shiny-simple-signin" {
       }
     }
   }
-
   traffic {
     percent = 100
     latest_revision = true
   }
-
   depends_on = [google_project_service.run]
 }
 
@@ -523,7 +514,7 @@ resource "google_cloud_run_service_iam_member" "allUsers" {
 
 ```
 
-outputs.tf
+It is convenient to print shiny app URL after the deployment, thus output value is added in outputs.tf: 
 
 ```
 output "url" {
@@ -531,7 +522,18 @@ output "url" {
 }
 ```
 
+Terraform is initiated using the init command, plan command will generate the plan and apply command will push the changes of the infrastructure. After that terraform will hold state regarding your infrastructure and configuration management. Terraform uses this state to map real-world resources to the configuration, keep track of metadata, and optimize efficiency for huge infrastructures. While it is preferred to store the state centrally (e.g. GCS bucket), this was also outside of the project scope. 
+
+```
+terraform init
+terraform plan
+terraform apply
+```
+
+
 ### Cloud Run
+
+![Cloud Run](img/p-cloudruninternal.PNG)
 
 ![Cloud Run](img/p-cloud-run.PNG)
 
@@ -580,7 +582,7 @@ gcloud beta dns --project=$PROJECTID managed-zones create shinycloud-online --de
 
 ![Shiny Analytics Hub - Architecture](img/arch.drawio.png)
 
-* https://shinycloud.online/ - main public app (only googe Sign In)
+* https://shinycloud.online/ - main public app (only google Sign In)
 * https://login.shinycloud.online/ - private app (Google OAuth + identity aware proxy)
 * https://gke.shinycloud.online/ - scalable app (identity aware proxy only)
 * https://_____.shinycloud.online/ - any new app, depending on the security and scalability requirements
