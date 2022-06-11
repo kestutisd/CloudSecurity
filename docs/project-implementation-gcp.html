@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Page not found | FMISD13207 Cloud Security Technologies</title>
-  <meta name="description" content="Page not found | FMISD13207 Cloud Security Technologies" />
+  <title>Chapter 4 Project Implementation GCP | FMISD13207 Cloud Security Technologies</title>
+  <meta name="description" content="Chapter 4 Project Implementation GCP | FMISD13207 Cloud Security Technologies" />
   <meta name="generator" content="bookdown 0.25 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Page not found | FMISD13207 Cloud Security Technologies" />
+  <meta property="og:title" content="Chapter 4 Project Implementation GCP | FMISD13207 Cloud Security Technologies" />
   <meta property="og:type" content="book" />
   
   
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Page not found | FMISD13207 Cloud Security Technologies" />
+  <meta name="twitter:title" content="Chapter 4 Project Implementation GCP | FMISD13207 Cloud Security Technologies" />
   
   
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-
-
+<link rel="prev" href="project-scope.html"/>
+<link rel="next" href="references.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -170,19 +170,227 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="page-not-found" class="section level1">
-<h1>Page not found</h1>
-<p>The page you requested cannot be found (perhaps it was moved or renamed).</p>
-<p>You may want to try searching to find the page's new location, or use
-the table of contents to find the page you are looking for.</p>
+<div id="project-implementation-gcp" class="section level1 hasAnchor" number="4">
+<h1><span class="header-section-number">Chapter 4</span> Project Implementation GCP<a href="project-implementation-gcp.html#project-implementation-gcp" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="shiny-application" class="section level2 hasAnchor" number="4.1">
+<h2><span class="header-section-number">4.1</span> Shiny Application<a href="project-implementation-gcp.html#shiny-application" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<pre><code>library(shiny)
+library(googleAuthR)
+gar_set_client(activate=&quot;web&quot;, web_json = &quot;client.json&quot;, scopes = &quot;https://www.googleapis.com/auth/webmasters&quot;)
+ui &lt;- fluidPage( 
+  titlePanel(&quot;Sample Google Sign-In&quot;),  
+  sidebarLayout(
+    sidebarPanel(
+      googleSignInUI(&quot;demo&quot;)
+    ),    
+    mainPanel(
+      h3(&quot;test&quot;),
+      with(tags, dl(dt(&quot;Name&quot;), dd(textOutput(&quot;g_name&quot;)),
+                    dt(&quot;Email&quot;), dd(textOutput(&quot;g_email&quot;)),
+                    dt(&quot;Image&quot;), dd(uiOutput(&quot;g_image&quot;)) ))
+    )
+  )
+)
+server &lt;- function(input, output, session) {  
+  sign_ins &lt;- shiny::callModule(googleSignIn, &quot;demo&quot;)
+  output$g_name = renderText({ sign_ins()$name })
+  output$g_email = renderText({ sign_ins()$email })
+  output$g_image = renderUI({ img(src=sign_ins()$image) })  
+}
+shinyApp(ui = ui, server = server)</code></pre>
+<pre><code>disable_protocols websocket xdr-streaming xhr-streaming iframe-eventsource iframe-htmlfile xdr-polling iframe-xhr-polling;
+run_as shiny;
+server {
+  listen 8080;
+  location / {
+    site_dir /srv/shiny-server;
+    
+    log_dir /var/log/shiny-server;
+    
+    directory_index off;
+  }
+}</code></pre>
+</div>
+<div id="conteinarization" class="section level2 hasAnchor" number="4.2">
+<h2><span class="header-section-number">4.2</span> Conteinarization<a href="project-implementation-gcp.html#conteinarization" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<pre><code>FROM rocker/shiny
+
+# install R package dependencies
+RUN apt-get update &amp;&amp; apt-get install -y \
+libcurl4-openssl-dev libssl-dev \
+## clean up
+&amp;&amp; apt-get clean \
+&amp;&amp; rm -rf /var/lib/apt/lists/ \
+&amp;&amp; rm -rf /tmp/downloaded_packages/ /tmp/*.rds
+
+## Install packages from CRAN
+
+RUN install2.r --error \
+    -r &#39;http://cran.rstudio.com&#39; \
+    googleAuthR
+
+COPY shiny-customized.config /etc/shiny-server/shiny-server.conf
+COPY client.json /srv/shiny-server/client.json
+COPY app.R /srv/shiny-server/app.R
+RUN chmod -R 775 /srv/shiny-server/
+
+EXPOSE 8080
+
+USER shiny
+
+CMD [&quot;/usr/bin/shiny-server&quot;]</code></pre>
+<pre><code>gcloud auth login --project {project id}
+PROJECTID=$(gcloud config get-value project)
+docker build . -t gcr.io/$PROJECTID/signin
+docker push gcr.io/$PROJECTID/signin</code></pre>
+<div id="terraform" class="section level3 hasAnchor" number="4.2.1">
+<h3><span class="header-section-number">4.2.1</span> Terraform<a href="project-implementation-gcp.html#terraform" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>main.tf</p>
+<pre><code>provider &quot;google&quot;{
+ project     = &quot;shiny-cloud-project&quot;
+ region      = &quot;europe-west1&quot;
+}
+
+resource &quot;google_project_service&quot; &quot;run&quot; {
+  service = &quot;run.googleapis.com&quot;
+}
+
+resource &quot;google_cloud_run_service&quot; &quot;shiny-simple-signin&quot; {
+  name = &quot;shiny-simple-signin&quot;
+  location = &quot;europe-west1&quot;
+  template {
+    spec {
+      containers {
+        image = &quot;gcr.io/shiny-cloud-project/signin:latest&quot;
+        resources {
+          limits = {
+            cpu = &quot;1000m&quot;
+            memory = &quot;1024Mi&quot;
+          }
+        }
+        ports {
+          container_port = 8080
+        }
+      }
+
+      container_concurrency = 80
+      timeout_seconds = 300
+    }
+    metadata {
+      annotations = {
+        &quot;autoscaling.knative.dev/minScale&quot; = 0
+        &quot;autoscaling.knative.dev/maxScale&quot; = 1
+      }
+    }
+  }
+
+  traffic {
+    percent = 100
+    latest_revision = true
+  }
+
+  depends_on = [google_project_service.run]
+}
+
+resource &quot;google_cloud_run_service_iam_member&quot; &quot;allUsers&quot; {
+  service  = google_cloud_run_service.shiny-simple-signin.name
+  location = google_cloud_run_service.shiny-simple-signin.location
+  role     = &quot;roles/run.invoker&quot;
+  member   = &quot;allUsers&quot;
+}
+</code></pre>
+<p>outputs.tf</p>
+<pre><code>output &quot;url&quot; {
+  value = google_cloud_run_service.shiny-simple-signin.status[0].url
+}</code></pre>
+</div>
+<div id="cloud-run" class="section level3 hasAnchor" number="4.2.2">
+<h3><span class="header-section-number">4.2.2</span> Cloud Run<a href="project-implementation-gcp.html#cloud-run" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="figure">
+<img src="img/p-cloud-run.PNG" alt="" />
+<p class="caption">Cloud Run</p>
+</div>
+</div>
+<div id="gke" class="section level3 hasAnchor" number="4.2.3">
+<h3><span class="header-section-number">4.2.3</span> GKE<a href="project-implementation-gcp.html#gke" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="figure">
+<img src="img/p-gke.PNG" alt="" />
+<p class="caption">App deployed in GKE</p>
+</div>
+</div>
+</div>
+<div id="shiny-r-applications" class="section level2 hasAnchor" number="4.3">
+<h2><span class="header-section-number">4.3</span> Shiny R Applications<a href="project-implementation-gcp.html#shiny-r-applications" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="figure">
+<img src="img/shiny-login.gif" alt="" />
+<p class="caption">Shiny - Google Sign In</p>
+</div>
+<div class="figure">
+<img src="img/shiny-oauth.gif" alt="" />
+<p class="caption">Shiny - Google Oauth2</p>
+</div>
+</div>
+<div id="security-measures" class="section level2 hasAnchor" number="4.4">
+<h2><span class="header-section-number">4.4</span> Security Measures<a href="project-implementation-gcp.html#security-measures" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="load-balancing" class="section level3 hasAnchor" number="4.4.1">
+<h3><span class="header-section-number">4.4.1</span> Load balancing<a href="project-implementation-gcp.html#load-balancing" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="figure">
+<img src="img/p-shiny-lb.PNG" alt="" />
+<p class="caption">Load Balancer</p>
+</div>
+</div>
+<div id="dns" class="section level3 hasAnchor" number="4.4.2">
+<h3><span class="header-section-number">4.4.2</span> DNS<a href="project-implementation-gcp.html#dns" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<pre><code>gcloud beta dns --project=$PROJECTID managed-zones create shinycloud-online --description=&quot;&quot; --dns-name=&quot;shinycloud.online.&quot; --visibility=&quot;public&quot; --dnssec-state=&quot;off&quot; --log-dns-queries</code></pre>
+<div class="figure">
+<img src="img/p-dns.PNG" alt="" />
+<p class="caption">Cloud DNS</p>
+</div>
+</div>
+<div id="certificates" class="section level3 hasAnchor" number="4.4.3">
+<h3><span class="header-section-number">4.4.3</span> Certificates<a href="project-implementation-gcp.html#certificates" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="figure">
+<img src="img/p-certs.PNG" alt="" />
+<p class="caption">Certificates signed by CA</p>
+</div>
+</div>
+<div id="identity-aware-proxy" class="section level3 hasAnchor" number="4.4.4">
+<h3><span class="header-section-number">4.4.4</span> Identity aware proxy<a href="project-implementation-gcp.html#identity-aware-proxy" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="figure">
+<img src="img/p-identityawareproxy.PNG" alt="" />
+<p class="caption">Cloud DNS</p>
+</div>
+<div class="figure">
+<img src="img/p-proxyerror.PNG" alt="" />
+<p class="caption">Cloud DNS</p>
+</div>
+</div>
+<div id="audit" class="section level3 hasAnchor" number="4.4.5">
+<h3><span class="header-section-number">4.4.5</span> Audit<a href="project-implementation-gcp.html#audit" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+</div>
+</div>
+<div id="final-result" class="section level2 hasAnchor" number="4.5">
+<h2><span class="header-section-number">4.5</span> Final result<a href="project-implementation-gcp.html#final-result" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="figure">
+<img src="img/arch.drawio.png" alt="" />
+<p class="caption">Shiny Analytics Hub - Architecture</p>
+</div>
+<ul>
+<li><a href="https://shinycloud.online/" class="uri">https://shinycloud.online/</a> - main public app (only googe Sign In)</li>
+<li><a href="https://login.shinycloud.online/" class="uri">https://login.shinycloud.online/</a> - private app (Google OAuth + identity aware proxy)</li>
+<li><a href="https://gke.shinycloud.online/" class="uri">https://gke.shinycloud.online/</a> - scalable app (identity aware proxy only)</li>
+<li><a href="https://_____.shinycloud.online/" class="uri">https://_____.shinycloud.online/</a> - any new app, depending on the security and scalability requirements</li>
+</ul>
+<pre><code>All apps will be terminated on 2022-06-20</code></pre>
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-
-
+<a href="project-scope.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="references.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

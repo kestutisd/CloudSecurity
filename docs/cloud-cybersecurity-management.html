@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 1 Cloud Cybersecurity Management | FMISD13207 Cloud Security Technologies</title>
+  <meta name="description" content="Chapter 1 Cloud Cybersecurity Management | FMISD13207 Cloud Security Technologies" />
+  <meta name="generator" content="bookdown 0.25 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 1 Cloud Cybersecurity Management | FMISD13207 Cloud Security Technologies" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 1 Cloud Cybersecurity Management | FMISD13207 Cloud Security Technologies" />
+  
+  
+  
+
+<meta name="author" content="Kęstutis Daugėla" />
+
+
+<meta name="date" content="2022-06-11" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="index.html"/>
+<link rel="next" href="paper-review.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Information Security Technologies</a></li>
+
+<li class="divider"></li>
+<li><a href="index.html#introduction">Introduction<span></span></a>
+<ul>
+<li class="chapter" data-level="0.1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>0.1</b> Cloud Computing<span></span></a></li>
+<li class="chapter" data-level="0.2" data-path="index.html"><a href="index.html#data-breach---case-study"><i class="fa fa-check"></i><b>0.2</b> Data Breach - Case Study<span></span></a>
+<ul>
+<li class="chapter" data-level="0.2.1" data-path="index.html"><a href="index.html#twitch"><i class="fa fa-check"></i><b>0.2.1</b> Twitch<span></span></a></li>
+<li class="chapter" data-level="0.2.2" data-path="index.html"><a href="index.html#phizer"><i class="fa fa-check"></i><b>0.2.2</b> Phizer<span></span></a></li>
+<li class="chapter" data-level="0.2.3" data-path="index.html"><a href="index.html#citybee"><i class="fa fa-check"></i><b>0.2.3</b> Citybee<span></span></a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="cloud-cybersecurity-management.html"><a href="cloud-cybersecurity-management.html"><i class="fa fa-check"></i><b>1</b> Cloud Cybersecurity Management<span></span></a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="cloud-cybersecurity-management.html"><a href="cloud-cybersecurity-management.html#cloud-security-overview"><i class="fa fa-check"></i><b>1.1</b> Cloud Security Overview<span></span></a></li>
+<li class="chapter" data-level="1.2" data-path="cloud-cybersecurity-management.html"><a href="cloud-cybersecurity-management.html#infrastructure-as-code"><i class="fa fa-check"></i><b>1.2</b> Infrastructure as Code<span></span></a></li>
+<li class="chapter" data-level="1.3" data-path="cloud-cybersecurity-management.html"><a href="cloud-cybersecurity-management.html#type-of-threats"><i class="fa fa-check"></i><b>1.3</b> Type of threats<span></span></a></li>
+<li class="chapter" data-level="1.4" data-path="cloud-cybersecurity-management.html"><a href="cloud-cybersecurity-management.html#vulnerabilities"><i class="fa fa-check"></i><b>1.4</b> Vulnerabilities<span></span></a></li>
+<li class="chapter" data-level="1.5" data-path="cloud-cybersecurity-management.html"><a href="cloud-cybersecurity-management.html#risks"><i class="fa fa-check"></i><b>1.5</b> Risks<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="paper-review.html"><a href="paper-review.html"><i class="fa fa-check"></i><b>2</b> Paper review<span></span></a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="paper-review.html"><a href="paper-review.html#security-challenges-in-different-network-layers"><i class="fa fa-check"></i><b>2.1</b> Security Challenges in Different Network Layers<span></span></a></li>
+<li class="chapter" data-level="2.2" data-path="paper-review.html"><a href="paper-review.html#anomaly-detection-for-cloud-applications"><i class="fa fa-check"></i><b>2.2</b> Anomaly detection for Cloud Applications<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="project-scope.html"><a href="project-scope.html"><i class="fa fa-check"></i><b>3</b> Project Scope<span></span></a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="project-scope.html"><a href="project-scope.html#platform-for-anatical-applications"><i class="fa fa-check"></i><b>3.1</b> Platform for anatical applications<span></span></a></li>
+<li class="chapter" data-level="3.2" data-path="project-scope.html"><a href="project-scope.html#kubernetes-and-docker"><i class="fa fa-check"></i><b>3.2</b> Kubernetes and Docker<span></span></a></li>
+<li class="chapter" data-level="3.3" data-path="project-scope.html"><a href="project-scope.html#shiny-server-security-experiment"><i class="fa fa-check"></i><b>3.3</b> Shiny Server Security Experiment<span></span></a></li>
+<li class="chapter" data-level="3.4" data-path="project-scope.html"><a href="project-scope.html#security-considerations"><i class="fa fa-check"></i><b>3.4</b> Security considerations<span></span></a>
+<ul>
+<li class="chapter" data-level="3.4.1" data-path="project-scope.html"><a href="project-scope.html#data-encryption"><i class="fa fa-check"></i><b>3.4.1</b> Data Encryption<span></span></a></li>
+<li class="chapter" data-level="3.4.2" data-path="project-scope.html"><a href="project-scope.html#single-sign-on"><i class="fa fa-check"></i><b>3.4.2</b> Single Sign On<span></span></a></li>
+<li class="chapter" data-level="3.4.3" data-path="project-scope.html"><a href="project-scope.html#network"><i class="fa fa-check"></i><b>3.4.3</b> Network<span></span></a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="project-implementation-gcp.html"><a href="project-implementation-gcp.html"><i class="fa fa-check"></i><b>4</b> Project Implementation GCP<span></span></a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="project-implementation-gcp.html"><a href="project-implementation-gcp.html#shiny-application"><i class="fa fa-check"></i><b>4.1</b> Shiny Application<span></span></a></li>
+<li class="chapter" data-level="4.2" data-path="project-implementation-gcp.html"><a href="project-implementation-gcp.html#conteinarization"><i class="fa fa-check"></i><b>4.2</b> Conteinarization<span></span></a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="project-implementation-gcp.html"><a href="project-implementation-gcp.html#terraform"><i class="fa fa-check"></i><b>4.2.1</b> Terraform<span></span></a></li>
+<li class="chapter" data-level="4.2.2" data-path="project-implementation-gcp.html"><a href="project-implementation-gcp.html#cloud-run"><i class="fa fa-check"></i><b>4.2.2</b> Cloud Run<span></span></a></li>
+<li class="chapter" data-level="4.2.3" data-path="project-implementation-gcp.html"><a href="project-implementation-gcp.html#gke"><i class="fa fa-check"></i><b>4.2.3</b> GKE<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="project-implementation-gcp.html"><a href="project-implementation-gcp.html#shiny-r-applications"><i class="fa fa-check"></i><b>4.3</b> Shiny R Applications<span></span></a></li>
+<li class="chapter" data-level="4.4" data-path="project-implementation-gcp.html"><a href="project-implementation-gcp.html#security-measures"><i class="fa fa-check"></i><b>4.4</b> Security Measures<span></span></a>
+<ul>
+<li class="chapter" data-level="4.4.1" data-path="project-implementation-gcp.html"><a href="project-implementation-gcp.html#load-balancing"><i class="fa fa-check"></i><b>4.4.1</b> Load balancing<span></span></a></li>
+<li class="chapter" data-level="4.4.2" data-path="project-implementation-gcp.html"><a href="project-implementation-gcp.html#dns"><i class="fa fa-check"></i><b>4.4.2</b> DNS<span></span></a></li>
+<li class="chapter" data-level="4.4.3" data-path="project-implementation-gcp.html"><a href="project-implementation-gcp.html#certificates"><i class="fa fa-check"></i><b>4.4.3</b> Certificates<span></span></a></li>
+<li class="chapter" data-level="4.4.4" data-path="project-implementation-gcp.html"><a href="project-implementation-gcp.html#identity-aware-proxy"><i class="fa fa-check"></i><b>4.4.4</b> Identity aware proxy<span></span></a></li>
+<li class="chapter" data-level="4.4.5" data-path="project-implementation-gcp.html"><a href="project-implementation-gcp.html#audit"><i class="fa fa-check"></i><b>4.4.5</b> Audit<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="project-implementation-gcp.html"><a href="project-implementation-gcp.html#final-result"><i class="fa fa-check"></i><b>4.5</b> Final result<span></span></a></li>
+</ul></li>
+<li><a href="references.html#references">References<span></span></a></li>
+<li class="divider"></li>
+<li>Vilnius Tech 2022</li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">FMISD13207 Cloud Security Technologies</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="cloud-cybersecurity-management" class="section level1 hasAnchor" number="1">
+<h1><span class="header-section-number">Chapter 1</span> Cloud Cybersecurity Management<a href="cloud-cybersecurity-management.html#cloud-cybersecurity-management" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>Cloud security is a critical matter. Most companies worry that highly sensitive data and intellectual property may be exposed through accidental leaks or due to increasingly sophisticated cyber attacks. Gartner predicts that through 2025, 99% of cloud security failures will be the customer’s fault.</p>
+<p>Capturing, keeping, and utilizing sensitive data is necessary for the majority of companies, yet holding and accessing it imposes the duty to secure it. Threat is frequently confused with or used interchangeably with “risk” and “vulnerability.” In cybersecurity, however, it is essential to distinguish between threat, vulnerability, and risk. A threat exploits a weakness and can cause damage or destruction to an asset. A vulnerability is a flaw in your hardware, software, or operations while risk refers to the possibility of assets being lost, damaged, or destroyed.</p>
+<div id="cloud-security-overview" class="section level2 hasAnchor" number="1.1">
+<h2><span class="header-section-number">1.1</span> Cloud Security Overview<a href="cloud-cybersecurity-management.html#cloud-security-overview" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Cloud service providers follow a shared security responsibility model, which means that your security team retains some security duties as you migrate applications, data, containers, and workloads to the cloud, while the provider takes part, but not all, of the responsibility. Clearly defining your duties from those of your providers is critical for minimizing the risk of introducing vulnerabilities into your public, hybrid, or multi-cloud systems, as shown in the graph below.</p>
+<div class="figure">
+<img src="img/perceptible-shifts-in-responsibility-graphic.png" alt="" />
+<p class="caption">Shared responsibility in the cloud - image source www.microsoft.com</p>
+</div>
+<p>Cloud challenges and directions have been categorized into 6 groups: Security, Autonomic Resource Management (ARM), Cloud Adoption, Cloud development and benchmarking big data technologies and cloud computing and social clouds. Security is the most common challenge of cloud computing as the paper indicates (which is the outcome of literature review of over 190 resources including books, journal and conference papers, research project reports and deliverables, European Commission roadmaps and calls for proposals, online weblogs, white papers, business reviews, company websites, profiles and offered services by cloud providers). <span class="citation">(<a href="#ref-cloudsecsurvey" role="doc-biblioref">Keshavarzi, Haghighat, and Bohlouli 2020</a>)</span></p>
+<p>Having a solid cloud security stance helps organizations achieve other benefits, such as:</p>
+<ul>
+<li>Lower costs</li>
+<li>Reduced ongoing operational and administrative expenses</li>
+<li>Scalability</li>
+<li>Increased reliability and availability</li>
+<li>DevOps way of working</li>
+</ul>
+<p>Despite bringing many benefits, the cloud computing paradigm imposes serious concerns in terms of security and privacy, which are considered hurdles in the adoption of the cloud at a very large scale <span class="citation">(<a href="#ref-securingcloudsurvey" role="doc-biblioref">Alghofaili et al. 2021</a>)</span>. Security issues are depended on the cloud provider, service user, instance <span class="citation">(<a href="#ref-datasecurity" role="doc-biblioref">Y. Sun et al. 2014</a>)</span>, and the delivery model, PaaS, IaaS, and SaaS <span class="citation">(<a href="#ref-securitymode" role="doc-biblioref">X. Sun 2018</a>)</span>. Data stored in the public cloud would face both outside attacks and inside attacks <span class="citation">(<a href="#ref-securityprivacy" role="doc-biblioref">Shi 2018</a>)</span>. Data loss and leakage were the biggest security concern, with 44% of organizations seeing data loss as one of their top three focus areas. Two-thirds of organizations leave back doors open to attackers leading to an accidental exposure through misconfiguration. Security gaps in misconfigurations were exploited in 66% of attacks <span class="citation">(<a href="#ref-sophos" role="doc-biblioref">Sophos 2020</a>)</span>.</p>
+<div class="figure">
+<img src="img/sophos_threats.PNG" alt="" />
+<p class="caption">How criminals are getting in, source - sophos.com</p>
+</div>
+<p>Zero Trust security model enables securing cloud-native applications by encrypting all network communication, authenticating, and authorizing every request. The traditional trust management mechanisms represent a static trust relationship that falls deficit while meeting up the dynamic requirement of cloud services. <span class="citation">(<a href="#ref-zerotrust" role="doc-biblioref">Mehraj and Banday 2020</a>)</span>. In order to achieve a true zero-trust security model in the cloud, a combination of network and identity permission policies should be in place.</p>
+<div class="figure">
+<img src="img/zerotrusteco.PNG" alt="" />
+<p class="caption">The Zero Trust eXtended (ZTX) Ecosystem, Forrester Research, Inc., source - juniper.net</p>
+</div>
+<p>To adequately address the modern dynamic threat environment requires<span class="citation">(<a href="#ref-NSA" role="doc-biblioref">Agency 2021</a>)</span>:</p>
+<ul>
+<li>Coordinated and aggressive system monitoring, system management, and defensive operations capabilities.</li>
+<li>Assuming all requests for critical resources and all network traffic may be malicious.</li>
+<li>Assuming all devices and infrastructure may be compromised.</li>
+<li>Accepting that all access approvals to critical resources incur a risk</li>
+</ul>
+<p>Some security recommendations for network security can be summarized as follows <span class="citation">(<a href="#ref-securingcloudsurvey" role="doc-biblioref">Alghofaili et al. 2021</a>)</span>:</p>
+<ul>
+<li>Secure communication techniques should be adopted: HTTPS for web applications, transmission channel must be encrypted by TLS</li>
+<li>Additional monitoring should be done (manual, automatic, ML based)</li>
+<li>Other public security services such as web application firewalls (WAF), virtual firewalls, virtual bastion machines, virtual host protection, and virtual database audit systems could be used</li>
+</ul>
+</div>
+<div id="infrastructure-as-code" class="section level2 hasAnchor" number="1.2">
+<h2><span class="header-section-number">1.2</span> Infrastructure as Code<a href="cloud-cybersecurity-management.html#infrastructure-as-code" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>There was a significant shift in development, deployment, and software application management during the past decade. The new approach is called Development Operations (DevOps) where Infrastructure as Code (IaC) plays a core role. While manual configurations in the Cloud context was a norm, nowadays it is fully automated using blueprints that are easily interpretable by machines. Moreover, IaC approach allows a faster and homogeneous configuration for the whole infrastructure. Usually, it is utilized by a specific declarative language (TerraForm, CloudFormation, Puppet) that allows users to describe the desired state of the infrastructure. This significantly reduces the time, complexity and helps to provision the infrastructure from the security, management, and costs perspectives.</p>
+<p>The whole idea behind IaC is simple - developers can write declarative statements that define the infrastructure necessary to run the code as opposed to writing a ticket/creating a task for administrators. Reproducibility and transparency come as a side effects.</p>
+<div class="figure">
+<img src="img/iac.png" alt="" />
+<p class="caption">Infrastructure as Code Survey, source - thenewstack.io</p>
+</div>
+<p>Terraform is one of the most popular ways to implement this pipeline, especially in a Cloud context. It is an open-source tool that lets you provision Google Cloud resources with declarative configuration files-resources such as virtual machines, containers, storage, and networking. It lets users manage Terraform configuration files in source control to maintain an ideal provisioning state for testing, production, and other environments. <span class="citation">(<a href="#ref-iac" role="doc-biblioref">Almuairfi and Alenezi 2020</a>)</span></p>
+<div class="figure">
+<img src="img/iac_example.PNG" alt="" />
+<p class="caption">Terraform example, source - cloud.google.com</p>
+</div>
+</div>
+<div id="type-of-threats" class="section level2 hasAnchor" number="1.3">
+<h2><span class="header-section-number">1.3</span> Type of threats<a href="cloud-cybersecurity-management.html#type-of-threats" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The literature has examined a variety of security threats <span class="citation">(<a href="#ref-threats" role="doc-biblioref">Humayun et al. 2020</a>)</span>. To aid in comprehending some of the most prevalent cyber security weaknesses, the following are detailed:</p>
+<div class="figure">
+<img src="img/Types-of-cyber-attacks.jpg" alt="" />
+<p class="caption">The threats that a Business can Experience - image source <a href="https://blog.ecosystm360.com/cyber-attacks-threats-risks/" class="uri">https://blog.ecosystm360.com/cyber-attacks-threats-risks/</a></p>
+</div>
+<ul>
+<li><p><strong>Malware</strong>. For the previous decade, malware attacks have been the most serious cyber security danger to many enterprises <span class="citation">(<a href="#ref-malware" role="doc-biblioref">Lim and Lukito 2013</a>)</span>. Malware The attacker uses malicious software to gain unauthorized access to computer systems by exploiting their security flaws. Malware is motivated by an extreme financial or political gain, which increases an attacker’s drive to compromise as many network devices as possible in order to accomplish their harmful goals. Viruses, worms, trojans, backdoors and adware are but a few examples that fall under the umbrella of malware <span class="citation">(<a href="#ref-malware2" role="doc-biblioref">Mokoena and Zuva 2017</a>)</span>.</p></li>
+<li><p><strong>DDoS</strong>. Cyber security is comprised on three essential components: confidentiality, integrity, and availability. Denial of Service (DoS) attacks and their version, Distributed Denial of Service (DDoS), are conceivable threats that deplete system resources, rendering them inaccessible to authorized users, hence breaching one of the security components—availability. DoS attacks on networks are widespread and have the potential to be catastrophic. Numerous types of DoS attacks have been identified thus far, and the most of them are extremely efficient at disrupting network connectivity. Both IPv4 and IPv6 are quite vulnerable to these attacks <span class="citation">(<a href="#ref-ddos" role="doc-biblioref">Tripathi and Mehtre 2013</a>)</span>. The frequency and scale of attacks have escalated in recent years, from a few megabytes to hundreds of gigabytes. It is difficult to identify these attacks efficiently due to changes in attack patterns or new forms of attacks <span class="citation">(<a href="#ref-ddos2" role="doc-biblioref">Vanitha, UMA, and Mahidhar 2017</a>)</span>.</p></li>
+<li><p><strong>Phishing</strong> is a very effective approach of cybercrime that criminals use to fool consumers and steal critical data. Since the first phishing assault was disclosed in 1990, the attack vector has grown into a more sophisticated attack vector. At the moment, phishing is regarded to be one of the most prevalent forms of fraud on the Internet. Phishing attacks can result in significant losses for their victims, including sensitive data, identity theft, businesses, and state secrets. <span class="citation">(<a href="#ref-phishing" role="doc-biblioref">Alkhalil et al. 2021</a>)</span></p></li>
+<li><p><strong>SQL Injection Attack (SQLIA)</strong> is one of the most terrifying risks to web applications. Input validation flaws were the cause of a SQL injection attack on the web. SQLIA is a harmful behavior that exploits invalid SQL statements in order to exploit data-driven applications. This vulnerability allows an attacker to exploit manipulated input to gain access to the application’s back-end databases through the application’s interaction with them. As a result, the attacker can acquire access to the database without obtaining genuine clearance by introducing, changing, or removing key information <span class="citation">(<a href="#ref-sqlia" role="doc-biblioref">Hlaing and Khaing 2020</a>)</span>.</p></li>
+<li><p><strong>Man-in-the-middle</strong>. An attack in which an outsider or third party infiltrates the space between two online users while both users are unaware. In this instance, the malware primarily monitors and has the capacity to modify the information classified exclusively to these two people. Generally, it is referred to as a protocol to refer to an unauthorized user within the system who has the ability to view and modify the system’s data without leaving a trail for the system’s existing users <span class="citation">(<a href="#ref-mitm" role="doc-biblioref">Javeed and MohammedBadamasi 2020</a>)</span>.</p></li>
+<li><p><strong>Cross-site scripting</strong> is a serious issue in Web Applications. With more connected devices that use a variety of Web Applications for various tasks, the potential of XSS assaults grows. By exploiting XSS vulnerabilities in Web applications, hackers can steal victims’ session details or other sensitive information<span class="citation">(<a href="#ref-xss" role="doc-biblioref">Nagarjun and Ahamad 2020</a>)</span>.</p></li>
+<li><p><strong>Zero-day exploit</strong> continue to be a significant security concern to enterprises. When a vendor becomes aware of a zero-day vulnerability, releasing a fix in a timely manner becomes a priority due to the possibility of zero-day exploits. However, we continue to lack knowledge on the factors that influence the time it takes for such vulnerabilities to be patched. It was discovered that while IT companies are quick to release timely updates for zero-day vulnerabilities that affect multiple vendors, products, and versions, vulnerabilities that require privileges and compromise confidentiality are less likely to be patched on time. <span class="citation">(<a href="#ref-zeroday" role="doc-biblioref">Roumani 2021</a>)</span>.</p></li>
+<li><p><strong>BEC (Business Email Compromise)</strong> is a sophisticated email fraud scheme that targets firms who deal with international suppliers and frequently transfer payments via wire transfers. BEC attacks are designed to eliminate security protections by capitalizing on flaws in human behavior and decision-making <span class="citation">(<a href="#ref-BEC" role="doc-biblioref">Agazzi 2020</a>)</span>.</p></li>
+</ul>
+</div>
+<div id="vulnerabilities" class="section level2 hasAnchor" number="1.4">
+<h2><span class="header-section-number">1.4</span> Vulnerabilities<a href="cloud-cybersecurity-management.html#vulnerabilities" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Vulnerabilities are weak points in the environment and assets, which expose you to possible threats and heightened risk. Unfortunately, a company can have thousands, and frequently millions, of vulnerabilities. It is not possible to remediate all of them, given that most businesses can only patch one out of every 10 vulnerabilities. However, the good news is that just 2 to 5 percent of vulnerabilities are likely to be exploited. Even fewer of these vulnerabilities are likely to constitute a real threat to your company, as many of them may not be actively exploited in your industry.</p>
+<p>Depending on the cloud service model, vulnerabilities might differ, as described in the table below.</p>
+<div class="figure">
+<img src="img/vulnerabilities_table.png" alt="" />
+<p class="caption">Layerwise threats vulnerabilities and solutions <span class="citation">(<a href="#ref-threatsvulnerabilities" role="doc-biblioref">Shaikh and Meshram 2021</a>)</span></p>
+</div>
+</div>
+<div id="risks" class="section level2 hasAnchor" number="1.5">
+<h2><span class="header-section-number">1.5</span> Risks<a href="cloud-cybersecurity-management.html#risks" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Customers are supplied cloud services, however they are dissatisfied owing to vulnerabilities and risks in the distributed cloud environment. The SaaS is vulnerable to assaults such as denial of service and consumer data manipulation. The solution mechanisms for SAAS are trace back filters and Web application scanners. IaaS is susceptible to threats such as VM escape and malicious VM formation, for which there are solutions such as hypersafe, TCCP, and mirage. The attacker can also conduct attacks on PaaS, such as account or service hijacking and data leakage, using solution mechanisms such as identity and access management guidelines, dynamic credential and FRS approaches, digital signatures, and homogeneous encryption. Although many individuals develop assault protection techniques, there is no silver bullet to defend the cloud against ever-changing technology, intelligent attackers, and incompetent coders <span class="citation">(<a href="#ref-threatsvulnerabilities" role="doc-biblioref">Shaikh and Meshram 2021</a>)</span>.</p>
+</div>
+</div>
+<h3>References<a href="references.html#references" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-BEC" class="csl-entry">
+Agazzi, Alessandro Ecclesie. 2020. <span>“Business Email Compromise <span>(BEC)</span> and Cyberpsychology.”</span> <em>CoRR</em> abs/2007.02415. <a href="https://arxiv.org/abs/2007.02415">https://arxiv.org/abs/2007.02415</a>.
+</div>
+<div id="ref-NSA" class="csl-entry">
+Agency, National Security. 2021. <span>“Embracing a Zero Trust Security Model,”</span> February. <a href="https://media.defense.gov/2021/Feb/25/2002588479/-1/-1/0/CSI_EMBRACING_ZT_SECURITY_MODEL_UOO115131-21.PDF">https://media.defense.gov/2021/Feb/25/2002588479/-1/-1/0/CSI_EMBRACING_ZT_SECURITY_MODEL_UOO115131-21.PDF</a>.
+</div>
+<div id="ref-securingcloudsurvey" class="csl-entry">
+Alghofaili, Yara, Albatul Albattah, Noura Alrajeh, Murad A. Rassam, and Bander Ali Saleh Al-rimy. 2021. <span>“Secure Cloud Infrastructure: A Survey on Issues, Current Solutions, and Open Challenges.”</span> <em>Applied Sciences</em> 11 (19). <a href="https://doi.org/10.3390/app11199005">https://doi.org/10.3390/app11199005</a>.
+</div>
+<div id="ref-phishing" class="csl-entry">
+Alkhalil, Zainab, Chaminda Hewage, Liqaa Nawaf, and Imtiaz Khan. 2021. <span>“Phishing Attacks: A Recent Comprehensive Study and a New Anatomy.”</span> <em>Frontiers in Computer Science</em> 3. <a href="https://doi.org/10.3389/fcomp.2021.563060">https://doi.org/10.3389/fcomp.2021.563060</a>.
+</div>
+<div id="ref-iac" class="csl-entry">
+Almuairfi, Sadiq, and Mamdouh Alenezi. 2020. <span>“Security Controls in Infrastructure as Code.”</span> <em>Computer Fraud and Security</em> 2020 (October): 13–19. <a href="https://doi.org/10.1016/S1361-3723(20)30109-3">https://doi.org/10.1016/S1361-3723(20)30109-3</a>.
+</div>
+<div id="ref-sqlia" class="csl-entry">
+Hlaing, Zar Chi Su Su, and Myo Khaing. 2020. <span>“A Detection and Prevention Technique on SQL Injection Attacks.”</span> In <em>2020 IEEE Conference on Computer Applications(ICCA)</em>, 1–6. <a href="https://doi.org/10.1109/ICCA49400.2020.9022833">https://doi.org/10.1109/ICCA49400.2020.9022833</a>.
+</div>
+<div id="ref-threats" class="csl-entry">
+Humayun, Mamoona, Mahmood Niazi, Noor Zaman, Mohammad Alshayeb, and Sajjad Mahmood. 2020. <span>“Cyber Security Threats and Vulnerabilities: A Systematic Mapping Study.”</span> <em>Arabian Journal for Science and Engineering</em> 45 (January). <a href="https://doi.org/10.1007/s13369-019-04319-2">https://doi.org/10.1007/s13369-019-04319-2</a>.
+</div>
+<div id="ref-mitm" class="csl-entry">
+Javeed, Dr, and Umar MohammedBadamasi. 2020. <span>“Man in the Middle Attacks: Analysis, Motivation and Prevention.”</span> <em>International Journal of Computer Networks and Communications Security</em> 8 (July): 52–58. <a href="https://doi.org/10.47277/IJCNCS/8(7)1">https://doi.org/10.47277/IJCNCS/8(7)1</a>.
+</div>
+<div id="ref-cloudsecsurvey" class="csl-entry">
+Keshavarzi, Amin, Abolfazl T. Haghighat, and Mahdi Bohlouli. 2020. <span>“Research Challenges and Prospective Business Impacts of Cloud Computing: A Survey.”</span> arXiv. <a href="https://doi.org/10.48550/ARXIV.2005.01475">https://doi.org/10.48550/ARXIV.2005.01475</a>.
+</div>
+<div id="ref-malware" class="csl-entry">
+Lim, Charles, and Louis Lukito. 2013. <span>“Malware Attacks Intelligence in Higher Education Networks.”</span> In.
+</div>
+<div id="ref-zerotrust" class="csl-entry">
+Mehraj, Saima, and M. Tariq Banday. 2020. <span>“Establishing a Zero Trust Strategy in Cloud Computing Environment.”</span> In, 1–6. <a href="https://doi.org/10.1109/ICCCI48352.2020.9104214">https://doi.org/10.1109/ICCCI48352.2020.9104214</a>.
+</div>
+<div id="ref-malware2" class="csl-entry">
+Mokoena, Tebogo, and Tranos Zuva. 2017. <span>“Malware Analysis and Detection in Enterprise Systems.”</span> In <em>2017 IEEE International Symposium on Parallel and Distributed Processing with Applications and 2017 IEEE International Conference on Ubiquitous Computing and Communications (ISPA/IUCC)</em>, 1304–10. <a href="https://doi.org/10.1109/ISPA/IUCC.2017.00199">https://doi.org/10.1109/ISPA/IUCC.2017.00199</a>.
+</div>
+<div id="ref-xss" class="csl-entry">
+Nagarjun, PMD, and Shaik Shakeel Ahamad. 2020. <span>“Cross-Site Scripting Research: A Review.”</span> <em>International Journal of Advanced Computer Science and Applications</em> 11 (4). <a href="https://doi.org/10.14569/IJACSA.2020.0110481">https://doi.org/10.14569/IJACSA.2020.0110481</a>.
+</div>
+<div id="ref-zeroday" class="csl-entry">
+Roumani, Yaman. 2021. <span>“<span class="nocase">Patching zero-day vulnerabilities: an empirical analysis</span>.”</span> <em>Journal of Cybersecurity</em> 7 (1). <a href="https://doi.org/10.1093/cybsec/tyab023">https://doi.org/10.1093/cybsec/tyab023</a>.
+</div>
+<div id="ref-threatsvulnerabilities" class="csl-entry">
+Shaikh, Akram H., and B. B. Meshram. 2021. <span>“Security Issues in Cloud Computing.”</span> In <em>Intelligent Computing and Networking</em>, edited by Valentina Emilia Balas, Vijay Bhaskar Semwal, Anand Khandare, and Megharani Patil, 63–77. Singapore: Springer Singapore.
+</div>
+<div id="ref-securityprivacy" class="csl-entry">
+Shi, Yue. 2018. <span>“Data Security and Privacy Protection in Public Cloud.”</span> In <em>2018 IEEE International Conference on Big Data (Big Data)</em>, 4812–19. <a href="https://doi.org/10.1109/BigData.2018.8622531">https://doi.org/10.1109/BigData.2018.8622531</a>.
+</div>
+<div id="ref-sophos" class="csl-entry">
+Sophos. 2020. <span>“THE STATE OF CLOUD SECURITY 2020,”</span> July. <a href="https://secure2.sophos.com/en-us/medialibrary/Gated-Assets/white-papers/sophos-the-state-of-cloud-security-2020-wp.pdf">https://secure2.sophos.com/en-us/medialibrary/Gated-Assets/white-papers/sophos-the-state-of-cloud-security-2020-wp.pdf</a>.
+</div>
+<div id="ref-securitymode" class="csl-entry">
+Sun, Xiaotong. 2018. <span>“Critical Security Issues in Cloud Computing: A Survey.”</span> In <em>2018 IEEE 4th International Conference on Big Data Security on Cloud (BigDataSecurity), IEEE International Conference on High Performance and Smart Computing, (HPSC) and IEEE International Conference on Intelligent Data and Security (IDS)</em>, 216–21. <a href="https://doi.org/10.1109/BDS/HPSC/IDS18.2018.00053">https://doi.org/10.1109/BDS/HPSC/IDS18.2018.00053</a>.
+</div>
+<div id="ref-datasecurity" class="csl-entry">
+Sun, Yunchuan, Junsheng Zhang, Yongping Xiong, and Guangyu Zhu. 2014. <span>“Data Security and Privacy in Cloud Computing.”</span> <em>International Journal of Distributed Sensor Networks</em> 10 (7): 190903. <a href="https://doi.org/10.1155/2014/190903">https://doi.org/10.1155/2014/190903</a>.
+</div>
+<div id="ref-ddos" class="csl-entry">
+Tripathi, Nikhil, and Babu Mehtre. 2013. <span>“DoS and DDoS Attacks: Impact, Analysis and Countermeasures.”</span> In, 1–6.
+</div>
+<div id="ref-ddos2" class="csl-entry">
+Vanitha, K. S., S V UMA, and S. K. Mahidhar. 2017. <span>“Distributed Denial of Service: Attack Techniques and Mitigation.”</span> In <em>2017 International Conference on Circuits, Controls, and Communications (CCUBE)</em>, 226–31. <a href="https://doi.org/10.1109/CCUBE.2017.8394146">https://doi.org/10.1109/CCUBE.2017.8394146</a>.
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="paper-review.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["CloudTechnologies.pdf"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>
