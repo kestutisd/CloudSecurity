@@ -21,7 +21,7 @@ citation_package: natbib
 
 ## Cloud Computing
 
-The underlying concept of cloud computing was introduced way back in 1960s by John McCarthy in his book, “The challenge of the Computer Utility”. His opinion was that “computation may someday be organized as a public utility.” The rest became history and the majority of the software used now is running in the cloud seamlessly [@CloudHistoryOverview].
+The concept of cloud computing was introduced in 1960s by John McCarthy in his book, “The challenge of the Computer Utility”. His opinion was that “computation may someday be organized as a public utility.” The rest became history and the majority of the software used now is running in the cloud seamlessly [@CloudHistoryOverview].
 
 ![The history of the cloud - image source https://itchronicles.com/](img/evolution_of_cloud.png)
 
@@ -37,12 +37,12 @@ Cloud services usually are grouped into three categories:
 
 ![IaaS vs PaaS vs SaaS - image source https://www.bigcommerce.com/blog/saas-vs-paas-vs-iaas/](img/saas-vs-paas-vs-iaas-breakdown.jpg)
 
-However,  despite  the  gain  achieved  from  cloud computing, organizations are slow in fully accepting it due to security issues and  challenges associated with it [@Cloud-computing]. However, almost every cloud-ready company uses the public cloud (97%) to some extent leaving hybrid cloud setup the dominant one (78%). Companies rarely use public or private cloud alone (19% vs 2% respectively). According to Forbes, there are now 77 % of organizations, having one or some parts of their systems in the cloud. 
+Despite  the  gain  achieved  from  cloud computing, organizations are slow in fully accepting it due to security issues and  challenges associated with it [@Cloud-computing]. Almost every cloud-ready company uses the public cloud (97%) to some extent leaving hybrid cloud setup the dominant one (78%). Companies rarely use public or private cloud alone (19% vs 2% respectively). According to Forbes, there are now 77 % of organizations, having one or some parts of their systems in the cloud, despite the security concerns. 
 
 
 ## Data Breach - Case Study
 
-One of the main findings of the study [@databreaches] was that the most targeted type of organisation are medical organisations and Business Services Organisations since they possess the most sensitive personal data. Moreover, it was observed that in the recent years the frequency hacking breaches on the two sectors has intensified, with an inter-arrival time of 4 and 7.5 days respectively. These findings implies taking serious actions to secure personal data especially for MED and BSO organization [@databreaches]. Another public data breach dataset of the biggest hacks confirms these findings. 
+One of the main findings of the study [@databreaches] was that the most targeted type of organisation are medical organisations and Business Services Organisations since they possess the most sensitive personal data. Moreover, it was observed that in the recent years the frequency hacking breaches on the two sectors has intensified, with an inter-arrival time of 4 and 7.5 days respectively. These findings implies taking serious actions to secure personal data especially for MED and BSO organization [@databreaches]. Another public data breach dataset of the biggest hacks confirms these findings as well. Attack spread between different business sectors are provided in the table below.
 
 
 |Sector     |   Attacks|     Number of records lost|
@@ -65,9 +65,11 @@ Even such tech companies as Facebook, Twitter, Amazon, Twitch were hacked succes
 
 ![World's Biggest Data Breaches & Hacks - image source https://www.informationisbeautiful.net/visualizations/worlds-biggest-data-breaches-hacks/](img/data-breaches.png)
 
-The method's classification is not very precise and very overlapping; for example, what is termed a "oops!" could be classified as bad security or vice versa. On the other hand, hacking methods are not described, and hence we shall explore attack types in greater detail in the second chapter.
+However, the classification for applied methods is not very precise and can be overlapping; for example, what is termed a "oops!" could be classified as bad security or vice versa. On the other hand, hacking methods are not described, and hence we shall explore attack types in greater detail in the second chapter.
 
 ![Hacks sorted by method](img/ggplot.png)
+
+In the section below we will discuss a few examples of data breaches that involve Cloud Computing. While these data breaches occurred using a different Public Cloud vendors (AWS, GCP and Azure), they have several things in common:  zero-trust networking and permissions model that provide persons and applications only the access they require were not sufficient. These issues could be easily prevent by applying a proper permissions model and networking rules.
 
 ### Twitch
 
@@ -79,26 +81,18 @@ Twitch recently suffered a data breach that, according to security analysts, may
 
 As another security professional indicates in [medium.com - Thoughts on the Twitch Breach](https://medium.com/cloud-security/thoughts-on-the-twitch-breach-a2840470387b): the attackers did not gain access through a zero-day vulnerability or a supply chain assault. Something existed in a state that was not compliant with or anticipated of it.
 
-It appears that the problem was a misconfiguration as this statement says something was in error. The attackers did not get in due to a zero-day or supply chain attack. Something existed in a non-compliant or expected state. It sounds as though a server was running something on an Internet-facing port. However, the exposed data could have existed in an S3 bucket and all we know is that a server entered an undesirable state, which resulted in data disclosure. The misconfiguration could be as simple as a server being allowed excessive permissions and access, or as complex as a server being exposed to the Internet when it should have been in a private network.
-
-
-Many people host their data on AWS and might be thinking, "If Amazon can’t keep data secure on AWS, who can?". 
-
-Assess that you have zero-trust networking and permissions that provide persons and applications only the access they require. In an enterprise of that size, source control systems, if that is what was impacted in this case, should never be exposed directly to the entire Internet. Small enterprises may do so temporarily to stay afloat, but the majority of source control solutions allow you to restrict access to specific IP ranges.
-
+It appears that the problem was a misconfiguration - it sounds as though a server was running something on an Internet-facing port. However, the exposed data could have existed in an S3 bucket and the only known aspect was that a server entered an undesirable state, which resulted in data disclosure. It could be either a server being allowed excessive permissions or a server being exposed to the Internet when it should have been in a private network.
 
 ### Phizer
 
-Pfizer Inc., the world's largest pharmaceutical company, has experienced a massive data breach, with patient information discovered exposed on unprotected cloud storage.
-
-The exposed data was discovered in a Google Cloud storage bucket that had been misconfigured. Hundreds of discussions between Pfizer's automated customer service software and consumers who used the company's prescription pharmaceuticals, including Lyrica, Chantix, Viagra, and cancer medicines Ibrance and Aromasin, were included in the data. Along with sensitive medical information, the transcripts included full names, home addresses, and email addresses, which hackers could use to conduct highly effective phishing attempts against victims: [Pfizer suffers huge data breach on unsecured cloud storage](https://pf-media.co.uk/news/pfizer-suffers-huge-data-breach-on-unsecured-cloud-storage/). It is evident that data storage in the public cloud has become the standard, and businesses of all sizes now face complicated identity and data management challenges. Capital One demonstrated, and Pfizer has confirmed, that even with the largest teams, funds, and skill sets, the public cloud is highly difficult. When corporate organizations move at the speed of the cloud and innovate at a breakneck pace, errors and data exposure are inevitable if the necessary technologies are not in place.
+Pfizer Inc., the world's largest pharmaceutical company, has experienced a massive data breach, with patient information discovered exposed on unprotected cloud storage. The exposed data was discovered in a Google Cloud storage bucket that had been misconfigured. Hundreds of discussions between Pfizer's automated customer service software and consumers who used the company's prescription pharmaceuticals, including Lyrica, Chantix, Viagra, and cancer medicines Ibrance and Aromasin, were included in the data. Along with sensitive medical information, the transcripts included full names, home addresses, and email addresses, which hackers could use to conduct highly effective phishing attempts against victims: [Pfizer suffers huge data breach on unsecured cloud storage](https://pf-media.co.uk/news/pfizer-suffers-huge-data-breach-on-unsecured-cloud-storage/). It is evident that data storage in the public cloud has become the standard, and businesses of all sizes now face complicated identity and data management challenges. Capital One demonstrated, and Pfizer has confirmed, that even with the largest teams, funds, and skill sets, the public cloud security is highly difficult. When corporate organizations move at the speed of the cloud and innovate at a breakneck pace, errors and data exposure are inevitable if the necessary technologies are not in place.
 
 ### Citybee
 
 Lithuanian police were investigating after 110,000 people's personal information was exposed to an internet hacker website. CityBee, a car-sharing service, revealed that the breach compromised the records and information of thousands of its clients. [euronews.com - Thousands of CityBee users have their personal data leaked online](https://www.euronews.com/2021/02/17/thousands-of-citybee-users-have-their-personal-data-leaked-online). As the attacker stated, "CityBee was using a service provided by Microsoft called Azure Blob, which is used as storage of some sorts. Now Microsoft allows you to secure those blobs with authentication, which Citybee for some reason chose not to." He was able to search CityBee in a  DNS record called CNAME which linked to their azure blob and other things like their website. Even a [step-by-step instruction](https://kernal.eu/posts/citybee-leak/) was provided by the hacker. Essentially, it was a BACPAC file named CitybeeProduction, which contained the metadata and data from the database. Citybee also used a very weak SHA-1 encryption algorithm for passwords without any salt added.
 
 ![Citybee production database leak - image source https://cybernews.com/](img/citybee-full-database-post.png)
-On November 29, 2021, the Lithuanian data protection authority (VDAI) imposed a fine of EUR 110 000 on UAB Prime Leasing, which manages the short-term car rental platform “CityBee” (Company). VDAI found that it had failed to ensure the security of the processing of personal data.
+On November 29, 2021, the Lithuanian data protection authority (VDAI) imposed a fine of EUR 110 000 on UAB Prime Leasing, which manages the short-term car rental platform CityBee. VDAI found that it had failed to ensure the security of the processing of personal data.
 
 
 # Cloud Cybersecurity Management
@@ -216,6 +210,21 @@ Network security layers were decoupled into five sections: perimeter, network, h
 ## Anomaly detection for Cloud Applications
 
 Machine Learning for Cloud Security: A Systematic Review [@mlcloud]
+
+Utilizing Machine Learning is one method for securing Cloud. ML approaches have been applied in a variety of ways to avoid or detect Cloud threats and security vulnerabilities. This study categorizes 63 relevant studies and the results of the Systematic Literature Review into three primary research areas: Cloud security risks, machine learning approaches, and model performance. Eleven Cloud security areas have been identified, including anomaly detection, attack detection, privacy preservation, security, vulnerability detection, data confidentiality, data privacy, DDoS, DoS, and intrusion detection. The most often analyzed topics are DDoS and data privacy, with a 16 percent and 14 percent usage frequency, respectively. 
+
+![Cloud security area found from collected research papers [@mlcloud]](img/a-area.PNG)
+
+The primary role of Intrusion Detection Systems, which requires high accuracy, low false alarm rates, and the ability to predict alarms based on positive or real alarms when an intrusion occurs and false positive or false alarms in the event of a failure. 
+
+![ Papers that discusses ID in cloud [@mlcloud]](img/a-IDS.PNG)
+
+Anomaly detection is crucial because data anomalies are essential and frequently crucial information that can be utilized in a wide variety of applications. Some ML techniques are hybrid while others are standalone. SVM is the most prominent ML technique employed in hybrid and standalone models. Sixty percent of the studies compared their models to other ML models to obtain the best rating, either to demonstrate their model's correctness or to further enhance it.
+
+![ML models used in each research paper collected [@mlcloud]](img/a-models.PNG)
+
+Some of the key finding of the authors were regarding lack of deep learning utilization and old datasets being used for model evaluation (e.g. KDD, KDD CUP 99).
+
 
 # Project Scope
 
@@ -416,7 +425,7 @@ server {
 }
 ```
 
-## Conteinarization
+## Containerization
 
 In order to dockerize shiny application, we will be using a docker image from rocker repository. Since the image is packaged with all the dependencies, we only need to add dependend packages ("googleAuthR") and move required files to the container (shiny server configuration, client secret and the application itself).
 
@@ -533,19 +542,75 @@ terraform apply
 
 ### Cloud Run
 
+Cloud Run is a managed compute platform that supports the execution of containers invoked by requests or events. Since Cloud Run is serverless, it abstracts the infrastructure administration. Additionally, the serverless approach provides more fine-grained billing and can significantly reduce the cost (e.g. in case the application is not in use). With a manually created GKE cluster, the nodes and environment are always on which means that you are billed for them regardless of utilization. With Cloud Run, the service is merely available and the billing is done only for the actual consumption.
+
+In our case, we have deployed two services, which are not exposed to the internet. The only traffic allow is within the project or via Load balancer. Authentication for these services are handled either via Identity Aware Proxy or within the application.
+
 ![Cloud Run](img/p-cloudruninternal.PNG)
+
+Withing the deployed service, all the necessary metrics are tracked for enhanced monitoring. Minimum instances could be set to 0 to make the application offline when it is not in use.
 
 ![Cloud Run](img/p-cloud-run.PNG)
 
 
 ### GKE
 
+Google Kubernetes Engine is a straightforward way of setting up a Kubernetes Cluster in Cloud. These clusters are fully managed by Google Site Reliability Engineers and Google ensures that your cluster is available and up-to-date. It also supports the common Docker container format and runs on Container-Optimized OS.
+
+Once the Cluster is created, the deployment is similar to Cloud Run. It can be done via Google Cloud Console, GCP SDK, or integrated into any CI/CD pipeline using Jenkins, GitActions, or similar tools.
+
+To enhance the security, private GKE cluster is deployed. The service is exposed via node port internally, which is later mapped as a back-end service in the load balancer configuration. This way external connectivity is only possible via Load Balancer.
+
 ![App deployed in GKE](img/p-gke.PNG)
+
+Since Shiny Server is a stateful application, session affinity is also needed in case there are more than one active pods (which are also referred to as sticky sessions).
+
+![GKE + Load balancer](img/gke-lb.jpg)
 
 
 ## Shiny R Applications
 
+A simple app with a login module. This module is appropriate if it is not needed to authenticate APIs in the application and only require a login form.
+
 ![Shiny - Google Sign In](img/shiny-login.gif)
+
+This uses the most modern gar_shiny_* family of functions to create authentication.
+
+```
+  library(shiny)
+  library(googleAuthR)
+  gar_set_client(activate="web", web_json = "client.json", scopes = "https://www.googleapis.com/auth/webmasters")
+  options(googleAuthR.redirect = 'https://www.shinycloud.online')
+  ui <- fluidPage(
+    titlePanel("Old Faithful Geyser Data"),
+    sidebarLayout(
+      sidebarPanel(
+        # numericInput("bins", value = 2, label = "bins")
+        sliderInput("bins",
+                    "Number of bins:",
+                    min = 1,
+                    max = 50,
+                    value = 30)
+      ),
+      mainPanel(
+        plotOutput("distPlot")
+      )
+    )
+  )
+  
+  ## server.R
+  server <- function(input, output, session){
+    gar_shiny_auth(session)
+    output$distPlot <- renderPlot({
+      x    <- faithful[, 2]
+      bins <- seq(min(x), max(x), length.out = input$bins + 1)
+      hist(x, breaks = bins, col = 'darkgray', border = 'white')
+    })
+  }
+  shinyApp(gar_shiny_ui(ui), server)
+```
+
+After the authentication is completed (in this case it is possible to adjust scope, e.g. users can allow access to their analytics API or Google Drive), user will be redirected to the app. In some platforms (such as shinyapps.io or a Kubernetes cluster, as in this case), the URL you are authenticating from will not match the URL of the Docker container the script is running in. In this instance, it must be manually set in the application.
 
 ![Shiny - Google Oauth2](img/shiny-oauth.gif)
 
@@ -553,14 +618,19 @@ terraform apply
 
 ### Load balancing
 
+Load balancers are managed services on GCP that distribute application traffic across many instances. An in previous example, load balancer is responsible for routing the requests from *.shinycloud.online to the internal backend endpoints (Cloud Run, GKE cluster node port).
+
 ![Load Balancer](img/p-shiny-lb.PNG)
 
 ### DNS
 
+In order to access the application from external network, it is wise to use DNS and enable the connectivity only over HTTPS protocol. This way users can trust that they are reaching correct website and data is protected via TLS encryption. DNS instance can be created using the following command:
 
 ```
 gcloud beta dns --project=$PROJECTID managed-zones create shinycloud-online --description="" --dns-name="shinycloud.online." --visibility="public" --dnssec-state="off" --log-dns-queries
 ```
+
+After that, address (A) record is mapped to the load balancer while the Canonical Name name is added as shinycloud.online. It is possible to create subdomains (e.g. login.shinycloud.online) and map them to separate/standalone shiny applications as well.
 
 ![Cloud DNS](img/p-dns.PNG)
 
@@ -571,18 +641,28 @@ gcloud beta dns --project=$PROJECTID managed-zones create shinycloud-online --de
 
 ### Identity aware proxy
 
-![Cloud DNS](img/p-identityawareproxy.PNG)
+Identity-Aware Proxy (IAP) is a Google Cloud Platform service that intercepts web requests sent to your application, authenticates the user making the request using the Google Identity Service, and only allows the request to proceed if it originates from a user which is authorized.
 
-![Cloud DNS](img/p-proxyerror.PNG)
+In the following example, IAP is enabled for 2 backend services out of three via the Load Balancer. This means that user will need to authorize via IAP proxy prior to reaching the app itself. 
+
+![Identity aware proxy](img/p-identityawareproxy.PNG)
+
+In case the user does not have the required permissions, he will be presented with the error screen. 
+
+![Identity aware proxy - not authorized](img/p-proxyerror.PNG)
 
 ### Audit
+
+Logs are ingested from Google Cloud services and stored securely with no configuration necessary. GKE workload logs are captured automatically, while VM workload logs are captured via the Ops Agent. Having all the logs stored centrally is convenient for the analytics/anomaly detection purposes discussed in previous chapters.
+
+![Cloud Logging](img/p-logging.PNG)
 
 
 ## Final result
 
 ![Shiny Analytics Hub - Architecture](img/arch.drawio.png)
 
-* https://shinycloud.online/ - main public app (only google Sign In)
+* https://shinycloud.online/ - main public app (only Google Sign In)
 * https://login.shinycloud.online/ - private app (Google OAuth + identity aware proxy)
 * https://gke.shinycloud.online/ - scalable app (identity aware proxy only)
 * https://_____.shinycloud.online/ - any new app, depending on the security and scalability requirements

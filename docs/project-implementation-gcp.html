@@ -23,7 +23,7 @@
 <meta name="author" content="Kęstutis Daugėla" />
 
 
-<meta name="date" content="2022-06-11" />
+<meta name="date" content="2022-06-12" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -132,7 +132,7 @@ div.csl-indent {
 <li class="chapter" data-level="4" data-path="project-implementation-gcp.html"><a href="project-implementation-gcp.html"><i class="fa fa-check"></i><b>4</b> Project Implementation GCP<span></span></a>
 <ul>
 <li class="chapter" data-level="4.1" data-path="project-implementation-gcp.html"><a href="project-implementation-gcp.html#shiny-application"><i class="fa fa-check"></i><b>4.1</b> Shiny Application<span></span></a></li>
-<li class="chapter" data-level="4.2" data-path="project-implementation-gcp.html"><a href="project-implementation-gcp.html#conteinarization"><i class="fa fa-check"></i><b>4.2</b> Conteinarization<span></span></a>
+<li class="chapter" data-level="4.2" data-path="project-implementation-gcp.html"><a href="project-implementation-gcp.html#containerization"><i class="fa fa-check"></i><b>4.2</b> Containerization<span></span></a>
 <ul>
 <li class="chapter" data-level="4.2.1" data-path="project-implementation-gcp.html"><a href="project-implementation-gcp.html#terraform"><i class="fa fa-check"></i><b>4.2.1</b> Terraform<span></span></a></li>
 <li class="chapter" data-level="4.2.2" data-path="project-implementation-gcp.html"><a href="project-implementation-gcp.html#cloud-run"><i class="fa fa-check"></i><b>4.2.2</b> Cloud Run<span></span></a></li>
@@ -211,8 +211,8 @@ server {
   }
 }</code></pre>
 </div>
-<div id="conteinarization" class="section level2 hasAnchor" number="4.2">
-<h2><span class="header-section-number">4.2</span> Conteinarization<a href="project-implementation-gcp.html#conteinarization" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="containerization" class="section level2 hasAnchor" number="4.2">
+<h2><span class="header-section-number">4.2</span> Containerization<a href="project-implementation-gcp.html#containerization" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>In order to dockerize shiny application, we will be using a docker image from rocker repository. Since the image is packaged with all the dependencies, we only need to add dependend packages (“googleAuthR”) and move required files to the container (shiny server configuration, client secret and the application itself).</p>
 <pre><code>FROM rocker/shiny
 RUN apt-get update &amp;&amp; apt-get install -y \
@@ -302,10 +302,13 @@ terraform apply</code></pre>
 </div>
 <div id="cloud-run" class="section level3 hasAnchor" number="4.2.2">
 <h3><span class="header-section-number">4.2.2</span> Cloud Run<a href="project-implementation-gcp.html#cloud-run" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Cloud Run is a managed compute platform that supports the execution of containers invoked by requests or events. Since Cloud Run is serverless, it abstracts the infrastructure administration. Additionally, the serverless approach provides more fine-grained billing and can significantly reduce the cost (e.g. in case the application is not in use). With a manually created GKE cluster, the nodes and environment are always on which means that you are billed for them regardless of utilization. With Cloud Run, the service is merely available and the billing is done only for the actual consumption.</p>
+<p>In our case, we have deployed two services, which are not exposed to the internet. The only traffic allow is within the project or via Load balancer. Authentication for these services are handled either via Identity Aware Proxy or within the application.</p>
 <div class="figure">
 <img src="img/p-cloudruninternal.PNG" alt="" />
 <p class="caption">Cloud Run</p>
 </div>
+<p>Withing the deployed service, all the necessary metrics are tracked for enhanced monitoring. Minimum instances could be set to 0 to make the application offline when it is not in use.</p>
 <div class="figure">
 <img src="img/p-cloud-run.PNG" alt="" />
 <p class="caption">Cloud Run</p>
@@ -313,18 +316,60 @@ terraform apply</code></pre>
 </div>
 <div id="gke" class="section level3 hasAnchor" number="4.2.3">
 <h3><span class="header-section-number">4.2.3</span> GKE<a href="project-implementation-gcp.html#gke" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Google Kubernetes Engine is a straightforward way of setting up a Kubernetes Cluster in Cloud. These clusters are fully managed by Google Site Reliability Engineers and Google ensures that your cluster is available and up-to-date. It also supports the common Docker container format and runs on Container-Optimized OS.</p>
+<p>Once the Cluster is created, the deployment is similar to Cloud Run. It can be done via Google Cloud Console, GCP SDK, or integrated into any CI/CD pipeline using Jenkins, GitActions, or similar tools.</p>
+<p>To enhance the security, private GKE cluster is deployed. The service is exposed via node port internally, which is later mapped as a back-end service in the load balancer configuration. This way external connectivity is only possible via Load Balancer.</p>
 <div class="figure">
 <img src="img/p-gke.PNG" alt="" />
 <p class="caption">App deployed in GKE</p>
+</div>
+<p>Since Shiny Server is a stateful application, session affinity is also needed in case there are more than one active pods (which are also referred to as sticky sessions).</p>
+<div class="figure">
+<img src="img/gke-lb.jpg" alt="" />
+<p class="caption">GKE + Load balancer</p>
 </div>
 </div>
 </div>
 <div id="shiny-r-applications" class="section level2 hasAnchor" number="4.3">
 <h2><span class="header-section-number">4.3</span> Shiny R Applications<a href="project-implementation-gcp.html#shiny-r-applications" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>A simple app with a login module. This module is appropriate if it is not needed to authenticate APIs in the application and only require a login form.</p>
 <div class="figure">
 <img src="img/shiny-login.gif" alt="" />
 <p class="caption">Shiny - Google Sign In</p>
 </div>
+<p>This uses the most modern gar_shiny_* family of functions to create authentication.</p>
+<pre><code>  library(shiny)
+  library(googleAuthR)
+  gar_set_client(activate=&quot;web&quot;, web_json = &quot;client.json&quot;, scopes = &quot;https://www.googleapis.com/auth/webmasters&quot;)
+  options(googleAuthR.redirect = &#39;https://www.shinycloud.online&#39;)
+  ui &lt;- fluidPage(
+    titlePanel(&quot;Old Faithful Geyser Data&quot;),
+    sidebarLayout(
+      sidebarPanel(
+        # numericInput(&quot;bins&quot;, value = 2, label = &quot;bins&quot;)
+        sliderInput(&quot;bins&quot;,
+                    &quot;Number of bins:&quot;,
+                    min = 1,
+                    max = 50,
+                    value = 30)
+      ),
+      mainPanel(
+        plotOutput(&quot;distPlot&quot;)
+      )
+    )
+  )
+  
+  ## server.R
+  server &lt;- function(input, output, session){
+    gar_shiny_auth(session)
+    output$distPlot &lt;- renderPlot({
+      x    &lt;- faithful[, 2]
+      bins &lt;- seq(min(x), max(x), length.out = input$bins + 1)
+      hist(x, breaks = bins, col = &#39;darkgray&#39;, border = &#39;white&#39;)
+    })
+  }
+  shinyApp(gar_shiny_ui(ui), server)</code></pre>
+<p>After the authentication is completed (in this case it is possible to adjust scope, e.g. users can allow access to their analytics API or Google Drive), user will be redirected to the app. In some platforms (such as shinyapps.io or a Kubernetes cluster, as in this case), the URL you are authenticating from will not match the URL of the Docker container the script is running in. In this instance, it must be manually set in the application.</p>
 <div class="figure">
 <img src="img/shiny-oauth.gif" alt="" />
 <p class="caption">Shiny - Google Oauth2</p>
@@ -334,6 +379,7 @@ terraform apply</code></pre>
 <h2><span class="header-section-number">4.4</span> Security Measures<a href="project-implementation-gcp.html#security-measures" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div id="load-balancing" class="section level3 hasAnchor" number="4.4.1">
 <h3><span class="header-section-number">4.4.1</span> Load balancing<a href="project-implementation-gcp.html#load-balancing" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Load balancers are managed services on GCP that distribute application traffic across many instances. An in previous example, load balancer is responsible for routing the requests from *.shinycloud.online to the internal backend endpoints (Cloud Run, GKE cluster node port).</p>
 <div class="figure">
 <img src="img/p-shiny-lb.PNG" alt="" />
 <p class="caption">Load Balancer</p>
@@ -341,7 +387,9 @@ terraform apply</code></pre>
 </div>
 <div id="dns" class="section level3 hasAnchor" number="4.4.2">
 <h3><span class="header-section-number">4.4.2</span> DNS<a href="project-implementation-gcp.html#dns" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>In order to access the application from external network, it is wise to use DNS and enable the connectivity only over HTTPS protocol. This way users can trust that they are reaching correct website and data is protected via TLS encryption. DNS instance can be created using the following command:</p>
 <pre><code>gcloud beta dns --project=$PROJECTID managed-zones create shinycloud-online --description=&quot;&quot; --dns-name=&quot;shinycloud.online.&quot; --visibility=&quot;public&quot; --dnssec-state=&quot;off&quot; --log-dns-queries</code></pre>
+<p>After that, address (A) record is mapped to the load balancer while the Canonical Name name is added as shinycloud.online. It is possible to create subdomains (e.g. login.shinycloud.online) and map them to separate/standalone shiny applications as well.</p>
 <div class="figure">
 <img src="img/p-dns.PNG" alt="" />
 <p class="caption">Cloud DNS</p>
@@ -356,17 +404,25 @@ terraform apply</code></pre>
 </div>
 <div id="identity-aware-proxy" class="section level3 hasAnchor" number="4.4.4">
 <h3><span class="header-section-number">4.4.4</span> Identity aware proxy<a href="project-implementation-gcp.html#identity-aware-proxy" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Identity-Aware Proxy (IAP) is a Google Cloud Platform service that intercepts web requests sent to your application, authenticates the user making the request using the Google Identity Service, and only allows the request to proceed if it originates from a user which is authorized.</p>
+<p>In the following example, IAP is enabled for 2 backend services out of three via the Load Balancer. This means that user will need to authorize via IAP proxy prior to reaching the app itself.</p>
 <div class="figure">
 <img src="img/p-identityawareproxy.PNG" alt="" />
-<p class="caption">Cloud DNS</p>
+<p class="caption">Identity aware proxy</p>
 </div>
+<p>In case the user does not have the required permissions, he will be presented with the error screen.</p>
 <div class="figure">
 <img src="img/p-proxyerror.PNG" alt="" />
-<p class="caption">Cloud DNS</p>
+<p class="caption">Identity aware proxy - not authorized</p>
 </div>
 </div>
 <div id="audit" class="section level3 hasAnchor" number="4.4.5">
 <h3><span class="header-section-number">4.4.5</span> Audit<a href="project-implementation-gcp.html#audit" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Logs are ingested from Google Cloud services and stored securely with no configuration necessary. GKE workload logs are captured automatically, while VM workload logs are captured via the Ops Agent. Having all the logs stored centrally is convenient for the analytics/anomaly detection purposes discussed in previous chapters.</p>
+<div class="figure">
+<img src="img/p-logging.PNG" alt="" />
+<p class="caption">Cloud Logging</p>
+</div>
 </div>
 </div>
 <div id="final-result" class="section level2 hasAnchor" number="4.5">
@@ -376,7 +432,7 @@ terraform apply</code></pre>
 <p class="caption">Shiny Analytics Hub - Architecture</p>
 </div>
 <ul>
-<li><a href="https://shinycloud.online/" class="uri">https://shinycloud.online/</a> - main public app (only google Sign In)</li>
+<li><a href="https://shinycloud.online/" class="uri">https://shinycloud.online/</a> - main public app (only Google Sign In)</li>
 <li><a href="https://login.shinycloud.online/" class="uri">https://login.shinycloud.online/</a> - private app (Google OAuth + identity aware proxy)</li>
 <li><a href="https://gke.shinycloud.online/" class="uri">https://gke.shinycloud.online/</a> - scalable app (identity aware proxy only)</li>
 <li><a href="https://_____.shinycloud.online/" class="uri">https://_____.shinycloud.online/</a> - any new app, depending on the security and scalability requirements</li>

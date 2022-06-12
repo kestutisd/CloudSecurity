@@ -23,7 +23,7 @@
 <meta name="author" content="Kęstutis Daugėla" />
 
 
-<meta name="date" content="2022-06-11" />
+<meta name="date" content="2022-06-12" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -132,7 +132,7 @@ div.csl-indent {
 <li class="chapter" data-level="4" data-path="project-implementation-gcp.html"><a href="project-implementation-gcp.html"><i class="fa fa-check"></i><b>4</b> Project Implementation GCP<span></span></a>
 <ul>
 <li class="chapter" data-level="4.1" data-path="project-implementation-gcp.html"><a href="project-implementation-gcp.html#shiny-application"><i class="fa fa-check"></i><b>4.1</b> Shiny Application<span></span></a></li>
-<li class="chapter" data-level="4.2" data-path="project-implementation-gcp.html"><a href="project-implementation-gcp.html#conteinarization"><i class="fa fa-check"></i><b>4.2</b> Conteinarization<span></span></a>
+<li class="chapter" data-level="4.2" data-path="project-implementation-gcp.html"><a href="project-implementation-gcp.html#containerization"><i class="fa fa-check"></i><b>4.2</b> Containerization<span></span></a>
 <ul>
 <li class="chapter" data-level="4.2.1" data-path="project-implementation-gcp.html"><a href="project-implementation-gcp.html#terraform"><i class="fa fa-check"></i><b>4.2.1</b> Terraform<span></span></a></li>
 <li class="chapter" data-level="4.2.2" data-path="project-implementation-gcp.html"><a href="project-implementation-gcp.html#cloud-run"><i class="fa fa-check"></i><b>4.2.2</b> Cloud Run<span></span></a></li>
@@ -186,6 +186,22 @@ div.csl-indent {
 <div id="anomaly-detection-for-cloud-applications" class="section level2 hasAnchor" number="2.2">
 <h2><span class="header-section-number">2.2</span> Anomaly detection for Cloud Applications<a href="paper-review.html#anomaly-detection-for-cloud-applications" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Machine Learning for Cloud Security: A Systematic Review <span class="citation">(<a href="#ref-mlcloud" role="doc-biblioref">Nassif et al. 2021</a>)</span></p>
+<p>Utilizing Machine Learning is one method for securing Cloud. ML approaches have been applied in a variety of ways to avoid or detect Cloud threats and security vulnerabilities. This study categorizes 63 relevant studies and the results of the Systematic Literature Review into three primary research areas: Cloud security risks, machine learning approaches, and model performance. Eleven Cloud security areas have been identified, including anomaly detection, attack detection, privacy preservation, security, vulnerability detection, data confidentiality, data privacy, DDoS, DoS, and intrusion detection. The most often analyzed topics are DDoS and data privacy, with a 16 percent and 14 percent usage frequency, respectively.</p>
+<div class="figure">
+<img src="img/a-area.PNG" alt="" />
+<p class="caption">Cloud security area found from collected research papers <span class="citation">(<a href="#ref-mlcloud" role="doc-biblioref">Nassif et al. 2021</a>)</span></p>
+</div>
+<p>The primary role of Intrusion Detection Systems, which requires high accuracy, low false alarm rates, and the ability to predict alarms based on positive or real alarms when an intrusion occurs and false positive or false alarms in the event of a failure.</p>
+<div class="figure">
+<img src="img/a-IDS.PNG" alt="" />
+<p class="caption">Papers that discusses ID in cloud <span class="citation">(<a href="#ref-mlcloud" role="doc-biblioref">Nassif et al. 2021</a>)</span></p>
+</div>
+<p>Anomaly detection is crucial because data anomalies are essential and frequently crucial information that can be utilized in a wide variety of applications. Some ML techniques are hybrid while others are standalone. SVM is the most prominent ML technique employed in hybrid and standalone models. Sixty percent of the studies compared their models to other ML models to obtain the best rating, either to demonstrate their model’s correctness or to further enhance it.</p>
+<div class="figure">
+<img src="img/a-models.PNG" alt="" />
+<p class="caption">ML models used in each research paper collected <span class="citation">(<a href="#ref-mlcloud" role="doc-biblioref">Nassif et al. 2021</a>)</span></p>
+</div>
+<p>Some of the key finding of the authors were regarding lack of deep learning utilization and old datasets being used for model evaluation (e.g. KDD, KDD CUP 99).</p>
 </div>
 </div>
 <h3>References<a href="references.html#references" class="anchor-section" aria-label="Anchor link to header"></a></h3>
