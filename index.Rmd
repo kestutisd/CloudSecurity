@@ -107,7 +107,7 @@ Cloud service providers follow a shared security responsibility model, which mea
 
 ![Shared responsibility in the cloud - image source www.microsoft.com](img/perceptible-shifts-in-responsibility-graphic.png)
 
-Cloud challenges and directions have been categorized into 6 groups: Security, Autonomic Resource Management (ARM), Cloud Adoption, Cloud development and benchmarking big data technologies and cloud computing and social clouds. Security is the most common challenge of cloud computing as the paper indicates (which is the outcome of literature review of over 190 resources including books, journal and conference papers, research project reports and deliverables, European Commission roadmaps and calls for proposals, online weblogs, white papers, business reviews, company websites, profiles and offered services by cloud providers). [@cloudsecsurvey]
+Cloud challenges and directions have been categorized into 6 groups: Security, Autonomic Resource Management (ARM), Cloud Adoption, Cloud development, benchmarking big data technologies, cloud computing and social clouds. Security is the most common challenge of cloud computing as the paper indicates. The reseach is the outcome of literature review of over 190 resources including books, journal and conference papers, research project reports and deliverables, European Commission roadmaps and calls for proposals, online weblogs, white papers, business reviews, company websites, profiles and offered services by cloud providers. [@cloudsecsurvey]
 
 
 Having a solid cloud security stance helps organizations achieve other benefits, such as:
@@ -118,11 +118,9 @@ Having a solid cloud security stance helps organizations achieve other benefits,
 * Increased reliability and availability
 * DevOps way of working
 
-
 Despite bringing many benefits, the cloud computing paradigm imposes serious concerns in terms of security and privacy, which are considered hurdles in the adoption of the cloud at a very large scale [@securingcloudsurvey]. Security issues are depended on the cloud provider, service user, instance [@datasecurity], and the delivery model, PaaS, IaaS, and SaaS [@securitymode]. Data stored in the public cloud would face both outside attacks and inside attacks [@securityprivacy].  Data loss and leakage were the biggest security concern, with 44% of organizations seeing data loss as one of their top three focus areas. Two-thirds of organizations leave back doors open to attackers leading to an accidental exposure through misconfiguration. Security gaps in misconfigurations were exploited in 66% of attacks [@sophos]. 
 
 ![How criminals are getting in, source - sophos.com](img/sophos_threats.PNG)
-
 
 Zero Trust security model enables securing cloud-native applications by encrypting all network communication, authenticating, and authorizing every request. The traditional trust management mechanisms represent a static trust relationship that falls deficit while meeting up the dynamic requirement of cloud services. [@zerotrust]. In order to achieve a true zero-trust security model in the cloud, a combination of network and identity permission policies should be in place.
 
@@ -180,7 +178,7 @@ The literature has examined a variety of security threats [@threats]. To aid in 
 
 ## Vulnerabilities
 
-Vulnerabilities are weak points in the environment and assets, which expose you to possible threats and heightened risk. Unfortunately, a company can have thousands, and frequently millions, of vulnerabilities. It is not possible to remediate all of them, given that most businesses can only patch one out of every 10 vulnerabilities. However, the good news is that just 2 to 5 percent of vulnerabilities are likely to be exploited. Even fewer of these vulnerabilities are likely to constitute a real threat to your company, as many of them may not be actively exploited in your industry.
+Vulnerabilities are weak points in the environment and assets, which expose you to possible threats and heightened risk. Unfortunately, a company can have thousands, and frequently millions, of vulnerabilities. It is not possible to remediate all of them, given that most businesses can only patch one out of every 10 vulnerabilities. However, the good news is that just 2 to 5 percent of vulnerabilities are likely to be exploited. Even fewer of these vulnerabilities are likely to constitute a real threat to a company, as many of them may not be actively exploited in the industry.
 
 Depending on the cloud service model, vulnerabilities might differ, as described in the table below.
 
@@ -230,20 +228,20 @@ Some of the key finding of the authors were regarding lack of deep learning util
 
 ## Platform for anatical applications
 
-Shiny Server is a powerful open source back end application. It creates a web server optimized for hosting Shiny applications. Shiny Server enables you to host your apps in a controlled environment, such as within your corporation, ensuring that your Shiny app (and any data it requires) never leaves your control.
+Shiny Server is a powerful open source back end application. It creates a web server optimized for hosting Shiny applications. Shiny Server enables you to host your apps in a controlled environment, such as within an corporation, ensuring that your Shiny app (and any data it requires) never leaves your control.
 
-The majority of Shiny apps are deployed within an organization's firewall, and because you can generally trust that your colleagues will not attempt to hack your app64, you don't need to worry about security. If, on the other hand, your app contains data that only a subset of your colleagues should have access to, or if you wish to make your app publicly accessible, you will need to invest some effort in security. When it comes to app security, there are two critical components to safeguard: your data and your compute resources.
+The majority of Shiny apps are deployed within an organization's firewall. If, on the other hand, an app contains data that only a subset of users should have access to, the security configuration in shiny server is not straightforward. When it comes to app security, there are two critical components to safeguard: your data and your compute resources.
 
 ![Shiny Server vs Shiny Server Pro](img/shinyserver.png)
 
-While Shiny Server has [some security features](https://docs.rstudio.com/shiny-server/#authentication-security), the open source version is pretty basic: it does not have authentication, TLS/SSL (traffic is not encrypted), there's no defense to a denial of service attack and there is no way to distribute work for multiple R instances. However, some companies, e.g. [Appsilon](https://appsilon.com/) are specializing in enterprise Shiny dashboards using the open source version. We will attempt to establish a similar secure infrastructure in this project and to expose shiny applications to the world wide web as well.
+While Shiny Server has [some security features](https://docs.rstudio.com/shiny-server/#authentication-security), the open source version is pretty basic: it does not have authentication, no TLS/SSL (traffic is not encrypted), there's no defense to a denial of service attack and there is no way to distribute work for multiple R instances. However, some companies, e.g. [Appsilon](https://appsilon.com/) are specializing in enterprise Shiny dashboards using the open source version. We will attempt to establish a similar secure infrastructure in this project and to expose shiny applications to the world wide web as well.
 
 ![Shiny Analytics Hub - Architecture](img/arch.drawio.png)
 
 
 ## Kubernetes and Docker
 
-The Open Source Shiny Server is a stand-alone application that runs on a single thread. While it is feasible to run many instances of shiny servers and divide work via load balancing, this is inefficient and far more expensive than using containerized applications. While it is possible to create the shiny-server container from scratch, there are a lot of pre-build [docker images](https://hub.docker.com/r/rocker/shiny) available including all the dependencies. Moreover, virtualized applications are highly preferred in general as opposed to IaaS approach (virtual machines), it makes sense to dig deeper in kubernetes and docker setup, regardless of the chosen service provider. 
+The Open Source Shiny Server is a stand-alone application that runs on a single thread. It is feasible to run many instances of shiny servers and divide work via load balancing, but this is inefficient and far more expensive than using containerized applications. While it is possible to create the shiny-server container from scratch, there are a lot of pre-build [docker images](https://hub.docker.com/r/rocker/shiny) available including all the dependencies. Moreover, virtualized applications are highly preferred in general as opposed to IaaS approach (virtual machines), therefore it makes sense to dig deeper in kubernetes and docker setup, regardless of the chosen service provider. 
 
 ![Container evolution - kubernetes.io](img/container_evolution.png)
 
@@ -256,7 +254,6 @@ Kubernetes is the most popular container orchestration platform that enables use
 
 ![The components of a Kubernetes cluster - kubernetes.io](img/components-of-kubernetes.png)
 Environments running Kubernetes consist of the following key components:
-
 
 * Kubernetes control plane—manages Kubernetes clusters and the workloads running on them. Include components like the API Server, Scheduler, and Controller Manager.
 * Kubernetes data plane—machines that can run containerized workloads. Each node is managed by the kubelet, an agent that receives commands from the control plane. 
@@ -271,8 +268,8 @@ Computer networks are prone to attacks and it has a wide range of attacks associ
 As an experiment, the firewall was opened to the whole world and network activity was monitored for one week. While the activity in the Compute Instance (Shiny Server hosted on a Virtual Server) was marginal, the exposed Shiny Server instance on Google Kubernetes Cluster was scanned extensively. This could be due to the rules on how Google generates IP addresses for corresponding instances. Moreover, GKE was exposed on port 80 which is a standard HTTP port, while the standard port of shiny server (3838) was used for Compute Instance, which is not that common configuration.
 
 ![Incoming Requests](img/incoming_requests.png)
-
-While the majority of the requests came from the USA, applications from China and Russia also scanned our exposed application considerably. These scans also are not centralized but are rather done by individuals or companies which specialize in data mining and web crawling. Some requests are also received from Lithuania, CGates Internet Service Provider. 
+ 
+The majority of the requests came from the USA, but applications from China and Russia also scanned the exposed application considerably. These scans also are not centralized but are rather done by individuals or companies which specialize in data mining and web crawling. Some requests are also received from Lithuania, CGates Internet Service Provider. 
 
 ![Incoming Requets from different cities](img/all_cities.png)
 
