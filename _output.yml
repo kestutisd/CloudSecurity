@@ -3,7 +3,7 @@ bookdown::gitbook:
   output:
     pdf_document
   config:
-    download: ["pdf"]
+    download: null
     toc:
       before: |
         <li><a href="./">Information Security Technologies</a></li>
