@@ -3,9 +3,9 @@ title: "FMISD13207 Cloud Security Technologies"
 author: "Kęstutis Daugėla"
 date: "`r Sys.Date()`"
 output:
-  pdf_document: default
   html_document:
     df_print: paged
+  pdf_document: default
 bibliography: references.bib
 biblio-style: apalike
 link-citations: yes
@@ -573,7 +573,7 @@ A part of network topology is presented there:
 
 A simple app with a login module. This module is appropriate if it is not needed to authenticate APIs in the application and only require a login form.
 
-![Shiny - Google Sign In](img/shiny-login.gif)
+![Shiny - Google Sign In](img/p-login.gif)
 
 This uses the most modern gar_shiny_* family of functions to create authentication.
 
