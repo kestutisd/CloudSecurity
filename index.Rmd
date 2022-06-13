@@ -564,6 +564,10 @@ Since Shiny Server is a stateful application, session affinity is also needed in
 
 ![GKE + Load balancer](img/gke-lb.jpg)
 
+A part of network topology is presented there:
+
+![GKE network](img/gke-networkpeers.PNG)
+
 
 ## Shiny R Applications
 
@@ -661,12 +665,12 @@ Logs are ingested from Google Cloud services and stored securely with no configu
 
 * https://shinycloud.online/ - main public app (only Google Sign In)
 * https://login.shinycloud.online/ - private app (Google OAuth + identity aware proxy)
-* https://gke.shinycloud.online/ - scalable app (identity aware proxy only)
+* https://gke.shinycloud.online/ - scalable app (Identity Aware Proxy)
 * https://_____.shinycloud.online/ - any new app, depending on the security and scalability requirements
 
 
 ```
-All apps will be terminated on 2022-06-20
+All apps will be terminated on 2022-06-19
 ```
 
 # References {-}

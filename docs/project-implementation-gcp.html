@@ -6,11 +6,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 4 Project Implementation GCP | FMISD13207 Cloud Security Technologies</title>
   <meta name="description" content="Chapter 4 Project Implementation GCP | FMISD13207 Cloud Security Technologies" />
-  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.25 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 4 Project Implementation GCP | FMISD13207 Cloud Security Technologies" />
   <meta property="og:type" content="book" />
-  
   
   
   
@@ -24,7 +23,7 @@
 <meta name="author" content="Kęstutis Daugėla" />
 
 
-<meta name="date" content="2022-06-12" />
+<meta name="date" content="2022-06-13" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,7 +32,6 @@
   
 <link rel="prev" href="project-scope.html"/>
 <link rel="next" href="references.html"/>
-<script src="libs/header-attrs-2.11/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -51,8 +49,9 @@
 
 
 
-<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 
 
 
@@ -95,62 +94,62 @@ div.csl-indent {
 <li><a href="./">Information Security Technologies</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Introduction</a>
+<li><a href="index.html#introduction">Introduction<span></span></a>
 <ul>
-<li class="chapter" data-level="0.1" data-path="index.html"><a href="index.html#cloud-computing"><i class="fa fa-check"></i><b>0.1</b> Cloud Computing</a></li>
-<li class="chapter" data-level="0.2" data-path="index.html"><a href="index.html#data-breach---case-study"><i class="fa fa-check"></i><b>0.2</b> Data Breach - Case Study</a>
+<li class="chapter" data-level="0.1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>0.1</b> Cloud Computing<span></span></a></li>
+<li class="chapter" data-level="0.2" data-path="index.html"><a href="index.html#data-breach---case-study"><i class="fa fa-check"></i><b>0.2</b> Data Breach - Case Study<span></span></a>
 <ul>
-<li class="chapter" data-level="0.2.1" data-path="index.html"><a href="index.html#twitch"><i class="fa fa-check"></i><b>0.2.1</b> Twitch</a></li>
-<li class="chapter" data-level="0.2.2" data-path="index.html"><a href="index.html#phizer"><i class="fa fa-check"></i><b>0.2.2</b> Phizer</a></li>
-<li class="chapter" data-level="0.2.3" data-path="index.html"><a href="index.html#citybee"><i class="fa fa-check"></i><b>0.2.3</b> Citybee</a></li>
+<li class="chapter" data-level="0.2.1" data-path="index.html"><a href="index.html#twitch"><i class="fa fa-check"></i><b>0.2.1</b> Twitch<span></span></a></li>
+<li class="chapter" data-level="0.2.2" data-path="index.html"><a href="index.html#phizer"><i class="fa fa-check"></i><b>0.2.2</b> Phizer<span></span></a></li>
+<li class="chapter" data-level="0.2.3" data-path="index.html"><a href="index.html#citybee"><i class="fa fa-check"></i><b>0.2.3</b> Citybee<span></span></a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="1" data-path="cloud-cybersecurity-management.html"><a href="cloud-cybersecurity-management.html"><i class="fa fa-check"></i><b>1</b> Cloud Cybersecurity Management</a>
+<li class="chapter" data-level="1" data-path="cloud-cybersecurity-management.html"><a href="cloud-cybersecurity-management.html"><i class="fa fa-check"></i><b>1</b> Cloud Cybersecurity Management<span></span></a>
 <ul>
-<li class="chapter" data-level="1.1" data-path="cloud-cybersecurity-management.html"><a href="cloud-cybersecurity-management.html#cloud-security-overview"><i class="fa fa-check"></i><b>1.1</b> Cloud Security Overview</a></li>
-<li class="chapter" data-level="1.2" data-path="cloud-cybersecurity-management.html"><a href="cloud-cybersecurity-management.html#infrastructure-as-code"><i class="fa fa-check"></i><b>1.2</b> Infrastructure as Code</a></li>
-<li class="chapter" data-level="1.3" data-path="cloud-cybersecurity-management.html"><a href="cloud-cybersecurity-management.html#type-of-threats"><i class="fa fa-check"></i><b>1.3</b> Type of threats</a></li>
-<li class="chapter" data-level="1.4" data-path="cloud-cybersecurity-management.html"><a href="cloud-cybersecurity-management.html#vulnerabilities"><i class="fa fa-check"></i><b>1.4</b> Vulnerabilities</a></li>
-<li class="chapter" data-level="1.5" data-path="cloud-cybersecurity-management.html"><a href="cloud-cybersecurity-management.html#risks"><i class="fa fa-check"></i><b>1.5</b> Risks</a></li>
+<li class="chapter" data-level="1.1" data-path="cloud-cybersecurity-management.html"><a href="cloud-cybersecurity-management.html#cloud-security-overview"><i class="fa fa-check"></i><b>1.1</b> Cloud Security Overview<span></span></a></li>
+<li class="chapter" data-level="1.2" data-path="cloud-cybersecurity-management.html"><a href="cloud-cybersecurity-management.html#infrastructure-as-code"><i class="fa fa-check"></i><b>1.2</b> Infrastructure as Code<span></span></a></li>
+<li class="chapter" data-level="1.3" data-path="cloud-cybersecurity-management.html"><a href="cloud-cybersecurity-management.html#type-of-threats"><i class="fa fa-check"></i><b>1.3</b> Type of threats<span></span></a></li>
+<li class="chapter" data-level="1.4" data-path="cloud-cybersecurity-management.html"><a href="cloud-cybersecurity-management.html#vulnerabilities"><i class="fa fa-check"></i><b>1.4</b> Vulnerabilities<span></span></a></li>
+<li class="chapter" data-level="1.5" data-path="cloud-cybersecurity-management.html"><a href="cloud-cybersecurity-management.html#risks"><i class="fa fa-check"></i><b>1.5</b> Risks<span></span></a></li>
 </ul></li>
-<li class="chapter" data-level="2" data-path="paper-review.html"><a href="paper-review.html"><i class="fa fa-check"></i><b>2</b> Paper review</a>
+<li class="chapter" data-level="2" data-path="paper-review.html"><a href="paper-review.html"><i class="fa fa-check"></i><b>2</b> Paper review<span></span></a>
 <ul>
-<li class="chapter" data-level="2.1" data-path="paper-review.html"><a href="paper-review.html#security-challenges-in-different-network-layers"><i class="fa fa-check"></i><b>2.1</b> Security Challenges in Different Network Layers</a></li>
-<li class="chapter" data-level="2.2" data-path="paper-review.html"><a href="paper-review.html#anomaly-detection-for-cloud-applications"><i class="fa fa-check"></i><b>2.2</b> Anomaly detection for Cloud Applications</a></li>
+<li class="chapter" data-level="2.1" data-path="paper-review.html"><a href="paper-review.html#security-challenges-in-different-network-layers"><i class="fa fa-check"></i><b>2.1</b> Security Challenges in Different Network Layers<span></span></a></li>
+<li class="chapter" data-level="2.2" data-path="paper-review.html"><a href="paper-review.html#anomaly-detection-for-cloud-applications"><i class="fa fa-check"></i><b>2.2</b> Anomaly detection for Cloud Applications<span></span></a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="project-scope.html"><a href="project-scope.html"><i class="fa fa-check"></i><b>3</b> Project Scope</a>
+<li class="chapter" data-level="3" data-path="project-scope.html"><a href="project-scope.html"><i class="fa fa-check"></i><b>3</b> Project Scope<span></span></a>
 <ul>
-<li class="chapter" data-level="3.1" data-path="project-scope.html"><a href="project-scope.html#platform-for-anatical-applications"><i class="fa fa-check"></i><b>3.1</b> Platform for anatical applications</a></li>
-<li class="chapter" data-level="3.2" data-path="project-scope.html"><a href="project-scope.html#kubernetes-and-docker"><i class="fa fa-check"></i><b>3.2</b> Kubernetes and Docker</a></li>
-<li class="chapter" data-level="3.3" data-path="project-scope.html"><a href="project-scope.html#shiny-server-security-experiment"><i class="fa fa-check"></i><b>3.3</b> Shiny Server Security Experiment</a></li>
-<li class="chapter" data-level="3.4" data-path="project-scope.html"><a href="project-scope.html#security-considerations"><i class="fa fa-check"></i><b>3.4</b> Security considerations</a>
+<li class="chapter" data-level="3.1" data-path="project-scope.html"><a href="project-scope.html#platform-for-anatical-applications"><i class="fa fa-check"></i><b>3.1</b> Platform for anatical applications<span></span></a></li>
+<li class="chapter" data-level="3.2" data-path="project-scope.html"><a href="project-scope.html#kubernetes-and-docker"><i class="fa fa-check"></i><b>3.2</b> Kubernetes and Docker<span></span></a></li>
+<li class="chapter" data-level="3.3" data-path="project-scope.html"><a href="project-scope.html#shiny-server-security-experiment"><i class="fa fa-check"></i><b>3.3</b> Shiny Server Security Experiment<span></span></a></li>
+<li class="chapter" data-level="3.4" data-path="project-scope.html"><a href="project-scope.html#security-considerations"><i class="fa fa-check"></i><b>3.4</b> Security considerations<span></span></a>
 <ul>
-<li class="chapter" data-level="3.4.1" data-path="project-scope.html"><a href="project-scope.html#data-encryption"><i class="fa fa-check"></i><b>3.4.1</b> Data Encryption</a></li>
-<li class="chapter" data-level="3.4.2" data-path="project-scope.html"><a href="project-scope.html#single-sign-on"><i class="fa fa-check"></i><b>3.4.2</b> Single Sign On</a></li>
-<li class="chapter" data-level="3.4.3" data-path="project-scope.html"><a href="project-scope.html#network"><i class="fa fa-check"></i><b>3.4.3</b> Network</a></li>
+<li class="chapter" data-level="3.4.1" data-path="project-scope.html"><a href="project-scope.html#data-encryption"><i class="fa fa-check"></i><b>3.4.1</b> Data Encryption<span></span></a></li>
+<li class="chapter" data-level="3.4.2" data-path="project-scope.html"><a href="project-scope.html#single-sign-on"><i class="fa fa-check"></i><b>3.4.2</b> Single Sign On<span></span></a></li>
+<li class="chapter" data-level="3.4.3" data-path="project-scope.html"><a href="project-scope.html#network"><i class="fa fa-check"></i><b>3.4.3</b> Network<span></span></a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="project-implementation-gcp.html"><a href="project-implementation-gcp.html"><i class="fa fa-check"></i><b>4</b> Project Implementation GCP</a>
+<li class="chapter" data-level="4" data-path="project-implementation-gcp.html"><a href="project-implementation-gcp.html"><i class="fa fa-check"></i><b>4</b> Project Implementation GCP<span></span></a>
 <ul>
-<li class="chapter" data-level="4.1" data-path="project-implementation-gcp.html"><a href="project-implementation-gcp.html#shiny-application"><i class="fa fa-check"></i><b>4.1</b> Shiny Application</a></li>
-<li class="chapter" data-level="4.2" data-path="project-implementation-gcp.html"><a href="project-implementation-gcp.html#containerization"><i class="fa fa-check"></i><b>4.2</b> Containerization</a>
+<li class="chapter" data-level="4.1" data-path="project-implementation-gcp.html"><a href="project-implementation-gcp.html#shiny-application"><i class="fa fa-check"></i><b>4.1</b> Shiny Application<span></span></a></li>
+<li class="chapter" data-level="4.2" data-path="project-implementation-gcp.html"><a href="project-implementation-gcp.html#containerization"><i class="fa fa-check"></i><b>4.2</b> Containerization<span></span></a>
 <ul>
-<li class="chapter" data-level="4.2.1" data-path="project-implementation-gcp.html"><a href="project-implementation-gcp.html#terraform"><i class="fa fa-check"></i><b>4.2.1</b> Terraform</a></li>
-<li class="chapter" data-level="4.2.2" data-path="project-implementation-gcp.html"><a href="project-implementation-gcp.html#cloud-run"><i class="fa fa-check"></i><b>4.2.2</b> Cloud Run</a></li>
-<li class="chapter" data-level="4.2.3" data-path="project-implementation-gcp.html"><a href="project-implementation-gcp.html#gke"><i class="fa fa-check"></i><b>4.2.3</b> GKE</a></li>
+<li class="chapter" data-level="4.2.1" data-path="project-implementation-gcp.html"><a href="project-implementation-gcp.html#terraform"><i class="fa fa-check"></i><b>4.2.1</b> Terraform<span></span></a></li>
+<li class="chapter" data-level="4.2.2" data-path="project-implementation-gcp.html"><a href="project-implementation-gcp.html#cloud-run"><i class="fa fa-check"></i><b>4.2.2</b> Cloud Run<span></span></a></li>
+<li class="chapter" data-level="4.2.3" data-path="project-implementation-gcp.html"><a href="project-implementation-gcp.html#gke"><i class="fa fa-check"></i><b>4.2.3</b> GKE<span></span></a></li>
 </ul></li>
-<li class="chapter" data-level="4.3" data-path="project-implementation-gcp.html"><a href="project-implementation-gcp.html#shiny-r-applications"><i class="fa fa-check"></i><b>4.3</b> Shiny R Applications</a></li>
-<li class="chapter" data-level="4.4" data-path="project-implementation-gcp.html"><a href="project-implementation-gcp.html#security-measures"><i class="fa fa-check"></i><b>4.4</b> Security Measures</a>
+<li class="chapter" data-level="4.3" data-path="project-implementation-gcp.html"><a href="project-implementation-gcp.html#shiny-r-applications"><i class="fa fa-check"></i><b>4.3</b> Shiny R Applications<span></span></a></li>
+<li class="chapter" data-level="4.4" data-path="project-implementation-gcp.html"><a href="project-implementation-gcp.html#security-measures"><i class="fa fa-check"></i><b>4.4</b> Security Measures<span></span></a>
 <ul>
-<li class="chapter" data-level="4.4.1" data-path="project-implementation-gcp.html"><a href="project-implementation-gcp.html#load-balancing"><i class="fa fa-check"></i><b>4.4.1</b> Load balancing</a></li>
-<li class="chapter" data-level="4.4.2" data-path="project-implementation-gcp.html"><a href="project-implementation-gcp.html#dns"><i class="fa fa-check"></i><b>4.4.2</b> DNS</a></li>
-<li class="chapter" data-level="4.4.3" data-path="project-implementation-gcp.html"><a href="project-implementation-gcp.html#certificates"><i class="fa fa-check"></i><b>4.4.3</b> Certificates</a></li>
-<li class="chapter" data-level="4.4.4" data-path="project-implementation-gcp.html"><a href="project-implementation-gcp.html#identity-aware-proxy"><i class="fa fa-check"></i><b>4.4.4</b> Identity aware proxy</a></li>
-<li class="chapter" data-level="4.4.5" data-path="project-implementation-gcp.html"><a href="project-implementation-gcp.html#audit"><i class="fa fa-check"></i><b>4.4.5</b> Audit</a></li>
+<li class="chapter" data-level="4.4.1" data-path="project-implementation-gcp.html"><a href="project-implementation-gcp.html#load-balancing"><i class="fa fa-check"></i><b>4.4.1</b> Load balancing<span></span></a></li>
+<li class="chapter" data-level="4.4.2" data-path="project-implementation-gcp.html"><a href="project-implementation-gcp.html#dns"><i class="fa fa-check"></i><b>4.4.2</b> DNS<span></span></a></li>
+<li class="chapter" data-level="4.4.3" data-path="project-implementation-gcp.html"><a href="project-implementation-gcp.html#certificates"><i class="fa fa-check"></i><b>4.4.3</b> Certificates<span></span></a></li>
+<li class="chapter" data-level="4.4.4" data-path="project-implementation-gcp.html"><a href="project-implementation-gcp.html#identity-aware-proxy"><i class="fa fa-check"></i><b>4.4.4</b> Identity aware proxy<span></span></a></li>
+<li class="chapter" data-level="4.4.5" data-path="project-implementation-gcp.html"><a href="project-implementation-gcp.html#audit"><i class="fa fa-check"></i><b>4.4.5</b> Audit<span></span></a></li>
 </ul></li>
-<li class="chapter" data-level="4.5" data-path="project-implementation-gcp.html"><a href="project-implementation-gcp.html#final-result"><i class="fa fa-check"></i><b>4.5</b> Final result</a></li>
+<li class="chapter" data-level="4.5" data-path="project-implementation-gcp.html"><a href="project-implementation-gcp.html#final-result"><i class="fa fa-check"></i><b>4.5</b> Final result<span></span></a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li><a href="references.html#references">References<span></span></a></li>
 <li class="divider"></li>
 <li>Vilnius Tech 2022</li>
 
@@ -171,10 +170,10 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="project-implementation-gcp" class="section level1" number="4">
-<h1><span class="header-section-number">Chapter 4</span> Project Implementation GCP</h1>
-<div id="shiny-application" class="section level2" number="4.1">
-<h2><span class="header-section-number">4.1</span> Shiny Application</h2>
+<div id="project-implementation-gcp" class="section level1 hasAnchor" number="4">
+<h1><span class="header-section-number">Chapter 4</span> Project Implementation GCP<a href="project-implementation-gcp.html#project-implementation-gcp" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="shiny-application" class="section level2 hasAnchor" number="4.1">
+<h2><span class="header-section-number">4.1</span> Shiny Application<a href="project-implementation-gcp.html#shiny-application" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Several shiny R applications were created for this project. The authentication part could be either shifted for the identity aware proxy or implemented in the application, as in example below.</p>
 <pre><code>library(shiny)
 library(googleAuthR)
@@ -212,8 +211,8 @@ server {
   }
 }</code></pre>
 </div>
-<div id="containerization" class="section level2" number="4.2">
-<h2><span class="header-section-number">4.2</span> Containerization</h2>
+<div id="containerization" class="section level2 hasAnchor" number="4.2">
+<h2><span class="header-section-number">4.2</span> Containerization<a href="project-implementation-gcp.html#containerization" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>In order to dockerize shiny application, we will be using a docker image from rocker repository. Since the image is packaged with all the dependencies, we only need to add dependend packages (“googleAuthR”) and move required files to the container (shiny server configuration, client secret and the application itself).</p>
 <pre><code>FROM rocker/shiny
 RUN apt-get update &amp;&amp; apt-get install -y \
@@ -238,8 +237,8 @@ docker build . -t gcr.io/$PROJECTID/signin
 docker push gcr.io/$PROJECTID/signin</code></pre>
 <p>For debugging purposes, application can be launched locally:</p>
 <pre><code>docker run --rm -p 8080:8080 gcr.io/$PROJECTID/simpleauth:latest</code></pre>
-<div id="terraform" class="section level3" number="4.2.1">
-<h3><span class="header-section-number">4.2.1</span> Terraform</h3>
+<div id="terraform" class="section level3 hasAnchor" number="4.2.1">
+<h3><span class="header-section-number">4.2.1</span> Terraform<a href="project-implementation-gcp.html#terraform" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Since we are following Infrastructure as Code pattern, the whole required infrastructure could be defined in a terraform file. We need to select project, region, service and add application deployment config. In case of Cloud Run deployment, terraform file can be defined like this:</p>
 <p>cloudrun-shiny.tf</p>
 <pre><code>provider &quot;google&quot;{
@@ -301,8 +300,8 @@ resource &quot;google_cloud_run_service_iam_member&quot; &quot;allUsers&quot; {
 terraform plan
 terraform apply</code></pre>
 </div>
-<div id="cloud-run" class="section level3" number="4.2.2">
-<h3><span class="header-section-number">4.2.2</span> Cloud Run</h3>
+<div id="cloud-run" class="section level3 hasAnchor" number="4.2.2">
+<h3><span class="header-section-number">4.2.2</span> Cloud Run<a href="project-implementation-gcp.html#cloud-run" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Cloud Run is a managed compute platform that supports the execution of containers invoked by requests or events. Since Cloud Run is serverless, it abstracts the infrastructure administration. Additionally, the serverless approach provides more fine-grained billing and can significantly reduce the cost (e.g. in case the application is not in use). With a manually created GKE cluster, the nodes and environment are always on which means that you are billed for them regardless of utilization. With Cloud Run, the service is merely available and the billing is done only for the actual consumption.</p>
 <p>In our case, we have deployed two services, which are not exposed to the internet. The only traffic allow is within the project or via Load balancer. Authentication for these services are handled either via Identity Aware Proxy or within the application.</p>
 <div class="figure">
@@ -315,8 +314,8 @@ terraform apply</code></pre>
 <p class="caption">Cloud Run</p>
 </div>
 </div>
-<div id="gke" class="section level3" number="4.2.3">
-<h3><span class="header-section-number">4.2.3</span> GKE</h3>
+<div id="gke" class="section level3 hasAnchor" number="4.2.3">
+<h3><span class="header-section-number">4.2.3</span> GKE<a href="project-implementation-gcp.html#gke" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Google Kubernetes Engine is a straightforward way of setting up a Kubernetes Cluster in Cloud. These clusters are fully managed by Google Site Reliability Engineers and Google ensures that your cluster is available and up-to-date. It also supports the common Docker container format and runs on Container-Optimized OS.</p>
 <p>Once the Cluster is created, the deployment is similar to Cloud Run. It can be done via Google Cloud Console, GCP SDK, or integrated into any CI/CD pipeline using Jenkins, GitActions, or similar tools.</p>
 <p>To enhance the security, private GKE cluster is deployed. The service is exposed via node port internally, which is later mapped as a back-end service in the load balancer configuration. This way external connectivity is only possible via Load Balancer.</p>
@@ -329,10 +328,15 @@ terraform apply</code></pre>
 <img src="img/gke-lb.jpg" alt="" />
 <p class="caption">GKE + Load balancer</p>
 </div>
+<p>A part of network topology is presented there:</p>
+<div class="figure">
+<img src="img/gke-networkpeers.PNG" alt="" />
+<p class="caption">GKE network</p>
 </div>
 </div>
-<div id="shiny-r-applications" class="section level2" number="4.3">
-<h2><span class="header-section-number">4.3</span> Shiny R Applications</h2>
+</div>
+<div id="shiny-r-applications" class="section level2 hasAnchor" number="4.3">
+<h2><span class="header-section-number">4.3</span> Shiny R Applications<a href="project-implementation-gcp.html#shiny-r-applications" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>A simple app with a login module. This module is appropriate if it is not needed to authenticate APIs in the application and only require a login form.</p>
 <div class="figure">
 <img src="img/shiny-login.gif" alt="" />
@@ -376,18 +380,18 @@ terraform apply</code></pre>
 <p class="caption">Shiny - Google Oauth2</p>
 </div>
 </div>
-<div id="security-measures" class="section level2" number="4.4">
-<h2><span class="header-section-number">4.4</span> Security Measures</h2>
-<div id="load-balancing" class="section level3" number="4.4.1">
-<h3><span class="header-section-number">4.4.1</span> Load balancing</h3>
+<div id="security-measures" class="section level2 hasAnchor" number="4.4">
+<h2><span class="header-section-number">4.4</span> Security Measures<a href="project-implementation-gcp.html#security-measures" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="load-balancing" class="section level3 hasAnchor" number="4.4.1">
+<h3><span class="header-section-number">4.4.1</span> Load balancing<a href="project-implementation-gcp.html#load-balancing" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Load balancers are managed services on GCP that distribute application traffic across many instances. An in previous example, load balancer is responsible for routing the requests from *.shinycloud.online to the internal backend endpoints (Cloud Run, GKE cluster node port).</p>
 <div class="figure">
 <img src="img/p-shiny-lb.PNG" alt="" />
 <p class="caption">Load Balancer</p>
 </div>
 </div>
-<div id="dns" class="section level3" number="4.4.2">
-<h3><span class="header-section-number">4.4.2</span> DNS</h3>
+<div id="dns" class="section level3 hasAnchor" number="4.4.2">
+<h3><span class="header-section-number">4.4.2</span> DNS<a href="project-implementation-gcp.html#dns" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>In order to access the application from external network, it is wise to use DNS and enable the connectivity only over HTTPS protocol. This way users can trust that they are reaching correct website and data is protected via TLS encryption. DNS instance can be created using the following command:</p>
 <pre><code>gcloud beta dns --project=$PROJECTID managed-zones create shinycloud-online --description=&quot;&quot; --dns-name=&quot;shinycloud.online.&quot; --visibility=&quot;public&quot; --dnssec-state=&quot;off&quot; --log-dns-queries</code></pre>
 <p>After that, address (A) record is mapped to the load balancer while the Canonical Name name is added as shinycloud.online. It is possible to create subdomains (e.g. login.shinycloud.online) and map them to separate/standalone shiny applications as well.</p>
@@ -396,15 +400,15 @@ terraform apply</code></pre>
 <p class="caption">Cloud DNS</p>
 </div>
 </div>
-<div id="certificates" class="section level3" number="4.4.3">
-<h3><span class="header-section-number">4.4.3</span> Certificates</h3>
+<div id="certificates" class="section level3 hasAnchor" number="4.4.3">
+<h3><span class="header-section-number">4.4.3</span> Certificates<a href="project-implementation-gcp.html#certificates" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div class="figure">
 <img src="img/p-certs.PNG" alt="" />
 <p class="caption">Certificates signed by CA</p>
 </div>
 </div>
-<div id="identity-aware-proxy" class="section level3" number="4.4.4">
-<h3><span class="header-section-number">4.4.4</span> Identity aware proxy</h3>
+<div id="identity-aware-proxy" class="section level3 hasAnchor" number="4.4.4">
+<h3><span class="header-section-number">4.4.4</span> Identity aware proxy<a href="project-implementation-gcp.html#identity-aware-proxy" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Identity-Aware Proxy (IAP) is a Google Cloud Platform service that intercepts web requests sent to your application, authenticates the user making the request using the Google Identity Service, and only allows the request to proceed if it originates from a user which is authorized.</p>
 <p>In the following example, IAP is enabled for 2 backend services out of three via the Load Balancer. This means that user will need to authorize via IAP proxy prior to reaching the app itself.</p>
 <div class="figure">
@@ -417,8 +421,8 @@ terraform apply</code></pre>
 <p class="caption">Identity aware proxy - not authorized</p>
 </div>
 </div>
-<div id="audit" class="section level3" number="4.4.5">
-<h3><span class="header-section-number">4.4.5</span> Audit</h3>
+<div id="audit" class="section level3 hasAnchor" number="4.4.5">
+<h3><span class="header-section-number">4.4.5</span> Audit<a href="project-implementation-gcp.html#audit" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Logs are ingested from Google Cloud services and stored securely with no configuration necessary. GKE workload logs are captured automatically, while VM workload logs are captured via the Ops Agent. Having all the logs stored centrally is convenient for the analytics/anomaly detection purposes discussed in previous chapters.</p>
 <div class="figure">
 <img src="img/p-logging.PNG" alt="" />
@@ -426,8 +430,8 @@ terraform apply</code></pre>
 </div>
 </div>
 </div>
-<div id="final-result" class="section level2" number="4.5">
-<h2><span class="header-section-number">4.5</span> Final result</h2>
+<div id="final-result" class="section level2 hasAnchor" number="4.5">
+<h2><span class="header-section-number">4.5</span> Final result<a href="project-implementation-gcp.html#final-result" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div class="figure">
 <img src="img/arch.drawio.png" alt="" />
 <p class="caption">Shiny Analytics Hub - Architecture</p>
@@ -435,10 +439,10 @@ terraform apply</code></pre>
 <ul>
 <li><a href="https://shinycloud.online/" class="uri">https://shinycloud.online/</a> - main public app (only Google Sign In)</li>
 <li><a href="https://login.shinycloud.online/" class="uri">https://login.shinycloud.online/</a> - private app (Google OAuth + identity aware proxy)</li>
-<li><a href="https://gke.shinycloud.online/" class="uri">https://gke.shinycloud.online/</a> - scalable app (identity aware proxy only)</li>
+<li><a href="https://gke.shinycloud.online/" class="uri">https://gke.shinycloud.online/</a> - scalable app (Identity Aware Proxy)</li>
 <li><a href="https://_____.shinycloud.online/" class="uri">https://_____.shinycloud.online/</a> - any new app, depending on the security and scalability requirements</li>
 </ul>
-<pre><code>All apps will be terminated on 2022-06-20</code></pre>
+<pre><code>All apps will be terminated on 2022-06-19</code></pre>
 </div>
 </div>
             </section>
